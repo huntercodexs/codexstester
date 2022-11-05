@@ -269,6 +269,31 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
         }
     }
+    protected void execute(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        switch (headersDto.getHttpMethod()) {
+            case HTTP_METHOD_GET:
+                assertResultFromRequestByHttpPost(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_POST:
+                assertResultFromRequestByHttpGet(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_PUT:
+                assertResultFromRequestByHttpPut(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_DELETE:
+                assertResultFromRequestByHttpDelete(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_PATCH:
+                assertResultFromRequestByHttpPatch(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_HEAD:
+                assertResultFromRequestByHttpHead(requestDto, headersDto);
+                break;
+            case HTTP_METHOD_OPTIONS:
+                aassertResultFromRequestByHttpOptions(requestDto, headersDto);
+                break;
+        }
+    }
 
     /**
      * @apiNote Using Http GET with Rest Template

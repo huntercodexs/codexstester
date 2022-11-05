@@ -18,9 +18,12 @@ public abstract class AvailableHttpStatusTests {
     protected static final int NO_CONTENT_204 = 204;
     protected static final int RESET_CONTENT_205 = 205;
     protected static final int PARTIAL_CONTENT_206 = 206;
-    protected static final int MULT_STATUS_WEBDAV_EN_US_207 = 207;
+    protected static final int MULTI_STATUS_WEBDAV_EN_US_207 = 207;
     protected static final int MULTI_STATUS_WEBDAV_EN_US_208 = 208;
     protected static final int IM_USED_HTTP_DELTA_ENCODING_226 = 226;
+
+    /*REDIRECT AND FORWARD RESPONSE*/
+
     protected static final int MULTIPLE_CHOICE_300 = 300;
     protected static final int MOVED_PERMANENTLY_301 = 301;
     protected static final int FOUND_302 = 302;
