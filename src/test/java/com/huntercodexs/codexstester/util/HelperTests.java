@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.utils;
+package com.huntercodexs.codexstester.util;
 
 import org.springframework.util.DigestUtils;
 

@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.abstractor.external;
 
-import com.huntercodexs.codexstester.CodexsTesterApplication;
+import com.huntercodexs.codexstester.setup.CodexsTesterApplicationTests;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
@@ -17,7 +17,7 @@ import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CodexsTesterApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
+@SpringBootTest(classes = CodexsTesterApplicationTests.class)
 @WebAppConfiguration
 public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
 

@@ -1,6 +1,6 @@
-package com.huntercodexs.codexstester.settings;
+package com.huntercodexs.codexstester.setup.dataproperty;
 
-public class ExternalPropertiesSettings extends InternalPropertiesSettings {
+public class ExternalProperty extends InternalProperty {
 
     protected final String externalUrlBaseTest = externalProp.getProperty("external.tests.base-url");
     protected final String externalUriBaseTest = externalProp.getProperty("external.tests.base-uri");

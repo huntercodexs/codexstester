@@ -1,6 +1,8 @@
-package com.huntercodexs.codexstester.settings;
+package com.huntercodexs.codexstester.setup.dataproperty;
 
-public class UnitaryPropertiesSettings extends PropertiesSettings {
+import com.huntercodexs.codexstester.abstractor.PropertiesLoader;
+
+public class UnitaryProperty extends PropertiesLoader {
 
     protected final String unitaryUrlBaseTest = unitaryProp.getProperty("unitary.tests.base-url");
     protected final String unitaryUriBaseTest = unitaryProp.getProperty("unitary.tests.base-uri");

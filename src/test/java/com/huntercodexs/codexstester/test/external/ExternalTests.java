@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.tests.external;
+package com.huntercodexs.codexstester.test.external;
 
 import com.huntercodexs.codexstester.abstractor.external.ExternalRequestTests;
 

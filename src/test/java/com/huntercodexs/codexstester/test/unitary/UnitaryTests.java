@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.tests.unitary;
+package com.huntercodexs.codexstester.test.unitary;
 
 import com.huntercodexs.codexstester.abstractor.unitary.AbstractUnitaryTests;
 

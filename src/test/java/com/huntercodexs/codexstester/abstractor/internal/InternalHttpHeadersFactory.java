@@ -4,7 +4,7 @@ import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
-import com.huntercodexs.codexstester.settings.ExternalPropertiesSettings;
+import com.huntercodexs.codexstester.setup.dataproperty.ExternalProperty;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -17,7 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-public abstract class InternalHttpHeadersFactory extends ExternalPropertiesSettings {
+public abstract class InternalHttpHeadersFactory extends ExternalProperty {
 
     @Autowired
     WebApplicationContext webApplicationContext;

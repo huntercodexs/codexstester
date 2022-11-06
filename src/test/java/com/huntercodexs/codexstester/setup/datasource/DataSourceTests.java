@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.datasource;
+package com.huntercodexs.codexstester.setup.datasource;
 
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import net.minidev.json.JSONObject;

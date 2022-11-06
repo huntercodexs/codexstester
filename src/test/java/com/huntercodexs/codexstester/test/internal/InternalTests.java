@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.tests.internal;
+package com.huntercodexs.codexstester.test.internal;
 
 import com.huntercodexs.codexstester.abstractor.internal.InternalRequestTests;
 

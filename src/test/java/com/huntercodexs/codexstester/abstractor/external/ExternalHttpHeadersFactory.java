@@ -1,10 +1,10 @@
 package com.huntercodexs.codexstester.abstractor.external;
 
-import com.huntercodexs.codexstester.abstractor.internal.InternalHttpHeadersFactory;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
+import com.huntercodexs.codexstester.abstractor.internal.InternalHttpHeadersFactory;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Assert;

@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.settings;
+package com.huntercodexs.codexstester.abstractor;
 
 import org.springframework.util.ResourceUtils;
 
@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Properties;
 
-public class PropertiesSettings {
+public abstract class PropertiesLoader {
 
     protected final Properties externalProp = loadExternalPropsTests();
     private static Properties loadExternalPropsTests() {

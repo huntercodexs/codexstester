@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.abstractor.unitary;
 
-import com.huntercodexs.codexstester.CodexsTesterApplication;
+import com.huntercodexs.codexstester.setup.CodexsTesterApplicationTests;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CodexsTesterApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
+@SpringBootTest(classes = CodexsTesterApplicationTests.class)
 @WebAppConfiguration
 public abstract class AbstractUnitaryTests extends AvailableHttpMethodTests {
 

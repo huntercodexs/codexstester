@@ -1,11 +1,11 @@
-package com.huntercodexs.codexstester.tests.external;
+package com.huntercodexs.codexstester.test.external;
 
-import com.huntercodexs.codexstester.abstractor.external.ExternalRequestTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
-import com.huntercodexs.codexstester.datasource.DataSourceTests;
+import com.huntercodexs.codexstester.abstractor.external.ExternalRequestTests;
+import com.huntercodexs.codexstester.setup.datasource.DataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
