@@ -60,7 +60,7 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
         mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
-    public static Properties loadPropsTest() {
+    protected static Properties loadPropsTest() {
         Properties properties = new Properties();
 
         try {
@@ -269,7 +269,70 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
         }
     }
-    protected void execute(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+
+    /**
+     * @apiNote Using Http GET with Rest Template
+     */
+    private void assertResultFromRequestByHttpGet(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_GET);
+    }
+
+    /**
+     * @apiNote Using Http POST with Rest Template
+     */
+    private void assertResultFromRequestByHttpPost(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_POST);
+    }
+
+    /**
+     * @apiNote Using Http DELETE with Rest Template
+     */
+    private void assertResultFromRequestByHttpDelete(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_DELETE);
+    }
+
+    /**
+     * @apiNote Using Http PUT with Rest Template
+     */
+    private void assertResultFromRequestByHttpPut(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_PUT);
+    }
+
+    /**
+     * @apiNote Using Http PATCH with Rest Template
+     */
+    private void assertResultFromRequestByHttpPatch(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_PATCH);
+    }
+
+    /**
+     * @apiNote Using Http HEAD with Rest Template
+     */
+    private void assertResultFromRequestByHttpHead(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_HEAD);
+    }
+
+    /**
+     * @apiNote Using Http OPTIONS with Rest Template
+     */
+    private void assertResultFromRequestByHttpOptions(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+        dispatcher(requestDto, headersDto, HTTP_METHOD_OPTIONS);
+    }
+
+    private void assertResultTest() {
+        System.out.println("CODEXS TESTER IS RUNNING");
+    }
+
+    void execute(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+
+        /*Fix a bug when getHttpMethod is null*/
+        try {
+            String method = headersDto.getHttpMethod();
+            if (method == null) headersDto.setHttpMethod(HTTP_METHOD_TESTER);
+        } catch (Exception ex) {
+            headersDto.setHttpMethod(HTTP_METHOD_TESTER);
+        }
+
         switch (headersDto.getHttpMethod()) {
             case HTTP_METHOD_GET:
                 assertResultFromRequestByHttpPost(requestDto, headersDto);
@@ -290,57 +353,11 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
                 assertResultFromRequestByHttpHead(requestDto, headersDto);
                 break;
             case HTTP_METHOD_OPTIONS:
-                aassertResultFromRequestByHttpOptions(requestDto, headersDto);
+                assertResultFromRequestByHttpOptions(requestDto, headersDto);
                 break;
+            default:
+                assertResultTest();
         }
     }
 
-    /**
-     * @apiNote Using Http GET with Rest Template
-     */
-    protected void assertResultFromRequestByHttpGet(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_GET);
-    }
-
-    /**
-     * @apiNote Using Http POST with Rest Template
-     */
-    protected void assertResultFromRequestByHttpPost(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_POST);
-    }
-
-    /**
-     * @apiNote Using Http DELETE with Rest Template
-     */
-    protected void assertResultFromRequestByHttpDelete(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_DELETE);
-    }
-
-    /**
-     * @apiNote Using Http PUT with Rest Template
-     */
-    protected void assertResultFromRequestByHttpPut(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_PUT);
-    }
-
-    /**
-     * @apiNote Using Http PATCH with Rest Template
-     */
-    protected void assertResultFromRequestByHttpPatch(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_PATCH);
-    }
-
-    /**
-     * @apiNote Using Http HEAD with Rest Template
-     */
-    protected void assertResultFromRequestByHttpHead(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_HEAD);
-    }
-
-    /**
-     * @apiNote Using Http OPTIONS with Rest Template
-     */
-    protected void aassertResultFromRequestByHttpOptions(RequestDto requestDto, HeadersDto headersDto) throws Exception {
-        dispatcher(requestDto, headersDto, HTTP_METHOD_OPTIONS);
-    }
 }

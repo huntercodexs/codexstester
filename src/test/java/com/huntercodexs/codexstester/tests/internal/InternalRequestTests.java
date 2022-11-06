@@ -10,7 +10,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-import static com.huntercodexs.codexstester.tests.datasource.DataSourceTests.dataSourceAddressRequest;
+import static com.huntercodexs.codexstester.tests.datasource.DataSourceTests.dataSourceOkRequest;
 import static com.huntercodexs.codexstester.tests.datasource.DataSourceTests.dataSourceOAuth2Token;
 
 public class InternalRequestTests extends com.huntercodexs.codexstester.abstractor.AbstractInternalRequestTests {
@@ -28,7 +28,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchButRulesServerIsDownTest_RetrieveError_500() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = dataSourceAddressRequest();
+        JSONObject dataRequest = dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
@@ -50,7 +50,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingInvalidAccessCodeTest_RetrieveUnauthorized_401() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = dataSourceAddressRequest();
+        JSONObject dataRequest = dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
@@ -68,7 +68,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     @Test
     public void whenRequestToAddressSearchUsingInvalidAccessTokenTest_RetrieveUnauthorized_401() throws Exception {
         String invalidAccessToken = "906334ee-b40f-4594-a1c7-a4a5f4123456";/*Invalid Token*/
-        JSONObject dataRequest = dataSourceAddressRequest();
+        JSONObject dataRequest = dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBearer(invalidAccessToken);
@@ -87,7 +87,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingInvalidRulesCodeTest_RetrieveBadRequest_400() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = dataSourceAddressRequest();
+        JSONObject dataRequest = dataSourceOkRequest();
         dataRequest.put("rulesCode", "XXX123456");/*Invalid Rules-Code*/
 
         HeadersDto headersDto = new HeadersDto();
@@ -107,7 +107,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingInvalidPostalCodeTest_RetrieveDataNotFound_404() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = DataSourceTests.dataSourceAddressRequest();
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
         dataRequest.put("postalCode", "62090002");/*Postal Code Not Found*/
 
         HeadersDto headersDto = new HeadersDto();
@@ -128,7 +128,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingInvalidPostalCodeTest_Retrieve_400() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = DataSourceTests.dataSourceAddressRequest();
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
         dataRequest.put("postalCode", "");/*Postal Code Not Exists*/
 
         HeadersDto headersDto = new HeadersDto();
@@ -149,7 +149,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingCorrectPostalCodeSync_RetrieveOK_200() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = DataSourceTests.dataSourceAddressRequest();
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType("application/json;charset=UTF-8");
@@ -169,7 +169,7 @@ public class InternalRequestTests extends com.huntercodexs.codexstester.abstract
     public void whenRequestToAddressSearchUsingCorrectPostalCodeSync_RetrieveAccepted_202() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
         ResponseEntity<Oauth2ResponseTokenDto> response = getToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = DataSourceTests.dataSourceAddressRequest();
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
         dataRequest.put("webhook", "http://localhost:33001/huntercodexs/webhook/receptor-fake");/*Async Mode*/
 
         HeadersDto headersDto = new HeadersDto();

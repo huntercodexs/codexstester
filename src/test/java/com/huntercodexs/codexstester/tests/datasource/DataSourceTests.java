@@ -5,30 +5,46 @@ import net.minidev.json.JSONObject;
 
 /**
  * SAMPLE DATA SOURCE
- * USE THIS FILE TO CREATE ALL SOURCES TO MAKE THE TESTS
+ * Use this file to create all tests source
  * */
 public class DataSourceTests {
-
 
     public static final String samplePort = "33001";
     public static final String sampleEndpointUri = "/huntercodexs/anny-service/api/any-resource";
     public static final String sampleWebhookUrl = "http://your-domain.com/api/1.1/receptor";
 
+    /**
+     * DO NOT REMOVE THIS METHOD
+     * Change this method function before use it
+     * */
     public static Oauth2RequestTokenDto dataSourceOAuth2Token() {
         Oauth2RequestTokenDto oauth2RequestTokenDto = new Oauth2RequestTokenDto();
-        oauth2RequestTokenDto.setUrl("PUT HERE THE OAUTH2 URL AUTHORIZATION");
-        oauth2RequestTokenDto.setAuth("PUT HERE THE OAUTH2 BASIC AUTHORIZATION");
-        oauth2RequestTokenDto.setGrant("PUT HERE THE OAUHT2 GRANT TYPE");
-        oauth2RequestTokenDto.setUser("PUT HERE THE OAUTH2 USERNAME");
-        oauth2RequestTokenDto.setPass("PUT HERE THE OAUTH2 PASSWORD");
+        oauth2RequestTokenDto.setUrl("http://localhost:33001/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
+        oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+        oauth2RequestTokenDto.setGrant("password");
+        oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+        oauth2RequestTokenDto.setPass("1234567890");
         return oauth2RequestTokenDto;
     }
 
-    public static JSONObject dataSourceAddressRequest() {
+    /**
+     * Change this method function before use it
+     * */
+    public static JSONObject dataSourceOkRequest() {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.appendField("field1", "123456");
-        jsonObject.appendField("field2", "789789");
-        jsonObject.appendField("field3", "456456");
+        jsonObject.appendField("rulesCode", "XYZ12345");
+        jsonObject.appendField("postalCode", "12090002");
+        jsonObject.appendField("webhook", "");
+        return jsonObject;
+    }
+
+    /**
+     * Create all data source to make tests below, example: dataSourceSample
+     * */
+    public static JSONObject dataSourceBadRequest() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.appendField("rulesCode", 123);
+        jsonObject.appendField("postalCode", "12090002");
         return jsonObject;
     }
 
