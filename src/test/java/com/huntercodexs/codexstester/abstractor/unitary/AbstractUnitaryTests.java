@@ -1,42 +1,21 @@
-package com.huntercodexs.codexstester.abstractor;
+package com.huntercodexs.codexstester.abstractor.unitary;
 
+import com.huntercodexs.codexstester.CodexsTesterApplication;
+import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.util.ResourceUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest() /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
+@SpringBootTest(classes = CodexsTesterApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
 @WebAppConfiguration
-public abstract class AbstractUnitaryTests {
-
-    private static final String propFile = "classpath:unit.tests.properties";
-    protected final Properties props = loadPropsTest();
-
-    public static Properties loadPropsTest() {
-        Properties properties = new Properties();
-
-        try {
-            File file = ResourceUtils.getFile(AbstractUnitaryTests.propFile);
-            InputStream in = Files.newInputStream(file.toPath());
-            properties.load(in);
-        } catch (IOException ioe) {
-            System.out.println(ioe.getMessage());
-        }
-
-        return properties;
-    }
+public abstract class AbstractUnitaryTests extends AvailableHttpMethodTests {
 
     protected void assertionExact(String ref, String text) {
         if (text.equals(ref)) {

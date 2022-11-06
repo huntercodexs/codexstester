@@ -1,16 +1,16 @@
-package com.huntercodexs.codexstester.tests.external;
+package com.huntercodexs.codexstester.tests.internal;
 
-import com.huntercodexs.codexstester.abstractor.external.ExternalRequestTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
+import com.huntercodexs.codexstester.abstractor.internal.InternalRequestTests;
 import com.huntercodexs.codexstester.datasource.DataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-public class SampleExternalTests extends ExternalRequestTests {
+public class SampleInternalTests extends InternalRequestTests {
 
     /**
      * Tests Helpers
@@ -19,27 +19,27 @@ public class SampleExternalTests extends ExternalRequestTests {
 
     @Test
     public void test1xx() throws Exception {
-        isOk1xxExternalTest();
+        isOk1xxInternalTest();
     }
 
     @Test
     public void test2xx() throws Exception {
-        isOk2xxExternalTest();
+        isOk2xxInternalTest();
     }
 
     @Test
     public void test3xx() throws Exception {
-        isOk3xxExternalTest();
+        isOk3xxInternalTest();
     }
 
     @Test
     public void test4xx() throws Exception {
-        isOk4xxExternalTest();
+        isOk4xxInternalTest();
     }
 
     @Test
     public void test5xx() throws Exception {
-        isOk5xxExternalTest();
+        isOk5xxInternalTest();
     }
 
     /**
@@ -65,7 +65,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
+        codexsTesterInternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
     }
 
     @Test
@@ -86,7 +86,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -105,13 +105,13 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
-        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterInternalOAuth2GetToken(oauth2RequestTokenDto);
         JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
@@ -125,7 +125,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -142,7 +142,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -159,7 +159,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -176,7 +176,7 @@ public class SampleExternalTests extends ExternalRequestTests {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpetecdMessage(null);
 
-        codexsTesterExternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
+        codexsTesterInternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
     }
 
 }

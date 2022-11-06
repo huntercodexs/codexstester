@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.abstractor;
+package com.huntercodexs.codexstester.abstractor.external;
 
 import org.junit.Before;
 
