@@ -4,14 +4,24 @@ import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
 import org.junit.Assert;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.context.WebApplicationContext;
 
 public abstract class AbstractTestsExternalRequestTests extends AvailableHttpMethodTests {
+
+    @Autowired
+    WebApplicationContext webApplicationContext;
+
+    protected void setUp() {
+        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
 
     private static final RestTemplate abstractorRestTemplate = new RestTemplate();
 
@@ -97,8 +107,8 @@ public abstract class AbstractTestsExternalRequestTests extends AvailableHttpMet
 
             System.out.println("RESPONSE[BODY]: " + response.getBody());
 
-            if (requestDto.getExpetecdMessage() != null && !requestDto.getExpetecdMessage().equals("")) {
-                Assert.assertEquals(requestDto.getExpetecdMessage(), response.getBody());
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                Assert.assertEquals(requestDto.getExpectedMessage(), response.getBody());
             }
 
         } catch (HttpClientErrorException ex) {
@@ -108,11 +118,11 @@ public abstract class AbstractTestsExternalRequestTests extends AvailableHttpMet
 
             Assert.assertEquals(ex.getRawStatusCode(), requestDto.getExpectedCode());
 
-            if (requestDto.getExpetecdMessage() != null && !requestDto.getExpetecdMessage().equals("")) {
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 try {
-                    Assert.assertEquals(requestDto.getExpetecdMessage(), ex.getResponseBodyAsString());
+                    Assert.assertEquals(requestDto.getExpectedMessage(), ex.getResponseBodyAsString());
                 } catch (Exception e) {
-                    Assert.assertEquals(requestDto.getExpetecdMessage(), ex.getMessage());
+                    Assert.assertEquals(requestDto.getExpectedMessage(), ex.getMessage());
                 }
             }
         } catch (HttpServerErrorException se) {

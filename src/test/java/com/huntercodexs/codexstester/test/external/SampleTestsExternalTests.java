@@ -63,7 +63,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
     }
@@ -84,7 +84,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -103,7 +103,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -123,7 +123,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -140,7 +140,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -157,7 +157,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("123456");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -174,7 +174,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("1234569999");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
     }

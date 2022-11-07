@@ -22,13 +22,13 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
     @Autowired
     WebApplicationContext webApplicationContext;
 
-    protected MockMvc internalMockMvc;
-
-    private static final RestTemplate internalRestTemplate = new RestTemplate();
-
     protected void setUp() {
         internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
+
+    protected MockMvc internalMockMvc;
+
+    private static final RestTemplate internalRestTemplate = new RestTemplate();
 
     protected void createBeforeInternalTests(String user_data) throws Exception {
         internalMockMvc.perform(

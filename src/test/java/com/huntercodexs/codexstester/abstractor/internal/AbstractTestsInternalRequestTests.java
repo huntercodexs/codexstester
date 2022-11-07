@@ -3,14 +3,23 @@ package com.huntercodexs.codexstester.abstractor.internal;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMethodTests {
+
+    @Autowired
+    WebApplicationContext webApplicationContext;
+
+    protected void setUp() {
+        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+    }
 
     void executeInternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 
@@ -24,10 +33,10 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
 
         switch (headersDto.getHttpMethod()) {
             case HTTP_METHOD_GET:
-                assertResultFromRequestByHttpPost(requestDto, headersDto);
+                assertResultFromRequestByHttpGet(requestDto, headersDto);
                 break;
             case HTTP_METHOD_POST:
-                assertResultFromRequestByHttpGet(requestDto, headersDto);
+                assertResultFromRequestByHttpPost(requestDto, headersDto);
                 break;
             case HTTP_METHOD_PUT:
                 assertResultFromRequestByHttpPut(requestDto, headersDto);
@@ -56,50 +65,61 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
         ResultMatcher status = statusMockMvcTranslator(requestDto);
 
         if (requestDto.getUri() != null && !requestDto.getUri().equals("")) uri = requestDto.getUri();
-        if (requestDto.getId() != null && !requestDto.getId().equals("")) uri = uri +"/"+ requestDto.getId();
+        if (requestDto.getId() != null && !requestDto.getId().equals("")) uri = uri + "/" + requestDto.getId();
+
+        String url = internalUrlBaseTest + uri;
 
         switch (method) {
             case "GET":
-                requestBuilder = MockMvcRequestBuilders.get(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.get(url);
                 break;
             case "POST":
-                requestBuilder = MockMvcRequestBuilders.post(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.post(url);
                 break;
             case "PUT":
-                requestBuilder = MockMvcRequestBuilders.put(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.put(url);
                 break;
             case "DELETE":
-                requestBuilder = MockMvcRequestBuilders.delete(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.delete(url);
                 break;
             case "PATCH":
-                requestBuilder = MockMvcRequestBuilders.patch(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.patch(url);
                 break;
             case "HEAD":
-                requestBuilder = MockMvcRequestBuilders.head(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.head(url);
                 break;
             case "OPTIONS":
-                requestBuilder = MockMvcRequestBuilders.options(internalUrlBaseTest+internalUriBaseTest);
+                requestBuilder = MockMvcRequestBuilders.options(url);
                 break;
             default:
-                throw new RuntimeException("INVALID HTTP METHOD: " + method);
+                throw new RuntimeException("EXCEPTION[INVALID-HTTP-METHOD]: " + method);
         }
 
-        MvcResult result = internalMockMvc.perform(
-                requestBuilder
-                        .content(requestDto.getDataRequest())
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .headers(codexsTesterInternalBuilderHeaders(requestDto, headersDto))
-        ).andExpect(status).andReturn();
+        MvcResult result = null;
 
-        System.out.println("RESULT[DEBUG]: "+result.getResponse().getContentAsString());
+        try {
+            result = internalMockMvc.perform(
+                    requestBuilder
+                            .content(requestDto.getDataRequest())
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .accept(MediaType.APPLICATION_JSON)
+                            .headers(codexsTesterInternalBuilderHeaders(requestDto, headersDto))
+            ).andExpect(status).andReturn();
+
+            System.out.println("RESULT[DEBUG]: "+result.getResponse().getContentAsString());
+
+        } catch (Exception ex) {
+            System.out.println("EXCEPTION[MOCK-MVC]: " + ex.getMessage());
+        }
 
         /*Assert Content as String*/
-        if (requestDto.getExpetecdMessage() != null && !requestDto.getExpetecdMessage().equals("")) {
-            System.out.println("Try assertIntegration: ");
-            System.out.println("> "+requestDto.getExpetecdMessage());
-            System.out.println("> "+result.getResponse().getContentAsString());
-            assertInternalTests(requestDto.getExpetecdMessage(), result.getResponse().getContentAsString());
+        if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+            if (result != null && !result.getResponse().getContentAsString().equals("")) {
+                System.out.println("Try assertIntegration: ");
+                System.out.println("> " + requestDto.getExpectedMessage());
+                System.out.println("> " + result.getResponse().getContentAsString());
+                assertInternalTests(requestDto.getExpectedMessage(), result.getResponse().getContentAsString());
+            }
         }
 
     }

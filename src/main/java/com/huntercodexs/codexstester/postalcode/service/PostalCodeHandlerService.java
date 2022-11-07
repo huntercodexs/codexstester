@@ -32,11 +32,6 @@ public class PostalCodeHandlerService {
 
         ResponseEntity<PostalCodeResponseDto> result = postalCodeClient.addressSearch(postalCode);
 
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        System.out.println("RESULT");
-        System.out.println(result);
-        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
         if (result == null || result.getBody().getCep() == null) {
             throw new RuntimeException("Postal Code Not Found");
         }

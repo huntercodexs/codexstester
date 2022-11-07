@@ -48,6 +48,41 @@ public class SampleTestsInternalTests extends SetupInternalTests {
      * */
 
     @Test
+    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
+    public void whenAnyRequestUsingInvalidPostalCode_WithNoAuth_RetrieveError_StatusCode500_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
+        dataRequest.put("postalCode", "92090002");
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage("Postal Code Not Found");
+
+        codexsTesterInternal_StatusCode500_RetrieveInternalServerError(headersDto, requestDto);
+    }
+
+    @Test
     public void whenAnyBadRequest_WithBasicAuth_RetrieveBadRequest_StatusCode400_ByHttpMethodPOST() throws Exception {
         String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
         JSONObject dataRequest = DataSourceTests.dataSourceBadRequest();
@@ -60,10 +95,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
     }
@@ -81,10 +116,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -100,10 +135,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -120,10 +155,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -137,10 +172,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -154,10 +189,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("123456");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
@@ -171,10 +206,10 @@ public class SampleTestsInternalTests extends SetupInternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("1234569999");
         requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpetecdMessage(null);
+        requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
     }
