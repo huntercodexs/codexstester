@@ -1,6 +1,5 @@
 package com.huntercodexs.codexstester.test.unitary;
 
-import com.huntercodexs.codexstester.abstractor.unitary.AbstractUnitaryTests;
 import com.huntercodexs.codexstester.postalcode.client.PostalCodeClient;
 import com.huntercodexs.codexstester.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.codexstester.postalcode.database.repository.PostalCodeRepository;
@@ -9,6 +8,7 @@ import com.huntercodexs.codexstester.postalcode.dto.PostalCodeResponseDto;
 import com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper;
 import com.huntercodexs.codexstester.postalcode.service.PostalCodeHandlerService;
 import com.huntercodexs.codexstester.postalcode.service.PostalCodeService;
+import com.huntercodexs.codexstester.setup.SetupUnitaryTests;
 import com.huntercodexs.codexstester.setup.datasource.DataSourceTests;
 import com.huntercodexs.codexstester.util.HelperTests;
 import org.junit.Test;
@@ -17,9 +17,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper.*;
+import static com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper.mapperFinalResponseDtoByEntity;
+import static com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper.mapperInitialResponseDto;
 
-public class SampleUnitaryTests extends AbstractUnitaryTests {
+public class SampleTestsUnitaryTests extends SetupUnitaryTests {
 
     @Autowired
     PostalCodeService postalCodeService;

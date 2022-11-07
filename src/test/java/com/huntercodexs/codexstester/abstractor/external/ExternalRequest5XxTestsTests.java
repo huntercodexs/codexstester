@@ -4,7 +4,7 @@ import com.huntercodexs.codexstester.abstractor.AvailableHttpStatusTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
 
-public abstract class ExternalRequest5xxTests extends AbstractExternalRequestTests {
+public abstract class ExternalRequest5XxTestsTests extends AbstractTestsExternalRequestTests {
 
     protected void isOk5xxExternalTest() throws Exception {
         executeExternalTest(new RequestDto(), new HeadersDto());

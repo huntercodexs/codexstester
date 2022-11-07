@@ -1,23 +1,16 @@
 package com.huntercodexs.codexstester.abstractor.internal;
 
-import com.huntercodexs.codexstester.setup.CodexsTesterApplicationTests;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CodexsTesterApplicationTests.class)
-@WebAppConfiguration
-public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTests {
+
+public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMethodTests {
 
     void executeInternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 

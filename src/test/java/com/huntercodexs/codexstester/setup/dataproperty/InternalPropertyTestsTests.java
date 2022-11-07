@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.setup.dataproperty;
 
-public class InternalProperty extends UnitaryProperty {
+public class InternalPropertyTestsTests extends UnitaryPropertyTests {
 
     protected final String internalUrlBaseTest = internalProp.getProperty("internal.tests.base-url");
     protected final String internalUriBaseTest = internalProp.getProperty("internal.tests.base-uri");

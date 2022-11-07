@@ -1,21 +1,13 @@
 package com.huntercodexs.codexstester.abstractor.unitary;
 
-import com.huntercodexs.codexstester.setup.CodexsTesterApplicationTests;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CodexsTesterApplicationTests.class)
-@WebAppConfiguration
-public abstract class AbstractUnitaryTests extends AvailableHttpMethodTests {
+public abstract class AbstractTestsUnitaryTests extends AvailableHttpMethodTests {
 
     protected void assertionExact(String ref, String text) {
         if (text.equals(ref)) {

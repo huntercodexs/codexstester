@@ -1,25 +1,17 @@
 package com.huntercodexs.codexstester.abstractor.external;
 
-import com.huntercodexs.codexstester.setup.CodexsTesterApplicationTests;
 import com.huntercodexs.codexstester.abstractor.AvailableHttpMethodTests;
 import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
 import org.junit.Assert;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringBootTest(classes = CodexsTesterApplicationTests.class)
-@WebAppConfiguration
-public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
+public abstract class AbstractTestsExternalRequestTests extends AvailableHttpMethodTests {
 
     private static final RestTemplate abstractorRestTemplate = new RestTemplate();
 

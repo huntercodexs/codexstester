@@ -4,7 +4,7 @@ import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
-import com.huntercodexs.codexstester.abstractor.internal.InternalHttpHeadersFactory;
+import com.huntercodexs.codexstester.abstractor.internal.InternalHttpHeadersFactoryTests;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.junit.Assert;
@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-public abstract class ExternalHttpHeadersFactory extends InternalHttpHeadersFactory {
+public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeadersFactoryTests {
 
     @Autowired
     WebApplicationContext webApplicationContext;

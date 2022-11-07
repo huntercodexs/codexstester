@@ -4,13 +4,13 @@ import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
-import com.huntercodexs.codexstester.abstractor.internal.InternalRequestTests;
+import com.huntercodexs.codexstester.setup.SetupInternalTests;
 import com.huntercodexs.codexstester.setup.datasource.DataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-public class SampleInternalTests extends InternalRequestTests {
+public class SampleTestsInternalTests extends SetupInternalTests {
 
     /**
      * Tests Helpers
