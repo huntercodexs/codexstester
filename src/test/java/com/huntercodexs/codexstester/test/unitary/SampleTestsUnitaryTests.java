@@ -32,6 +32,12 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
     PostalCodeClient postalCodeClient;
 
     @Test
+    public void whenSumAnyNumbersTest() {
+        int result = postalCodeService.sum(1000, 10);
+        assertionInt(result, 1010);
+    }
+
+    @Test
     public void whenMapperInitialResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto result = mapperInitialResponseDto();
         assertionExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
@@ -65,7 +71,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
         } catch (Exception ex) {
-            assertionExact(ex.getMessage(), "PostalCode not found");
+            assertionExact(ex.getMessage(), "Postal Code Not Found");
         }
     }
 
@@ -76,7 +82,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
         } catch (Exception ex) {
-            assertionExact(ex.getMessage(), "PostalCode not found");
+            assertionExact(ex.getMessage(), "Postal Code Not Found");
         }
     }
 

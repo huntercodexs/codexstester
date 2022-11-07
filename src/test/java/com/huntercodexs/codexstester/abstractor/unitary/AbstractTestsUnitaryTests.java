@@ -68,7 +68,7 @@ public abstract class AbstractTestsUnitaryTests extends AvailableHttpMethodTests
         }
     }
 
-    protected void isCpf(String cpf) {
+    protected void assertionCpf(String cpf) {
 
         if (cpf.length() > 11) Assert.fail();
 
@@ -118,7 +118,7 @@ public abstract class AbstractTestsUnitaryTests extends AvailableHttpMethodTests
         Assert.assertEquals(digitVerify, nDigResult);
     }
 
-    protected void isMail(String email) {
+    protected void assertionEmail(String email) {
         boolean isValidMail = false;
         if (email != null && email.length() > 0) {
             String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
@@ -131,7 +131,7 @@ public abstract class AbstractTestsUnitaryTests extends AvailableHttpMethodTests
         Assert.assertTrue(isValidMail);
     }
 
-    protected void isPhone(String phoneNumber) {
+    protected void assertionPhone(String phoneNumber) {
         boolean isValidPhone = false;
         if (phoneNumber != null && phoneNumber.length() > 0) {
             String expression = "^[+]?[0-9]{13}$";

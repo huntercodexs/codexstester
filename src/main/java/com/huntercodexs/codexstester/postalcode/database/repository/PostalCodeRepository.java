@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PostalCodeRepository extends JpaRepository<PostalCodeEntity, Long> {
-    @Query(value = "SELECT * from codexstester WHERE cep = ?1", nativeQuery = true)
+    @Query(value = "SELECT * from postalcode WHERE cep = ?1", nativeQuery = true)
     PostalCodeEntity findByCep(String cep);
 }
