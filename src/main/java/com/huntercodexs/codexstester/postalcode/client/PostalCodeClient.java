@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @Slf4j
-public class PostalCodeSampleClient {
+public class PostalCodeClient {
 
     @Value("${service.address-search.url}")
     String urlAddressSearch;

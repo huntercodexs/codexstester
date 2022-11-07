@@ -14,6 +14,10 @@ public class PostalCodeResponseMapper {
         return new PostalCodeResponseDto();
     }
 
+    public static PostalCodeResponseDto mapperFinalResponseDtoByNew(PostalCodeResponseDto addressResponseDto) {
+        return new PostalCodeResponseDto();
+    }
+
     public static PostalCodeResponseDto mapperFinalResponseDtoByEntity(PostalCodeEntity postalCodeEntity) {
         PostalCodeResponseDto addressResponseDto = new PostalCodeResponseDto();
         addressResponseDto.setCep(postalCodeEntity.getCep());

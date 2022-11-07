@@ -1,6 +1,5 @@
 package com.huntercodexs.codexstester.postalcode.service;
 
-import com.huntercodexs.codexstester.postalcode.client.PostalCodeSampleClient;
 import com.huntercodexs.codexstester.postalcode.dto.PostalCodeRequestDto;
 import com.huntercodexs.codexstester.postalcode.dto.PostalCodeResponseDto;
 import lombok.extern.slf4j.Slf4j;
@@ -14,10 +13,11 @@ import org.springframework.stereotype.Service;
 public class PostalCodeService {
 
     @Autowired
-    PostalCodeSampleClient codexsTesterSampleClient;
+    PostalCodeHandlerService postalCodeHandlerService;
 
     public ResponseEntity<PostalCodeResponseDto> getAddress(PostalCodeRequestDto postalCodeRequestDto) {
-        return ResponseEntity.status(HttpStatus.OK).body(codexsTesterSampleClient.addressSearch(postalCodeRequestDto.getPostalCode()).getBody());
+        PostalCodeResponseDto postalCodeResponseDto = postalCodeHandlerService.searchPostalCode(postalCodeRequestDto.getPostalCode());
+        return ResponseEntity.status(HttpStatus.OK).body(postalCodeResponseDto);
     }
 
     public int sum(int a, int b) {
