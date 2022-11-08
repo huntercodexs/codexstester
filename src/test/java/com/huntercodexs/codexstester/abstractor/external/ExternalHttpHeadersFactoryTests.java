@@ -1,9 +1,6 @@
 package com.huntercodexs.codexstester.abstractor.external;
 
-import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
-import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
-import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
-import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
+import com.huntercodexs.codexstester.abstractor.dto.*;
 import com.huntercodexs.codexstester.abstractor.internal.InternalHttpHeadersFactoryTests;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -83,6 +80,22 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
         String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
         HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
         return externalRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
+    }
+
+    protected static ResponseEntity<Object> codexsTesterExternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
+
+        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
+            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
+                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
+            }
+        }
+
+        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
+        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
+        return externalRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
     }
 
     protected HttpHeaders codexsTesterExternalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {

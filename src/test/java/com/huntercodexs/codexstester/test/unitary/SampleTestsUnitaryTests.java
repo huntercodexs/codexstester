@@ -34,34 +34,35 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
     @Test
     public void whenSumAnyNumbersTest() {
         int result = postalCodeService.sum(1000, 10);
-        assertionInt(result, 1010);
+        codexsTesterAssertInt(result, 1010);
     }
 
     @Test
     public void whenMapperInitialResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto result = mapperInitialResponseDto();
-        assertionExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
     }
 
     @Test
     public void whenMapperFinalResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto postalCodeResponseDto = DataSourceTests.dataSourceMapperFinalResponseDto();
         PostalCodeResponseDto result = PostalCodeResponseMapper.mapperFinalResponseDtoByNew(postalCodeResponseDto);
-        assertionExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
     }
 
     @Test
     public void whenMapperFinalResponseDtoByEntityTest_FromPostalCodeResponseMapper_AssertBoolean() {
         PostalCodeEntity postalCodeEntity = DataSourceTests.dataSourcePostalCodeEntityEmpty();
         mapperFinalResponseDtoByEntity(postalCodeEntity);
-        assertionBool(true, true);
+        codexsTesterAssertBool(true, true);
     }
 
     @Test
     public void whenRunPostalCodeTest_FromPostalCodeService_AssertExact() {
         PostalCodeRequestDto postalCodeRequestDto = DataSourceTests.dataSourcePostalCodeRequestDto();
+        postalCodeRequestDto.setPostalCode("70316109");
         ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
-        assertionExact(result.getBody().getCep().replaceAll("[^0-9]", ""), postalCodeRequestDto.getPostalCode());
+        codexsTesterAssertExact(result.getBody().getCep().replaceAll("[^0-9]", ""), postalCodeRequestDto.getPostalCode());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
         } catch (Exception ex) {
-            assertionExact(ex.getMessage(), "Postal Code Not Found");
+            codexsTesterAssertExact(ex.getMessage(), "Postal Code Not Found");
         }
     }
 
@@ -82,7 +83,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
         } catch (Exception ex) {
-            assertionExact(ex.getMessage(), "Postal Code Not Found");
+            codexsTesterAssertExact(ex.getMessage(), "Postal Code Not Found");
         }
     }
 
@@ -93,7 +94,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         ResponseEntity<PostalCodeResponseDto> dataFake = DataSourceTests.dataSourcePostalCodeEntityResponse();
         postalCodeHandlerService.saveAddress(dataFake);
         PostalCodeEntity result = postalCodeRepository.findByCep(dataFake.getBody().getCep());
-        assertionExact(result.getCep(), dataFake.getBody().getCep());
+        codexsTesterAssertExact(result.getCep(), dataFake.getBody().getCep());
     }
 
     public void whenSavePostalCodeTest_FromPostalCodeHandlerService_AssertTrue_Linux() {
@@ -102,7 +103,7 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
         postalCodeHandlerService.saveAddress(dataFake);
         PostalCodeEntity result = postalCodeRepository.findByCep(dataFake.getBody().getCep());
         postalCodeRepository.deleteById(result.getId());
-        assertionExact(result.getCep(), dataFake.getBody().getCep());
+        codexsTesterAssertExact(result.getCep(), dataFake.getBody().getCep());
     }
 
     @Test
@@ -117,6 +118,6 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
     @Test
     public void whenRunPostalCodeSearchTest_FromPostalCodeClient_AssertTrue() throws Exception {
         ResponseEntity<PostalCodeResponseDto> response = postalCodeClient.addressSearch("12090002");
-        assertionExact("12090002", response.getBody().getCep().replaceAll("[^0-9]", ""));
+        codexsTesterAssertExact("12090002", response.getBody().getCep().replaceAll("[^0-9]", ""));
     }
 }

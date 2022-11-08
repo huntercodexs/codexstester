@@ -37,10 +37,10 @@ public abstract class AbstractTestsExternalRequestTests extends AvailableHttpMet
 
         switch (headersDto.getHttpMethod()) {
             case HTTP_METHOD_GET:
-                assertResultFromRequestByHttpPost(requestDto, headersDto);
+                assertResultFromRequestByHttpGet(requestDto, headersDto);
                 break;
             case HTTP_METHOD_POST:
-                assertResultFromRequestByHttpGet(requestDto, headersDto);
+                assertResultFromRequestByHttpPost(requestDto, headersDto);
                 break;
             case HTTP_METHOD_PUT:
                 assertResultFromRequestByHttpPut(requestDto, headersDto);

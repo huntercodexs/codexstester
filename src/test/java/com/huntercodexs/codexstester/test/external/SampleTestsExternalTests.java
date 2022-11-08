@@ -1,9 +1,6 @@
 package com.huntercodexs.codexstester.test.external;
 
-import com.huntercodexs.codexstester.abstractor.dto.HeadersDto;
-import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
-import com.huntercodexs.codexstester.abstractor.dto.Oauth2ResponseTokenDto;
-import com.huntercodexs.codexstester.abstractor.dto.RequestDto;
+import com.huntercodexs.codexstester.abstractor.dto.*;
 import com.huntercodexs.codexstester.setup.SetupExternalTests;
 import com.huntercodexs.codexstester.setup.datasource.DataSourceTests;
 import net.minidev.json.JSONObject;
@@ -48,6 +45,45 @@ public class SampleTestsExternalTests extends SetupExternalTests {
      * */
 
     @Test
+    public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        System.out.println("TOKEN: " + response.getBody().getAccess_token());
+        codexsTesterAssertRegExp("[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}", response.getBody().getAccess_token());
+    }
+
+    @Test
+    public void whenAnyRequestToOAuth2CheckToken() throws Exception {
+        String token = "ca976420-c93f-4015-b653-939ddc7b8011";
+        Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = DataSourceTests.dataSourceOAuth2CheckToken(token);
+        ResponseEntity<Object> response = codexsTesterExternalOAuth2CheckToken(oauth2RequestCheckTokenDto);
+        System.out.println("RESULT: " + response.getBody());
+        codexsTesterAssertBool(true, true);
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setAddtionalName("Access-Code");
+        headersDto.setAddtionalValue("XYZ-123");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
     public void whenAnyBadRequest_WithBasicAuth_RetrieveBadRequest_StatusCode400_ByHttpMethodPOST() throws Exception {
         String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
         JSONObject dataRequest = DataSourceTests.dataSourceBadRequest();
@@ -60,7 +96,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -81,7 +117,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -100,27 +136,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
-        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBasic(response.getBody().getAccess_token());
-        headersDto.setContentType("application/json;charset=UTF-8");
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -137,7 +153,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -154,7 +170,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("123456");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -171,7 +187,7 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
         requestDto.setId("1234569999");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);

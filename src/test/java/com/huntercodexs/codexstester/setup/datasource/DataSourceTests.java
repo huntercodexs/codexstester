@@ -1,5 +1,6 @@
 package com.huntercodexs.codexstester.setup.datasource;
 
+import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestCheckTokenDto;
 import com.huntercodexs.codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import com.huntercodexs.codexstester.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.codexstester.postalcode.dto.PostalCodeRequestDto;
@@ -16,6 +17,7 @@ public class DataSourceTests {
     public static final String samplePort = "33001";
     public static final String sampleEndpointUri = "/huntercodexs/anny-service/api/any-resource";
     public static final String sampleWebhookUrl = "http://your-domain.com/api/1.1/receptor";
+    public static final String sampleOauth2Token = "d4cd86a0-809a-40aa-a590-ef68873dcd7b";
 
     /**
      * DO NOT REMOVE THIS METHOD
@@ -29,6 +31,14 @@ public class DataSourceTests {
         oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
         oauth2RequestTokenDto.setPass("1234567890");
         return oauth2RequestTokenDto;
+    }
+
+    public static Oauth2RequestCheckTokenDto dataSourceOAuth2CheckToken(String token) {
+        Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = new Oauth2RequestCheckTokenDto();
+        oauth2RequestCheckTokenDto.setUrl("http://localhost:32943/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
+        oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+        oauth2RequestCheckTokenDto.setToken(token);
+        return oauth2RequestCheckTokenDto;
     }
 
     /**

@@ -8,9 +8,10 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Properties;
 
-public abstract class PropertiesLoader {
+public abstract class PropertiesLoader extends AssertionTests {
 
     protected final Properties externalProp = loadExternalPropsTests();
+
     private static Properties loadExternalPropsTests() {
         Properties properties = new Properties();
 
