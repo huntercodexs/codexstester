@@ -8,10 +8,10 @@
 		<version>2.0.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.huntercodexs.codexstester</groupId>
-	<artifactId>CODEXS-TESTER</artifactId>
-	<name>CODEXS-TESTER</name>
-	<description>CODEXS-TESTER</description>
+	<groupId>com.huntercodexs.codexstester.postalcode</groupId>
+	<artifactId>POSTAL-CODE</artifactId>
+	<name>POSTAL-CODE</name>
+	<description>POSTAL-CODE</description>
 	<version>22.01.1-SNAPSHOT</version>
 
 	<properties>

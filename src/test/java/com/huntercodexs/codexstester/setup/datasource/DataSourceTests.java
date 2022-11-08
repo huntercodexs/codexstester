@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
  * */
 public class DataSourceTests {
 
+    public static final boolean skipOAuth2Tests = true;
     public static final String samplePort = "33001";
     public static final String sampleEndpointUri = "/huntercodexs/anny-service/api/any-resource";
     public static final String sampleWebhookUrl = "http://your-domain.com/api/1.1/receptor";
@@ -23,6 +24,7 @@ public class DataSourceTests {
      * DO NOT REMOVE THIS METHOD
      * Change this method function before use it
      * */
+
     public static Oauth2RequestTokenDto dataSourceOAuth2Token() {
         Oauth2RequestTokenDto oauth2RequestTokenDto = new Oauth2RequestTokenDto();
         oauth2RequestTokenDto.setUrl("http://localhost:33001/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
@@ -42,8 +44,10 @@ public class DataSourceTests {
     }
 
     /**
-     * Change this method function before use it
+     * SAMPLES
+     * Expected Request To Match
      * */
+
     public static JSONObject dataSourceOkRequest() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.appendField("rulesCode", "XYZ12345");
@@ -52,9 +56,6 @@ public class DataSourceTests {
         return jsonObject;
     }
 
-    /**
-     * Create all data source to make tests below, example: dataSourceSample
-     * */
     public static JSONObject dataSourceBadRequest() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.appendField("rulesCode", 123);
@@ -104,6 +105,11 @@ public class DataSourceTests {
         return addressEntity;
     }
 
+    /**
+     * SAMPLES
+     * Expected Response To Match
+     * */
+
     public static ResponseEntity<PostalCodeResponseDto> dataSourcePostalCodeEntityResponse() {
         PostalCodeResponseDto postalCodeResponseDto = new PostalCodeResponseDto();
         postalCodeResponseDto.setCep("12099999");
@@ -117,6 +123,20 @@ public class DataSourceTests {
         postalCodeResponseDto.setDdd("12");
         postalCodeResponseDto.setSiafi("1234");
         return ResponseEntity.ok().body(postalCodeResponseDto);
+    }
+
+    public static String dataSourceSampleResponseString() {
+        return "This is a expected sample response";
+    }
+
+    public static String dataSourceSampleResponseJSONString() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.appendField("setFieldName1", "setFieldValue1");
+        jsonObject.appendField("setFieldName2", "setFieldValue2");
+        jsonObject.appendField("setFieldName3", "setFieldValue3");
+        jsonObject.appendField("setFieldName4", "setFieldValue4");
+        /*Add more fields if needed*/
+        return jsonObject.toJSONString();
     }
 
 }

@@ -19,6 +19,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper.mapperFinalResponseDtoByEntity;
 import static com.huntercodexs.codexstester.postalcode.mapper.PostalCodeResponseMapper.mapperInitialResponseDto;
+import static com.huntercodexs.codexstester.setup.datasource.DataSourceTests.dataSourceSampleResponseJSONString;
+import static com.huntercodexs.codexstester.setup.datasource.DataSourceTests.dataSourceSampleResponseString;
 
 public class SampleTestsUnitaryTests extends SetupUnitaryTests {
 
@@ -30,6 +32,26 @@ public class SampleTestsUnitaryTests extends SetupUnitaryTests {
     PostalCodeRepository postalCodeRepository;
     @Autowired
     PostalCodeClient postalCodeClient;
+
+    @Test
+    public void whenSampleResponseMatchFromStringTest_AssertExact() {
+        String sampleExpected = dataSourceSampleResponseString();
+        System.out.println(sampleExpected);
+        /*Use the code below to make a request for any service or any unit test code.*/
+        String sampleReceived = dataSourceSampleResponseString();
+        System.out.println(sampleReceived);
+        codexsTesterAssertExact(sampleExpected, sampleReceived);
+    }
+
+    @Test
+    public void whenSampleResponseMatchFromJSONStringTest_AssertExact() {
+        String sampleExpected = dataSourceSampleResponseJSONString();
+        System.out.println(sampleExpected);
+        /*Use the code below to make a request for any service or any unit test code.*/
+        String sampleReceived = dataSourceSampleResponseJSONString();
+        System.out.println(sampleReceived);
+        codexsTesterAssertExact(sampleExpected, sampleReceived);
+    }
 
     @Test
     public void whenSumAnyNumbersTest() {
