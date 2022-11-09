@@ -5,6 +5,10 @@ Um espaço de trabalho completo para testes unitarios e de integração em seu p
 
 Este projeto é livre e pode ser usado como base para outros projetos por qualquer pessoa através da licença MIT.
 
+# Idiomas
+
+- Language: Portugues Brazil (pt-br)  |  <a href="README-EN.md">Inglês (en)</a>
+
 # Pre Requisitos
 
 - MVC Concept
@@ -69,7 +73,7 @@ mostrada acima, sendo que a pasta "codexstester" é a mesma que esta dentro dess
 
 NOTA
 
-> Recomendo que faça isso com o auxilio de uma IDE como o IntelliJ, pois essa ferramenta é capaz de copiar todos os 
+> É recomandável fazer isso com o auxilio de uma IDE como o IntelliJ, pois essa ferramenta é capaz de copiar todos os 
 > arquivos e pastas renomeando corretamente os "packages" e referencias dentro do projeto, isso evita que ocorram falhas
 > e erros inesperados além de causar muita confusão. Você pode simplesmente arrastar a pasta inteira para dentro do seu 
 > projeto no path especificado src/test/java
