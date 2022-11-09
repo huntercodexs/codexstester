@@ -1,5 +1,6 @@
 package codexstester.test.unitary;
 
+import codexstester.setup.SetupUnitaryDataSourceTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
@@ -8,7 +9,6 @@ import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;
 import com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper;
 import com.huntercodexs.postalcode.service.PostalCodeHandlerService;
 import com.huntercodexs.postalcode.service.PostalCodeService;
-import codexstester.setup.SetupUnitaryTests;
 import codexstester.setup.datasource.DataSourceTests;
 import codexstester.util.HelperTests;
 import org.junit.Test;
@@ -22,7 +22,7 @@ import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapper
 import static codexstester.setup.datasource.DataSourceTests.dataSourceSampleResponseJSONString;
 import static codexstester.setup.datasource.DataSourceTests.dataSourceSampleResponseString;
 
-public class SampleTestsUnitaryTests extends SetupUnitaryTests {
+public class SampleTestsUnitaryDataSourceTests extends SetupUnitaryDataSourceTests {
 
     @Autowired
     PostalCodeService postalCodeService;

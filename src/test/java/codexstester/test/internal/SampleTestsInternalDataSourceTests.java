@@ -1,92 +1,87 @@
-package codexstester.test.external;
+package codexstester.test.internal;
 
-import codexstester.abstractor.dto.*;
-import codexstester.setup.SetupExternalTests;
+import codexstester.abstractor.dto.HeadersDto;
+import codexstester.abstractor.dto.Oauth2RequestTokenDto;
+import codexstester.abstractor.dto.Oauth2ResponseTokenDto;
+import codexstester.abstractor.dto.RequestDto;
+import codexstester.setup.SetupInternalDataSourceTests;
 import codexstester.setup.datasource.DataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-import static codexstester.setup.datasource.DataSourceTests.skipOAuth2Tests;
+import static codexstester.abstractor.SecurityTests.*;
 
-public class SampleTestsExternalTests extends SetupExternalTests {
+public class SampleTestsInternalDataSourceTests extends SetupInternalDataSourceTests {
 
     /**
-     * Tests Helpers
+     * DataSourceTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
 
     @Test
     public void test1xx() throws Exception {
-        isOk1xxExternalTest();
+        isOk1xxInternalTest();
     }
 
     @Test
     public void test2xx() throws Exception {
-        isOk2xxExternalTest();
+        isOk2xxInternalTest();
     }
 
     @Test
     public void test3xx() throws Exception {
-        isOk3xxExternalTest();
+        isOk3xxInternalTest();
     }
 
     @Test
     public void test4xx() throws Exception {
-        isOk4xxExternalTest();
+        isOk4xxInternalTest();
     }
 
     @Test
     public void test5xx() throws Exception {
-        isOk5xxExternalTest();
+        isOk5xxInternalTest();
     }
 
     /**
-     * Sample Tests
+     * Sample DataSourceTests
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
 
     @Test
-    public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
-        if (!skipOAuth2Tests) {
-            Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
-            ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
-            System.out.println("TOKEN: " + response.getBody().getAccess_token());
-            codexsTesterAssertRegExp("[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}", response.getBody().getAccess_token());
-        }
-    }
-
-    @Test
-    public void whenAnyRequestToOAuth2CheckToken() throws Exception {
-        if (!skipOAuth2Tests) {
-            String token = "ca976420-c93f-4015-b653-939ddc7b8011";
-            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = DataSourceTests.dataSourceOAuth2CheckToken(token);
-            ResponseEntity<Object> response = codexsTesterExternalOAuth2CheckToken(oauth2RequestCheckTokenDto);
-            System.out.println("RESULT: " + response.getBody());
-            codexsTesterAssertBool(true, true);
-        }
-    }
-
-    @Test
-    public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = DataSourceTests.dataSourceOAuth2Token();
-        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
         headersDto.setContentType("application/json;charset=UTF-8");
-        headersDto.setAddtionalName("Access-Code");
-        headersDto.setAddtionalValue("XYZ-123");
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
+    public void whenAnyRequestUsingInvalidPostalCode_WithNoAuth_RetrieveError_StatusCode500_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
+        dataRequest.put("postalCode", "92090002");
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage("Postal Code Not Found");
+
+        codexsTesterInternal_StatusCode500_RetrieveInternalServerError(headersDto, requestDto);
     }
 
     @Test
@@ -102,12 +97,12 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
+        codexsTesterInternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
     }
 
     @Test
@@ -123,12 +118,12 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -142,12 +137,32 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterInternalOAuth2GetToken(oauth2RequestTokenDto);
+        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setAuthorizationBasic(response.getBody().getAccess_token());
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -159,12 +174,12 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -176,12 +191,12 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("123456");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+        codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
     @Test
@@ -193,12 +208,12 @@ public class SampleTestsExternalTests extends SetupExternalTests {
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
         requestDto.setId("1234569999");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        codexsTesterExternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
+        codexsTesterInternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
     }
 
 }
