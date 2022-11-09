@@ -57,9 +57,9 @@ First, import the following dependencies into your project's pom.xml file:
 		&lt;/dependency&gt;
 </pre>
 
-- Configuração
+- Settings
 
-> O procedimento de configuração pode ser resumido nos seguintes passos:
+> The configuration procedure can be summarized in the following steps:
 
 <pre>
 cd {PROJECT_ROOT_PATH}/src/test/java
@@ -68,7 +68,7 @@ cd codexstester
 git checkout release
 </pre>
 
-NOTA: ***Caso o procedimento pelo GIT não funcione, siga as instruções abaixo***
+NOTE: ***If the GIT procedure does not work, follow the instructions below***
 
 After importing the dependencies in your project, check if the folder (package) "test" already exists in your project, if not
 exists create this package in the following path:
