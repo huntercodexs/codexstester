@@ -68,7 +68,14 @@ cd codexstester
 git checkout release
 </pre>
 
-NOTE: ***If the GIT procedure does not work, follow the instructions below***
+You can also use the releases available in this project on github by accessing the Releases link as shown in the following image
+
+![img.png](src/data/midias/github-image-1.png)
+
+In this case, the procedure is the same as for "git clone", that is, the files must be in the correct src/test/java folder of the
+your project.
+
+NOTE: ***If the above procedures do not work, or there are still doubts, follow the instructions below***
 
 After importing the dependencies in your project, check if the folder (package) "test" already exists in your project, if not
 exists create this package in the following path:
@@ -112,11 +119,19 @@ image it is possible to observe the following setup features:
   - file: UnitaryPropertyTests
 - path: datasource (this is where test data should be inserted, such as expected responses in a request)
   - file: DataSourceTests
+  - file: DataSourcePropertiesTests
 - file: SetupExternalTests
 - file: SetupInternalTests
 - file: SetupUnitaryTests
 
 ![img.png](src/data/midias/setup.png)
+
+The DataSourcePropertiesTests file is very important, be careful when editing it because if it is done
+something is wrong the tests may not work correctly. In this file we have the "path" information of the
+data properties ".properties", however they are the files of the Codexs Tests workspace and not the files
+that belong to the project to be tested. The following image shows what the body of this ".class" file looks like
+
+![img.png](src/data/midias/datasource-properties.png)
 
 In the SetupExternalTests, SetupInternalTests and SetupUnitaryTests files you need to change the following line of code
 
@@ -127,14 +142,14 @@ class that contains the main method of the project called "main".
 
 NOTE
 
-> Be careful when editing the DataSourceTests file as it contains an OAuth2 authentication integration with the
-> rest of the Codexs Tester workspace, and in case you need to make a call with this type of authentication
-> you will have to use this feature
+> Be careful when editing the DataSourcePropertiesTests file as it contains an authentication integration via
+> OAuth2 with the rest of the Codexs Tester workspace, and in case you need to make a call with that type
+> authentication will have to use this feature
 
 NOTE
 
-> Be careful with the credentials that will be used in the DataSourceTests file so that they are not exposed
-> in inappropriate places.
+> Be careful with the credentials that will be used in the DataSourcePropertiesTests file so that they are not
+> exposed in inappropriate places.
 
 - Understanding the features of the Codexs Tester workspace
 
