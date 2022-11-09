@@ -25,7 +25,7 @@ requisições veja: https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
 
 # Como usar
 
-- Configuração
+- Depedendencias
 
 Primeiramente import para dentro do arquivo pom.xml do seu projeto as seguintes dependencias:
 
@@ -56,6 +56,19 @@ Primeiramente import para dentro do arquivo pom.xml do seu projeto as seguintes 
 			&lt;scope>test&lt;/scope&gt;
 		&lt;/dependency&gt;
 </pre>
+
+- Configuração
+
+> O procedimento de configuração pode ser resumido nos seguintes passos:
+
+<pre>
+cd {PROJECT_ROOT_PATH}/src/test/java
+git clone https://github.com/huntercodexs/codexstester.git
+cd codexstester
+git checkout release
+</pre>
+
+NOTA: ***Caso o procedimento pelo GIT não funcione, siga as instruções abaixo***
 
 Após importar as dependencias em seu projeto, verifique se a pasta (package) "test" já existe em seu projeto, caso não 
 exista crie esse package no seguinte path:
