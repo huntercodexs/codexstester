@@ -8,7 +8,7 @@
 		<version>2.0.1.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.huntercodexs.codexstester.postalcode</groupId>
+	<groupId>com.huntercodexs.postalcode</groupId>
 	<artifactId>POSTAL-CODE</artifactId>
 	<name>POSTAL-CODE</name>
 	<description>POSTAL-CODE</description>
