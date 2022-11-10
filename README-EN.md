@@ -66,6 +66,7 @@ cd {PROJECT_ROOT_PATH}/src/test/java
 git clone https://github.com/huntercodexs/codexstester.git
 cd codexstester
 git checkout release
+rm -rf .git .gitignore
 </pre>
 
 You can also use the releases available in this project on github by accessing the Releases link as shown in the following image
