@@ -115,8 +115,8 @@ Now we have the workspace ready to be configured and it should be as shown in th
 image it is possible to observe the following setup features:
 
 - path: dataproperty (here are the settings related to the test properties file)
-  - file: ExternalPropertyTestsTestsTests
-  - file: InternalPropertyTestsTests
+  - file: ExternalPropertyTests
+  - file: InternalPropertyTests
   - file: UnitaryPropertyTests
 - path: datasource (this is where test data should be inserted, such as expected responses in a request)
   - file: DataSourceTests

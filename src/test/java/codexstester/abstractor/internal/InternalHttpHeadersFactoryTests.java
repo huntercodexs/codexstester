@@ -1,7 +1,7 @@
 package codexstester.abstractor.internal;
 
 import codexstester.abstractor.dto.*;
-import codexstester.setup.dataproperty.ExternalPropertyTestsTestsTests;
+import codexstester.abstractor.properties.ExternalPropertyTests;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTestsTestsTests {
+public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTests {
 
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -107,9 +107,29 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         if (internalGenericAuthorization != null && !internalGenericAuthorization.equals("")) {
             headers.set("Api-Key-Generic", internalGenericAuthorization);
         }
-        if (internalAdditionalHeaderName != null && !internalAdditionalHeaderName.equals("")) {
-            if (internalAdditionalHeaderValue != null && !internalAdditionalHeaderValue.equals("")) {
-                headers.set(internalAdditionalHeaderName, internalAdditionalHeaderValue);
+        if (internalAdditionalHeaderName1 != null && !internalAdditionalHeaderName1.equals("")) {
+            if (internalAdditionalHeaderValue1 != null && !internalAdditionalHeaderValue1.equals("")) {
+                headers.set(internalAdditionalHeaderName1, internalAdditionalHeaderValue1);
+            }
+        }
+        if (internalAdditionalHeaderName2 != null && !internalAdditionalHeaderName2.equals("")) {
+            if (internalAdditionalHeaderValue2 != null && !internalAdditionalHeaderValue2.equals("")) {
+                headers.set(internalAdditionalHeaderName2, internalAdditionalHeaderValue2);
+            }
+        }
+        if (internalAdditionalHeaderName3 != null && !internalAdditionalHeaderName3.equals("")) {
+            if (internalAdditionalHeaderValue3 != null && !internalAdditionalHeaderValue3.equals("")) {
+                headers.set(internalAdditionalHeaderName3, internalAdditionalHeaderValue3);
+            }
+        }
+        if (internalAdditionalHeaderName4 != null && !internalAdditionalHeaderName4.equals("")) {
+            if (internalAdditionalHeaderValue4 != null && !internalAdditionalHeaderValue4.equals("")) {
+                headers.set(internalAdditionalHeaderName4, internalAdditionalHeaderValue4);
+            }
+        }
+        if (internalAdditionalHeaderName5 != null && !internalAdditionalHeaderName5.equals("")) {
+            if (internalAdditionalHeaderValue5 != null && !internalAdditionalHeaderValue5.equals("")) {
+                headers.set(internalAdditionalHeaderName5, internalAdditionalHeaderValue5);
             }
         }
 

@@ -69,6 +69,10 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
 
         String url = internalUrlBaseTest + uri;
 
+        if (internalUrlQueryParameters != null && !internalUrlQueryParameters.equals("")) {
+            url = url + "?" + internalUrlQueryParameters;
+        }
+
         switch (method) {
             case "GET":
                 requestBuilder = MockMvcRequestBuilders.get(url);

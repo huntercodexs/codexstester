@@ -115,8 +115,8 @@ Agora temos o espaço de trabalho pronto para ser configurado devendo estar conf
 imagem é possivel observar os seguintes recursos de setup:
 
 - path: dataproperty (aqui ficam as configurações relacioadas ao arquivo properties de testes)
-  - file: ExternalPropertyTestsTestsTests
-  - file: InternalPropertyTestsTests
+  - file: ExternalPropertyTests
+  - file: InternalPropertyTests
   - file: UnitaryPropertyTests
 - path: datasource (aqui é onde devem ser inseridos os dados de testes, como respostas esperadas em uma requisição)
   - file: DataSourceTests

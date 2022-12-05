@@ -2,9 +2,9 @@ package codexstester.abstractor;
 
 import codexstester.abstractor.dto.Oauth2RequestCheckTokenDto;
 import codexstester.abstractor.dto.Oauth2RequestTokenDto;
-import codexstester.setup.datasource.DataSourcePropertiesTests;
+import codexstester.setup.properties.DataSourceFilePropertyTests;
 
-public abstract class SecurityTests extends DataSourcePropertiesTests {
+public abstract class SecurityTests extends DataSourceFilePropertyTests {
 
     /**
      * DO NOT REMOVE THIS METHOD

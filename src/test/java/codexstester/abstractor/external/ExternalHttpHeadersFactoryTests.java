@@ -126,9 +126,29 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
         if (externalGenericAuthorization != null && !externalGenericAuthorization.equals("")) {
             headers.set("Api-Key-Generic", externalGenericAuthorization);
         }
-        if (externalAdditionalHeaderName != null && !externalAdditionalHeaderName.equals("")) {
-            if (externalAdditionalHeaderValue != null && !externalAdditionalHeaderValue.equals("")) {
-                headers.set(externalAdditionalHeaderName, externalAdditionalHeaderValue);
+        if (externalAdditionalHeaderName1 != null && !externalAdditionalHeaderName1.equals("")) {
+            if (externalAdditionalHeaderValue1 != null && !externalAdditionalHeaderValue1.equals("")) {
+                headers.set(externalAdditionalHeaderName1, externalAdditionalHeaderValue1);
+            }
+        }
+        if (externalAdditionalHeaderName2 != null && !externalAdditionalHeaderName2.equals("")) {
+            if (externalAdditionalHeaderValue2 != null && !externalAdditionalHeaderValue2.equals("")) {
+                headers.set(externalAdditionalHeaderName2, externalAdditionalHeaderValue2);
+            }
+        }
+        if (externalAdditionalHeaderName3 != null && !externalAdditionalHeaderName3.equals("")) {
+            if (externalAdditionalHeaderValue3 != null && !externalAdditionalHeaderValue3.equals("")) {
+                headers.set(externalAdditionalHeaderName3, externalAdditionalHeaderValue3);
+            }
+        }
+        if (externalAdditionalHeaderName4 != null && !externalAdditionalHeaderName4.equals("")) {
+            if (externalAdditionalHeaderValue4 != null && !externalAdditionalHeaderValue4.equals("")) {
+                headers.set(externalAdditionalHeaderName4, externalAdditionalHeaderValue4);
+            }
+        }
+        if (externalAdditionalHeaderName5 != null && !externalAdditionalHeaderName5.equals("")) {
+            if (externalAdditionalHeaderValue5 != null && !externalAdditionalHeaderValue5.equals("")) {
+                headers.set(externalAdditionalHeaderName5, externalAdditionalHeaderValue5);
             }
         }
 

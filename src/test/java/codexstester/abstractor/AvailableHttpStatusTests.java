@@ -5,7 +5,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public abstract class AvailableHttpStatusTests extends HttpHeadersFactory {
+public abstract class AvailableHttpStatusTests extends HttpHeadersFactoryTests {
 
     /*INFORMATION RESPONSE*/
 
