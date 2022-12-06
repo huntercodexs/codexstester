@@ -1,8 +1,8 @@
 package codexstester.abstractor.external;
 
-import codexstester.abstractor.http.AvailableHttpMethodTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.http.AvailableHttpMethodTests;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -22,6 +22,7 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
     WebApplicationContext webApplicationContext;
 
     protected void setUp() {
+        logTerm("SETUP EXTERNAL IS START", null, true);
         internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 

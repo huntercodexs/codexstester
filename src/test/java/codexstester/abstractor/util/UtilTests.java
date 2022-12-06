@@ -42,17 +42,19 @@ public class UtilTests {
     }
 
     public static void logTerm(String title, Object data, boolean line) {
-        System.out.println("\n");
-        System.out.println(title);
+        System.out.println("\n"+title);
         if (data != null && !data.equals("")) {
             System.out.println(data);
         }
         if (line) {
             for (int i = 0; i < 120; i++) System.out.print("-");
         }
+        System.out.println("\n");
     }
 
     public static void setRuntimeFile(String currentFile) {
+        logTerm("SET RUNTIME FILE", currentFile, true);
+
         File fileInf = new File("src/test/java/codexstester/setup/codexstester-runtime-file.inf");
 
         BufferedWriter buffWrite = null;
@@ -66,6 +68,8 @@ public class UtilTests {
     }
 
     public static String readRuntimeFile() {
+
+        logTerm("READ RUNTIME FILE", null, true);
 
         String lineFile = null;
         try {

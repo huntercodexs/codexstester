@@ -1,7 +1,7 @@
 package codexstester.abstractor.internal;
 
 import codexstester.abstractor.dto.*;
-import codexstester.abstractor.properties.ExternalPropertyTests;
+import codexstester.abstractor.http.HttpHeadersFactoryTests;
 import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -14,7 +14,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTests {
+public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactoryTests {
 
     @Autowired
     WebApplicationContext webApplicationContext;
@@ -157,9 +157,9 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         if (headersDto.getApiKeyGeneric() != null && !headersDto.getApiKeyGeneric().equals("")) {
             headers.set("Api-Key-Generic", headersDto.getApiKeyGeneric());
         }
-        if (headersDto.getAddtionalName() != null && !headersDto.getAddtionalName().equals("")) {
-            if (headersDto.getAddtionalValue() != null && !headersDto.getAddtionalValue().equals("")) {
-                headers.set(headersDto.getAddtionalName(), headersDto.getAddtionalValue());
+        if (headersDto.getAdditionalName() != null && !headersDto.getAdditionalName().equals("")) {
+            if (headersDto.getAdditionalValue() != null && !headersDto.getAdditionalValue().equals("")) {
+                headers.set(headersDto.getAdditionalName(), headersDto.getAdditionalValue());
             }
         }
 

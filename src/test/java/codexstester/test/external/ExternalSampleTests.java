@@ -1,12 +1,14 @@
 package codexstester.test.external;
 
+import org.junit.Test;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.setup.bridge.ExternalPostalCodeBridgeTests;
+import codexstester.setup.bridge.ExternalSampleBridgeTests;
 import codexstester.setup.datasource.DataSourceSampleTests;
-import org.junit.Test;
+import org.springframework.http.MediaType;
 
-public class ExternalSampleTests extends ExternalPostalCodeBridgeTests {
+public class ExternalSampleTests extends ExternalSampleBridgeTests
+{
 
     /**
      * ExternalSampleTests Helpers
@@ -56,11 +58,11 @@ public class ExternalSampleTests extends ExternalPostalCodeBridgeTests {
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");
@@ -71,11 +73,11 @@ public class ExternalSampleTests extends ExternalPostalCodeBridgeTests {
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage(null);

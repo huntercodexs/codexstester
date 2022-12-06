@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
+import static codexstester.abstractor.util.UtilTests.logTerm;
+
 public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeadersFactoryTests {
 
     @Autowired
@@ -27,6 +29,7 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
     private static final RestTemplate externalRestTemplate = new RestTemplate();
 
     protected void setUp() {
+        logTerm("SETUP UNITARY IS START", null, true);
         externalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
@@ -176,9 +179,9 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
         if (headersDto.getApiKeyGeneric() != null && !headersDto.getApiKeyGeneric().equals("")) {
             headers.set("Api-Key-Generic", headersDto.getApiKeyGeneric());
         }
-        if (headersDto.getAddtionalName() != null && !headersDto.getAddtionalName().equals("")) {
-            if (headersDto.getAddtionalValue() != null && !headersDto.getAddtionalValue().equals("")) {
-                headers.set(headersDto.getAddtionalName(), headersDto.getAddtionalValue());
+        if (headersDto.getAdditionalName() != null && !headersDto.getAdditionalName().equals("")) {
+            if (headersDto.getAdditionalValue() != null && !headersDto.getAdditionalValue().equals("")) {
+                headers.set(headersDto.getAdditionalName(), headersDto.getAdditionalValue());
             }
         }
 

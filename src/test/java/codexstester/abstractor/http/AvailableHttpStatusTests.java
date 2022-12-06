@@ -1,11 +1,12 @@
 package codexstester.abstractor.http;
 
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.external.ExternalHttpHeadersFactoryTests;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public abstract class AvailableHttpStatusTests extends HttpHeadersFactoryTests {
+public abstract class AvailableHttpStatusTests extends ExternalHttpHeadersFactoryTests {
 
     /*INFORMATION RESPONSE*/
 

@@ -8,6 +8,7 @@ import codexstester.setup.bridge.InternalPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourcePostalCodeTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import static codexstester.abstractor.security.SecurityTests.*;
@@ -54,11 +55,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -72,11 +73,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         dataRequest.put("postalCode", "92090002");
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage("Postal Code Not Found");
@@ -91,13 +92,13 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBasic(basicAuth);
-        headersDto.setAddtionalName("Access-Code");
-        headersDto.setAddtionalValue("XYZ-123");
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setAdditionalName("Access-Code");
+        headersDto.setAdditionalValue("XYZ-123");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -112,13 +113,13 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBasic(basicAuth);
-        headersDto.setAddtionalName("Access-Code");
-        headersDto.setAddtionalValue("XYZ-123");
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setAdditionalName("Access-Code");
+        headersDto.setAdditionalValue("XYZ-123");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -133,11 +134,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBasic(bearerToken);
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -153,11 +154,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setAuthorizationBasic(response.getBody().getAccess_token());
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -170,11 +171,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -187,11 +188,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("123456");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -204,11 +205,11 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_DELETE);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("1234569999");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);

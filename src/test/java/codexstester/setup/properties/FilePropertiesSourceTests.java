@@ -3,31 +3,15 @@ package codexstester.setup.properties;
 public class FilePropertiesSourceTests {
 
     /**
-     * WARNING: DO NOT REMOVE THIS ATTRIBUTES
-     * PROPERTIES SETTINGS
+     * WARNING: DO NOT REMOVE THIS ATTRIBUTE
+     * FILE PROPERTIES LOCATION
      * Change these attributes if needed
      * The current location is src/test/resources
      * Example:
-     *      external.tests.properties = src/test/resources/external.tests.properties
-     *      sample/external.tests.properties = src/test/resources/sample/external.tests.properties
-     *      postalcode/external.tests.properties = src/test/resources/postalcode/external.tests.properties
-     *
-     * @implNote See the documentation from README.md file to more details
-     * */
-
-    /*Sample*/
-    protected static String internalFilepathPropertiesSample = "sample/internal.tests.properties";
-    protected static String externalFilepathPropertiesSample = "sample/external.tests.properties";
-    protected static String unitaryFilepathPropertiesSample = "sample/unitary.tests.properties";
-
-    /*Stock*/
-    protected static String internalFilepathPropertiesStock = "stock/internal.tests.properties";
-    protected static String externalFilepathPropertiesStock = "stock/external.tests.properties";
-    protected static String unitaryFilepathPropertiesStock = "stock/unitary.tests.properties";
-
-    /*Postal Code*/
-    protected static String internalFilepathPropertiesPostalCode = "postalcode/internal.tests.properties";
-    protected static String externalFilepathPropertiesPostalCode = "postalcode/external.tests.properties";
-    protected static String unitaryFilepathPropertiesPostalCode = "postalcode/unitary.tests.properties";
+     *      use "" or "/" to external.tests.properties (src/test/resources/external.tests.properties)
+     *      use "sample/" to sample/external.tests.properties (src/test/resources/sample/external.tests.properties)
+     *      use "sample/test1/" to postalcode/test1/external.tests.properties (src/test/resources/sample/test1/external.tests.properties)
+     */
+    protected static String targetTests = "postalcode/";
 
 }

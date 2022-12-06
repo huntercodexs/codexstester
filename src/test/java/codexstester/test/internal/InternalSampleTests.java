@@ -1,10 +1,11 @@
 package codexstester.test.internal;
 
+import org.junit.Test;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import codexstester.setup.bridge.InternalSampleBridgeTests;
 import codexstester.setup.datasource.DataSourceSampleTests;
-import org.junit.Test;
+import org.springframework.http.MediaType;
 
 public class InternalSampleTests extends InternalSampleBridgeTests {
 
@@ -56,11 +57,11 @@ public class InternalSampleTests extends InternalSampleBridgeTests {
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");
@@ -71,11 +72,11 @@ public class InternalSampleTests extends InternalSampleBridgeTests {
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProp.getProperty("internal.tests.base-uri"));
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage(null);

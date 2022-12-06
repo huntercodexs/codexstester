@@ -250,7 +250,7 @@ Abaixo esta o teste de exemplo mancionado acima:
  3        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
  4
  5        HeadersDto headersDto = new HeadersDto();
- 6        headersDto.setContentType("application/json;charset=UTF-8");
+ 6        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
  7        headersDto.setHttpMethod(HTTP_METHOD_GET);
  8
  9        RequestDto requestDto = new RequestDto();
@@ -303,7 +303,7 @@ Por fim o restante do código dispensa comentarios, pois tem o mesmo funcionamen
  6
  7        HeadersDto headersDto = new HeadersDto();
  8        headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
- 9        headersDto.setContentType("application/json;charset=UTF-8");
+ 9        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
 10        headersDto.setAddtionalName("Access-Code");
 11        headersDto.setAddtionalValue("XYZ-123");
 12        headersDto.setHttpMethod(HTTP_METHOD_POST);
@@ -330,7 +330,7 @@ seja usado em ambas situações.
  3        JSONObject dataRequest = DataSourceTests.dataSourceOkRequest();
  4
  5        HeadersDto headersDto = new HeadersDto();
- 6        headersDto.setContentType("application/json;charset=UTF-8");
+ 6        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
  7        headersDto.setHttpMethod(HTTP_METHOD_POST);
  8
  9        RequestDto requestDto = new RequestDto();
@@ -354,7 +354,7 @@ seja usado em ambas situações.
  6
  7        HeadersDto headersDto = new HeadersDto();
  8        headersDto.setAuthorizationBasic(response.getBody().getAccess_token());
- 9        headersDto.setContentType("application/json;charset=UTF-8");
+ 9        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
 10        headersDto.setHttpMethod(HTTP_METHOD_POST);
 11
 12        RequestDto requestDto = new RequestDto();

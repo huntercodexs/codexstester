@@ -3,6 +3,7 @@ package codexstester.abstractor.internal;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import codexstester.abstractor.http.AvailableHttpMethodTests;
+import org.junit.Assert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
@@ -20,6 +21,7 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
     WebApplicationContext webApplicationContext;
 
     protected void setUp() {
+        logTerm("SETUP INTERNAL IS START", null, true);
         internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
     }
 
@@ -113,12 +115,18 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
 
         MvcResult result = null;
 
+        String cType = headersDto.getContentType();
+        String aType = headersDto.getAccepted();
+
+        if (cType == null || cType.equals("")) cType = MediaType.APPLICATION_JSON_VALUE;
+        if (aType == null || aType.equals("")) aType = MediaType.APPLICATION_JSON_VALUE;
+
         try {
             result = internalMockMvc.perform(
                     requestBuilder
                             .content(requestDto.getDataRequest())
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .accept(MediaType.APPLICATION_JSON)
+                            .contentType(cType)
+                            .accept(aType)
                             .headers(codexsTesterInternalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
@@ -126,11 +134,12 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
 
         } catch (Exception ex) {
             logTerm("EXCEPTION[MOCK-MVC]", ex.getMessage(), true);
+            Assert.fail("EXCEPTION[MOCK-MVC]: " + ex.getMessage());
         }
 
         /*Assert Content as String*/
         if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-            if (result != null && !result.getResponse().getContentAsString().equals("")) {
+            if (!result.getResponse().getContentAsString().equals("")) {
                 logTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
                 logTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
                 logTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
