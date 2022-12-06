@@ -2,11 +2,11 @@ package codexstester.abstractor.util;
 
 import org.springframework.util.ResourceUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.util.Properties;
+
+import static codexstester.abstractor.util.UtilTests.readRuntimeFile;
 
 public abstract class PropertiesLoaderTests extends AssertionTests {
 
@@ -14,11 +14,12 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
     protected final Properties externalProp = loadExternalPropsTests();
     protected final Properties unitaryProp = loadUnitaryPropsTests();
 
-    private static Properties loadExternalPropsTests() {
+    protected static Properties loadExternalPropsTests() {
         Properties properties = new Properties();
+        String externalFileProps = readRuntimeFile();
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+externalPropertiesFilepath);
+            File file = ResourceUtils.getFile("classpath:"+externalFileProps);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {
@@ -28,11 +29,12 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
         return properties;
     }
 
-    private static Properties loadInternalPropsTests() {
+    protected static Properties loadInternalPropsTests() {
         Properties properties = new Properties();
+        String internalFileProps = readRuntimeFile();
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+internalPropertiesFilepath);
+            File file = ResourceUtils.getFile("classpath:"+internalFileProps);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {
@@ -42,11 +44,12 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
         return properties;
     }
 
-    private static Properties loadUnitaryPropsTests() {
+    protected static Properties loadUnitaryPropsTests() {
         Properties properties = new Properties();
+        String unitaryFileProps = readRuntimeFile();
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+unitaryPropertiesFilepath);
+            File file = ResourceUtils.getFile("classpath:"+unitaryFileProps);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {

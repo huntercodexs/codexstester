@@ -2,6 +2,7 @@ package codexstester.abstractor.util;
 
 import org.springframework.util.DigestUtils;
 
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -49,6 +50,47 @@ public class UtilTests {
         if (line) {
             for (int i = 0; i < 120; i++) System.out.print("-");
         }
+    }
+
+    public static void setRuntimeFile(String currentFile) {
+        File fileInf = new File("src/test/java/codexstester/setup/codexstester-runtime-file.inf");
+
+        BufferedWriter buffWrite = null;
+        try {
+            buffWrite = new BufferedWriter(new FileWriter(fileInf));
+            buffWrite.write(currentFile);
+            buffWrite.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String readRuntimeFile() {
+
+        String lineFile = null;
+        try {
+            FileReader currentFile = null;
+            try {
+                currentFile = new FileReader("src/test/java/codexstester/setup/codexstester-runtime-file.inf");
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            BufferedReader readActivateFile = new BufferedReader(currentFile);
+
+            lineFile = "";
+            try {
+                lineFile = readActivateFile.readLine();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            currentFile.close();
+
+        } catch (IOException e) {
+            logTerm("READ-FILE [EXCEPTION]", e.getMessage(), true);
+        }
+
+        return lineFile;
     }
 
 }
