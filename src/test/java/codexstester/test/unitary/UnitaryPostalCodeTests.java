@@ -1,8 +1,8 @@
 package codexstester.test.unitary;
 
-import codexstester.setup.application.UnitarySetupTests;
+import codexstester.setup.bridge.UnitaryPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourcePostalCodeTests;
-import codexstester.util.HelperTests;
+import codexstester.abstractor.util.UtilTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
@@ -22,7 +22,7 @@ import static codexstester.setup.datasource.DataSourcePostalCodeTests.dataSource
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperFinalResponseDtoByEntity;
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperInitialResponseDto;
 
-public class UnitaryPostalCodeTests extends UnitarySetupTests {
+public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
 
     @Autowired
     PostalCodeService postalCodeService;
@@ -62,14 +62,14 @@ public class UnitaryPostalCodeTests extends UnitarySetupTests {
     @Test
     public void whenMapperInitialResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto result = mapperInitialResponseDto();
-        codexsTesterAssertExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(UtilTests.md5(result.toString()), UtilTests.md5(new PostalCodeResponseDto().toString()));
     }
 
     @Test
     public void whenMapperFinalResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto postalCodeResponseDto = DataSourcePostalCodeTests.dataSourceMapperFinalResponseDto();
         PostalCodeResponseDto result = PostalCodeResponseMapper.mapperFinalResponseDtoByNew(postalCodeResponseDto);
-        codexsTesterAssertExact(HelperTests.md5(result.toString()), HelperTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(UtilTests.md5(result.toString()), UtilTests.md5(new PostalCodeResponseDto().toString()));
     }
 
     @Test

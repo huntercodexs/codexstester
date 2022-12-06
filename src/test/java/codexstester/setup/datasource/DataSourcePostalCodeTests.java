@@ -1,6 +1,6 @@
 package codexstester.setup.datasource;
 
-import codexstester.abstractor.SecurityTests;
+import codexstester.abstractor.security.SecurityTests;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.dto.PostalCodeRequestDto;
 import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;
@@ -18,6 +18,7 @@ public class DataSourcePostalCodeTests extends SecurityTests {
      * Change it as needed
      * */
 
+    public static final boolean ignoreOAuth2Tests = true;
     public static final String postalCodePort = "33001";
     public static final String postalCodeEndpointUri = "/huntercodexs/anny-service/api/any-resource";
     public static final String postalCodeWebhookUrl = "http://your-domain.com/api/1.1/receptor";

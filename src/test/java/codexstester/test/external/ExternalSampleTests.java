@@ -2,14 +2,14 @@ package codexstester.test.external;
 
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.setup.application.ExternalSetupTests;
+import codexstester.setup.bridge.ExternalPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourceSampleTests;
 import org.junit.Test;
 
-public class ExternalSampleTests extends ExternalSetupTests {
+public class ExternalSampleTests extends ExternalPostalCodeBridgeTests {
 
     /**
-     * ExternalSampleSetupTests Helpers
+     * ExternalSampleTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
 
@@ -39,7 +39,7 @@ public class ExternalSampleTests extends ExternalSetupTests {
     }
 
     /**
-     * Sample ExternalSampleSetupTests
+     * ExternalSampleTests Samples
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
 
@@ -48,6 +48,10 @@ public class ExternalSampleTests extends ExternalSetupTests {
         String result = DataSourceSampleTests.dataSourceSampleResponse();
         codexsTesterAssertExact("This is a expected sample response", result);
     }
+
+    /**
+     * @implNote Before run this test have a sure that the target service is running
+     */
 
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
@@ -62,6 +66,21 @@ public class ExternalSampleTests extends ExternalSetupTests {
         requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType("application/json;charset=UTF-8");
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProp.getProperty("external.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest("");
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterExternal_StatusCode201_RetrieveCreated(headersDto, requestDto);
     }
 
 }

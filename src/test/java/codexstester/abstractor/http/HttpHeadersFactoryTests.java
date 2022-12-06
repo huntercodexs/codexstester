@@ -1,4 +1,4 @@
-package codexstester.abstractor;
+package codexstester.abstractor.http;
 
 import codexstester.abstractor.external.ExternalHttpHeadersFactoryTests;
 

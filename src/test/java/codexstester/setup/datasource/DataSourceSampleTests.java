@@ -1,6 +1,6 @@
 package codexstester.setup.datasource;
 
-import codexstester.abstractor.SecurityTests;
+import codexstester.abstractor.security.SecurityTests;
 
 /**
  * SAMPLE DATA SOURCE
@@ -13,6 +13,7 @@ public class DataSourceSampleTests extends SecurityTests {
      * Change it as needed
      * */
 
+    public static final boolean ignoreOAuth2Tests = true;
     public static final String samplePort = "33001";
     public static final String sampleEndpointUri = "/huntercodexs/anny-service/api/any-resource";
     public static final String sampleWebhookUrl = "http://your-domain.com/api/1.1/receptor";

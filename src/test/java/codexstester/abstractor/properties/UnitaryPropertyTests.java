@@ -1,6 +1,6 @@
 package codexstester.abstractor.properties;
 
-import codexstester.abstractor.PropertiesLoaderTests;
+import codexstester.abstractor.util.PropertiesLoaderTests;
 
 public abstract class UnitaryPropertyTests extends PropertiesLoaderTests {
 

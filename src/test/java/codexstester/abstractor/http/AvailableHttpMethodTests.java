@@ -1,4 +1,4 @@
-package codexstester.abstractor;
+package codexstester.abstractor.http;
 
 public abstract class AvailableHttpMethodTests extends AvailableHttpStatusTests {
     protected static final String HTTP_METHOD_GET = "GET";

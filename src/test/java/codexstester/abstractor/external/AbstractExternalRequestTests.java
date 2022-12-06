@@ -1,6 +1,6 @@
 package codexstester.abstractor.external;
 
-import codexstester.abstractor.AvailableHttpMethodTests;
+import codexstester.abstractor.http.AvailableHttpMethodTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import org.junit.Assert;
@@ -13,6 +13,8 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
+
+import static codexstester.abstractor.util.UtilTests.logTerm;
 
 public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
 
@@ -76,42 +78,74 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             url = url + "?" + externalUrlQueryParameters;
         }
 
+        logTerm("EXTERNAL REQUEST URL IS", url, true);
+        logTerm("HTTP METHOD IS", method, true);
+
         try {
 
-            ResponseEntity<Object> response = null;
+            ResponseEntity<?> response = null;
 
             switch (method) {
                 case HTTP_METHOD_GET:
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_POST:
-                    response = abstractorRestTemplate.postForEntity(url, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.postForEntity(url, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.postForEntity(url, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_DELETE:
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_PUT:
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_PATCH:
                     abstractorRestTemplate.setRequestFactory(codexsTesterExternalHttpClientFactory());
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_HEAD:
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
+                    }
                     break;
                 case HTTP_METHOD_OPTIONS:
-                    response = abstractorRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
+                    try {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
+                    } catch (Exception ex) {
+                        response = abstractorRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
+                    }
                     break;
                 default:
                     throw new RuntimeException("INVALID HTTP METHOD: " + method);
             }
 
+            logTerm("EXTERNAL RESPONSE IS", response, true);
+
             Assert.assertEquals(response.getStatusCodeValue(), requestDto.getExpectedCode());
 
-            System.out.println("RESPONSE[BODY]: " + response.getBody());
-
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                logTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
                 Assert.assertEquals(requestDto.getExpectedMessage(), response.getBody());
             }
 
@@ -135,6 +169,8 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             System.out.println(se.getResponseBodyAsString());
 
             Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
+        } catch (RuntimeException re) {
+            Assert.fail("RUNTIME EXCEPTION IN EXTERNAL RESPONSE: " + re.getMessage());
         }
     }
 

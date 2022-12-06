@@ -1,7 +1,7 @@
-package codexstester.setup.application;
+package codexstester.setup.bridge;
 
 import codexstester.abstractor.internal.InternalRequest1XxTests;
-import com.huntercodexs.postalcode.PostalCodeApplication;
+import com.huntercodexs.sample.SampleApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,8 +10,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringBootTest(classes = PostalCodeApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
-public class InternalSetupTests extends InternalRequest1XxTests {
+@SpringBootTest(classes = SampleApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
+public class InternalSampleBridgeTests extends InternalRequest1XxTests {
 
     @Override
     @Before

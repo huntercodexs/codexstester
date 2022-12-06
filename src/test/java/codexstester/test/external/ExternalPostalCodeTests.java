@@ -1,16 +1,17 @@
 package codexstester.test.external;
 
 import codexstester.abstractor.dto.*;
-import codexstester.setup.application.ExternalSetupTests;
+import codexstester.setup.bridge.ExternalPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourcePostalCodeTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
 
-import static codexstester.abstractor.SecurityTests.codexsTesterSecurityOAuth2CheckToken;
-import static codexstester.abstractor.SecurityTests.codexsTesterSecurityOAuth2Token;
+import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2CheckToken;
+import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
+import static codexstester.setup.datasource.DataSourcePostalCodeTests.ignoreOAuth2Tests;
 
-public class ExternalPostalCodeTests extends ExternalSetupTests {
+public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
 
     /**
      * DataSourcePostalCodeTests Helpers

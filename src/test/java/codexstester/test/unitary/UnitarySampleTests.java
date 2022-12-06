@@ -1,10 +1,10 @@
 package codexstester.test.unitary;
 
-import codexstester.setup.application.UnitarySetupTests;
+import codexstester.setup.bridge.UnitaryPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourceSampleTests;
 import org.junit.Test;
 
-public class UnitarySampleTests extends UnitarySetupTests {
+public class UnitarySampleTests extends UnitaryPostalCodeBridgeTests {
 
     @Test
     public void whenSumAnyNumbersTest() {

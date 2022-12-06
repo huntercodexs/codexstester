@@ -1,6 +1,6 @@
 package codexstester.abstractor.external;
 
-import codexstester.abstractor.AvailableHttpStatusTests;
+import codexstester.abstractor.http.AvailableHttpStatusTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 

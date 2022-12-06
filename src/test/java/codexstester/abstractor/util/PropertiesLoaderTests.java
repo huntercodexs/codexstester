@@ -1,4 +1,4 @@
-package codexstester.abstractor;
+package codexstester.abstractor.util;
 
 import org.springframework.util.ResourceUtils;
 
@@ -10,7 +10,9 @@ import java.util.Properties;
 
 public abstract class PropertiesLoaderTests extends AssertionTests {
 
+    protected final Properties internalProp = loadInternalPropsTests();
     protected final Properties externalProp = loadExternalPropsTests();
+    protected final Properties unitaryProp = loadUnitaryPropsTests();
 
     private static Properties loadExternalPropsTests() {
         Properties properties = new Properties();
@@ -26,9 +28,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
         return properties;
     }
 
-    protected final Properties internalProp = loadInternalPropsTests();
-
-    protected static Properties loadInternalPropsTests() {
+    private static Properties loadInternalPropsTests() {
         Properties properties = new Properties();
 
         try {
@@ -42,9 +42,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
         return properties;
     }
 
-    protected final Properties unitaryProp = loadUnitaryPropsTests();
-
-    protected static Properties loadUnitaryPropsTests() {
+    private static Properties loadUnitaryPropsTests() {
         Properties properties = new Properties();
 
         try {
