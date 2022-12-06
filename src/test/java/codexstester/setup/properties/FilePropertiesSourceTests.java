@@ -15,10 +15,10 @@ public class FilePropertiesSourceTests {
      * @implNote See the documentation from README.md file to more details
      * */
 
-    /*Original*/
-    protected static String internalPropertiesFilepath = "sample/internal.tests.properties";
-    protected static String externalPropertiesFilepath = "sample/internal.tests.properties";
-    protected static String unitaryPropertiesFilepath = "sample/unitary.tests.properties";
+    /*Example*/
+    protected static String internalPropertiesFilepath = "example/internal.tests.properties";
+    protected static String externalPropertiesFilepath = "example/internal.tests.properties";
+    protected static String unitaryPropertiesFilepath = "example/unitary.tests.properties";
 
     /*Stock*/
     protected static String internalFilepathPropertiesStock = "stock/internal.tests.properties";
