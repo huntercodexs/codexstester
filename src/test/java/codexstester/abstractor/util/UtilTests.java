@@ -52,6 +52,14 @@ public class UtilTests {
         System.out.println("\n");
     }
 
+    public static void logTermTests(String title, Object data, boolean line) {
+        if (line) {
+            for (int i = 0; i < 120; i++) System.out.print("-");
+            System.out.print("\n");
+        }
+        System.out.println(title+": "+data);
+    }
+
     public static void setRuntimeFile(String currentFile) {
         logTerm("SET RUNTIME FILE", currentFile, true);
 
