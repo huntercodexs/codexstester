@@ -3,10 +3,7 @@ package codexstester.setup.advanced;
 import codexstester.abstractor.dto.HeadersDto;
 import net.minidev.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class AdvancedSetupTests {
 
@@ -14,7 +11,7 @@ public class AdvancedSetupTests {
      * JSON FORMAT
      */
     public static String[] expectedJsonKeys() {
-        return new String[]{"field1", "field2", "field3", "field4", "field5", "field6", "field7"};
+        return new String[]{"field1", "field2", "field3", "field4", "field5", "field6", "field7", "field8"};
     }
 
     public static Object[] expectedJsonValues() {
@@ -25,7 +22,8 @@ public class AdvancedSetupTests {
         ArrayList<Object> arrayList = new ArrayList<>();
         LinkedList<Object> linkedList = new LinkedList<>();
         List<String> list = new ArrayList<>();
-        return new Object[]{string, jsonObject, headersDto, hashMap, arrayList, linkedList, list};
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+        return new Object[]{string, jsonObject, headersDto, hashMap, arrayList, linkedList, list, linkedHashMap};
     }
 
     public static Object[] expectedJsonTyped() {
@@ -36,7 +34,8 @@ public class AdvancedSetupTests {
                 HashMap.class,
                 ArrayList.class,
                 LinkedList.class,
-                List.class
+                List.class,
+                LinkedHashMap.class
         };
     }
 
@@ -63,7 +62,27 @@ public class AdvancedSetupTests {
                 "apiKeyGeneric=null",
                 "additionalName=null",
                 "additionalValue=null",
-                "map={name=value1}"
+                "bodyParameters={name=value1}"
         };
     }
+
+    /**
+     * HASH-MAP FORMAT
+     */
+    public static String[] expectedHashMapKeys() {
+        return new String[]{"name", "info"};
+    }
+
+    public static Object[] expectedHashMapValues() {
+        String string = "john smith";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("customer", "yes");
+        return new Object[]{string, jsonObject};
+    }
+
+    public static Object[] expectedHashMapTyped() {
+        return new Object[]{String.class, JSONObject.class};
+    }
+
 }

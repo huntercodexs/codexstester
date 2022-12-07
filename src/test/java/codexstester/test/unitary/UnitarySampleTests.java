@@ -27,6 +27,7 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
         ArrayList<Object> arrayList = new ArrayList<>();
         LinkedList<Object> linkedList = new LinkedList<>();
         List<String> list = new ArrayList<>();
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
 
         JSONObject jsonResponse = new JSONObject();
         jsonResponse.put("field1", string);
@@ -36,6 +37,7 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
         jsonResponse.put("field5", arrayList);
         jsonResponse.put("field6", linkedList);
         jsonResponse.put("field7", list);
+        jsonResponse.put("field8", linkedHashMap);
 
         codexsTesterCompareJsonFormat(
                 expectedJsonKeys(),
@@ -53,7 +55,7 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
         headersDtoResponse.setHttpMethod(HTTP_METHOD_POST);
 
         Map<String, String> responseMap = new HashMap<>();
-        responseMap.put("name", "value2");
+        responseMap.put("name", "value1");
         headersDtoResponse.setBodyParameters(responseMap);
 
         codexsTesterCompareDtoFormat(
@@ -61,5 +63,44 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
                 headersDtoResponse,
                 HeadersDto.class,
                 true);
+    }
+
+    @Test
+    public void whenHashMapTypedTests() {
+        /*SIMULATE RESPONSE SAMPLE*/
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("customer", "yes");
+
+        HashMap<Object, Object> hashMapResponse = new HashMap<>();
+        hashMapResponse.put("name", "john smith");
+        hashMapResponse.put("info", jsonObject);
+
+        codexsTesterCompareHashMapFormat(
+                expectedHashMapKeys(),
+                expectedHashMapValues(),
+                expectedHashMapTyped(),
+                hashMapResponse,
+                true);
+    }
+
+    @Test
+    public void whenArrayListTypedTests() {
+        codexsTesterCompareArrayListFormat();
+    }
+
+    @Test
+    public void whenALinkedListTypedTests() {
+        codexsTesterCompareLinkedListFormat();
+    }
+
+    @Test
+    public void whenListTypedTests() {
+        codexsTesterCompareListFormat();
+    }
+
+    @Test
+    public void whenLinkedHashMapTests() {
+        codexsTesterCompareLinkedHashMapFormat();
     }
 }
