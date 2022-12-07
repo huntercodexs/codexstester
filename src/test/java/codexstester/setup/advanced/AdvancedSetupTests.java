@@ -100,4 +100,18 @@ public class AdvancedSetupTests {
         return new Object[]{String.class, JSONObject.class};
     }
 
+    /**
+     * LINKED-LIST FORMAT
+     */
+    public static Object[] expectedLinkedListValues() {
+        String string = "john smith";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("gender", "mens");
+        return new Object[]{string, jsonObject};
+    }
+
+    public static Object[] expectedLinkedListTyped() {
+        return new Object[]{String.class, JSONObject.class};
+    }
 }

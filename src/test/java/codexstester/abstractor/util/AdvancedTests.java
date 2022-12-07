@@ -8,6 +8,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import static codexstester.abstractor.util.UtilTests.logTermTests;
 
@@ -455,7 +456,98 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
     }
 
-    public void codexsTesterCompareLinkedListFormat() {
+    public void codexsTesterCompareLinkedListFormat(
+            Object[] linkedListValues,
+            Object[] linkedListTyped,
+            LinkedList<Object> linkedListCompare,
+            boolean strictMode
+    ) {
+
+        logTermTests("======== SUMMARY =======", "", true);
+        logTermTests("ARRAY-LIST-VALUES.......", Arrays.toString(linkedListValues), false);
+        logTermTests("ARRAY-LIST-TYPED........", Arrays.toString(linkedListTyped), false);
+        logTermTests("ARRAY-LIST-COMPARE......", linkedListCompare, false);
+        logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", linkedListCompare.getClass().toString(), false);
+        logTermTests("======== COMPARE =======", "", true);
+
+        if (!linkedListCompare.getClass().toString().contains("LinkedList")) {
+            logTermTests("ERROR ON LINKED-LIST DATA COMPARE (WRONG-CLASS-TYPED)", "", true);
+            Assert.fail();
+        }
+
+        if (linkedListValues.length != linkedListTyped.length || linkedListValues.length != linkedListCompare.size()) {
+            logTermTests("ERROR ON LINKED-LIST DATA COMPARE (WRONG-LENGTH)", "", true);
+            Assert.fail();
+        }
+
+        for (int i = 0; i < linkedListValues.length; i++) {
+
+            if (linkedListCompare.get(i) == null && linkedListTyped[i] == null) {
+                logTermTests("OK -> CONTINUE", null, false);
+                logTermTests("TYPED....", linkedListTyped[i], false);
+                logTermTests("COMPARE..", linkedListCompare.get(i), false);
+                continue;
+            }
+
+            if (linkedListCompare.get(i) == null && linkedListTyped[i] != null) {
+                logTermTests("> RESULT IS [FAIL] [CRITICAL] [WRONG-TYPED]", "INDEX-"+i, true);
+                logTermTests("EXPECTED....", linkedListTyped[i], false);
+                logTermTests("RECEIVED....", null, false);
+                Assert.fail();
+            }
+
+            String expVal = linkedListValues[i].toString();
+            String fndVal = linkedListCompare.get(i).toString();
+            Object expType = linkedListTyped[i];
+            Class<?> fndType = linkedListCompare.get(i).getClass();
+
+            logTermTests("=> INDEX <=", i, true);
+            logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
+            logTermTests("COMPARE..", fndVal, false);
+
+            if (expVal.equals(fndVal) && expType != fndType && expType.toString().contains("interface")) {
+                logTermTests("> RESULT IS [WARNING] [MESS-TYPED]", expVal, true);
+                defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                strictMessage(true);
+                continue;
+            }
+
+            if (strictMode) {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(false);
+                    Assert.fail();
+                }
+
+            } else {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(true);
+                    continue;
+                }
+
+            }
+            logTermTests("> RESULT IS [OK]", "INDEX-"+i, false);
+        }
+        Assert.assertTrue(true);
 
     }
 

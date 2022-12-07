@@ -104,7 +104,20 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
 
     @Test
     public void whenALinkedListTypedTests() {
-        codexsTesterCompareLinkedListFormat();
+        /*SIMULATE RESPONSE SAMPLE*/
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("gender", "mens");
+
+        LinkedList<Object> linkedListResponse = new LinkedList<>();
+        linkedListResponse.add("john smith");
+        linkedListResponse.add(jsonObject);
+
+        codexsTesterCompareLinkedListFormat(
+                expectedLinkedListValues(),
+                expectedLinkedListTyped(),
+                linkedListResponse,
+                false);
     }
 
     @Test
