@@ -2,6 +2,8 @@ package codexstester.abstractor.dto;
 
 import lombok.*;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @ToString
@@ -26,4 +28,5 @@ public class HeadersDto {
     String apiKeyGeneric;
     String additionalName;
     String additionalValue;
+    Map<String,String> bodyParameters;
 }

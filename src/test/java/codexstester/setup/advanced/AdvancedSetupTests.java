@@ -10,6 +10,9 @@ import java.util.List;
 
 public class AdvancedSetupTests {
 
+    /**
+     * JSON FORMAT
+     */
     public static String[] expectedJsonKeys() {
         return new String[]{"field1", "field2", "field3", "field4", "field5", "field6", "field7"};
     }
@@ -34,6 +37,33 @@ public class AdvancedSetupTests {
                 ArrayList.class,
                 LinkedList.class,
                 List.class
+        };
+    }
+
+    /**
+     * DTO FORMAT
+     */
+    public static String[] expectedDtoValues() {
+        return new String[]{
+                "contentType=application/json",
+                "accepted=null",
+                "httpMethod=POST",
+                "statusCode=null",
+                "crossOrigin=null",
+                "origin=null",
+                "hostname=null",
+                "ip=null",
+                "osName=null",
+                "authorizationBasic=null",
+                "authorizationBearer=null",
+                "apiKeyToken=null",
+                "apiKeyAppName=null",
+                "apiKeySecret=null",
+                "apiKeyValue=null",
+                "apiKeyGeneric=null",
+                "additionalName=null",
+                "additionalValue=null",
+                "map={name=value1}"
         };
     }
 }

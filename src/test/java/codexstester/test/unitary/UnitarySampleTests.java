@@ -5,11 +5,9 @@ import codexstester.setup.bridge.UnitarySampleBridgeTests;
 import codexstester.setup.datasource.DataSourceSampleTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
+import org.springframework.http.MediaType;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class UnitarySampleTests extends UnitarySampleBridgeTests {
 
@@ -20,8 +18,8 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
     }
 
     @Test
-    public void whenTypedTests() {
-        /*REQUEST SAMPLE*/
+    public void whenJsonFormatTypedTests() {
+        /*SIMULATE RESPONSE SAMPLE*/
         String string = "value1";
         JSONObject jsonObject = new JSONObject();
         HeadersDto headersDto = new HeadersDto();
@@ -44,6 +42,24 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
                 expectedJsonValues(),
                 expectedJsonTyped(),
                 jsonResponse,
+                true);
+    }
+
+    @Test
+    public void whenDtoFormatTypedTests() {
+        /*SIMULATE RESPONSE SAMPLE*/
+        HeadersDto headersDtoResponse = new HeadersDto();
+        headersDtoResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDtoResponse.setHttpMethod(HTTP_METHOD_POST);
+
+        Map<String, String> responseMap = new HashMap<>();
+        responseMap.put("name", "value2");
+        headersDtoResponse.setBodyParameters(responseMap);
+
+        codexsTesterCompareDtoFormat(
+                expectedDtoValues(),
+                headersDtoResponse,
+                HeadersDto.class,
                 true);
     }
 }
