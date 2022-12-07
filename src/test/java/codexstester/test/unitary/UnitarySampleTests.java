@@ -20,7 +20,7 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
     }
 
     @Test
-    public void whenTypingTests() {
+    public void whenTypedTests() {
         /*REQUEST SAMPLE*/
         String string = "value1";
         JSONObject jsonObject = new JSONObject();
@@ -42,8 +42,8 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
         codexsTesterCompareJsonFormat(
                 expectedJsonKeys(),
                 expectedJsonValues(),
-                expectedJsonTyping(),
+                expectedJsonTyped(),
                 jsonResponse,
-                false);
+                true);
     }
 }

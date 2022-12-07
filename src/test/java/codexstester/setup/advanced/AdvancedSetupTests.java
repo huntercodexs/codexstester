@@ -25,7 +25,7 @@ public class AdvancedSetupTests {
         return new Object[]{string, jsonObject, headersDto, hashMap, arrayList, linkedList, list};
     }
 
-    public static Object[] expectedJsonTyping() {
+    public static Object[] expectedJsonTyped() {
         return new Object[]{
                 String.class,
                 JSONObject.class,
