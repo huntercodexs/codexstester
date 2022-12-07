@@ -122,7 +122,20 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
 
     @Test
     public void whenListTypedTests() {
-        codexsTesterCompareListFormat();
+        /*SIMULATE RESPONSE SAMPLE*/
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("gender", "mens");
+
+        List<String> listResponse = new ArrayList<>();
+        listResponse.add("john smith");
+        listResponse.add(jsonObject.toString());
+
+        codexsTesterCompareListFormat(
+                expectedListValues(),
+                expectedListTyped(),
+                listResponse,
+                true);
     }
 
     @Test

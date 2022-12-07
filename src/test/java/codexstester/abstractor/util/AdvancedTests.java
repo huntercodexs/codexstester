@@ -5,10 +5,7 @@ import net.minidev.json.JSONObject;
 import org.junit.Assert;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 import static codexstester.abstractor.util.UtilTests.logTermTests;
 
@@ -551,7 +548,98 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
     }
 
-    public void codexsTesterCompareListFormat() {
+    public void codexsTesterCompareListFormat(
+            Object[] listValues,
+            Object[] listTyped,
+            List<String> listCompare,
+            boolean strictMode
+    ) {
+
+        logTermTests("======== SUMMARY =======", "", true);
+        logTermTests("ARRAY-LIST-VALUES.......", Arrays.toString(listValues), false);
+        logTermTests("ARRAY-LIST-TYPED........", Arrays.toString(listTyped), false);
+        logTermTests("ARRAY-LIST-COMPARE......", listCompare, false);
+        logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", listCompare.getClass().toString(), false);
+        logTermTests("======== COMPARE =======", "", true);
+
+        if (!listCompare.getClass().toString().contains("ArrayList") && !listCompare.getClass().toString().contains("List")) {
+            logTermTests("ERROR ON LIST<I> DATA COMPARE (WRONG-CLASS-TYPED)", "", true);
+            Assert.fail();
+        }
+
+        if (listValues.length != listTyped.length || listValues.length != listCompare.size()) {
+            logTermTests("ERROR ON LIST<I> DATA COMPARE (WRONG-LENGTH)", "", true);
+            Assert.fail();
+        }
+
+        for (int i = 0; i < listValues.length; i++) {
+
+            if (listCompare.get(i) == null && listTyped[i] == null) {
+                logTermTests("OK -> CONTINUE", null, false);
+                logTermTests("TYPED....", listTyped[i], false);
+                logTermTests("COMPARE..", listCompare.get(i), false);
+                continue;
+            }
+
+            if (listCompare.get(i) == null && listTyped[i] != null) {
+                logTermTests("> RESULT IS [FAIL] [CRITICAL] [WRONG-TYPED]", "INDEX-"+i, true);
+                logTermTests("EXPECTED....", listTyped[i], false);
+                logTermTests("RECEIVED....", null, false);
+                Assert.fail();
+            }
+
+            String expVal = listValues[i].toString();
+            String fndVal = listCompare.get(i);
+            Object expType = listTyped[i];
+            Class<?> fndType = listCompare.get(i).getClass();
+
+            logTermTests("=> INDEX <=", i, true);
+            logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
+            logTermTests("COMPARE..", fndVal, false);
+
+            if (expVal.equals(fndVal) && expType != fndType && expType.toString().contains("interface")) {
+                logTermTests("> RESULT IS [WARNING] [MESS-TYPED]", expVal, true);
+                defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                strictMessage(true);
+                continue;
+            }
+
+            if (strictMode) {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(false);
+                    Assert.fail();
+                }
+
+            } else {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(true);
+                    continue;
+                }
+
+            }
+            logTermTests("> RESULT IS [OK]", "INDEX-"+i, false);
+        }
+        Assert.assertTrue(true);
 
     }
 
