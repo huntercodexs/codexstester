@@ -140,6 +140,20 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
 
     @Test
     public void whenLinkedHashMapTests() {
-        codexsTesterCompareLinkedHashMapFormat();
+        /*SIMULATE RESPONSE SAMPLE*/
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("customer", "yes");
+
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+        linkedHashMap.put("name", "john smith");
+        linkedHashMap.put("info", jsonObject);
+
+        codexsTesterCompareLinkedHashMapFormat(
+                expectedLinkedHashMapKeys(),
+                expectedLinkedHashMapValues(),
+                expectedLinkedHashMapTyped(),
+                linkedHashMap,
+                true);
     }
 }

@@ -129,4 +129,23 @@ public class AdvancedSetupTests {
     public static Object[] expectedListTyped() {
         return new Object[]{String.class, String.class};
     }
+
+    /**
+     * LINKED-HASH-MAP FORMAT
+     */
+    public static String[] expectedLinkedHashMapKeys() {
+        return new String[]{"name", "info"};
+    }
+
+    public static Object[] expectedLinkedHashMapValues() {
+        String string = "john smith";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("customer", "yes");
+        return new Object[]{string, jsonObject};
+    }
+
+    public static Object[] expectedLinkedHashMapTyped() {
+        return new Object[]{String.class, JSONObject.class};
+    }
 }

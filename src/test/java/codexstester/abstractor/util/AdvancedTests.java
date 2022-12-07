@@ -461,9 +461,9 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
     ) {
 
         logTermTests("======== SUMMARY =======", "", true);
-        logTermTests("ARRAY-LIST-VALUES.......", Arrays.toString(linkedListValues), false);
-        logTermTests("ARRAY-LIST-TYPED........", Arrays.toString(linkedListTyped), false);
-        logTermTests("ARRAY-LIST-COMPARE......", linkedListCompare, false);
+        logTermTests("LINKED-LIST-VALUES......", Arrays.toString(linkedListValues), false);
+        logTermTests("LINKED-LIST-TYPED.......", Arrays.toString(linkedListTyped), false);
+        logTermTests("LINKED-LIST-COMPARE.....", linkedListCompare, false);
         logTermTests("STRICT-MODE.............", strictMode, false);
         logTermTests("CLASS-TYPE-NAME.........", linkedListCompare.getClass().toString(), false);
         logTermTests("======== COMPARE =======", "", true);
@@ -556,9 +556,9 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
     ) {
 
         logTermTests("======== SUMMARY =======", "", true);
-        logTermTests("ARRAY-LIST-VALUES.......", Arrays.toString(listValues), false);
-        logTermTests("ARRAY-LIST-TYPED........", Arrays.toString(listTyped), false);
-        logTermTests("ARRAY-LIST-COMPARE......", listCompare, false);
+        logTermTests("LIST-VALUES.............", Arrays.toString(listValues), false);
+        logTermTests("LIST-TYPED..............", Arrays.toString(listTyped), false);
+        logTermTests("LIST-COMPARE............", listCompare, false);
         logTermTests("STRICT-MODE.............", strictMode, false);
         logTermTests("CLASS-TYPE-NAME.........", listCompare.getClass().toString(), false);
         logTermTests("======== COMPARE =======", "", true);
@@ -643,7 +643,116 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
     }
 
-    public void codexsTesterCompareLinkedHashMapFormat() {
+    public void codexsTesterCompareLinkedHashMapFormat(
+            String[] linkedHashMapKeys,
+            Object[] linkedHashMapValues,
+            Object[] linkedHashMapTyped,
+            LinkedHashMap<Object, Object> linkedHashMapCompare,
+            boolean strictMode
+    ) {
+
+        logTermTests("======== SUMMARY =======", "", true);
+        logTermTests("LINKED-HASH-MAP-KEYS....", Arrays.toString(linkedHashMapKeys), false);
+        logTermTests("LINKED-HASH-MAP-VALUES..", Arrays.toString(linkedHashMapValues), false);
+        logTermTests("LINKED-HASH-MAP-TYPED...", Arrays.toString(linkedHashMapTyped), false);
+        logTermTests("LINKED-HASH-MAP-COMPARE.", linkedHashMapCompare, false);
+        logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", linkedHashMapCompare.getClass().toString(), false);
+        logTermTests("======== COMPARE =======", "", true);
+
+        if (!linkedHashMapCompare.getClass().toString().contains("LinkedHashMap")) {
+            logTermTests("ERROR ON LINKED-HASH-MAP DATA COMPARE (WRONG-CLASS-TYPED)", "", true);
+            Assert.fail();
+        }
+
+        if (linkedHashMapKeys.length != linkedHashMapValues.length || linkedHashMapKeys.length != linkedHashMapTyped.length || linkedHashMapKeys.length != linkedHashMapCompare.size()) {
+            logTermTests("ERROR ON LINKED-HASH-MAP DATA COMPARE (WRONG-LENGTH)", "", true);
+            Assert.fail();
+        }
+
+        for (int i = 0; i < linkedHashMapKeys.length; i++) {
+
+            if (linkedHashMapCompare.get(linkedHashMapKeys[i]) == null && linkedHashMapTyped[i] == null) {
+                logTermTests("OK -> CONTINUE", null, false);
+                logTermTests("TYPED....", linkedHashMapTyped[i], false);
+                logTermTests("COMPARE..", linkedHashMapCompare.get(linkedHashMapKeys[i]), false);
+                continue;
+            }
+
+            if (!linkedHashMapCompare.containsKey(linkedHashMapKeys[i]) || linkedHashMapCompare.get(linkedHashMapKeys[i]) == null && linkedHashMapTyped[i] != null) {
+                logTermTests("> RESULT IS [FAIL] [CRITICAL] [MISSING-KEY]", linkedHashMapKeys[i], true);
+                logTermTests("EXPECTED....", linkedHashMapKeys[i], false);
+                logTermTests("RECEIVED....", null, false);
+                Assert.fail();
+            }
+
+            String expName = linkedHashMapKeys[i];
+            String fndName = linkedHashMapKeys[i];
+            String expVal = linkedHashMapValues[i].toString();
+            String fndVal = linkedHashMapCompare.get(linkedHashMapKeys[i]).toString();
+            Object expType = linkedHashMapTyped[i];
+            Class<?> fndType = linkedHashMapCompare.get(linkedHashMapKeys[i]).getClass();
+
+            logTermTests("=> NAME <=", expName, true);
+            logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
+            logTermTests("COMPARE..", fndVal, false);
+
+            if (expVal.equals(fndVal) && expType != fndType && expType.toString().contains("interface")) {
+                logTermTests("> RESULT IS [WARNING] [MESS-TYPED]", expName, true);
+                defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                strictMessage(true);
+                continue;
+            }
+
+            if (strictMode) {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    Assert.fail();
+                }
+
+                if (!expName.equals(fndName)) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-NAME]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    strictMessage(false);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    strictMessage(false);
+                    Assert.fail();
+                }
+
+            } else {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    Assert.fail();
+                }
+
+                if (!expName.equals(fndName)) {
+                    logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-NAME]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    strictMessage(true);
+                    continue;
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", expName, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
+                    strictMessage(true);
+                    continue;
+                }
+
+            }
+            logTermTests("> RESULT IS [OK]", expName, false);
+        }
+        Assert.assertTrue(true);
 
     }
 
