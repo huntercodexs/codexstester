@@ -5,6 +5,7 @@ import net.minidev.json.JSONObject;
 import org.junit.Assert;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -50,6 +51,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
         logTermTests("JSON-TYPED..............", jsonTyped, false);
         logTermTests("JSON-COMPARE............", jsonCompare, false);
         logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", jsonCompare.getClass().toString(), false);
         logTermTests("======== COMPARE =======", "", true);
 
         if (!jsonCompare.getClass().toString().contains("JSONObject")) {
@@ -72,9 +74,9 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
             }
 
             if (jsonCompare.get(jsonKeys[i]) == null && jsonTyped[i] != null) {
-                logTermTests("ERROR -> FAILURE", null, false);
-                logTermTests("TYPED....", jsonTyped[i], false);
-                logTermTests("COMPARE..", jsonCompare.get(jsonKeys[i]), false);
+                logTermTests("> RESULT IS [FAIL] [CRITICAL] [WRONG-TYPED]", jsonKeys[i], false);
+                logTermTests("EXPECTED..", jsonTyped[i], false);
+                logTermTests("RECEIVED..", null, false);
                 Assert.fail();
             }
 
@@ -86,8 +88,8 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
             Class<?> fndType = jsonCompare.get(expKey).getClass();
 
             logTermTests("=> KEY <=", expKey, true);
-            logTermTests("VALUE....", expVal, false);
             logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
             logTermTests("COMPARE..", fndVal, false);
 
              if (fndVal.equals(expVal) && fndType != expType && expType.toString().contains("interface")) {
@@ -147,6 +149,8 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
         logTermTests("COMPARE-FIELDS..........", Arrays.toString(dtoCompare.getClass().getFields()), false);
         logTermTests("COMPARE-DECLARED-FIELDS.", Arrays.toString(dtoCompare.getClass().getDeclaredFields()), false);
         logTermTests("COMPARE-LENGTH..........", dtoCompare.getClass().getDeclaredFields().length, false);
+        logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", dtoCompare.getClass().toString(), false);
         logTermTests("======== COMPARE =======", "", true);
 
         if (dtoClass != dtoCompare.getClass() && strictMode) {
@@ -189,7 +193,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
             logTermTests("=> NAME <=", expName, true);
             logTermTests("TYPED.....", expType, false);
-            logTermTests("VALUE.....", expVal, false);
+            logTermTests("EXPECTED..", expVal, false);
             logTermTests("COMPARE...", fndVal, false);
 
             if (strictMode) {
@@ -203,14 +207,14 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
                 if (!expName.equals(fndName)) {
                     logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-NAME]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(true);
+                    strictMessage(false);
                     Assert.fail();
                 }
 
                 if (!expVal.equals(fndVal)) {
                     logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(true);
+                    strictMessage(false);
                     Assert.fail();
                 }
 
@@ -225,14 +229,14 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
                 if (!expName.equals(fndName)) {
                     logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-NAME]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(false);
+                    strictMessage(true);
                     continue;
                 }
 
                 if (!expVal.equals(fndVal)) {
                     logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(false);
+                    strictMessage(true);
                     continue;
                 }
 
@@ -258,6 +262,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
         logTermTests("HASH-MAP-TYPED..........", Arrays.toString(hashMapTyped), false);
         logTermTests("HASH-MAP-COMPARE........", hashMapCompare, false);
         logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", hashMapCompare.getClass().toString(), false);
         logTermTests("======== COMPARE =======", "", true);
 
         if (!hashMapCompare.getClass().toString().contains("HashMap")) {
@@ -282,6 +287,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
             if (!hashMapCompare.containsKey(hashMapKeys[i]) || hashMapCompare.get(hashMapKeys[i]) == null && hashMapTyped[i] != null) {
                 logTermTests("> RESULT IS [FAIL] [CRITICAL] [MISSING-KEY]", hashMapKeys[i], true);
                 logTermTests("EXPECTED....", hashMapKeys[i], false);
+                logTermTests("RECEIVED....", null, false);
                 Assert.fail();
             }
 
@@ -293,8 +299,8 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
             Class<?> fndType = hashMapCompare.get(hashMapKeys[i]).getClass();
 
             logTermTests("=> NAME <=", expName, true);
-            logTermTests("VALUE....", expVal, false);
             logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
             logTermTests("COMPARE..", fndVal, false);
 
             if (expVal.equals(fndVal) && expType != fndType && expType.toString().contains("interface")) {
@@ -315,14 +321,14 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
                 if (!expName.equals(fndName)) {
                     logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-NAME]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(true);
+                    strictMessage(false);
                     Assert.fail();
                 }
 
                 if (!expVal.equals(fndVal)) {
                     logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(true);
+                    strictMessage(false);
                     Assert.fail();
                 }
 
@@ -337,14 +343,14 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
                 if (!expName.equals(fndName)) {
                     logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-NAME]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(false);
+                    strictMessage(true);
                     continue;
                 }
 
                 if (!expVal.equals(fndVal)) {
                     logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", expName, true);
                     defaultMessage(expVal, fndVal, expType, fndType, expName, fndName);
-                    strictMessage(false);
+                    strictMessage(true);
                     continue;
                 }
 
@@ -354,7 +360,98 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
         Assert.assertTrue(true);
     }
 
-    public void codexsTesterCompareArrayListFormat() {
+    public void codexsTesterCompareArrayListFormat(
+            Object[] arrayListValues,
+            Object[] arrayListTyped,
+            ArrayList<Object> arrayListCompare,
+            boolean strictMode
+    ) {
+
+        logTermTests("======== SUMMARY =======", "", true);
+        logTermTests("ARRAY-LIST-VALUES.......", Arrays.toString(arrayListValues), false);
+        logTermTests("ARRAY-LIST-TYPED........", Arrays.toString(arrayListTyped), false);
+        logTermTests("ARRAY-LIST-COMPARE......", arrayListCompare, false);
+        logTermTests("STRICT-MODE.............", strictMode, false);
+        logTermTests("CLASS-TYPE-NAME.........", arrayListCompare.getClass().toString(), false);
+        logTermTests("======== COMPARE =======", "", true);
+
+        if (!arrayListCompare.getClass().toString().contains("ArrayList")) {
+            logTermTests("ERROR ON ARRAY-LIST DATA COMPARE (WRONG-CLASS-TYPED)", "", true);
+            Assert.fail();
+        }
+
+        if (arrayListValues.length != arrayListTyped.length || arrayListValues.length != arrayListCompare.size()) {
+            logTermTests("ERROR ON ARRAY-LIST DATA COMPARE (WRONG-LENGTH)", "", true);
+            Assert.fail();
+        }
+
+        for (int i = 0; i < arrayListValues.length; i++) {
+
+            if (arrayListCompare.get(i) == null && arrayListTyped[i] == null) {
+                logTermTests("OK -> CONTINUE", null, false);
+                logTermTests("TYPED....", arrayListTyped[i], false);
+                logTermTests("COMPARE..", arrayListCompare.get(i), false);
+                continue;
+            }
+
+            if (arrayListCompare.get(i) == null && arrayListTyped[i] != null) {
+                logTermTests("> RESULT IS [FAIL] [CRITICAL] [WRONG-TYPED]", "INDEX-"+i, true);
+                logTermTests("EXPECTED....", arrayListTyped[i], false);
+                logTermTests("RECEIVED....", null, false);
+                Assert.fail();
+            }
+
+            String expVal = arrayListValues[i].toString();
+            String fndVal = arrayListCompare.get(i).toString();
+            Object expType = arrayListTyped[i];
+            Class<?> fndType = arrayListCompare.get(i).getClass();
+
+            logTermTests("=> INDEX <=", i, true);
+            logTermTests("TYPED....", expType, false);
+            logTermTests("EXPECTED.", expVal, false);
+            logTermTests("COMPARE..", fndVal, false);
+
+            if (expVal.equals(fndVal) && expType != fndType && expType.toString().contains("interface")) {
+                logTermTests("> RESULT IS [WARNING] [MESS-TYPED]", expVal, true);
+                defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                strictMessage(true);
+                continue;
+            }
+
+            if (strictMode) {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(false);
+                    Assert.fail();
+                }
+
+            } else {
+
+                if (expType != fndType) {
+                    logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-TYPED]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    Assert.fail();
+                }
+
+                if (!expVal.equals(fndVal)) {
+                    logTermTests("> RESULT IS [WARNING] [STRICT] [WRONG-VALUE]", "INDEX-"+i, true);
+                    defaultMessage(expVal, fndVal, expType, fndType, null, null);
+                    strictMessage(true);
+                    continue;
+                }
+
+            }
+            logTermTests("> RESULT IS [OK]", "INDEX-"+i, false);
+        }
+        Assert.assertTrue(true);
 
     }
 

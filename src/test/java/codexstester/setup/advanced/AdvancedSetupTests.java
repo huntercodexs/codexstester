@@ -85,4 +85,19 @@ public class AdvancedSetupTests {
         return new Object[]{String.class, JSONObject.class};
     }
 
+    /**
+     * ARRAY-LIST FORMAT
+     */
+    public static Object[] expectedArrayListValues() {
+        String string = "john smith";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("gender", "mens");
+        return new Object[]{string, jsonObject};
+    }
+
+    public static Object[] expectedArrayListTyped() {
+        return new Object[]{String.class, JSONObject.class};
+    }
+
 }

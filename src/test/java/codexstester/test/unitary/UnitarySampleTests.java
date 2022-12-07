@@ -86,7 +86,20 @@ public class UnitarySampleTests extends UnitarySampleBridgeTests {
 
     @Test
     public void whenArrayListTypedTests() {
-        codexsTesterCompareArrayListFormat();
+        /*SIMULATE RESPONSE SAMPLE*/
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("age", 30);
+        jsonObject.put("gender", "mens");
+
+        ArrayList<Object> arrayListResponse = new ArrayList<>();
+        arrayListResponse.add("john smith");
+        arrayListResponse.add(jsonObject);
+
+        codexsTesterCompareArrayListFormat(
+                expectedArrayListValues(),
+                expectedArrayListTyped(),
+                arrayListResponse,
+                true);
     }
 
     @Test
