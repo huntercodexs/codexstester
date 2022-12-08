@@ -154,6 +154,23 @@ public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
     }
 
     @Test
+    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
 
