@@ -2,7 +2,7 @@ package codexstester.test.unitary;
 
 import codexstester.setup.bridge.UnitaryPostalCodeBridgeTests;
 import codexstester.setup.datasource.DataSourcePostalCodeTests;
-import codexstester.abstractor.util.UtilTests;
+import codexstester.abstractor.util.CodexsHelperTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
@@ -62,14 +62,14 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
     @Test
     public void whenMapperInitialResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto result = mapperInitialResponseDto();
-        codexsTesterAssertExact(UtilTests.md5(result.toString()), UtilTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(CodexsHelperTests.codexsHelperMd5(result.toString()), CodexsHelperTests.codexsHelperMd5(new PostalCodeResponseDto().toString()));
     }
 
     @Test
     public void whenMapperFinalResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
         PostalCodeResponseDto postalCodeResponseDto = DataSourcePostalCodeTests.dataSourceMapperFinalResponseDto();
         PostalCodeResponseDto result = PostalCodeResponseMapper.mapperFinalResponseDtoByNew(postalCodeResponseDto);
-        codexsTesterAssertExact(UtilTests.md5(result.toString()), UtilTests.md5(new PostalCodeResponseDto().toString()));
+        codexsTesterAssertExact(CodexsHelperTests.codexsHelperMd5(result.toString()), CodexsHelperTests.codexsHelperMd5(new PostalCodeResponseDto().toString()));
     }
 
     @Test

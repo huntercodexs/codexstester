@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2CheckToken;
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
-import static codexstester.abstractor.util.UtilTests.codexsTesterStringToJson;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJson;
 import static codexstester.setup.datasource.DataSourcePostalCodeTests.ignoreOAuth2Tests;
 
 public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
@@ -87,7 +87,7 @@ public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
         requestDto.setExpectedCode(OK_200);
 
         ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
-        JSONObject jsonResponse = codexsTesterStringToJson(response.getBody().toString());
+        JSONObject jsonResponse = codexsHelperStringToJson(response.getBody().toString());
 
         codexsTesterCompareJsonFormat(
                 expectedJsonKeysPostalCode(),

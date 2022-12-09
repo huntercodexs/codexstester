@@ -1,6 +1,6 @@
 package codexstester.setup.bridge;
 
-import codexstester.abstractor.internal.InternalRequest1XxTests;
+import codexstester.abstractor.internal.InternalRequest1xxTests;
 import com.huntercodexs.sample.SampleApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -11,7 +11,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @SpringBootTest(classes = SampleApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
-public class InternalSampleBridgeTests extends InternalRequest1XxTests {
+public class InternalSampleBridgeTests extends InternalRequest1xxTests {
 
     @Override
     @Before

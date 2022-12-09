@@ -12,7 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
-import static codexstester.abstractor.util.UtilTests.codexsTesterStringToJson;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJson;
 
 public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
@@ -67,7 +67,7 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
         requestDto.setExpectedCode(OK_200);
 
         String response = codexsTesterInternalDispatcher(requestDto, headersDto);
-        JSONObject jsonResponse = codexsTesterStringToJson(response);
+        JSONObject jsonResponse = codexsHelperStringToJson(response);
 
         codexsTesterCompareJsonFormat(
                 expectedJsonKeysPostalCode(),

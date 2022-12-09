@@ -4,29 +4,28 @@ import net.minidev.json.JSONObject;
 import org.springframework.util.DigestUtils;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
-public class UtilTests {
+public class CodexsHelperTests {
 
-    public static String md5(String data){
+    public static String codexsHelperMd5(String data) {
         return DigestUtils.md5DigestAsHex(data.getBytes());
     }
 
-    public static String guideGenerator(String tcn) {
+    public static String codexsHelperGuideGenerator(String tcn) {
         if (tcn == null || tcn.equals("")) {
             return UUID.randomUUID().toString();
         }
         return tcn;
     }
 
-    public static String today() {
+    public static String codexsHelperToday() {
         Date now = new Date();
         return new SimpleDateFormat("yyy-MM-dd").format(now);
     }
 
-    public static String oneYearAgo() {
+    public static String codexsHelperOneYearAgo() {
         Date now = new Date();
         String today = new SimpleDateFormat("yyy-MM-dd").format(now);
         String[] getDate = today.split("-");
@@ -34,7 +33,7 @@ public class UtilTests {
         return (yearCurrent-1)+"-"+getDate[1]+"-"+getDate[2];
     }
 
-    public static String fiveYearAgo() {
+    public static String codexsHelperFiveYearAgo() {
         Date now = new Date();
         String today = new SimpleDateFormat("yyy-MM-dd").format(now);
         String[] getDate = today.split("-");
@@ -42,7 +41,7 @@ public class UtilTests {
         return (yearCurrent-6)+"-"+getDate[1]+"-"+getDate[2];
     }
 
-    public static void logTerm(String title, Object data, boolean line) {
+    public static void codexsHelperLogTerm(String title, Object data, boolean line) {
         System.out.println("\n"+title);
         if (data != null && !data.equals("")) {
             System.out.println(data);
@@ -53,7 +52,7 @@ public class UtilTests {
         System.out.println("\n");
     }
 
-    public static void logTermTests(String title, Object data, boolean line) {
+    public static void codexsHelperLogTermTests(String title, Object data, boolean line) {
         if (line) {
             for (int i = 0; i < 120; i++) System.out.print("-");
             System.out.print("\n");
@@ -61,7 +60,7 @@ public class UtilTests {
         System.out.println(title+": "+data);
     }
 
-    public static JSONObject codexsTesterQueryStringToJson(String queryString) {
+    public static JSONObject codexsHelperQueryStringToJson(String queryString) {
 
         String[] splitter = queryString.split("&");
         JSONObject jsonData = new JSONObject();
@@ -75,13 +74,13 @@ public class UtilTests {
 
     }
 
-    public static String codexsTesterJsonToString(JSONObject json) {
+    public static String codexsHelperJsonToString(JSONObject json) {
         return json.toJSONString();
     }
 
-    public static JSONObject codexsTesterStringToJson(String string) {
+    public static JSONObject codexsHelperStringToJson(String string) {
 
-        logTerm("CODEXS TESTER STRING TO JSON", string, true);
+        codexsHelperLogTerm("CODEXS TESTER STRING TO JSON", string, true);
 
         JSONObject jsonData = new JSONObject();
         String strClean = string.replaceAll("[\"{\\[\\]}'/\\\\]+", "");
@@ -95,7 +94,7 @@ public class UtilTests {
                 try {
                     jsonData.appendField(splitter2[0].trim(), splitter2[1].trim());
                 } catch (RuntimeException re) {
-                    logTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
+                    codexsHelperLogTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
                     jsonData.appendField(splitter2[0].trim(), "");
                 }
             }
@@ -108,7 +107,7 @@ public class UtilTests {
                 try {
                     jsonData.appendField(splitter2[0].trim(), splitter2[1].trim());
                 } catch (RuntimeException re) {
-                    logTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
+                    codexsHelperLogTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
                     jsonData.appendField(splitter2[0].trim(), "");
                 }
             }

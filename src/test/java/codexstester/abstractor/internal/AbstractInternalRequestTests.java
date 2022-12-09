@@ -10,7 +10,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTests {
 
@@ -66,39 +66,39 @@ public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTe
             url = url + "?" + internalUrlQueryParameters;
         }
 
-        logTerm("INTERNAL REQUEST URL IS", url, true);
+        codexsHelperLogTerm("INTERNAL REQUEST URL IS", url, true);
 
         switch (method) {
             case "GET":
                 requestBuilder = MockMvcRequestBuilders.get(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "GET", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "GET", true);
                 break;
             case "POST":
                 requestBuilder = MockMvcRequestBuilders.post(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "POST", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "POST", true);
                 break;
             case "PUT":
                 requestBuilder = MockMvcRequestBuilders.put(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "PUT", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "PUT", true);
                 break;
             case "DELETE":
                 requestBuilder = MockMvcRequestBuilders.delete(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "DELETE", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "DELETE", true);
                 break;
             case "PATCH":
                 requestBuilder = MockMvcRequestBuilders.patch(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "PATCH", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "PATCH", true);
                 break;
             case "HEAD":
                 requestBuilder = MockMvcRequestBuilders.head(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "HEAD", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "HEAD", true);
                 break;
             case "OPTIONS":
                 requestBuilder = MockMvcRequestBuilders.options(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "OPTIONS", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "OPTIONS", true);
                 break;
             default:
-                logTerm("EXCEPTION[INVALID-HTTP-METHOD]", method, true);
+                codexsHelperLogTerm("EXCEPTION[INVALID-HTTP-METHOD]", method, true);
                 throw new RuntimeException("EXCEPTION[INVALID-HTTP-METHOD]: " + method);
         }
 
@@ -119,19 +119,19 @@ public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTe
                             .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
-            logTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);
+            codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);
 
         } catch (Exception ex) {
-            logTerm("EXCEPTION[MOCK-MVC]", ex.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[MOCK-MVC]", ex.getMessage(), true);
             Assert.fail("EXCEPTION[MOCK-MVC]: " + ex.getMessage());
         }
 
         /*Assert Content as String*/
         if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
             if (!result.getResponse().getContentAsString().equals("")) {
-                logTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
-                logTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
-                logTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
+                codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
+                codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
+                codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
                 assertInternalTests(requestDto.getExpectedMessage(), result.getResponse().getContentAsString());
             }
         }

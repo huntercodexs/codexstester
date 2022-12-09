@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.util.Properties;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class PropertiesLoaderTests extends AssertionTests {
 
@@ -28,7 +28,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
 
     protected static Properties loadExternalPropsTests() {
 
-        logTerm("LOAD EXTERNAL PROPS", null, true);
+        codexsHelperLogTerm("LOAD EXTERNAL PROPS", null, true);
 
         Properties properties = new Properties();
 
@@ -45,7 +45,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
 
     protected static Properties loadInternalPropsTests() {
 
-        logTerm("LOAD INTERNAL PROPS", null, true);
+        codexsHelperLogTerm("LOAD INTERNAL PROPS", null, true);
 
         Properties properties = new Properties();
 
@@ -62,7 +62,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
 
     protected static Properties loadUnitaryPropsTests() {
 
-        logTerm("LOAD UNITARY PROPS", null, true);
+        codexsHelperLogTerm("LOAD UNITARY PROPS", null, true);
 
         Properties properties = new Properties();
 

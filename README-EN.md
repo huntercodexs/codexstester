@@ -721,3 +721,357 @@ however, it has not yet been shown how to perform a complete test using CODEXS T
 An advanced test in the CODEXS TESTER workspace is nothing more than ensuring that the result of a test is
 exactly as expected, as shown below:
 
+
+Next, the programming of an advanced CODEXS TESTER type test will be shown in detail, which performs the query
+from any address through a postal code, validates the HTTP response code, the response format and the type
+data contained in the response. It is worth noting that advanced type tests can also be of the "external" type,
+"internal" and "unitary", as mentioned earlier, these are the types of tests available in the workspace
+TESTER CODEXS.
+
+In short, an "internal" type tester looks like this:
+
+> NOTE: Tests of type "internal" use MockMvc to trigger requests
+
+<pre>
+[REQUEST]
+HTTP-REQUEST-HEADERS Content-Type: application/json
+POST /huntercodexs/postalcode/api/address/12090000
+
+[RESPONSE]
+HTTP-STATUS-CODE 200 OK
+RESPONSE-BODY JSON {"cep":"12090002","logradouro":"Rua São Caetano","complemento":"","bairro":"Campos Elíseos","localidade":"Taubaté","uf":"SP","ibge":"3554102","gia":"6889","ddd":"12","siafi":"7183"}
+</pre>
+
+In the case of tests of the "external" type
+
+> NOTE: Tests of type "external" use RestTempalte to trigger requests
+
+<pre>
+[REQUEST]
+HTTP-REQUEST-HEADERS Content-Type: application/json
+POST http://localhost:38080/huntercodexs/postalcode/api/address/12090000
+
+[RESPONSE]
+HTTP-STATUS-CODE 200 OK
+RESPONSE-BODY JSON {"cep":"12090002","logradouro":"Rua São Caetano","complemento":"","bairro":"Campos Elíseos","localidade":"Taubaté","uf":"SP","ibge":"3554102","gia":"6889","ddd":"12","siafi":"7183"}
+</pre>
+
+See that the only difference between the "internal" and "external" tests is how the REQUEST is done, that is, through MockMvc
+or through RestTemplate, where you can see the difference between URL and URI.
+
+As already mentioned earlier in this document, to start a test configuration and programming, you must follow some
+CODEXS TESTER rules. First, make sure that the test scope/target is correctly configured.
+in the FilePropertiesSourceTests.java file, as instructed below
+
+![codexstester-file-properties-escope-postalcode.png](src%2Fdata%2Fmidias%2Fcodexstester-file-properties-escope-postalcode.png)
+
+See that a scope of work has been defined for the CODEXS TESTER with the name of postalcode, that is, in the path src/test/resources of the
+application there should be a folder or "package" with the name postalcode src/test/resources/postalcode.
+
+The next step consists of defining the data types, field names, field values and data types of the
+fields, and this configuration must be done in the AdvancedSetupTests.java file contained in the setup/advanced path of
+CODEXS TESTER src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java. See below for the expected configuration
+for the test in question
+
+<pre>
+    /**
+     * POSTAL CODE ADVANCED TESTS - JSON TYPED
+     */
+    public static String[] expectedJsonKeysPostalCode() {
+        return new String[]{
+                "cep",
+                "logradouro",
+                "complemento",
+                "bairro",
+                "localidade",
+                "uf",
+                "ibge",
+                "gia",
+                "ddd",
+                "siafi"
+        };
+    }
+
+    public static Object[] expectedJsonValuesPostalCode() {
+        return new Object[]{
+                "12090002",
+                "Rua São Caetano",
+                "",
+                "Campos Elíseos",
+                "Taubaté",
+                "SP",
+                "3554102",
+                "6889",
+                "12",
+                "7183"
+        };
+    }
+
+    public static Object[] expectedJsonTypedPostalCode() {
+        return new Object[]{
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class
+        };
+    }
+</pre>
+
+Notice the following aspects of the configuration, see that we have three methods that have Arrays inside, which
+must have the same size, for example Array(10), also see that the method names are self-explanatory about their
+goal. Still at this point, it is configured that the fields to be tested will all be of type String.class and that
+the expected values are defined in the expectedJsonValuesPostalCode() method.
+
+> STRICT MODE: When a strict test mode is defined (strictMode=true), CODEXS TESTER will also test the values
+> contained in the information to be tested, that is, they must have the same name, type and value. If it is not feasible to use
+> this functionality, use the non-strict mode (strictMode-false), in which case only name and data type will be validated.
+
+The next step consists of configuring the src/test/resources/postalcode/internal.tests.properties file and also the
+src/test/resources/postalcode/external.tests.properties file, informing the data as (in this case) shown below
+
+- internal.tests.properties
+
+<pre>
+internal.tests.base-url=/huntercodexs/codexs-tester/api
+internal.tests.base-uri=/address
+</pre>
+
+- external.tests.properties
+
+<pre>
+external.tests.base-url=http://localhost:38080
+external.tests.base-uri=/huntercodexs/codexs-tester/api/address
+</pre>
+
+Continuing, the next step is to program the data for the REQUEST (datasource), for which a method will be created
+inside the src/test/java/codexstester/setup/datasource/DataSourcePostalCodeTests.java file, ***note that the name in
+file has a self-explanation about its purpose***.
+
+> NOTE: This procedure is intended to keep the code and structure of the project organized and clean, however
+> it is not mandatory that it be done like this, it is possible to enter this data directly in the tests, or else create the
+> method inside the test file itself
+
+<pre>
+    public static JSONObject dataSourceOkRequest() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.appendField("rulesCode", "XYZ12345");
+        jsonObject.appendField("postalCode", "12090002");
+        jsonObject.appendField("webhook", "");
+        return jsonObject;
+    }
+</pre>
+
+With that, or rather, with the settings shown above, it is possible to start programming the tests as shown
+below.
+
+- Test type "external"
+
+![codexstester-advanced-external-postalcode-test.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-external-postalcode-test.png)
+
+The image above shows an advanced CODEXS TESTER test, where it is possible to notice the important points of this test and that
+deserve attention, see below:
+
+- (1) Extension of the BRIDGE already mentioned in this document and which links @Test with the CORE of CODEXS TESTER
+- (2) Use of the file (datasource) to start the request data
+- (3) Definition of the HTTP-METHOD method for the request, in this case POST
+- (4) The expected HTTP-STATUS-CODE for this request
+- (5) In the first line the codexsTesterExternalDispatcher literally triggers the request, in the second line the response
+  of the request is converted into the expected JSON format.
+- (6) The main method of this test, the codexsTesterCompareJsonFormat, which uses all the configuration done previously
+  in the scope of the advanced test, note that it has strictMode=false, that is, the values will not be evaluated, because of
+  according to the programmer, they are not relevant to the test.
+
+- "Internal" type test
+
+![codexstester-advanced-internal-postalcode-test.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-internal-postalcode-test.png)
+
+The image above shows an advanced test of the "internal" type of CODEXS TESTER, with very similar characteristics to the test
+to the "external" type shown above, thus dispensing with further details. However, note that in item (6) of
+image, in the first line the method used is codexsTesterInternalDispatcher() and not codexsTesterExternalDispatcher(), that is,
+the scope of the test is postalcode/internal.tests.properties contained in the path src/test/resources/postalcode/internal.tests.properties,
+and the type of test is "internal", as noted in item (4).
+
+
+
+# CODEX TESTER helpers
+
+CODEX TESTER has some helpers to assist in the programming of tests, see below what they are:
+
+<pre>
+public static String codexsHelperMd5(String data);
+public static String codexsHelperGuideGenerator(String tcn);
+public static String codexsHelperToday();
+public static String codexsHelperOneYearAgo();
+public static String codexsHelperFiveYearAgo();
+public static void codexsHelperLogTerm(String title, Object data, boolean line);
+public static void codexsHelperLogTermTests(String title, Object data, boolean line);
+public static JSONObject codexsHelperQueryStringToJson(String queryString);
+public static String codexsHelperJsonToString(JSONObject json);
+public static JSONObject codexsHelperStringToJson(String string);
+</pre>
+
+
+
+# Functionalities available in CODEXS TESTER
+
+<pre>
+protected static ResponseEntity&lt;Oauth2ResponseTokenDto&gt; codexsTesterExternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {}
+protected static ResponseEntity&lt;Object&gt; codexsTesterExternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {}
+protected void codexsTesterExternal_StatusCode400_RetrieveBadRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode401_RetrieveUnauthorized(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode402_RetrievePaymentRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode403_RetrieveForbidden(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode404_RetrieveNotFound(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode405_RetrieveMethodNotAllowed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode406_RetrieveNotAcceptable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode407_RetrieveProxyAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode408_RetrieveRequestTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode409_RetrieveConflict(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode410_RetrieveGone(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode411_RetrieveLengthRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode412_RetrievePreconditionFailed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode413_RetrievePayloadTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode414_RetrieveUriTooLong(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode415_RetrieveUnsupportedMediaType(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode416_RetrieveRequestedRangeNotSatisfiable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode417_RetrieveExpectationFailed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode418_RetrieveImATeapotLengthRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode421_RetrieveMisDirectedRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode422_RetrieveUnprocessableEntity(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode423_RetrieveLocked(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode424_RetrieveFailedDependency(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode425_RetrieveTooEarly(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode426_RetrieveUpgradeRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode428_RetrievePreConditionRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode429_RetrieveTooManyRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode431_RetrieveRequestHeaderFieldsTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode451_RetrieveUnavailableForLegalReasons(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode500_RetrieveInternalServerError(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode501_RetrieveNotImplemented(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode502_RetrieveBadGateway(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode503_RetrieveServiceUnavailable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode504_RetrieveGatewayTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode505_RetrieveHttpVersionNotSupported(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode506_RetrieveVariantAlsoNegotiates(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode507_RetrieveInsuficientStorage(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode508_RetrieveLoopDetected(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected ResponseEntity&lt;?&lt; codexsTesterExternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {}
+protected void codexsTesterExternal_StatusCode300_RetrieveMultipleChoice(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode301_RetrieveMovedPermanently(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode302_RetrieveFound(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode303_RetrieveSeeOther(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode304_RetrieveNotModified(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode305_RetrieveUseProxyDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode306_RetrieveUnusedDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode307_RetrieveTemporaryRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode308_RetrievePermanentRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode200_RetrieveOK(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode201_RetrieveCreated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode202_RetrieveAccepted(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode203_RetrieveNonAuthoritativeInformation(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode204_RetrieveNoContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode205_RetrieveResetContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode206_RetrievePartialContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode207_RetrieveMultStatusWebdav(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode208_RetrieveMultiStatus(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterExternal_StatusCode226_RetrieveImUsedHttpDeltaEncoding(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterAssertExact(String ref, String text) {}
+protected void codexsTesterAssertObject(Object obj1, Object obj2) {}
+protected void codexsTesterAssertText(String ref, String text) {}
+protected void codexsTesterAssertRegExp(String regExp, String text) {}
+protected void codexsTesterAssertInt(int num1, int num2) {}
+protected void codexsTesterAssertBool(boolean val, boolean flag) {}
+protected void codexsTesterAssertNotNull(Object obj) {}
+protected void codexsTesterAssertNull(Object obj) {}
+protected void codexsTesterAssertNumber(String number) {}
+protected void codexsTesterAssertCpf(String cpf) {}
+protected void codexsTesterAssertEmail(String email) {}
+protected void codexsTesterAssertPhone(String phoneNumber) {}
+protected void codexsTesterAssertSum(int a, int b, int c) {}
+protected void codexsTesterInternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode500_RetrieveInternalServerError(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode501_RetrieveNotImplemented(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode502_RetrieveBadGateway(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode503_RetrieveServiceUnavailable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode504_RetrieveGatewayTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode505_RetrieveHttpVersionNotSupported(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode506_RetrieveVariantAlsoNegotiates(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode507_RetrieveInsuficientStorage(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode508_RetrieveLoopDetected(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected static ResponseEntity&lt;Oauth2ResponseTokenDto&lt; codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {}
+protected static ResponseEntity&lt;Object&lt; codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {}
+protected void codexsTesterInternal_StatusCode200_RetrieveOK(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode201_RetrieveCreated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode202_RetrieveAccepted(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode203_RetrieveNonAuthoritativeInformation(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode204_RetrieveNoContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode205_RetrieveResetContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode206_RetrievePartialContent(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode207_RetrieveMultStatusWebdav(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode208_RetrieveMultiStatus(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode226_RetrieveImUsedHttpDeltaEncoding(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode300_RetrieveMultipleChoice(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode301_RetrieveMovedPermanently(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode302_RetrieveFound(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode303_RetrieveSeeOther(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode304_RetrieveNotModified(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode305_RetrieveUseProxyDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode306_RetrieveUnusedDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode307_RetrieveTemporaryRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode308_RetrievePermanentRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode400_RetrieveBadRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode401_RetrieveUnauthorized(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode402_RetrievePaymentRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode403_RetrieveForbidden(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode404_RetrieveNotFound(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode405_RetrieveMethodNotAllowed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode406_RetrieveNotAcceptable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode407_RetrieveProxyAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode408_RetrieveRequestTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode409_RetrieveConflict(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode410_RetrieveGone(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode411_RetrieveLengthRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode412_RetrievePreconditionFailed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode413_RetrievePayloadTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode414_RetrieveUriTooLong(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode415_RetrieveUnsupportedMediaType(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode416_RetrieveRequestedRangeNotSatisfiable(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode417_RetrieveExpectationFailed(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode418_RetrieveImATeapotLengthRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode421_RetrieveMisDirectedRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode422_RetrieveUnprocessableEntity(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode423_RetrieveLocked(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode424_RetrieveFailedDependency(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode425_RetrieveTooEarly(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode426_RetrieveUpgradeRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode428_RetrievePreConditionRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode429_RetrieveTooManyRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode431_RetrieveRequestHeaderFieldsTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected void codexsTesterInternal_StatusCode451_RetrieveUnavailableForLegalReasons(HeadersDto headersDto, RequestDto requestDto) throws Exception {}
+protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) throws Exception {}
+</pre>
+
+
+
+Make the most of this little job!
+
+----
+All rights reserved to Huntercodexs &copy; 2022 - Software Development
+Maintained by Jereelton Teixeira (jereelton-devel)

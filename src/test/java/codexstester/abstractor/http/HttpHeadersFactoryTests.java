@@ -7,7 +7,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
 
@@ -19,7 +19,7 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
     WebApplicationContext webApplicationContext;
 
     protected void setUp() {
-        logTerm("SETUP IN HEADERS FACTORY IS START", null, true);
+        codexsHelperLogTerm("SETUP IN HEADERS FACTORY IS START", null, true);
         genericMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         genericRestTemplate = new RestTemplate();
     }

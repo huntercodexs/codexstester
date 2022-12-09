@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class AbstractExternalRestTemplateTests extends AbstractExternalRequestTests {
 
@@ -28,8 +28,8 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
             url = url + "?" + externalUrlQueryParameters;
         }
 
-        logTerm("EXTERNAL DISPATCHER REQUEST URL IS", url, true);
-        logTerm("HTTP METHOD IS", method, true);
+        codexsHelperLogTerm("EXTERNAL DISPATCHER REQUEST URL IS", url, true);
+        codexsHelperLogTerm("HTTP METHOD IS", method, true);
 
         ResponseEntity<?> response = null;
 
@@ -90,10 +90,10 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
                     throw new RuntimeException("INVALID HTTP METHOD: " + method);
             }
 
-            logTerm("EXTERNAL DISPATCHER RESPONSE IS", response, true);
+            codexsHelperLogTerm("EXTERNAL DISPATCHER RESPONSE IS", response, true);
 
             if (response.getStatusCodeValue() != requestDto.getExpectedCode()) {
-                logTerm("EXTERNAL DISPATCHER ERROR [INVALID STATUS CODE]", response.getStatusCodeValue(), true);
+                codexsHelperLogTerm("EXTERNAL DISPATCHER ERROR [INVALID STATUS CODE]", response.getStatusCodeValue(), true);
                 Assert.assertEquals(response.getStatusCodeValue(), requestDto.getExpectedCode());
             }
 
@@ -101,16 +101,16 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
 
         } catch (HttpClientErrorException ex) {
 
-            logTerm("EXCEPTION[MESSAGE] HttpClientErrorException: ", ex.getMessage(), true);
-            logTerm("EXCEPTION[BODY] HttpClientErrorException: ", ex.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpClientErrorException: ", ex.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[BODY] HttpClientErrorException: ", ex.getResponseBodyAsString(), true);
 
         } catch (HttpServerErrorException se) {
 
-            logTerm("EXCEPTION[MESSAGE] HttpServerErrorException: ", se.getMessage(), true);
-            logTerm("EXCEPTION[BODY] HttpServerErrorException: ", se.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpServerErrorException: ", se.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[BODY] HttpServerErrorException: ", se.getResponseBodyAsString(), true);
 
         } catch (RuntimeException re) {
-            logTerm("EXCEPTION[MESSAGE] RuntimeException: ", re.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[MESSAGE] RuntimeException: ", re.getMessage(), true);
         }
 
         return null;

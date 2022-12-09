@@ -8,7 +8,7 @@ import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class AbstractInternalMockMvcTests extends AbstractInternalRequestTests {
 
@@ -28,39 +28,39 @@ public abstract class AbstractInternalMockMvcTests extends AbstractInternalReque
             url = url + "?" + internalUrlQueryParameters;
         }
 
-        logTerm("INTERNAL DISPATCHER REQUEST URL IS", url, true);
+        codexsHelperLogTerm("INTERNAL DISPATCHER REQUEST URL IS", url, true);
 
         switch (method) {
             case "GET":
                 requestBuilder = MockMvcRequestBuilders.get(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "GET", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "GET", true);
                 break;
             case "POST":
                 requestBuilder = MockMvcRequestBuilders.post(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "POST", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "POST", true);
                 break;
             case "PUT":
                 requestBuilder = MockMvcRequestBuilders.put(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "PUT", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "PUT", true);
                 break;
             case "DELETE":
                 requestBuilder = MockMvcRequestBuilders.delete(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "DELETE", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "DELETE", true);
                 break;
             case "PATCH":
                 requestBuilder = MockMvcRequestBuilders.patch(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "PATCH", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "PATCH", true);
                 break;
             case "HEAD":
                 requestBuilder = MockMvcRequestBuilders.head(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "HEAD", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "HEAD", true);
                 break;
             case "OPTIONS":
                 requestBuilder = MockMvcRequestBuilders.options(url);
-                logTerm("HTTP METHOD IN REQUEST BUILDER IS", "OPTIONS", true);
+                codexsHelperLogTerm("HTTP METHOD IN REQUEST BUILDER IS", "OPTIONS", true);
                 break;
             default:
-                logTerm("EXCEPTION[INVALID-HTTP-METHOD]", method, true);
+                codexsHelperLogTerm("EXCEPTION[INVALID-HTTP-METHOD]", method, true);
                 throw new RuntimeException("EXCEPTION[INVALID-HTTP-METHOD]: " + method);
         }
 
@@ -81,14 +81,14 @@ public abstract class AbstractInternalMockMvcTests extends AbstractInternalReque
                             .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
-            logTerm("INTERNAL DISPATCHER RESULT IS", result, true);
-            logTerm("INTERNAL DISPATCHER RESPONSE IS", result.getResponse(), true);
-            logTerm("INTERNAL DISPATCHER CONTENT AS STRING IS", result.getResponse().getContentAsString(), true);
+            codexsHelperLogTerm("INTERNAL DISPATCHER RESULT IS", result, true);
+            codexsHelperLogTerm("INTERNAL DISPATCHER RESPONSE IS", result.getResponse(), true);
+            codexsHelperLogTerm("INTERNAL DISPATCHER CONTENT AS STRING IS", result.getResponse().getContentAsString(), true);
 
             return result.getResponse().getContentAsString();
 
         } catch (Exception ex) {
-            logTerm("EXCEPTION[MOCK-MVC] DISPATCHER", ex.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[MOCK-MVC] DISPATCHER", ex.getMessage(), true);
         }
 
         return null;

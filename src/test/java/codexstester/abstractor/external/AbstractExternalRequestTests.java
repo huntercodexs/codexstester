@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
-import static codexstester.abstractor.util.UtilTests.logTerm;
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
 
@@ -65,8 +65,8 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             url = url + "?" + externalUrlQueryParameters;
         }
 
-        logTerm("EXTERNAL REQUEST URL IS", url, true);
-        logTerm("HTTP METHOD IS", method, true);
+        codexsHelperLogTerm("EXTERNAL REQUEST URL IS", url, true);
+        codexsHelperLogTerm("HTTP METHOD IS", method, true);
 
         try {
 
@@ -127,12 +127,12 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
                     throw new RuntimeException("INVALID HTTP METHOD: " + method);
             }
 
-            logTerm("EXTERNAL RESPONSE IS", response, true);
+            codexsHelperLogTerm("EXTERNAL RESPONSE IS", response, true);
 
             Assert.assertEquals(response.getStatusCodeValue(), requestDto.getExpectedCode());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-                logTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
+                codexsHelperLogTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
                 Assert.assertEquals(requestDto.getExpectedMessage(), response.getBody());
             }
 
