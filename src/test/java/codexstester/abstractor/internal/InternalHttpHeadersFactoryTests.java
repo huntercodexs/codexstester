@@ -1,34 +1,18 @@
 package codexstester.abstractor.internal;
 
 import codexstester.abstractor.dto.*;
-import codexstester.setup.dataproperty.ExternalPropertyTestsTestsTests;
+import codexstester.abstractor.http.HttpHeadersFactoryTests;
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 
-public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTestsTestsTests {
-
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    protected void setUp() {
-        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
-
-    protected MockMvc internalMockMvc;
-
-    private static final RestTemplate internalRestTemplate = new RestTemplate();
+public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactoryTests {
 
     protected void createBeforeInternalTests(String user_data) throws Exception {
-        internalMockMvc.perform(
+        genericMockMvc.perform(
                 MockMvcRequestBuilders
                         .post(internalUriBaseTest)
                         .content(user_data)
@@ -39,7 +23,7 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
     }
 
     protected void rollbackInternalTests(String id) throws Exception {
-        internalMockMvc.perform(
+        genericMockMvc.perform(
                 MockMvcRequestBuilders
                         .delete(internalUrlBaseTest + internalUriBaseTest +"/"+id)
                         .header("Authorization", internalAuthorizationBasic)
@@ -54,32 +38,7 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         }
     }
 
-    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
-        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
-        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
-        return internalRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
-    }
-
-    protected static ResponseEntity<Object> codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
-
-        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
-            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
-                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
-            }
-        }
-
-        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
-        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
-        return internalRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
-    }
-
-    protected HttpHeaders codexsTesterInternalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
+    protected HttpHeaders internalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
 
         HttpHeaders headers = new HttpHeaders();
 
@@ -107,9 +66,29 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         if (internalGenericAuthorization != null && !internalGenericAuthorization.equals("")) {
             headers.set("Api-Key-Generic", internalGenericAuthorization);
         }
-        if (internalAdditionalHeaderName != null && !internalAdditionalHeaderName.equals("")) {
-            if (internalAdditionalHeaderValue != null && !internalAdditionalHeaderValue.equals("")) {
-                headers.set(internalAdditionalHeaderName, internalAdditionalHeaderValue);
+        if (internalAdditionalHeaderName1 != null && !internalAdditionalHeaderName1.equals("")) {
+            if (internalAdditionalHeaderValue1 != null && !internalAdditionalHeaderValue1.equals("")) {
+                headers.set(internalAdditionalHeaderName1, internalAdditionalHeaderValue1);
+            }
+        }
+        if (internalAdditionalHeaderName2 != null && !internalAdditionalHeaderName2.equals("")) {
+            if (internalAdditionalHeaderValue2 != null && !internalAdditionalHeaderValue2.equals("")) {
+                headers.set(internalAdditionalHeaderName2, internalAdditionalHeaderValue2);
+            }
+        }
+        if (internalAdditionalHeaderName3 != null && !internalAdditionalHeaderName3.equals("")) {
+            if (internalAdditionalHeaderValue3 != null && !internalAdditionalHeaderValue3.equals("")) {
+                headers.set(internalAdditionalHeaderName3, internalAdditionalHeaderValue3);
+            }
+        }
+        if (internalAdditionalHeaderName4 != null && !internalAdditionalHeaderName4.equals("")) {
+            if (internalAdditionalHeaderValue4 != null && !internalAdditionalHeaderValue4.equals("")) {
+                headers.set(internalAdditionalHeaderName4, internalAdditionalHeaderValue4);
+            }
+        }
+        if (internalAdditionalHeaderName5 != null && !internalAdditionalHeaderName5.equals("")) {
+            if (internalAdditionalHeaderValue5 != null && !internalAdditionalHeaderValue5.equals("")) {
+                headers.set(internalAdditionalHeaderName5, internalAdditionalHeaderValue5);
             }
         }
 
@@ -137,9 +116,9 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         if (headersDto.getApiKeyGeneric() != null && !headersDto.getApiKeyGeneric().equals("")) {
             headers.set("Api-Key-Generic", headersDto.getApiKeyGeneric());
         }
-        if (headersDto.getAddtionalName() != null && !headersDto.getAddtionalName().equals("")) {
-            if (headersDto.getAddtionalValue() != null && !headersDto.getAddtionalValue().equals("")) {
-                headers.set(headersDto.getAddtionalName(), headersDto.getAddtionalValue());
+        if (headersDto.getAdditionalName() != null && !headersDto.getAdditionalName().equals("")) {
+            if (headersDto.getAdditionalValue() != null && !headersDto.getAdditionalValue().equals("")) {
+                headers.set(headersDto.getAdditionalName(), headersDto.getAdditionalValue());
             }
         }
 
@@ -151,6 +130,31 @@ public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTe
         }
 
         return headers;
+    }
+
+    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
+        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
+        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
+    }
+
+    protected static ResponseEntity<Object> codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
+
+        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
+            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
+                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
+            }
+        }
+
+        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
+        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
     }
 
 }

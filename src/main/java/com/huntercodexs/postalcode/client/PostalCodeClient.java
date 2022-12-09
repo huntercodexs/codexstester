@@ -14,7 +14,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class PostalCodeClient {
 
-    @Value("${service.address-search.url}")
+    @Value("${service.postal-code-search.url}")
     String urlAddressSearch;
 
     private final RestTemplate restTemplate = new RestTemplate();

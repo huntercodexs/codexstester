@@ -2,6 +2,8 @@ package codexstester.abstractor.dto;
 
 import lombok.*;
 
+import java.util.Map;
+
 @Getter
 @Setter
 @ToString
@@ -9,13 +11,14 @@ import lombok.*;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class HeadersDto {
     String contentType;
+    String accepted;
     String httpMethod;
     String statusCode;
     String crossOrigin;
     String origin;
     String hostname;
     String ip;
-    String osname;
+    String osName;
     String authorizationBasic;
     String authorizationBearer;
     String apiKeyToken;
@@ -23,6 +26,7 @@ public class HeadersDto {
     String apiKeySecret;
     String apiKeyValue;
     String apiKeyGeneric;
-    String addtionalName;
-    String addtionalValue;
+    String additionalName;
+    String additionalValue;
+    Map<String,String> bodyParameters;
 }
