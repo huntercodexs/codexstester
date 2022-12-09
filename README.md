@@ -722,3 +722,5 @@ entretanto ainda não foi mostrado como realizar um teste completo utilizando o 
 Um teste avançado no espaço de trabalho CODEXS TESTER nada mais é do que asseguran que o resultado de um teste seja 
 exatamente o esperado, conforme mostrado a seguir:
 
+
+

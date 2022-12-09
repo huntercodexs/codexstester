@@ -4,104 +4,20 @@ import codexstester.abstractor.dto.*;
 import codexstester.abstractor.internal.InternalHttpHeadersFactoryTests;
 import org.apache.http.client.HttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
-
-import static codexstester.abstractor.util.UtilTests.logTerm;
 
 public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeadersFactoryTests {
 
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    private MockMvc externalMockMvc;
-
-    private static final RestTemplate externalRestTemplate = new RestTemplate();
-
-    protected void setUp() {
-        logTerm("SETUP UNITARY IS START", null, true);
-        externalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
-
-    protected void createBeforeExternalTests(String user_data) throws Exception {
-        externalMockMvc.perform(
-                MockMvcRequestBuilders
-                        .post(externalUrlBaseTest + externalUriBaseTest)
-                        .content(user_data)
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .accept(MediaType.APPLICATION_JSON)
-                        .header("Authorization", externalAuthorizationBasic)
-        ).andReturn();
-    }
-
-    protected void rollbackExternalTests(String id) throws Exception {
-        externalMockMvc.perform(
-                MockMvcRequestBuilders
-                        .delete(externalUrlBaseTest + externalUriBaseTest +"/"+id)
-                        .header("Authorization", externalAuthorizationBasic)
-        ).andReturn();
-    }
-
-    protected void assertExternalTets(String ref, String text) {
-        if (text.contains(ref)) {
-            Assert.assertEquals(1, 1);
-        } else {
-            Assert.assertEquals(1, 0);
-        }
-    }
-
-    protected HttpHeaders codexsTesterExternalHttpRequestHeaders(boolean invalidAuth) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        if (invalidAuth) {
-            httpHeaders.set("Authorization", externalAuthorizationBasicInvalid);
-        } else {
-            httpHeaders.set("Authorization", externalAuthorizationBasic);
-        }
-        return httpHeaders;
-    }
-
-    protected HttpComponentsClientHttpRequestFactory codexsTesterExternalHttpClientFactory() {
+    protected HttpComponentsClientHttpRequestFactory externalHttpClientFactory() {
         HttpClient httpClient = HttpClientBuilder.create().build();
         return new HttpComponentsClientHttpRequestFactory(httpClient);
     }
 
-    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterExternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
-        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
-        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
-        return externalRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
-    }
-
-    protected static ResponseEntity<Object> codexsTesterExternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
-
-        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
-            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
-                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
-            }
-        }
-
-        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
-        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
-        return externalRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
-    }
-
-    protected HttpHeaders codexsTesterExternalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
+    protected HttpHeaders externalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
 
         HttpHeaders headers = new HttpHeaders();
 
@@ -193,6 +109,31 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
         }
 
         return headers;
+    }
+
+    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterExternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
+        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
+        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
+    }
+
+    protected static ResponseEntity<Object> codexsTesterExternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
+
+        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
+            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
+                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
+            }
+        }
+
+        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
+        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
     }
 
 }

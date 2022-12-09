@@ -1,10 +1,10 @@
 package codexstester.abstractor.external;
 
-import codexstester.abstractor.http.AvailableHttpStatusTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.http.AvailableHttpStatusTests;
 
-public abstract class ExternalRequest5xxTests extends AbstractExternalRequestTests {
+public abstract class ExternalRequest5xxTests extends AbstractExternalRestTemplateTests {
 
     protected void isOk5xxExternalTest() throws Exception {
         executeExternalTest(new RequestDto(), new HeadersDto());

@@ -3,32 +3,16 @@ package codexstester.abstractor.internal;
 import codexstester.abstractor.dto.*;
 import codexstester.abstractor.http.HttpHeadersFactoryTests;
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 
 public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactoryTests {
 
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    protected void setUp() {
-        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
-
-    protected MockMvc internalMockMvc;
-
-    private static final RestTemplate internalRestTemplate = new RestTemplate();
-
     protected void createBeforeInternalTests(String user_data) throws Exception {
-        internalMockMvc.perform(
+        genericMockMvc.perform(
                 MockMvcRequestBuilders
                         .post(internalUriBaseTest)
                         .content(user_data)
@@ -39,7 +23,7 @@ public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactory
     }
 
     protected void rollbackInternalTests(String id) throws Exception {
-        internalMockMvc.perform(
+        genericMockMvc.perform(
                 MockMvcRequestBuilders
                         .delete(internalUrlBaseTest + internalUriBaseTest +"/"+id)
                         .header("Authorization", internalAuthorizationBasic)
@@ -54,32 +38,7 @@ public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactory
         }
     }
 
-    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
-        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
-        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
-        return internalRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
-    }
-
-    protected static ResponseEntity<Object> codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
-
-        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
-            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
-                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
-            }
-        }
-
-        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
-        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
-        return internalRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
-    }
-
-    protected HttpHeaders codexsTesterInternalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
+    protected HttpHeaders internalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
 
         HttpHeaders headers = new HttpHeaders();
 
@@ -171,6 +130,31 @@ public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactory
         }
 
         return headers;
+    }
+
+    protected static ResponseEntity<Oauth2ResponseTokenDto> codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestTokenDto.getAuth().replaceFirst("Basic ", ""));
+        String credentials = "?username="+ oauth2RequestTokenDto.getUser()+"&password="+ oauth2RequestTokenDto.getPass()+"&grant_type="+ oauth2RequestTokenDto.getGrant();
+        HttpEntity<String> httpEntity = new HttpEntity<>(credentials, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestTokenDto.getUrl() + credentials, httpEntity, Oauth2ResponseTokenDto.class);
+    }
+
+    protected static ResponseEntity<Object> codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+        httpHeaders.set("Authorization", "Basic " + oauth2RequestCheckTokenDto.getAuthorization().replaceFirst("Basic ", ""));
+
+        if (oauth2RequestCheckTokenDto.getAddtionalName() != null && !oauth2RequestCheckTokenDto.getAddtionalName().equals("")) {
+            if (oauth2RequestCheckTokenDto.getAddtionalValue() != null && !oauth2RequestCheckTokenDto.getAddtionalValue().equals("")) {
+                httpHeaders.set(oauth2RequestCheckTokenDto.getAddtionalName(), oauth2RequestCheckTokenDto.getAddtionalValue());
+            }
+        }
+
+        String body = "?token="+ oauth2RequestCheckTokenDto.getToken().replaceFirst("Bearer ", "");
+        HttpEntity<String> httpEntity = new HttpEntity<>(body, httpHeaders);
+        return genericRestTemplate.postForEntity(oauth2RequestCheckTokenDto.getUrl() + body, httpEntity, Object.class);
     }
 
 }

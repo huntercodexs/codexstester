@@ -4,26 +4,15 @@ import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import codexstester.abstractor.http.AvailableHttpMethodTests;
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
 import static codexstester.abstractor.util.UtilTests.logTerm;
 
-public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMethodTests {
-
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    protected void setUp() {
-        logTerm("SETUP INTERNAL IS START", null, true);
-        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
+public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTests {
 
     void executeInternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 
@@ -122,12 +111,12 @@ public abstract class AbstractTestsInternalRequestTests extends AvailableHttpMet
         if (aType == null || aType.equals("")) aType = MediaType.APPLICATION_JSON_VALUE;
 
         try {
-            result = internalMockMvc.perform(
+            result = genericMockMvc.perform(
                     requestBuilder
                             .content(requestDto.getDataRequest())
                             .contentType(cType)
                             .accept(aType)
-                            .headers(codexsTesterInternalBuilderHeaders(requestDto, headersDto))
+                            .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
             logTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);

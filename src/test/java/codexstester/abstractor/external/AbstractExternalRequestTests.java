@@ -4,29 +4,15 @@ import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import codexstester.abstractor.http.AvailableHttpMethodTests;
 import org.junit.Assert;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.context.WebApplicationContext;
 
 import static codexstester.abstractor.util.UtilTests.logTerm;
 
 public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
-
-    @Autowired
-    WebApplicationContext webApplicationContext;
-
-    protected void setUp() {
-        logTerm("SETUP EXTERNAL IS START", null, true);
-        internalMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-    }
-
-    private static final RestTemplate abstractorRestTemplate = new RestTemplate();
 
     void executeExternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 
@@ -73,7 +59,7 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
         if (requestDto.getId() != null && !requestDto.getId().equals("")) uri = uri +"/"+ requestDto.getId();
 
         String url = externalUrlBaseTest + uri;
-        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), codexsTesterExternalBuilderHeaders(requestDto, headersDto));
+        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), externalBuilderHeaders(requestDto, headersDto));
 
         if (externalUrlQueryParameters != null && !externalUrlQueryParameters.equals("")) {
             url = url + "?" + externalUrlQueryParameters;
@@ -89,52 +75,52 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             switch (method) {
                 case HTTP_METHOD_GET:
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_POST:
                     try {
-                        response = abstractorRestTemplate.postForEntity(url, httpEntity, Object.class);
+                        response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.postForEntity(url, httpEntity, String.class);
+                        response = genericRestTemplate.postForEntity(url, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_DELETE:
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_PUT:
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_PATCH:
-                    abstractorRestTemplate.setRequestFactory(codexsTesterExternalHttpClientFactory());
+                    genericRestTemplate.setRequestFactory(externalHttpClientFactory());
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_HEAD:
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_OPTIONS:
                     try {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
                     } catch (Exception ex) {
-                        response = abstractorRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
+                        response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
                     }
                     break;
                 default:

@@ -98,7 +98,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
             } else if (fndVal.equals(expVal) && fndType != expType && strictMode) {
 
-                logTermTests("> RESULT IS [FAIL] [STRICT] [CRITICAL-ERROR] [WRONG-TYPED.]", expKey, true);
+                logTermTests("> RESULT IS [FAIL] [STRICT] [CRITICAL-ERROR] [WRONG-TYPED]", expKey, true);
                 defaultMessage(expVal, fndVal, expType, fndType, expKey, "IGNORED");
                 Assert.fail();
 
@@ -106,13 +106,13 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
                 logTermTests("> RESULT IS [OK]", expKey, false);
 
-            } else if (!fndVal.equals(expVal) && fndType == expType && !strictMode) {
+            } else if (!expVal.equals(fndVal) && fndType == expType && !strictMode) {
 
                 logTermTests("> RESULT IS [WARNING] [NO-STRICT] [DIFF-VALUES]", expKey, true);
                 defaultMessage(expVal, fndVal, expType, fndType, expKey, "IGNORED");
                 strictMessage(true);
 
-            } else if (!fndVal.equals(expVal) && fndType == expType) {
+            } else if (!expVal.equals(fndVal) && fndType == expType) {
 
                 logTermTests("> RESULT IS [FAIL] [STRICT] [DIFF-VALUES]", expKey, true);
                 defaultMessage(expVal, fndVal, expType, fndType, expKey, "IGNORED");
@@ -121,7 +121,7 @@ public abstract class AdvancedTests extends FilePropertiesSourceTests {
 
             } else {
 
-                logTermTests("> RESULT IS [WARNING] [NO-STRICT] [CRITICAL-ERROR] [WRONG-TYPED.]", expKey, true);
+                logTermTests("> RESULT IS [WARNING] [NO-STRICT] [CRITICAL-ERROR] [WRONG-TYPED]", expKey, true);
                 defaultMessage(expVal, fndVal, expType, fndType, expKey, "IGNORED");
                 Assert.fail();
             }

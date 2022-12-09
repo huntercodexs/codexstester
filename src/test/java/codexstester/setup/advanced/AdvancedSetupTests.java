@@ -148,4 +148,53 @@ public class AdvancedSetupTests {
     public static Object[] expectedLinkedHashMapTyped() {
         return new Object[]{String.class, JSONObject.class};
     }
+
+    /**
+     * POSTAL CODE ADVANCED TESTS - JSON TYPED
+     */
+    public static String[] expectedJsonKeysPostalCode() {
+        return new String[]{
+                "cep",
+                "logradouro",
+                "complemento",
+                "bairro",
+                "localidade",
+                "uf",
+                "ibge",
+                "gia",
+                "ddd",
+                "siafi"
+        };
+    }
+
+    public static Object[] expectedJsonValuesPostalCode() {
+        return new Object[]{
+                "12090002",
+                "Rua São Caetano",
+                "",
+                "Campos Elíseos",
+                "Taubaté",
+                "SP",
+                "3554102",
+                "6889",
+                "12",
+                "7183"
+        };
+    }
+
+    public static Object[] expectedJsonTypedPostalCode() {
+        return new Object[]{
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class,
+                String.class
+        };
+    }
+
 }

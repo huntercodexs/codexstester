@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2CheckToken;
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
+import static codexstester.abstractor.util.UtilTests.codexsTesterStringToJson;
 import static codexstester.setup.datasource.DataSourcePostalCodeTests.ignoreOAuth2Tests;
 
 public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
@@ -68,6 +69,32 @@ public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
             System.out.println("RESULT: " + response.getBody());
             codexsTesterAssertBool(true, true);
         }
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProps.getProperty("external.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        JSONObject jsonResponse = codexsTesterStringToJson(response.getBody().toString());
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonKeysPostalCode(),
+                expectedJsonValuesPostalCode(),
+                expectedJsonTypedPostalCode(),
+                jsonResponse,
+                false);
     }
 
     @Test

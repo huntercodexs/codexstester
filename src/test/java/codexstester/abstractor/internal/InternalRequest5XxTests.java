@@ -1,10 +1,10 @@
 package codexstester.abstractor.internal;
 
-import codexstester.abstractor.http.AvailableHttpStatusTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.http.AvailableHttpStatusTests;
 
-public abstract class InternalRequest5XxTests extends AbstractTestsInternalRequestTests {
+public abstract class InternalRequest5XxTests extends AbstractInternalMockMvcTests {
 
     protected void isOk5xxInternalTest() throws Exception {
         executeInternalTest(new RequestDto(), new HeadersDto());

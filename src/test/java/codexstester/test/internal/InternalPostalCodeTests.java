@@ -11,7 +11,8 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import static codexstester.abstractor.security.SecurityTests.*;
+import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
+import static codexstester.abstractor.util.UtilTests.codexsTesterStringToJson;
 
 public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
 
@@ -49,6 +50,32 @@ public class InternalPostalCodeTests extends InternalPostalCodeBridgeTests {
      * Sample DataSourcePostalCodeTests
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
+
+    @Test
+    public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        String response = codexsTesterInternalDispatcher(requestDto, headersDto);
+        JSONObject jsonResponse = codexsTesterStringToJson(response);
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonKeysPostalCode(),
+                expectedJsonValuesPostalCode(),
+                expectedJsonTypedPostalCode(),
+                jsonResponse,
+                false);
+    }
 
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {

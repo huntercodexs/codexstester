@@ -1,9 +1,10 @@
 package codexstester.abstractor.util;
 
+import net.minidev.json.JSONObject;
 import org.springframework.util.DigestUtils;
 
-import java.io.*;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.UUID;
 
@@ -60,49 +61,60 @@ public class UtilTests {
         System.out.println(title+": "+data);
     }
 
-    public static void setRuntimeFile(String currentFile) {
-        logTerm("SET RUNTIME FILE", currentFile, true);
+    public static JSONObject codexsTesterQueryStringToJson(String queryString) {
 
-        File fileInf = new File("src/test/java/codexstester/setup/codexstester-runtime-file.inf");
+        String[] splitter = queryString.split("&");
+        JSONObject jsonData = new JSONObject();
 
-        BufferedWriter buffWrite = null;
-        try {
-            buffWrite = new BufferedWriter(new FileWriter(fileInf));
-            buffWrite.write(currentFile);
-            buffWrite.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+        for (String split : splitter) {
+            String[] splitter2 = split.split("=");
+            jsonData.appendField(splitter2[0].trim(), splitter2[1].trim());
         }
+
+        return jsonData;
+
     }
 
-    public static String readRuntimeFile() {
+    public static String codexsTesterJsonToString(JSONObject json) {
+        return json.toJSONString();
+    }
 
-        logTerm("READ RUNTIME FILE", null, true);
+    public static JSONObject codexsTesterStringToJson(String string) {
 
-        String lineFile = null;
-        try {
-            FileReader currentFile = null;
-            try {
-                currentFile = new FileReader("src/test/java/codexstester/setup/codexstester-runtime-file.inf");
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
+        logTerm("CODEXS TESTER STRING TO JSON", string, true);
+
+        JSONObject jsonData = new JSONObject();
+        String strClean = string.replaceAll("[\"{\\[\\]}'/\\\\]+", "");
+        String[] splitter = strClean.split(",");
+
+        if (!string.contains(":")) {
+
+            for (String splitOne : splitter) {
+                String[] splitter2 = splitOne.split("=");
+
+                try {
+                    jsonData.appendField(splitter2[0].trim(), splitter2[1].trim());
+                } catch (RuntimeException re) {
+                    logTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
+                    jsonData.appendField(splitter2[0].trim(), "");
+                }
             }
-            BufferedReader readActivateFile = new BufferedReader(currentFile);
 
-            lineFile = "";
-            try {
-                lineFile = readActivateFile.readLine();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        } else {
+
+            for (String splitOne : splitter) {
+                String[] splitter2 = splitOne.split(":");
+
+                try {
+                    jsonData.appendField(splitter2[0].trim(), splitter2[1].trim());
+                } catch (RuntimeException re) {
+                    logTerm("EXCEPTION ON codexsTesterStringToJson", re.getMessage(), true);
+                    jsonData.appendField(splitter2[0].trim(), "");
+                }
             }
-
-            currentFile.close();
-
-        } catch (IOException e) {
-            logTerm("READ-FILE [EXCEPTION]", e.getMessage(), true);
         }
 
-        return lineFile;
+        return jsonData;
     }
 
 }
