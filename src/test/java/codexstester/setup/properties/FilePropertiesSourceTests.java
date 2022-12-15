@@ -14,6 +14,6 @@ public class FilePropertiesSourceTests extends AdvancedSetupTests {
      *      use "sample/" to sample/external.tests.properties (src/test/resources/sample/external.tests.properties)
      *      use "sample/test1/" to postalcode/test1/external.tests.properties (src/test/resources/sample/test1/external.tests.properties)
      */
-    protected static String targetTests = "postalcode/";
+    protected static String targetTests = "sample/";
 
 }
