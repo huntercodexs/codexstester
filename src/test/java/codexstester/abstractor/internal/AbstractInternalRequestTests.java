@@ -123,6 +123,7 @@ public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTe
 
         } catch (Exception ex) {
             codexsHelperLogTerm("EXCEPTION[MOCK-MVC]", ex.getMessage(), true);
+            resulted(false);
             Assert.fail("EXCEPTION[MOCK-MVC]: " + ex.getMessage());
         }
 

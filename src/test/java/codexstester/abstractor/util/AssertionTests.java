@@ -6,24 +6,40 @@ import org.junit.Assert;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTermTests;
+
 public abstract class AssertionTests extends AdvancedTests {
+
+    protected static void resulted(boolean flag) {
+        if (flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED: ", "PASSED", true);
+        if (!flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED: ", "FAILED", true);
+    }
 
     protected void codexsTesterAssertExact(String ref, String text) {
         if (text.equals(ref)) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
 
     protected void codexsTesterAssertObject(Object obj1, Object obj2) {
-        Assert.assertEquals(obj1, obj2);
+        try {
+            Assert.assertEquals(obj1, obj2);
+            resulted(true);
+        } catch (RuntimeException re) {
+            resulted(false);
+        }
     }
 
     protected void codexsTesterAssertText(String ref, String text) {
         if (text.contains(ref)) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
@@ -31,7 +47,9 @@ public abstract class AssertionTests extends AdvancedTests {
     protected void codexsTesterAssertRegExp(String regExp, String text) {
         if (text.matches(regExp)) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
@@ -39,37 +57,57 @@ public abstract class AssertionTests extends AdvancedTests {
     protected void codexsTesterAssertInt(int num1, int num2) {
         if (num1 == num2) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
 
     protected void codexsTesterAssertBool(boolean val, boolean flag) {
-        if (flag)
+        if (flag) {
             Assert.assertTrue(val);
-        else
+            resulted(true);
+        } else {
+            resulted(false);
             Assert.assertFalse(val);
+        }
     }
 
     protected void codexsTesterAssertNotNull(Object obj) {
-        Assert.assertNotNull(obj);
+        try {
+            Assert.assertNotNull(obj);
+            resulted(true);
+        } catch (RuntimeException re) {
+            resulted(false);
+        }
     }
 
     protected void codexsTesterAssertNull(Object obj) {
-        Assert.assertNull(obj);
+        try {
+            Assert.assertNull(obj);
+            resulted(true);
+        } catch (RuntimeException re) {
+            resulted(false);
+        }
     }
 
     protected void codexsTesterAssertNumber(String number) {
         if (StringUtils.isNumeric(number)) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
 
     protected void codexsTesterAssertCpf(String cpf) {
 
-        if (cpf.length() > 11) Assert.fail();
+        if (cpf.length() > 11) {
+            resulted(false);
+            Assert.fail();
+        }
 
         cpf = cpf.replace(".", "");
         cpf = cpf.replace("-", "");
@@ -77,6 +115,7 @@ public abstract class AssertionTests extends AdvancedTests {
         try {
             Long.parseLong(cpf);
         } catch(NumberFormatException e) {
+            resulted(false);
             Assert.fail();
         }
 
@@ -114,6 +153,7 @@ public abstract class AssertionTests extends AdvancedTests {
 
         nDigResult = String.valueOf(digit1) + String.valueOf(digit2);
 
+        resulted(true);
         Assert.assertEquals(digitVerify, nDigResult);
     }
 
@@ -127,6 +167,7 @@ public abstract class AssertionTests extends AdvancedTests {
                 isValidMail = true;
             }
         }
+        resulted(isValidMail);
         Assert.assertTrue(isValidMail);
     }
 
@@ -140,11 +181,17 @@ public abstract class AssertionTests extends AdvancedTests {
                 isValidPhone = true;
             }
         }
+        resulted(isValidPhone);
         Assert.assertTrue(isValidPhone);
     }
 
     protected void codexsTesterAssertSum(int a, int b, int c) {
-        if (a + b == c) Assert.assertTrue(true);
+        if (a + b == c) {
+            Assert.assertTrue(true);
+            resulted(true);
+        } else {
+            resulted(false);
+        }
     }
 
 }

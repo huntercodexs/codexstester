@@ -131,9 +131,11 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
 
             Assert.assertEquals(response.getStatusCodeValue(), requestDto.getExpectedCode());
 
+
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 codexsHelperLogTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
                 Assert.assertEquals(requestDto.getExpectedMessage(), response.getBody());
+                resulted(true);
             }
 
         } catch (HttpClientErrorException ex) {
@@ -155,8 +157,14 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
             System.out.println(se.getMessage());
             System.out.println(se.getResponseBodyAsString());
 
-            Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
+            try {
+                Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
+            } catch (RuntimeException re) {
+                resulted(false);
+            }
+
         } catch (RuntimeException re) {
+            resulted(false);
             Assert.fail("RUNTIME EXCEPTION IN EXTERNAL RESPONSE: " + re.getMessage());
         }
     }
