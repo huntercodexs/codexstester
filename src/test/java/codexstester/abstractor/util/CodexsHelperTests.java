@@ -57,7 +57,11 @@ public class CodexsHelperTests {
             for (int i = 0; i < 120; i++) System.out.print("-");
             System.out.print("\n");
         }
-        System.out.println(title+": "+data);
+        if (data != null && !data.equals("")) {
+            System.out.println(title + ": " + data);
+        } else {
+            System.out.println(title);
+        }
     }
 
     public static JSONObject codexsHelperQueryStringToJson(String queryString) {

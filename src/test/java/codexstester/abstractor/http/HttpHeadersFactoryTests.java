@@ -20,10 +20,10 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
 
     protected void setUp() {
 
-        String release = "1.0.2";
+        String release = "1.0.3";
         String welcome = "\n" +
                 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n" +
-                "WELCOME TO \n" +
+                " \n" +
                 "//||||  //|||\\\\  ||||\\\\   ||||||  \\\\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\\\ \n" +
                 "||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  // \n" +
                 "\\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\ \n" +
@@ -33,11 +33,10 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
                 "https://github.com/huntercodexs \n" +
                 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n" +
                 "\n" +
-                "Codexs Tester is running ... \n";
+                "CODEXS TESTER IS STARTING ... \n";
 
-        System.out.println("<pre>"+welcome+"</pre>");
-
-        codexsHelperLogTerm("SETUP IN HEADERS FACTORY IS START", null, true);
+        codexsHelperLogTerm("WELCOME TO", welcome, true);
+        codexsHelperLogTerm("SETUP ENVRONIMENT IS START", null, true);
 
         genericMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         genericRestTemplate = new RestTemplate();

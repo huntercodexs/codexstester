@@ -39,6 +39,29 @@ public class AdvancedSetupTests {
         };
     }
 
+    public static Object[][] expectedJsonDataTree() {
+
+        String string = "value1";
+        JSONObject jsonObject = new JSONObject();
+        HeadersDto headersDto = new HeadersDto();
+        HashMap<Object, Object> hashMap = new HashMap<>();
+        ArrayList<Object> arrayList = new ArrayList<>();
+        LinkedList<Object> linkedList = new LinkedList<>();
+        List<String> list = new ArrayList<>();
+        LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+
+        return new Object[][]{
+            {"field1", string,        String.class},
+            {"field2", jsonObject,    JSONObject.class},
+            {"field3", headersDto,    HeadersDto.class},
+            {"field4", hashMap,       HashMap.class},
+            {"field5", arrayList,     ArrayList.class},
+            {"field6", linkedList,    LinkedList.class},
+            {"field7", list,          List.class},
+            {"field8", linkedHashMap, LinkedHashMap.class}
+        };
+    }
+
     /**
      * DTO FORMAT
      */
@@ -66,6 +89,30 @@ public class AdvancedSetupTests {
         };
     }
 
+    public static Object[][] expectedDtoDataTree() {
+        return new Object[][]{
+                {"contentType", "contentType=application/json", String.class},
+                {"accepted", "accepted=null", String.class},
+                {"httpMethod", "httpMethod=POST", String.class},
+                {"statusCode", "statusCode=null", String.class},
+                {"crossOrigin", "crossOrigin=null", String.class},
+                {"origin", "origin=null", String.class},
+                {"hostname", "hostname=null", String.class},
+                {"ip", "ip=null", String.class},
+                {"osName", "osName=null", String.class},
+                {"authorizationBasic", "authorizationBasic=null", String.class},
+                {"authorizationBearer", "authorizationBearer=null", String.class},
+                {"apiKeyToken", "apiKeyToken=null", String.class},
+                {"apiKeyAppName", "apiKeyAppName=null", String.class},
+                {"apiKeySecret", "apiKeySecret=null", String.class},
+                {"apiKeyValue", "apiKeyValue=null", String.class},
+                {"apiKeyGeneric", "apiKeyGeneric=null", String.class},
+                {"additionalName", "additionalName=null", String.class},
+                {"additionalValue", "additionalValue=null", String.class},
+                {"bodyParameters", "bodyParameters={name=value1}", Map.class}
+        };
+    }
+
     /**
      * HASH-MAP FORMAT
      */
@@ -85,6 +132,13 @@ public class AdvancedSetupTests {
         return new Object[]{String.class, JSONObject.class};
     }
 
+    public static Object[][] expectedHashMapDataTree() {
+        return new Object[][]{
+            {"name", "john smith", String.class},
+            {"info", "{\"age\":30,\"customer\":\"yes\"}", JSONObject.class},
+        };
+    }
+
     /**
      * ARRAY-LIST FORMAT
      */
@@ -98,6 +152,13 @@ public class AdvancedSetupTests {
 
     public static Object[] expectedArrayListTyped() {
         return new Object[]{String.class, JSONObject.class};
+    }
+
+    public static Object[][] expectedArrayListDataTree() {
+        return new Object[][]{
+                {0, "john smith", String.class},
+                {1, "{\"gender\":\"mens\",\"age\":30}", JSONObject.class},
+        };
     }
 
     /**
@@ -115,6 +176,13 @@ public class AdvancedSetupTests {
         return new Object[]{String.class, JSONObject.class};
     }
 
+    public static Object[][] expectedLinkedListDataTree() {
+        return new Object[][]{
+                {0, "john smith", String.class},
+                {1, "{\"gender\":\"mens\",\"age\":30}", JSONObject.class},
+        };
+    }
+
     /**
      * LIST FORMAT
      */
@@ -128,6 +196,13 @@ public class AdvancedSetupTests {
 
     public static Object[] expectedListTyped() {
         return new Object[]{String.class, String.class};
+    }
+
+    public static Object[][] expectedListDataTree() {
+        return new Object[][]{
+                {0, "john smith", String.class},
+                {1, "{\"gender\":\"mens\",\"age\":30}", String.class},
+        };
     }
 
     /**
@@ -147,6 +222,13 @@ public class AdvancedSetupTests {
 
     public static Object[] expectedLinkedHashMapTyped() {
         return new Object[]{String.class, JSONObject.class};
+    }
+
+    public static Object[][] expectedLinkedHashMapDataTree() {
+        return new Object[][]{
+                {"name", "john smith", String.class},
+                {"info", "{\"age\":30,\"customer\":\"yes\"}", JSONObject.class},
+        };
     }
 
     /**
