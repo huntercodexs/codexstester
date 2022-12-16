@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.huntercodexs</groupId>
-	<artifactId>POSTAL-CODE</artifactId>
-	<name>POSTAL-CODE</name>
-	<description>POSTAL-CODE</description>
+	<artifactId>CODEXSTESTER</artifactId>
+	<name>CODEXSTESTER</name>
+	<description>CODEXSTESTER</description>
 	<version>22.01.1-SNAPSHOT</version>
 
 	<properties>
