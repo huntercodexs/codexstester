@@ -3,17 +3,17 @@ This project is a complete workspace for writing unit and integration tests
 
 <pre>
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-WELCOME TO
+
 //||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\
 ||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //
 \\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\
 
-Release: 1.0.2
+Release: 1.0.3
 Powered by Huntercodexs (c) 2022
 https://github.com/huntercodexs
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Codexs Tester is running ...
+CODEXS TESTER IS STARTING ... 
 </pre>
 
 # License
@@ -909,6 +909,30 @@ to the "external" type shown above, thus dispensing with further details. Howeve
 image, in the first line the method used is codexsTesterInternalDispatcher() and not codexsTesterExternalDispatcher(), that is,
 the scope of the test is postalcode/internal.tests.properties contained in the path src/test/resources/postalcode/internal.tests.properties,
 and the type of test is "internal", as noted in item (4).
+
+- Utilizing the "DataTree" feature for advanced testing
+
+> Available in release 1.0.3
+
+Advanced tests have been optimized so that the programmer can be more agile in coding tests. That
+improvement is present in advanced tests through method overload, that is, methods that can be used
+in more than one way, or with more than one possibility of parameterization/argumentation.
+
+The resources in question are the same as described and illustrated earlier in this document, but will be presented
+here a brief demonstration of what can be done in advanced and optimized tests.
+
+> NOTE: These codes can be obtained in this same project in the tests path, more precisely in the UnitarySampleTests.java file
+
+In the figure below we have the use, see how much simpler and more direct the writing of an advanced test, which will test
+the entire "mapped tree" in your target named jsonResponse.
+
+![codexstester-advanced-unitary-tests-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-unitary-tests-datatree.png)
+
+The expectedJsonDataTree() method code was created in the AdvancedSetupTests.java file, which in turn is located
+in the path src/test/java/codexstester/setup/advanced, according to the image below the understanding of this data format for
+tests need more details.
+
+![codexstester-advanced-json-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-json-datatree.png)
 
 
 

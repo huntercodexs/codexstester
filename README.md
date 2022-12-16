@@ -3,17 +3,17 @@ Este projeto é um espaço de trabalho completo para escrever testes unitarios e
 
 <pre>
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-WELCOME TO
+
 //||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\
 ||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //
-`\\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\`
+\\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\
 
-Release: 1.0.2
+Release: 1.0.3
 Powered by Huntercodexs (c) 2022
 https://github.com/huntercodexs
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-Codexs Tester is running ...
+CODEXS TESTER IS STARTING ... 
 </pre>
 
 # Licença
@@ -909,6 +909,30 @@ to tipo "external" mostrado acima, sendo assim dispensa detalhes mais profundos.
 imagem, na primeira linha o metodo usado é codexsTesterInternalDispatcher() e nao codexsTesterExternalDispatcher(), ou seja, 
 o escopo to teste é postalcode/internal.tests.properties contido no path src/test/resources/postalcode/internal.tests.properties, 
 e o tipo de teste é "internal", conforme marcado no item (4).
+
+- Utilizando o recurso "DataTree" para testes avançados
+
+> Disponivel na release 1.0.3
+
+Os testes avançados foram otimizados para que o programador possa ter mais agilididade na codificação de testes. Essa 
+melhoria esta presente nos testes avançados por meio de sobrecarga de metodos, ou seja, metodos que podem ser usados 
+de mais de uma forma, ou com mais de uma possibilidade de parametrização/argumentação.
+
+Os recursos em questão são os mesmos ja descritos e ilustrados anteriormente nesse documento, porém sera apresentado 
+aqui uma breve demonstração do que pode ser feito nos testes avançados e otimizados.
+
+> NOTA: Esses códigos podem ser obtidos nesse mesmo projeto no path de testes, mais precisamente no arquivo UnitarySampleTests.java
+
+Na figura abaixo temos o uso, veja como ficou muito mais simple e direto a escrita de um teste avançado, o qual ira testar 
+toda a "arvore mapeada" no seu alvo chamado jsonResponse.
+
+![codexstester-advanced-unitary-tests-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-unitary-tests-datatree.png)
+
+O código do metodo expectedJsonDataTree() foi criado no arquivo AdvancedSetupTests.java que por sua vez esta localidado 
+no path src/test/java/codexstester/setup/advanced, conforme imagem abaixo o entendimento desse formato de dados para 
+testes dispensa maiores detalhes.
+
+![codexstester-advanced-json-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-json-datatree.png)
 
 
 
