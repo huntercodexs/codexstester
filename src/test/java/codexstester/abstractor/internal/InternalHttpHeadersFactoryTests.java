@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
+
 public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactoryTests {
 
     protected void createBeforeInternalTests(String user_data) throws Exception {
@@ -33,7 +35,9 @@ public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactory
     protected void assertInternalTests(String ref, String text) {
         if (text.contains(ref)) {
             Assert.assertEquals(1, 1);
+            resulted(true);
         } else {
+            resulted(false);
             Assert.assertEquals(1, 0);
         }
     }
