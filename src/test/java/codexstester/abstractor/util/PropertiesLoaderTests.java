@@ -16,24 +16,38 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
     protected final Properties internalProps = loadInternalPropsTests();
     protected final Properties unitaryProps = loadUnitaryPropsTests();
 
-    private static String fixTarget(String target) {
-        if (target == null || target.equals("") || target.equals("/")) {
-            return "";
+    private static String fixTarget(Object[][] target) {
+        if (target.length == 0) throw new RuntimeException("PROPERTIES FILE ERROR: Is Empty");
+
+        for (Object[] current : target) {
+            String currentTarget = current[0].toString();
+            String stateTarget = current[1].toString();
+
+            if (stateTarget.equals("true")) {
+                if (currentTarget == null || currentTarget.equals("") || currentTarget.equals("/")) {
+                    return "";
+                }
+                if (!currentTarget.endsWith("/")) {
+                    return currentTarget+"/";
+                }
+                return currentTarget;
+            }
         }
-        if (!target.endsWith("/")) {
-            return target+"/";
-        }
-        return target;
+        throw new RuntimeException("PROPERTIES FILE ERROR: Is Null");
+    }
+
+    private static String propertiesPath(String type) {
+        return "classpath:"+fixTarget(targetTests)+type+".tests.properties";
     }
 
     protected static Properties loadExternalPropsTests() {
 
-        codexsHelperLogTerm("LOAD EXTERNAL PROPS", null, true);
-
         Properties properties = new Properties();
+        String propFile = propertiesPath("external");
+        codexsHelperLogTerm("LOAD EXTERNAL PROPS", propFile, true);
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+fixTarget(targetTests)+"external.tests.properties");
+            File file = ResourceUtils.getFile(propFile);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {
@@ -45,12 +59,12 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
 
     protected static Properties loadInternalPropsTests() {
 
-        codexsHelperLogTerm("LOAD INTERNAL PROPS", null, true);
-
         Properties properties = new Properties();
+        String propFile = propertiesPath("internal");
+        codexsHelperLogTerm("LOAD INTERNAL PROPS", propFile, true);
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+fixTarget(targetTests)+"internal.tests.properties");
+            File file = ResourceUtils.getFile(propFile);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {
@@ -62,12 +76,12 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
 
     protected static Properties loadUnitaryPropsTests() {
 
-        codexsHelperLogTerm("LOAD UNITARY PROPS", null, true);
-
         Properties properties = new Properties();
+        String propFile = propertiesPath("unitary");
+        codexsHelperLogTerm("LOAD UNITARY PROPS", propFile, true);
 
         try {
-            File file = ResourceUtils.getFile("classpath:"+fixTarget(targetTests)+"unitary.tests.properties");
+            File file = ResourceUtils.getFile(propFile);
             InputStream in = Files.newInputStream(file.toPath());
             properties.load(in);
         } catch (IOException ioe) {

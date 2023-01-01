@@ -5,9 +5,15 @@ import org.springframework.util.DigestUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 public class CodexsHelperTests {
+
+    public static int codexsHelperRandomNumber(int n) {
+        Random generator = new Random();
+        return generator.nextInt(n);
+    }
 
     public static String codexsHelperMd5(String data) {
         return DigestUtils.md5DigestAsHex(data.getBytes());
@@ -59,6 +65,8 @@ public class CodexsHelperTests {
         }
         if (data != null && !data.equals("")) {
             System.out.println(title + ": " + data);
+        } else if (data == null) {
+            System.out.println(title + ": null");
         } else {
             System.out.println(title);
         }
@@ -82,7 +90,7 @@ public class CodexsHelperTests {
         return json.toJSONString();
     }
 
-    public static JSONObject codexsHelperStringToJson(String string) {
+    public static JSONObject codexsHelperStringToJsonSimple(String string) {
 
         codexsHelperLogTerm("CODEXS TESTER STRING TO JSON", string, true);
 

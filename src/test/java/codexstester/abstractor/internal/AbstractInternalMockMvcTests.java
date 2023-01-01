@@ -12,12 +12,17 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public abstract class AbstractInternalMockMvcTests extends AbstractInternalRequestTests {
 
-    protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) throws Exception {
+    protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
 
         String uri = internalUriBaseTest;
         String method = headersDto.getHttpMethod();
         MockHttpServletRequestBuilder requestBuilder = null;
         ResultMatcher status = statusMockMvcTranslator(requestDto);
+
+        if (status == null) {
+            String err = "Missing HTTP-STATUS from RequestDto: use setExpectedCode";
+            throw new RuntimeException(err);
+        }
 
         if (requestDto.getUri() != null && !requestDto.getUri().equals("")) uri = requestDto.getUri();
         if (requestDto.getId() != null && !requestDto.getId().equals("")) uri = uri + "/" + requestDto.getId();
@@ -81,8 +86,8 @@ public abstract class AbstractInternalMockMvcTests extends AbstractInternalReque
                             .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
-            codexsHelperLogTerm("INTERNAL DISPATCHER RESULT IS", result, true);
-            codexsHelperLogTerm("INTERNAL DISPATCHER RESPONSE IS", result.getResponse(), true);
+            //codexsHelperLogTerm("INTERNAL DISPATCHER RESULT IS", result, true);
+            //codexsHelperLogTerm("INTERNAL DISPATCHER RESPONSE IS", result.getResponse(), true);
             codexsHelperLogTerm("INTERNAL DISPATCHER CONTENT AS STRING IS", result.getResponse().getContentAsString(), true);
 
             return result.getResponse().getContentAsString();

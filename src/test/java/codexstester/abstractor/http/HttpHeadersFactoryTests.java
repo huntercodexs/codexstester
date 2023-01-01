@@ -20,7 +20,7 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
 
     protected void setUp() {
 
-        String release = "1.0.3";
+        String release = "1.0.4";
         String welcome = "\n" +
                 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n" +
                 " \n" +
@@ -36,7 +36,7 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
                 "CODEXS TESTER IS STARTING ... \n";
 
         codexsHelperLogTerm("WELCOME TO", welcome, true);
-        codexsHelperLogTerm("SETUP ENVRONIMENT IS START", null, true);
+        codexsHelperLogTerm("SETUP ENVIRONMENT IS START", null, true);
 
         genericMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         genericRestTemplate = new RestTemplate();

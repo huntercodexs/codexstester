@@ -108,6 +108,13 @@ public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeader
             headers.set("Content-Type", "application/json;charset=UTF-8");
         }
 
+        /*Default Headers*/
+        if (headersDto.getAccepted() != null && !headersDto.getAccepted().equals("")) {
+            headers.set("Accept", headersDto.getAccepted());
+        } else {
+            headers.set("Accept", "application/json;charset=UTF-8");
+        }
+
         return headers;
     }
 

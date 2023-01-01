@@ -1,8 +1,8 @@
 package codexstester.abstractor.external;
 
-import codexstester.abstractor.http.AvailableHttpStatusTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.http.AvailableHttpStatusTests;
 
 public abstract class ExternalRequest3xxTests extends ExternalRequest4xxTests {
 
