@@ -6,71 +6,79 @@ import org.junit.Assert;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTermTests;
 
 public abstract class AssertionTests extends AdvancedTests {
 
     protected static void resulted(boolean flag) {
-        if (flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED: ", "PASSED", true);
-        if (!flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED: ", "FAILED", true);
+        if (flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED", "PASSED", true);
+        if (!flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED", "FAILED", true);
     }
 
     protected void codexsTesterAssertExact(String ref, String text) {
         if (text.equals(ref)) {
-            Assert.assertEquals(1, 1);
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: "+ref, "<< RECEIVED: " + text, true);
             resulted(false);
-            Assert.assertEquals(1, 0);
+            Assert.fail();
         }
     }
 
     protected void codexsTesterAssertObject(Object obj1, Object obj2) {
-        try {
+        if (obj1 == obj2) {
             Assert.assertEquals(obj1, obj2);
             resulted(true);
-        } catch (RuntimeException re) {
+        } else {
+            codexsHelperLogTerm(">> EXPECTED: "+obj1, "<< RECEIVED: " + obj2, true);
             resulted(false);
+            Assert.fail();
         }
     }
 
-    protected void codexsTesterAssertText(String ref, String text) {
-        if (text.contains(ref)) {
-            Assert.assertEquals(1, 1);
+    protected void codexsTesterAssertText(String textPart, String text) {
+        if (text.contains(textPart)) {
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: "+textPart, "<< RECEIVED: " + text, true);
             resulted(false);
-            Assert.assertEquals(1, 0);
+            Assert.fail();
         }
     }
 
     protected void codexsTesterAssertRegExp(String regExp, String text) {
         if (text.matches(regExp)) {
-            Assert.assertEquals(1, 1);
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: "+regExp, "<< RECEIVED: " + text, true);
             resulted(false);
-            Assert.assertEquals(1, 0);
+            Assert.fail();
         }
     }
 
     protected void codexsTesterAssertInt(int num1, int num2) {
         if (num1 == num2) {
-            Assert.assertEquals(1, 1);
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: "+num1, "<< RECEIVED: " + num2, true);
             resulted(false);
-            Assert.assertEquals(1, 0);
+            Assert.fail();
         }
     }
 
-    protected void codexsTesterAssertBool(boolean val, boolean flag) {
-        if (flag) {
-            Assert.assertTrue(val);
+    protected void codexsTesterAssertBool(boolean val, boolean expected) {
+        if (expected == val) {
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: "+expected, "<< RECEIVED: " + val, true);
             resulted(false);
-            Assert.assertFalse(val);
+            Assert.fail();
         }
     }
 
@@ -79,7 +87,9 @@ public abstract class AssertionTests extends AdvancedTests {
             Assert.assertNotNull(obj);
             resulted(true);
         } catch (RuntimeException re) {
+            codexsHelperLogTerm(">> EXPECTED: NotNull", "<< RECEIVED: Null", true);
             resulted(false);
+            Assert.fail();
         }
     }
 
@@ -88,17 +98,20 @@ public abstract class AssertionTests extends AdvancedTests {
             Assert.assertNull(obj);
             resulted(true);
         } catch (RuntimeException re) {
+            codexsHelperLogTerm(">> EXPECTED: Null", "<< RECEIVED: NotNull", true);
             resulted(false);
+            Assert.fail();
         }
     }
 
     protected void codexsTesterAssertNumber(String number) {
         if (StringUtils.isNumeric(number)) {
-            Assert.assertEquals(1, 1);
+            Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: Numeric", "<< RECEIVED: " + number, true);
             resulted(false);
-            Assert.assertEquals(1, 0);
+            Assert.fail();
         }
     }
 
@@ -190,7 +203,9 @@ public abstract class AssertionTests extends AdvancedTests {
             Assert.assertTrue(true);
             resulted(true);
         } else {
+            codexsHelperLogTerm(">> EXPECTED: " + (a+b), "<< RECEIVED: " + c, true);
             resulted(false);
+            Assert.fail();
         }
     }
 

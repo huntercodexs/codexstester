@@ -1,8 +1,8 @@
 package codexstester.abstractor.internal;
 
-import codexstester.abstractor.http.AvailableHttpStatusTests;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
+import codexstester.abstractor.http.AvailableHttpStatusTests;
 
 public abstract class InternalRequest4xxTests extends InternalRequest5xxTests {
 

@@ -74,63 +74,42 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
 
             switch (method) {
                 case HTTP_METHOD_GET:
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange GET [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_POST:
-                    try {
-                        response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.postForEntity(url, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY postForEntity POST [Object]", url, true);
+                    response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_DELETE:
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange DELETE [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_PUT:
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange PUT [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_PATCH:
                     genericRestTemplate.setRequestFactory(externalHttpClientFactory());
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange PATCH [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_HEAD:
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange HEAD [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
                     break;
                 case HTTP_METHOD_OPTIONS:
-                    try {
-                        response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
-                    } catch (Exception ex) {
-                        response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
-                    }
+                    codexsHelperLogTerm("SEND REQUEST BY exchange OPTIONS [Object]", url, true);
+                    response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
                     break;
                 default:
                     throw new RuntimeException("INVALID HTTP METHOD: " + method);
             }
 
             codexsHelperLogTerm("EXTERNAL RESPONSE IS", response, true);
+            codexsHelperLogTerm("EXTERNAL STATUS CODE IS", response.getStatusCode(), true);
 
-            Assert.assertEquals(response.getStatusCodeValue(), requestDto.getExpectedCode());
-
+            Assert.assertEquals(requestDto.getExpectedCode(), response.getStatusCodeValue());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 codexsHelperLogTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
@@ -140,32 +119,58 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
 
         } catch (HttpClientErrorException ex) {
 
-            System.out.println("EXCEPTION[MESSAGE]: " + ex.getMessage());
-            System.out.println("EXCEPTION[BODY]: " + ex.getResponseBodyAsString());
+            codexsHelperLogTerm("HttpClientErrorException[MESSAGE]:", ex.getMessage(), true);
+            codexsHelperLogTerm("HttpClientErrorException[BODY]:", ex.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("HttpClientErrorException[CODE]:", ex.getStatusCode(), true);
 
-            Assert.assertEquals(ex.getRawStatusCode(), requestDto.getExpectedCode());
+            Assert.assertEquals(requestDto.getExpectedCode(), ex.getRawStatusCode());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-                try {
-                    Assert.assertEquals(requestDto.getExpectedMessage(), ex.getResponseBodyAsString());
-                } catch (Exception e) {
-                    Assert.assertEquals(requestDto.getExpectedMessage(), ex.getMessage());
+                if (!ex.getResponseBodyAsString().equals("")) {
+                    codexsTesterAssertExact(requestDto.getExpectedMessage(), ex.getResponseBodyAsString());
+                } else {
+
+                    String warn = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+                    warn += "IS NOT WAS POSSIBLE COMPARE THE RECEIVED RESPONSE BECAUSE IT IS EMPTY\n";
+                    warn += "IF REQUIRED ALSO COMPARE THE RESPONSE, YOU CAN BE USE THE ADVANCED TESTS\n";
+                    warn += "PLEASE, FOR MORE DETAILS GIVE A LOOK IN THE DOCUMENTATION ON GITHUB (README.md)\n";
+                    warn += "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+                    codexsHelperLogTerm("!!! W A R N I N G !!!", warn, false);
+
+                    Assert.assertTrue(true);
+                    resulted(true);
                 }
             }
+
         } catch (HttpServerErrorException se) {
 
-            System.out.println(se.getMessage());
-            System.out.println(se.getResponseBodyAsString());
+            codexsHelperLogTerm("HttpServerErrorException[MESSAGE]:", se.getMessage(), true);
+            codexsHelperLogTerm("HttpServerErrorException[BODY]:", se.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("HttpServerErrorException[CODE]:", se.getStatusCode(), true);
 
-            try {
-                Assert.assertEquals(se.getRawStatusCode(), requestDto.getExpectedCode());
-            } catch (RuntimeException re) {
-                resulted(false);
+            Assert.assertEquals(requestDto.getExpectedCode(), se.getRawStatusCode());
+
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                if (!se.getResponseBodyAsString().equals("")) {
+                    codexsTesterAssertExact(requestDto.getExpectedMessage(), se.getResponseBodyAsString());
+                } else {
+
+                    String warn = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+                    warn += "IS NOT WAS POSSIBLE COMPARE THE RECEIVED RESPONSE BECAUSE IT IS EMPTY\n";
+                    warn += "IF REQUIRED ALSO COMPARE THE RESPONSE, YOU CAN BE USE THE ADVANCED TESTS\n";
+                    warn += "PLEASE, FOR MORE DETAILS GIVE A LOOK IN THE DOCUMENTATION ON GITHUB (README.md)\n";
+                    warn += "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
+                    codexsHelperLogTerm("!!! W A R N I N G !!!", warn, false);
+
+                    Assert.assertTrue(true);
+                    resulted(true);
+                }
             }
 
         } catch (RuntimeException re) {
+            codexsHelperLogTerm("RuntimeException[MESSAGE]:", re.getMessage(), true);
             resulted(false);
-            Assert.fail("RUNTIME EXCEPTION IN EXTERNAL RESPONSE: " + re.getMessage());
+            Assert.fail("RuntimeException[MESSAGE]: " + re.getMessage());
         }
     }
 

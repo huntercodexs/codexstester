@@ -13,7 +13,13 @@ public class FilePropertiesSourceTests extends AdvancedSetupTests {
      *      use "" or "/" to external.tests.properties (src/test/resources/external.tests.properties)
      *      use "sample/" to sample/external.tests.properties (src/test/resources/sample/external.tests.properties)
      *      use "sample/test1/" to postalcode/test1/external.tests.properties (src/test/resources/sample/test1/external.tests.properties)
+     *
+     *      use "true" to PowerOn the current target test and "false" to PowerOff others target tests
+     *      IMPORTANT: Use just one current target "true" in time
      */
-    protected static String targetTests = "sample/";
+    protected static Object[][] targetTests = {
+            {"sample/", false},
+            {"postalcode/", true}
+    };
 
 }

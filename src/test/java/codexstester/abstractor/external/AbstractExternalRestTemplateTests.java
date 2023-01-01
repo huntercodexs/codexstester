@@ -15,6 +15,13 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
 
     protected ResponseEntity<?> codexsTesterExternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
 
+        try {
+            int code = requestDto.getExpectedCode();
+        } catch (RuntimeException re) {
+            String err = "Missing HTTP-STATUS from RequestDto: use setExpectedCode";
+            throw new RuntimeException(err);
+        }
+
         String uri = externalUriBaseTest;
         String method = headersDto.getHttpMethod();
 
