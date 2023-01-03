@@ -1,7 +1,7 @@
 package codexstester.abstractor.unitary;
 
-import codexstester.abstractor.http.AvailableHttpMethodTests;
+import codexstester.abstractor.external.ExternalRequest1xxTests;
 
-public abstract class AbstractUnitaryTests extends AvailableHttpMethodTests {
+public abstract class AbstractUnitaryTests extends ExternalRequest1xxTests {
 
 }

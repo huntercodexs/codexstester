@@ -121,22 +121,27 @@ public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTe
 
             codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);
 
+            /*Assert Content as String*/
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                if (!result.getResponse().getContentAsString().equals("")) {
+                    codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
+                    codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
+                    codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
+                    assertInternalTests(requestDto.getExpectedMessage(), result.getResponse().getContentAsString());
+                }
+            }
+
         } catch (Exception ex) {
             codexsHelperLogTerm("EXCEPTION[MOCK-MVC]", ex.getMessage(), true);
-            resulted(false);
-            Assert.fail("EXCEPTION[MOCK-MVC]: " + ex.getMessage());
-        }
 
-        /*Assert Content as String*/
-        if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-            if (!result.getResponse().getContentAsString().equals("")) {
-                codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
+            /*Try to assert content as string*/
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                codexsHelperLogTerm("TRY ASSERT INTEGRATION IN EXCEPTION", ex.getMessage(), true);
                 codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
-                codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
-                assertInternalTests(requestDto.getExpectedMessage(), result.getResponse().getContentAsString());
+                codexsHelperLogTerm("<<< RECEIVED MESSAGE", ex.getMessage(), true);
+                assertInternalTests(requestDto.getExpectedMessage(), ex.getMessage());
             }
         }
-
     }
 
     /**

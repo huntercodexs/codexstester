@@ -4,7 +4,7 @@ import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.Oauth2RequestTokenDto;
 import codexstester.abstractor.dto.Oauth2ResponseTokenDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.setup.bridge.PostalCodeInternalBridgeTests;
+import codexstester.setup.bridge.PostalCodeBridgeTests;
 import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
 
-public class PostalCodeInternalTests extends PostalCodeInternalBridgeTests {
+public class PostalCodeInternalTests extends PostalCodeBridgeTests {
 
     /**
      * DataSourcePostalCodeTests Helpers

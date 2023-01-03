@@ -1,8 +1,8 @@
 package codexstester.test.unitary;
 
-import codexstester.setup.bridge.PostalCodeUnitaryBridgeTests;
-import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import codexstester.abstractor.util.CodexsHelperTests;
+import codexstester.setup.bridge.PostalCodeBridgeTests;
+import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
@@ -22,7 +22,7 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.dataSource
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperFinalResponseDtoByEntity;
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperInitialResponseDto;
 
-public class PostalCodeUnitaryTests extends PostalCodeUnitaryBridgeTests {
+public class PostalCodeUnitaryTests extends PostalCodeBridgeTests {
 
     @Autowired
     PostalCodeService postalCodeService;

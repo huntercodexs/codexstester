@@ -2,7 +2,7 @@ package codexstester.abstractor.external;
 
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.abstractor.http.AvailableHttpMethodTests;
+import codexstester.abstractor.internal.InternalRequest1xxTests;
 import org.junit.Assert;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -12,7 +12,7 @@ import org.springframework.web.client.HttpServerErrorException;
 
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
-public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTests {
+public abstract class AbstractExternalRequestTests extends InternalRequest1xxTests {
 
     void executeExternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 
@@ -71,36 +71,41 @@ public abstract class AbstractExternalRequestTests extends AvailableHttpMethodTe
         try {
 
             ResponseEntity<?> response = null;
+            Class<?> responseType = Object.class;
+
+            if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
+                responseType = String.class;
+            }
 
             switch (method) {
                 case HTTP_METHOD_GET:
                     codexsHelperLogTerm("SEND REQUEST BY exchange GET [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_POST:
                     codexsHelperLogTerm("SEND REQUEST BY postForEntity POST [Object]", url, true);
-                    response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
+                    response = genericRestTemplate.postForEntity(url, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_DELETE:
                     codexsHelperLogTerm("SEND REQUEST BY exchange DELETE [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_PUT:
                     codexsHelperLogTerm("SEND REQUEST BY exchange PUT [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_PATCH:
                     genericRestTemplate.setRequestFactory(externalHttpClientFactory());
                     codexsHelperLogTerm("SEND REQUEST BY exchange PATCH [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_HEAD:
                     codexsHelperLogTerm("SEND REQUEST BY exchange HEAD [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, responseType);
                     break;
                 case HTTP_METHOD_OPTIONS:
                     codexsHelperLogTerm("SEND REQUEST BY exchange OPTIONS [Object]", url, true);
-                    response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
+                    response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, responseType);
                     break;
                 default:
                     throw new RuntimeException("INVALID HTTP METHOD: " + method);

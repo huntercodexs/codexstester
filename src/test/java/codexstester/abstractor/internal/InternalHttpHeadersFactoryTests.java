@@ -1,7 +1,7 @@
 package codexstester.abstractor.internal;
 
 import codexstester.abstractor.dto.*;
-import codexstester.abstractor.http.HttpHeadersFactoryTests;
+import codexstester.abstractor.properties.ExternalPropertyTests;
 import org.junit.Assert;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -9,7 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-public abstract class InternalHttpHeadersFactoryTests extends HttpHeadersFactoryTests {
+public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTests {
 
     protected void createBeforeInternalTests(String user_data) throws Exception {
         genericMockMvc.perform(

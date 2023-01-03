@@ -1,6 +1,6 @@
-package codexstester.abstractor.http;
+package codexstester.abstractor.core;
 
-import codexstester.abstractor.properties.ExternalPropertyTests;
+import codexstester.setup.properties.FilePropertiesSourceTests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -9,7 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
-public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
+public abstract class CodexsTesterIgnitionTests extends FilePropertiesSourceTests {
 
     protected static RestTemplate genericRestTemplate;
 
@@ -20,7 +20,7 @@ public abstract class HttpHeadersFactoryTests extends ExternalPropertyTests {
 
     protected void setUp() {
 
-        String release = "1.0.4";
+        String release = "1.0.5";
         String welcome = "\n" +
                 "|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| \n" +
                 " \n" +

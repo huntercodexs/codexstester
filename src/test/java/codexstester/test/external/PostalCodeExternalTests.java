@@ -1,7 +1,7 @@
 package codexstester.test.external;
 
 import codexstester.abstractor.dto.*;
-import codexstester.setup.bridge.PostalCodeExternalBridgeTests;
+import codexstester.setup.bridge.PostalCodeBridgeTests;
 import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurit
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
 import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAuth2Tests;
 
-public class PostalCodeExternalTests extends PostalCodeExternalBridgeTests {
+public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     /**
      * DataSourcePostalCodeTests Helpers

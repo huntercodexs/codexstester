@@ -1,13 +1,13 @@
 package codexstester.test.internal;
 
-import org.junit.Test;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.setup.bridge.SampleInternalBridgeTests;
+import codexstester.setup.bridge.SampleBridgeTests;
 import codexstester.setup.datasource.SampleDataSourceTests;
+import org.junit.Test;
 import org.springframework.http.MediaType;
 
-public class SampleInternalTests extends SampleInternalBridgeTests {
+public class SampleInternalTests extends SampleBridgeTests {
 
     /**
      * DataSourcePostalCodeTests Helpers

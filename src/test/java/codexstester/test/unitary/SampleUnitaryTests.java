@@ -1,7 +1,7 @@
 package codexstester.test.unitary;
 
 import codexstester.abstractor.dto.HeadersDto;
-import codexstester.setup.bridge.SampleUnitaryBridgeTests;
+import codexstester.setup.bridge.SampleBridgeTests;
 import codexstester.setup.datasource.SampleDataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
@@ -12,7 +12,7 @@ import java.util.*;
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
 
-public class SampleUnitaryTests extends SampleUnitaryBridgeTests {
+public class SampleUnitaryTests extends SampleBridgeTests {
 
     @Test
     public void whenSumAnyNumbersTest() {

@@ -1,6 +1,6 @@
 package codexstester.abstractor.util;
 
-import codexstester.setup.properties.FilePropertiesSourceTests;
+import codexstester.abstractor.core.CodexsTesterIgnitionTests;
 import net.minidev.json.JSONObject;
 import org.json.JSONException;
 import org.junit.Assert;
@@ -13,7 +13,7 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperMd5;
 import static codexstester.abstractor.util.CodexsParserJsonTests.*;
 
-public abstract class AdvancedTests extends FilePropertiesSourceTests {
+public abstract class AdvancedTests extends CodexsTesterIgnitionTests {
 
     private String hash(Object data) {
         if (data == null || data.toString() == null || data.toString().equals("null")) return "DATA IS NULL";
