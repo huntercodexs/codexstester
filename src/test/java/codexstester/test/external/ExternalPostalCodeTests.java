@@ -94,8 +94,8 @@ public class ExternalPostalCodeTests extends ExternalPostalCodeBridgeTests {
                 expectedJsonValuesPostalCode(),
                 expectedJsonTypedPostalCode(),
                 jsonResponse,
-                false,
-                "none",
+                true,
+                "complex",
                 true);
     }
 
