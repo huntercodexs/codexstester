@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
  * SAMPLE DATA SOURCE
  * Use this file to create all tests source
  * */
-public class DataSourcePostalCodeTests extends SecurityTests {
+public class PostalCodeDataSourceTests extends SecurityTests {
 
     /**
      * DEFAULT ATTRIBUTES

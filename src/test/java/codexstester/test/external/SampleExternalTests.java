@@ -3,11 +3,11 @@ package codexstester.test.external;
 import org.junit.Test;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
-import codexstester.setup.bridge.ExternalSampleBridgeTests;
-import codexstester.setup.datasource.DataSourceSampleTests;
+import codexstester.setup.bridge.SampleExternalBridgeTests;
+import codexstester.setup.datasource.SampleDataSourceTests;
 import org.springframework.http.MediaType;
 
-public class ExternalSampleTests extends ExternalSampleBridgeTests
+public class SampleExternalTests extends SampleExternalBridgeTests
 {
 
     /**
@@ -47,7 +47,7 @@ public class ExternalSampleTests extends ExternalSampleBridgeTests
 
     @Test
     public void whenSimpleTestUsingString_AssertExact() throws Exception {
-        String result = DataSourceSampleTests.dataSourceSampleResponse();
+        String result = SampleDataSourceTests.dataSourceSampleResponse();
         codexsTesterAssertExact("This is a expected sample response", result);
     }
 

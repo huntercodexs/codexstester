@@ -1,8 +1,8 @@
 package codexstester.test.unitary;
 
 import codexstester.abstractor.dto.HeadersDto;
-import codexstester.setup.bridge.UnitarySampleBridgeTests;
-import codexstester.setup.datasource.DataSourceSampleTests;
+import codexstester.setup.bridge.SampleUnitaryBridgeTests;
+import codexstester.setup.datasource.SampleDataSourceTests;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.MediaType;
@@ -12,11 +12,11 @@ import java.util.*;
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
 
-public class UnitarySampleTests extends UnitarySampleBridgeTests {
+public class SampleUnitaryTests extends SampleUnitaryBridgeTests {
 
     @Test
     public void whenSumAnyNumbersTest() {
-        int result = DataSourceSampleTests.dataSourceSampleSum(1000, 10);
+        int result = SampleDataSourceTests.dataSourceSampleSum(1000, 10);
         codexsTesterAssertInt(result, 1010);
     }
 

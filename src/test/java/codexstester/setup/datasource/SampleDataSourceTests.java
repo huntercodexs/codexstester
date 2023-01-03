@@ -6,7 +6,7 @@ import codexstester.abstractor.security.SecurityTests;
  * SAMPLE DATA SOURCE
  * Use this file to create all tests source
  * */
-public class DataSourceSampleTests extends SecurityTests {
+public class SampleDataSourceTests extends SecurityTests {
 
     /**
      * DEFAULT ATTRIBUTES

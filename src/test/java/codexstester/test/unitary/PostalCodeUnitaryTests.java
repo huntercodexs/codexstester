@@ -1,7 +1,7 @@
 package codexstester.test.unitary;
 
-import codexstester.setup.bridge.UnitaryPostalCodeBridgeTests;
-import codexstester.setup.datasource.DataSourcePostalCodeTests;
+import codexstester.setup.bridge.PostalCodeUnitaryBridgeTests;
+import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import codexstester.abstractor.util.CodexsHelperTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
@@ -17,12 +17,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import static codexstester.setup.datasource.DataSourcePostalCodeTests.dataSourceSampleResponseJSONString;
-import static codexstester.setup.datasource.DataSourcePostalCodeTests.dataSourceSampleResponseString;
+import static codexstester.setup.datasource.PostalCodeDataSourceTests.dataSourceSampleResponseJSONString;
+import static codexstester.setup.datasource.PostalCodeDataSourceTests.dataSourceSampleResponseString;
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperFinalResponseDtoByEntity;
 import static com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper.mapperInitialResponseDto;
 
-public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
+public class PostalCodeUnitaryTests extends PostalCodeUnitaryBridgeTests {
 
     @Autowired
     PostalCodeService postalCodeService;
@@ -67,21 +67,21 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
 
     @Test
     public void whenMapperFinalResponseDtoTest_FromPostalCodeResponseMapper_AssertExact() {
-        PostalCodeResponseDto postalCodeResponseDto = DataSourcePostalCodeTests.dataSourceMapperFinalResponseDto();
+        PostalCodeResponseDto postalCodeResponseDto = PostalCodeDataSourceTests.dataSourceMapperFinalResponseDto();
         PostalCodeResponseDto result = PostalCodeResponseMapper.mapperFinalResponseDtoByNew(postalCodeResponseDto);
         codexsTesterAssertExact(CodexsHelperTests.codexsHelperMd5(result.toString()), CodexsHelperTests.codexsHelperMd5(new PostalCodeResponseDto().toString()));
     }
 
     @Test
     public void whenMapperFinalResponseDtoByEntityTest_FromPostalCodeResponseMapper_AssertBoolean() {
-        PostalCodeEntity postalCodeEntity = DataSourcePostalCodeTests.dataSourcePostalCodeEntityEmpty();
+        PostalCodeEntity postalCodeEntity = PostalCodeDataSourceTests.dataSourcePostalCodeEntityEmpty();
         mapperFinalResponseDtoByEntity(postalCodeEntity);
         codexsTesterAssertBool(true, true);
     }
 
     @Test
     public void whenRunPostalCodeTest_FromPostalCodeService_AssertExact() {
-        PostalCodeRequestDto postalCodeRequestDto = DataSourcePostalCodeTests.dataSourcePostalCodeRequestDto();
+        PostalCodeRequestDto postalCodeRequestDto = PostalCodeDataSourceTests.dataSourcePostalCodeRequestDto();
         postalCodeRequestDto.setPostalCode("70316109");
         ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
         codexsTesterAssertExact(result.getBody().getCep().replaceAll("[^0-9]", ""), postalCodeRequestDto.getPostalCode());
@@ -89,7 +89,7 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
 
     @Test
     public void whenRunPostalCodeUsingInvalidCepTest_FromPostalCodeService_AssertText() {
-        PostalCodeRequestDto postalCodeRequestDto = DataSourcePostalCodeTests.dataSourcePostalCodeRequestDto();
+        PostalCodeRequestDto postalCodeRequestDto = PostalCodeDataSourceTests.dataSourcePostalCodeRequestDto();
         postalCodeRequestDto.setPostalCode("930706800");
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
@@ -100,7 +100,7 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
 
     @Test
     public void whenRunPostalCodeUsingWrongCepTest_FromPostalCodeService_AssertExact() {
-        PostalCodeRequestDto postalCodeRequestDto = DataSourcePostalCodeTests.dataSourcePostalCodeRequestDto();
+        PostalCodeRequestDto postalCodeRequestDto = PostalCodeDataSourceTests.dataSourcePostalCodeRequestDto();
         postalCodeRequestDto.setPostalCode("62090004");
         try {
             ResponseEntity<PostalCodeResponseDto> result = postalCodeService.getAddress(postalCodeRequestDto);
@@ -113,7 +113,7 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
     @Transactional
     public void whenSavePostalCodeTest_FromPostalCodeHandlerService_AssertTrue_Windows() {
         System.out.println(System.getProperty("os.name"));
-        ResponseEntity<PostalCodeResponseDto> dataFake = DataSourcePostalCodeTests.dataSourcePostalCodeEntityResponse();
+        ResponseEntity<PostalCodeResponseDto> dataFake = PostalCodeDataSourceTests.dataSourcePostalCodeEntityResponse();
         postalCodeHandlerService.saveAddress(dataFake);
         PostalCodeEntity result = postalCodeRepository.findByCep(dataFake.getBody().getCep());
         codexsTesterAssertExact(result.getCep(), dataFake.getBody().getCep());
@@ -121,7 +121,7 @@ public class UnitaryPostalCodeTests extends UnitaryPostalCodeBridgeTests {
 
     public void whenSavePostalCodeTest_FromPostalCodeHandlerService_AssertTrue_Linux() {
         System.out.println(System.getProperty("os.name"));
-        ResponseEntity<PostalCodeResponseDto> dataFake = DataSourcePostalCodeTests.dataSourcePostalCodeEntityResponse();
+        ResponseEntity<PostalCodeResponseDto> dataFake = PostalCodeDataSourceTests.dataSourcePostalCodeEntityResponse();
         postalCodeHandlerService.saveAddress(dataFake);
         PostalCodeEntity result = postalCodeRepository.findByCep(dataFake.getBody().getCep());
         postalCodeRepository.deleteById(result.getId());

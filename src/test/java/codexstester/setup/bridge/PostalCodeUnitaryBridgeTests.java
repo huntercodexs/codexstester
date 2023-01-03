@@ -1,7 +1,7 @@
 package codexstester.setup.bridge;
 
 import codexstester.abstractor.unitary.AbstractUnitaryTests;
-import com.huntercodexs.sample.SampleApplication;
+import com.huntercodexs.postalcode.PostalCodeApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,12 +10,13 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
-@SpringBootTest(classes = SampleApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
-public class UnitarySampleBridgeTests extends AbstractUnitaryTests {
+@SpringBootTest(classes = PostalCodeApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
+public class PostalCodeUnitaryBridgeTests extends AbstractUnitaryTests {
 
     @Override
     @Before
     public void setUp() {
         super.setUp();
     }
+
 }
