@@ -18,8 +18,8 @@ public class FilePropertiesSourceTests extends AdvancedSetupTests {
      *      IMPORTANT: Use just one current target "true" in time
      */
     protected static Object[][] targetTests = {
-            {"sample/", false},
-            {"postalcode/", true}
+            {"sample/", true},
+            {"postalcode/", false}
     };
 
 }
