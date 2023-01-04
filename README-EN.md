@@ -2,6 +2,11 @@
 - This project is a complete workspace for writing unit and integration tests
 
 
+# Idiomas
+
+- <a href="README.md">Portugues Brazil (pt-br)</a>
+- English
+
 
 # Releases
 

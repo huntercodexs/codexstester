@@ -2,6 +2,11 @@
 - Este projeto é um espaço de trabalho completo para escrever testes unitarios e de integração
 
 
+# Idiomas
+
+- Portugues Brazil (pt-br)
+- <a href="README-EN.md">English (en)</a>
+
 
 # Releases
 
