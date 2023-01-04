@@ -164,21 +164,21 @@ Nesse momento temos o espaço de trabalho pronto para ser configurado devendo es
 possivel observar os seguintes recursos de setup:
 
 - path: src/test/java/codexstester/setup/advanced
-  - file: [File.java](../../src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java)
+  - file: [AdvancedSetupTests.java](../../src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java)
 - path: src/test/java/codexstester/setup/bridge
-  - [File.java](../../src/test/java/codexstester/setup/bridge/SampleBridgeTests.java)
+  - [SampleBridgeTests.java](../../src/test/java/codexstester/setup/bridge/SampleBridgeTests.java)
 - path: src/test/java/codexstester/setup/datasource
-  - file: [File.java](../../src/test/java/codexstester/setup/datasource/SampleDataSourceTests.java)
+  - file: [SampleDataSourceTests.java](../../src/test/java/codexstester/setup/datasource/SampleDataSourceTests.java)
 - path: src/test/java/codexstester/setup/properties
-  - [file.properties](../../src/test/java/codexstester/setup/properties/external.tests.properties)
-  - [file.properties](../../src/test/java/codexstester/setup/properties/internal.tests.properties)
-  - [file.properties](../../src/test/java/codexstester/setup/properties/unitary.tests.properties)
+  - [external.tests.properties](../../src/test/java/codexstester/setup/properties/external.tests.properties)
+  - [internal.tests.properties](../../src/test/java/codexstester/setup/properties/internal.tests.properties)
+  - [unitary.tests.properties](../../src/test/java/codexstester/setup/properties/unitary.tests.properties)
 - path: src/test/java/codexstester/setup/security
-  - [File.java](../../src/test/java/codexstester/setup/security/SecuritySourceTests.java)
+  - [SecuritySourceTests.java](../../src/test/java/codexstester/setup/security/SecuritySourceTests.java)
 - path: src/test/resources/sample
-  - [file.properties](../../src/test/resources/sample/external.tests.properties)
-  - [file.properties](../../src/test/resources/sample/internal.tests.properties)
-  - [file.properties](../../src/test/resources/sample/unitary.tests.properties)
+  - [external.tests.properties](../../src/test/resources/sample/external.tests.properties)
+  - [internal.tests.properties](../../src/test/resources/sample/internal.tests.properties)
+  - [unitary.tests.properties](../../src/test/resources/sample/unitary.tests.properties)
 
 ![img.png](../midias/release_1.0.5/codexstester-setup.png)
 
@@ -414,7 +414,7 @@ Repare que existe um construtor chamando seu construtor pai, informando como par
 properties estão, a partir desse ponto será possível prosseguir com a programação dos testes.
 
 Conforme explicado acima e exposto na imagem, a imagem abaixo mostra como deve estar o cenario até esse momento, repare 
-que o path src/test/resources/sample/ é examente o onde o CODES TESTER ira procurar por configurações adicionais.
+que o path src/test/resources/sample/ é examente o onde o CODEXS TESTER ira procurar por configurações adicionais.
 
 ![img.png](../midias/release_1.0.4/codexstester-configuration-properties.png)
 
@@ -425,7 +425,7 @@ como HEADERS-HTTP estarão disponiveis em cada arquivo referente ao tipo de test
 
 <h3>2. Configurando a comunicação (bridge) entre os testes e o CORE do CODEXS TESTER</h3>
 
-![img.png](../midias/release_1.0.4/codexstester-bridge-reference.png)
+![img.png](../midias/release_1.0.5/codexstester-bridge-reference.png)
 
 Essa configuração é a mais importante e deve ser feita com atenção e entendimento correto do seu funcionamento, uma vez 
 que ela diz ao CODEXS TESTER qual será a aplicação a ser testada. Imagine que existam duas aplicações em um mesmo projeto, 
@@ -459,7 +459,7 @@ Esse arquivo deve conter dados e informações para os diferentes tipo de testes
 consumidor do CODEXS TESTER. A classe DataSourceSampleTests definida no arquivo DataSourceSampleTests.java devera ser 
 extendida no arquivo de testes referente, conforme mostrado abaixo:
 
-![img.png](../midias/release_1.0.4/codexstester-extends-datasource-sample.png)
+![img.png](../midias/release_1.0.5/codexstester-datasource-sample.png)
 
 Um exemplo de código no datasource pode ser visto no código abaixo
 
