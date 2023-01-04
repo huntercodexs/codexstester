@@ -334,7 +334,7 @@ public class SampleUnitaryTests extends SampleBridgeTests {
         numbers.add(3);
         json1.put("numbers", numbers);
         List<String> strings2 = new ArrayList<>();
-        strings2.add("1, 2,3, 4, 5 ,6");
+        strings2.add("1, 2,3, 4, 5 ,6, 123 345 987 345");
         json1.put("strings2", strings2);
         List<String> stringNumbers = new ArrayList<>();
         stringNumbers.add("n1");

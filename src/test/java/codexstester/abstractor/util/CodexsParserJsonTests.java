@@ -8,35 +8,6 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public class CodexsParserJsonTests {
 
-    private static String finalRefactor(Object jsonString, boolean debug) throws Exception {
-        if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
-        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorFinal is running", jsonString, true);
-
-        String json = jsonString.toString()
-                .replaceAll("\\[([0-9a-zA-Z ]+\")", "[\"$1")
-                .replaceAll("(\"[0-9a-zA-Z ]+)\\]", "$1\"]")
-                .replaceAll("\"?(true|false|null)\"?", "$1")
-                .replaceAll("(\")([0-9a-zA-Z-_ .]+)(\")(:)(\")?([0-9]+)(\")?", "$1$2$3$4$6")
-                /*TODO: Check this line*/
-                .replaceAll("(\")+", "\"")
-                /*Clear all spaces in final stage*/
-                .replaceAll(", \\{", ",{")
-                .replaceAll("}, \"", "},\"")
-                .replaceAll(", \\[", ",[")
-                .replaceAll("\\], \"", "],\"")
-                .replaceAll("\" ?, ?\"", "\",\"")
-                .replaceAll(", ?\"", ",\"")
-                .replaceAll("\"\\[", "\"")
-                .replaceAll("\\]\"", "\"")
-                .replaceAll("\"\\{", "\"")
-                .replaceAll("\\}\"", "\"")
-                /* " XYZ123", => "XYZ123", */
-                .replaceAll("\" ([0-9a-zA-Z- _!@#$%&*)(=+.,\\?]+)\"(,)?", "\"$1\"$2");
-
-        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorFinal", json, true);
-        return json;
-    }
-
     public static String codexsTesterParseJsonString(String jsonString, boolean debug) throws Exception {
         org.json.JSONObject json = codexsTesterParseOrgJsonObject(jsonString, debug);
         if (debug) codexsHelperLogTerm("ORG JSON STRING PARSED", json.toString(), true);
@@ -132,23 +103,6 @@ public class CodexsParserJsonTests {
         return json;
     }
 
-    public static String codexsTesterJsonRefactorArrayFromString(Object jsonString, boolean debug) throws Exception {
-        if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
-        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayFromString is running", jsonString, true);
-
-        String json = jsonString.toString()
-                .replaceAll("( )?([0-9a-zA-Z- !@#$%&*)'(+=;:./\\\\|]+)\"\\](,)?", "\"$2\"]$3")
-                .replaceAll("([0-9a-zA-Z- !@#$%&*)'(+=;:./\\\\|]+),", "\"$1\",")
-                .replaceAll("(\\[)(\")+(?!,)", "[\"")
-                .replaceAll("(?!,)(\")+(\\])", "\"]")
-                .replaceAll("\"\"([0-9a-zA-Z-_ !@#$%&*)(=+,.'/\\\\]+)\"", "\"$1")
-                .replaceAll("\"?(true|false|null)\"?", "$1")
-                .replaceAll("(\")+", "\"");
-
-        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayFromString", json, true);
-        return json;
-    }
-
     public static String codexsTesterJsonRefactorObjects(Object jsonString, boolean debug) throws Exception {
         if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
         if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorObjects is running", jsonString, true);
@@ -169,6 +123,23 @@ public class CodexsParserJsonTests {
         return json;
     }
 
+    public static String codexsTesterJsonRefactorArrayFromString(Object jsonString, boolean debug) throws Exception {
+        if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayFromString is running", jsonString, true);
+
+        String json = jsonString.toString()
+                .replaceAll("( )?([0-9a-zA-Z- !@#$%&*)'(+=;:./\\\\|]+)\"\\](,)?", "\"$2\"]$3")
+                .replaceAll("([0-9a-zA-Z- !@#$%&*)'(+=;:./\\\\|]+),", "\"$1\",")
+                .replaceAll("(\\[)(\")+(?!,)", "[\"")
+                .replaceAll("(?!,)(\")+(\\])", "\"]")
+                .replaceAll("\"\"([0-9a-zA-Z-_ !@#$%&*)(=+,.'/\\\\]+)\"", "\"$1")
+                .replaceAll("\"?(true|false|null)\"?", "$1")
+                .replaceAll("(\")+", "\"");
+
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayFromString", json, true);
+        return json;
+    }
+
     public static String codexsTesterJsonRefactorDatetime(Object jsonString, boolean debug) throws Exception {
         if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
         if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorDatetime is running", jsonString, true);
@@ -177,6 +148,45 @@ public class CodexsParserJsonTests {
                 .replaceAll("(\\\")( ?: ?)([0-9]+[-/.][0-9]+[-/.][0-9]+)( [0-9]+:[0-9]+:[0-9]+)?(,)?", "$1$2\"$3$4\"$5");
 
         if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorDatetime", json, true);
+        return json;
+    }
+
+    public static String codexsTesterJsonRefactorSanitize(Object jsonString, boolean debug) throws Exception {
+        if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorSanitize is running", jsonString, true);
+
+        String json = jsonString.toString()
+                .replaceAll("\\[([0-9a-zA-Z ]+\")", "[\"$1")
+                .replaceAll("(\"[0-9a-zA-Z ]+)\\]", "$1\"]")
+                .replaceAll("\"?(true|false|null)\"?", "$1")
+                .replaceAll("(\")([0-9a-zA-Z-_ .]+)(\")(:)(\")?([0-9]+)(\")?", "$1$2$3$4$6")
+                /*TODO: Check this line*/
+                .replaceAll("(\")+", "\"")
+                /*Clear all spaces in final stage*/
+                .replaceAll(", \\{", ",{")
+                .replaceAll("}, \"", "},\"")
+                .replaceAll(", \\[", ",[")
+                .replaceAll("\\], \"", "],\"")
+                .replaceAll("\" ?, ?\"", "\",\"")
+                .replaceAll(", ?\"", ",\"")
+                .replaceAll("\"\\[", "\"")
+                .replaceAll("\\]\"", "\"")
+                .replaceAll("\"\\{", "\"")
+                .replaceAll("\\}\"", "\"")
+                /* " XYZ123", => "XYZ123", */
+                .replaceAll("\" ([0-9a-zA-Z- _!@#$%&*)(=+.,\\?]+)\"(,)?", "\"$1\"$2");
+
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorSanitize", json, true);
+        return json;
+    }
+
+    public static String codexsTesterJsonRefactorArrayNumber(Object jsonString, boolean debug) throws Exception {
+        if (!codexsTesterCheckJsonCompatibility(jsonString, debug)) return jsonString.toString();
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayNumber is running", jsonString, true);
+
+        String json = jsonString.toString().replaceAll("(\")([0-9]+)(\")", "$2");
+
+        if (debug) codexsHelperLogTerm("codexsTesterJsonRefactorArrayNumber", json, true);
         return json;
     }
 
@@ -194,14 +204,14 @@ public class CodexsParserJsonTests {
                 jsonRefactor = codexsTesterJsonRefactorUrl(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorEscapeChars(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorSpaces(jsonRefactor, debug);
-                jsonRefactor = finalRefactor(jsonRefactor, debug);
+                jsonRefactor = codexsTesterJsonRefactorSanitize(jsonRefactor, debug);
                 break;
             case "regular":
                 jsonRefactor = codexsTesterJsonRefactorUrl(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorEscapeChars(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorComplexArray(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorObjects(jsonRefactor, debug);
-                jsonRefactor = finalRefactor(jsonRefactor, debug);
+                jsonRefactor = codexsTesterJsonRefactorSanitize(jsonRefactor, debug);
                 break;
             case "complex":
                 jsonRefactor = codexsTesterJsonRefactorUrl(jsonRefactor, debug);
@@ -210,7 +220,8 @@ public class CodexsParserJsonTests {
                 jsonRefactor = codexsTesterJsonRefactorComplexArray(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorObjects(jsonRefactor, debug);
                 jsonRefactor = codexsTesterJsonRefactorArrayFromString(jsonRefactor, debug);
-                jsonRefactor = finalRefactor(jsonRefactor, debug);
+                jsonRefactor = codexsTesterJsonRefactorSanitize(jsonRefactor, debug);
+                jsonRefactor = codexsTesterJsonRefactorArrayNumber(jsonRefactor, debug);
                 break;
             default:
                 String error = "\n[EXCEPTION] Invalid refactorMode, use: [easy, middle, regular, complex]\n";
