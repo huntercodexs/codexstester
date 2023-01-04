@@ -3,7 +3,6 @@ package codexstester.abstractor.internal;
 import codexstester.abstractor.dto.HeadersDto;
 import codexstester.abstractor.dto.RequestDto;
 import codexstester.abstractor.http.AvailableHttpMethodTests;
-import org.junit.Assert;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
@@ -13,6 +12,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
 public abstract class AbstractInternalRequestTests extends AvailableHttpMethodTests {
+
+    protected AbstractInternalRequestTests(String target) {
+        super(target);
+    }
 
     void executeInternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 

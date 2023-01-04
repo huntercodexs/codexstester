@@ -13,6 +13,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = PostalCodeApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
 public class PostalCodeBridgeTests extends AbstractUnitaryTests {
 
+    protected PostalCodeBridgeTests(String targetTests) {
+        super(targetTests);
+    }
+
     @Override
     @Before
     public void setUp() {

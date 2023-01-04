@@ -11,6 +11,10 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 public abstract class InternalHttpHeadersFactoryTests extends ExternalPropertyTests {
 
+    protected InternalHttpHeadersFactoryTests(String target) {
+        super(target);
+    }
+
     protected void createBeforeInternalTests(String user_data) throws Exception {
         genericMockMvc.perform(
                 MockMvcRequestBuilders

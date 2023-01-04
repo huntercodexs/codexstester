@@ -11,8 +11,21 @@ import java.util.*;
 
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
 import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
+import static codexstester.setup.advanced.AdvancedSetupTests.*;
 
 public class SampleUnitaryTests extends SampleBridgeTests {
+
+    /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public SampleUnitaryTests() {
+        super("sample/");
+    }
+
+    @Test
+    public void propsTest() {
+        System.out.println(unitaryProps);
+    }
 
     @Test
     public void whenSumAnyNumbersTest() {

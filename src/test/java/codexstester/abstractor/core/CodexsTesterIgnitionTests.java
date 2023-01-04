@@ -1,6 +1,6 @@
 package codexstester.abstractor.core;
 
-import codexstester.setup.properties.FilePropertiesSourceTests;
+import codexstester.setup.advanced.AdvancedSetupTests;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -9,7 +9,7 @@ import org.springframework.web.context.WebApplicationContext;
 
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm;
 
-public abstract class CodexsTesterIgnitionTests extends FilePropertiesSourceTests {
+public abstract class CodexsTesterIgnitionTests extends AdvancedSetupTests {
 
     protected static RestTemplate genericRestTemplate;
 

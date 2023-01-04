@@ -33,6 +33,18 @@ public class PostalCodeUnitaryTests extends PostalCodeBridgeTests {
     @Autowired
     PostalCodeClient postalCodeClient;
 
+    /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public PostalCodeUnitaryTests() {
+        super("postalcode/");
+    }
+
+    @Test
+    public void propsTest() {
+        System.out.println(unitaryProps);
+    }
+
     @Test
     public void whenSumAnyNumbersTest() {
         int result = postalCodeService.sum(1000, 10);

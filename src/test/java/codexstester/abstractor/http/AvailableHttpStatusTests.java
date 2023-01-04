@@ -294,4 +294,8 @@ public abstract class AvailableHttpStatusTests extends ExternalHttpHeadersFactor
         return expectedCode;
     }
 
+    protected AvailableHttpStatusTests(String target) {
+        super(target);
+    }
+
 }

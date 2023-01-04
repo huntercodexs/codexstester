@@ -13,6 +13,10 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public abstract class AbstractExternalRestTemplateTests extends AbstractExternalRequestTests {
 
+    protected AbstractExternalRestTemplateTests(String target) {
+        super(target);
+    }
+
     protected ResponseEntity<?> codexsTesterExternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
 
         try {

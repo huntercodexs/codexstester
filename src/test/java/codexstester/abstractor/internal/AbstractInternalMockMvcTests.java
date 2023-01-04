@@ -12,6 +12,10 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public abstract class AbstractInternalMockMvcTests extends AbstractInternalRequestTests {
 
+    protected AbstractInternalMockMvcTests(String target) {
+        super(target);
+    }
+
     protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
 
         String uri = internalUriBaseTest;

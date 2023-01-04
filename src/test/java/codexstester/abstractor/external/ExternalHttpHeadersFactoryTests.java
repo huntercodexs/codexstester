@@ -12,6 +12,10 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 
 public abstract class ExternalHttpHeadersFactoryTests extends InternalHttpHeadersFactoryTests {
 
+    protected ExternalHttpHeadersFactoryTests(String target) {
+        super(target);
+    }
+
     protected HttpComponentsClientHttpRequestFactory externalHttpClientFactory() {
         HttpClient httpClient = HttpClientBuilder.create().build();
         return new HttpComponentsClientHttpRequestFactory(httpClient);

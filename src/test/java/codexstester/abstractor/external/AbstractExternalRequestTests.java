@@ -14,6 +14,10 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public abstract class AbstractExternalRequestTests extends InternalRequest1xxTests {
 
+    protected AbstractExternalRequestTests(String target) {
+        super(target);
+    }
+
     void executeExternalTest(RequestDto requestDto, HeadersDto headersDto) throws Exception {
 
         /*Fix a bug when getHttpMethod is null*/

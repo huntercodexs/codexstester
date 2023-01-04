@@ -11,14 +11,27 @@ import org.springframework.http.ResponseEntity;
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2CheckToken;
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
+import static codexstester.setup.advanced.AdvancedSetupTests.*;
 import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAuth2Tests;
 
 public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public PostalCodeExternalTests() {
+        super("postalcode/");
+    }
+
+    /**
      * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
+
+    @Test
+    public void propsTest() {
+        System.out.println(externalProps);
+    }
 
     @Test
     public void test1xx() throws Exception {

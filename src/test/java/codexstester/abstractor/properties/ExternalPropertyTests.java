@@ -27,4 +27,8 @@ public abstract class ExternalPropertyTests extends InternalPropertyTests {
     /*When Query Parameters is defined*/
     protected final String externalUrlQueryParameters = externalProps.getProperty("external.tests.url.query-string-parameters");
 
+    protected ExternalPropertyTests(String target) {
+        super(target);
+    }
+
 }

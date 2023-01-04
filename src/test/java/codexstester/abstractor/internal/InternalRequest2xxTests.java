@@ -6,6 +6,10 @@ import codexstester.abstractor.http.AvailableHttpStatusTests;
 
 public abstract class InternalRequest2xxTests extends InternalRequest3xxTests {
 
+    protected InternalRequest2xxTests(String target) {
+        super(target);
+    }
+
     protected void isOk2xxInternalTest() throws Exception {
         executeInternalTest(new RequestDto(), new HeadersDto());
         System.out.println("isOk2xxInternalTest is done");

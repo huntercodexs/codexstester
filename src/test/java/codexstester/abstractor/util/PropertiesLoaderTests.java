@@ -12,38 +12,42 @@ import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperLogTerm
 
 public abstract class PropertiesLoaderTests extends AssertionTests {
 
-    protected final Properties externalProps = loadExternalPropsTests();
-    protected final Properties internalProps = loadInternalPropsTests();
-    protected final Properties unitaryProps = loadUnitaryPropsTests();
+    protected Properties externalProps;
+    protected Properties internalProps;
+    protected Properties unitaryProps;
 
-    private static String fixTarget(Object[][] target) {
-        if (target.length == 0) throw new RuntimeException("PROPERTIES FILE ERROR: Is Empty");
+    protected PropertiesLoaderTests(String target) {
+        externalProps = loadExternalPropsTests(target);
+        internalProps = loadInternalPropsTests(target);
+        unitaryProps = loadUnitaryPropsTests(target);
+    }
 
-        for (Object[] current : target) {
-            String currentTarget = current[0].toString();
-            String stateTarget = current[1].toString();
-
-            if (stateTarget.equals("true")) {
-                if (currentTarget == null || currentTarget.equals("") || currentTarget.equals("/")) {
-                    return "";
-                }
-                if (!currentTarget.endsWith("/")) {
-                    return currentTarget+"/";
-                }
-                return currentTarget;
-            }
+    private static String fixTarget(String target) {
+        if (target == null || target.equals("") || target.equals("/")) {
+            return "";
         }
-        throw new RuntimeException("PROPERTIES FILE ERROR: Is Null");
+        if (!target.endsWith("/")) {
+            return target+"/";
+        }
+        return target;
     }
 
-    private static String propertiesPath(String type) {
-        return "classpath:"+fixTarget(targetTests)+type+".tests.properties";
+    private static String propertiesPath(String type, String target) {
+        return "classpath:"+fixTarget(target)+type+".tests.properties";
     }
 
-    protected static Properties loadExternalPropsTests() {
+    private static void exceptionFileNotFound(String error) {
+        String message = "[EXCEPTION]: File Not Found";
+        message += "\n---------------------------------------------------------------------\n";
+        message += error;
+        message += "\n---------------------------------------------------------------------\n";
+        throw new RuntimeException(message);
+    }
+
+    protected static Properties loadExternalPropsTests(String target) {
 
         Properties properties = new Properties();
-        String propFile = propertiesPath("external");
+        String propFile = propertiesPath("external", target);
         codexsHelperLogTerm("LOAD EXTERNAL PROPS", propFile, true);
 
         try {
@@ -52,15 +56,16 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
             properties.load(in);
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
+            exceptionFileNotFound(ioe.getMessage());
         }
 
         return properties;
     }
 
-    protected static Properties loadInternalPropsTests() {
+    protected static Properties loadInternalPropsTests(String target) {
 
         Properties properties = new Properties();
-        String propFile = propertiesPath("internal");
+        String propFile = propertiesPath("internal", target);
         codexsHelperLogTerm("LOAD INTERNAL PROPS", propFile, true);
 
         try {
@@ -69,15 +74,16 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
             properties.load(in);
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
+            exceptionFileNotFound(ioe.getMessage());
         }
 
         return properties;
     }
 
-    protected static Properties loadUnitaryPropsTests() {
+    protected static Properties loadUnitaryPropsTests(String target) {
 
         Properties properties = new Properties();
-        String propFile = propertiesPath("unitary");
+        String propFile = propertiesPath("unitary", target);
         codexsHelperLogTerm("LOAD UNITARY PROPS", propFile, true);
 
         try {
@@ -86,6 +92,7 @@ public abstract class PropertiesLoaderTests extends AssertionTests {
             properties.load(in);
         } catch (IOException ioe) {
             System.out.println(ioe.getMessage());
+            exceptionFileNotFound(ioe.getMessage());
         }
 
         return properties;

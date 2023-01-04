@@ -13,13 +13,26 @@ import org.springframework.http.ResponseEntity;
 
 import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
 import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
+import static codexstester.setup.advanced.AdvancedSetupTests.*;
 
 public class PostalCodeInternalTests extends PostalCodeBridgeTests {
+
+    /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public PostalCodeInternalTests() {
+        super("postalcode/");
+    }
 
     /**
      * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
+
+    @Test
+    public void propsTest() {
+        System.out.println(internalProps);
+    }
 
     @Test
     public void test1xx() throws Exception {

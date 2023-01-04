@@ -1,7 +1,6 @@
 package codexstester.setup.bridge;
 
 import codexstester.abstractor.bridge.CodexsTesterCoreBridgeTests;
-import codexstester.abstractor.unitary.AbstractUnitaryTests;
 import com.huntercodexs.sample.SampleApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -14,9 +13,14 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = SampleApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
 public class SampleBridgeTests extends CodexsTesterCoreBridgeTests {
 
+    protected SampleBridgeTests(String targetTests) {
+        super(targetTests);
+    }
+
     @Override
     @Before
     public void setUp() {
         super.setUp();
     }
+
 }

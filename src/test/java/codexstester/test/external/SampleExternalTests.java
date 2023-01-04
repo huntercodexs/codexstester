@@ -7,13 +7,24 @@ import codexstester.setup.datasource.SampleDataSourceTests;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
-public class SampleExternalTests extends SampleBridgeTests
-{
+public class SampleExternalTests extends SampleBridgeTests {
+
+    /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public SampleExternalTests() {
+        super("sample/");
+    }
 
     /**
      * ExternalSampleTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
+
+    @Test
+    public void propsTest() {
+        System.out.println(externalProps);
+    }
 
     @Test
     public void test1xx() throws Exception {

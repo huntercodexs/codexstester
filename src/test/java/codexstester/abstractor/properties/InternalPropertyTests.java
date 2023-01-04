@@ -27,4 +27,7 @@ public abstract class InternalPropertyTests extends UnitaryPropertyTests {
     /*When Query Parameters is defined*/
     protected final String internalUrlQueryParameters = internalProps.getProperty("internal.tests.url.query-string-parameters");
 
+    protected InternalPropertyTests(String target) {
+        super(target);
+    }
 }

@@ -29,4 +29,8 @@ public abstract class UnitaryPropertyTests extends PropertiesLoaderTests {
     /*When Query Parameters is defined*/
     protected final String unitaryUrlQueryParameters = unitaryProps.getProperty("unitary.tests.url.query-string-parameters");
 
+    protected UnitaryPropertyTests(String target) {
+        super(target);
+    }
+
 }

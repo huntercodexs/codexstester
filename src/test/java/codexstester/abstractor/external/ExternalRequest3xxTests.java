@@ -6,6 +6,10 @@ import codexstester.abstractor.http.AvailableHttpStatusTests;
 
 public abstract class ExternalRequest3xxTests extends ExternalRequest4xxTests {
 
+    protected ExternalRequest3xxTests(String target) {
+        super(target);
+    }
+
     protected void isOk3xxExternalTest() throws Exception {
         executeExternalTest(new RequestDto(), new HeadersDto());
         System.out.println("isOk3xxExternalTest is done");
