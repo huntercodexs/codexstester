@@ -1,6 +1,6 @@
 package codexstester.setup.bridge;
 
-import codexstester.abstractor.unitary.AbstractUnitaryTests;
+import codexstester.engine.unitary.AbstractUnitaryTests;
 import com.huntercodexs.postalcode.PostalCodeApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;

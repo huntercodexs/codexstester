@@ -1,7 +1,7 @@
 package codexstester.test.internal;
 
-import codexstester.abstractor.dto.HeadersDto;
-import codexstester.abstractor.dto.RequestDto;
+import codexstester.engine.dto.HeadersDto;
+import codexstester.engine.dto.RequestDto;
 import codexstester.setup.bridge.SampleBridgeTests;
 import codexstester.setup.datasource.SampleDataSourceTests;
 import org.junit.Test;

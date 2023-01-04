@@ -1,9 +1,9 @@
 package codexstester.test.internal;
 
-import codexstester.abstractor.dto.HeadersDto;
-import codexstester.abstractor.dto.Oauth2RequestTokenDto;
-import codexstester.abstractor.dto.Oauth2ResponseTokenDto;
-import codexstester.abstractor.dto.RequestDto;
+import codexstester.engine.dto.HeadersDto;
+import codexstester.engine.dto.Oauth2RequestTokenDto;
+import codexstester.engine.dto.Oauth2ResponseTokenDto;
+import codexstester.engine.dto.RequestDto;
 import codexstester.setup.bridge.PostalCodeBridgeTests;
 import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import net.minidev.json.JSONObject;
@@ -11,9 +11,8 @@ import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
-import static codexstester.abstractor.security.SecurityTests.codexsTesterSecurityOAuth2Token;
-import static codexstester.abstractor.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
-import static codexstester.setup.advanced.AdvancedSetupTests.*;
+import static codexstester.engine.security.SecurityTests.codexsTesterSecurityOAuth2Token;
+import static codexstester.engine.util.CodexsHelperTests.codexsHelperStringToJsonSimple;
 
 public class PostalCodeInternalTests extends PostalCodeBridgeTests {
 

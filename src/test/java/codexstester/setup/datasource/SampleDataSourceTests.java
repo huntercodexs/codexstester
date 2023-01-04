@@ -1,6 +1,6 @@
 package codexstester.setup.datasource;
 
-import codexstester.abstractor.security.SecurityTests;
+import codexstester.engine.security.SecurityTests;
 
 /**
  * SAMPLE DATA SOURCE

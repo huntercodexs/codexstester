@@ -1,6 +1,6 @@
 package codexstester.test.unitary;
 
-import codexstester.abstractor.util.CodexsHelperTests;
+import codexstester.engine.util.CodexsHelperTests;
 import codexstester.setup.bridge.PostalCodeBridgeTests;
 import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;

@@ -1,6 +1,6 @@
 package codexstester.test.unitary;
 
-import codexstester.abstractor.dto.HeadersDto;
+import codexstester.engine.dto.HeadersDto;
 import codexstester.setup.bridge.SampleBridgeTests;
 import codexstester.setup.datasource.SampleDataSourceTests;
 import net.minidev.json.JSONObject;
@@ -9,9 +9,8 @@ import org.springframework.http.MediaType;
 
 import java.util.*;
 
-import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
-import static codexstester.abstractor.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
-import static codexstester.setup.advanced.AdvancedSetupTests.*;
+import static codexstester.engine.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
+import static codexstester.engine.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
 
 public class SampleUnitaryTests extends SampleBridgeTests {
 

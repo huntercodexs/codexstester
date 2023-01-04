@@ -1,6 +1,6 @@
 package codexstester.setup.datasource;
 
-import codexstester.abstractor.security.SecurityTests;
+import codexstester.engine.security.SecurityTests;
 import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
 import com.huntercodexs.postalcode.dto.PostalCodeRequestDto;
 import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;

@@ -1,6 +1,6 @@
 package codexstester.setup.advanced;
 
-import codexstester.abstractor.dto.HeadersDto;
+import codexstester.engine.dto.HeadersDto;
 import net.minidev.json.JSONObject;
 
 import java.util.*;

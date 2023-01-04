@@ -1,6 +1,6 @@
 package codexstester.setup.bridge;
 
-import codexstester.abstractor.bridge.CodexsTesterCoreBridgeTests;
+import codexstester.engine.bridge.CodexsTesterCoreBridgeTests;
 import com.huntercodexs.sample.SampleApplication;
 import org.junit.Before;
 import org.junit.runner.RunWith;
