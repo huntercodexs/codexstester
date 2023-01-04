@@ -8,7 +8,7 @@ This project is a complete workspace for writing unit and integration tests
 ||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //
 \\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\
 
-Release: 1.0.4
+Release: 1.0.5
 Powered by Huntercodexs (c) 2022
 https://github.com/huntercodexs
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -109,7 +109,7 @@ illustrated in the image below
 > has any updates for test development tweaks written in previous releases to verify
 > compatibility.
 
-![img.png](src/data/midias/codexstester-github-image-1.png)
+![img.png](../midias/release_1.0.4/codexstester-github-image-1.png)
 
 In this case, the procedure is, in parts, the same as explained above in "git clone", that is, the files must be in the
 correct folder <pre>@{PROJECT_ROOT_PATH}/src/test/java</pre> of the consuming project.
@@ -125,7 +125,7 @@ exist create this package in the following path:
 
 Inside the "test" path created, make sure that the "java" and "resources" folders exist as shown in the image below:
 
-![img.png](src/data/midias/codexstester-java-resources-sample-project.png)
+![img.png](../midias/release_1.0.4/codexstester-java-resources-sample-project.png)
 
 Then in the project where the tests will be executed, copy the folder (package) "codexstester" into the folder "java"
 shown above, and the "codexstester" folder is the same as the one inside the CODEXS TESTER project
@@ -143,12 +143,12 @@ NOTE
 
 The image below shows how the scenario should look (the README and LICENSE files are missing)
 
-![img.png](src/data/midias/codexstester-folder.png)
+![img.png](../midias/release_1.0.4/codexstester-folder.png)
 
 Now copy the ".properties" files that are inside the path src/test/java/codexstester/setup/properties/files
 into the path src/test/resources/@{RESOURCE_NAME} as shown in the image below
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-properties-path.png)
+![img.png](../midias/release_1.0.4/codexstester-properties-path.png)
 
 > IMPORTANT: See that two folders were created inside the path src/test/resources separating tests for resources
 > contained within the service/application that is consuming the CODEXS TESTER, in this case a resource called postalcode and a
@@ -184,7 +184,7 @@ You can observe the following setup features:
   - [internal.tests.properties](src/test/resources/sample/internal.tests.properties)
   - [unitary.tests.properties](src/test/resources/sample/unitary.tests.properties)
 
-![img.png](src/data/midias/codexstester-setup.png)
+![img.png](../midias/release_1.0.4/codexstester-setup.png)
 
 - AdvancedSetupTests.java
 
@@ -201,7 +201,7 @@ details in the test conventions and standardization section of that same documen
 Continuing with the files from the list above, we have the BRIDGE file, which has the purpose of creating a link
 between the test files of the consumer project and the CORE of CODEXS TESTER.
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-bridge-sample.png)
+![img.png](../midias/release_1.0.4/codexstester-bridge-sample.png)
 
 Put the name of the main class of your java spring boot project, which in this case is SampleApplication.java, this is the
 class that contains the main method of the consumer project, that is, the "main" class. However, it is possible that the project
@@ -220,7 +220,7 @@ developer, and can be written as simply and conveniently as possible.
 This is the simplest file within the CODEXS TESTER workspace, requiring only one configuration
 as following image:
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-file-properties-escope.png)
+![img.png](../midias/release_1.0.4/codexstester-file-properties-escope.png)
 
 See that there is only one attribute called targetTests which must be configured according to the needs of the project,
 however, this configuration will be explained in more detail in the Testing Conventions and Patterns section.
@@ -256,7 +256,7 @@ For each of the tests we have a sample file called ExternalSampleTests, Internal
 UnitaySampleTests, but they are just examples to speed up the learning process about how the tests work
 with the use of CODEXS TESTER.
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-tests.png)
+![img.png](../midias/release_1.0.4/codexstester-tests.png)
 
 > About "external" type tests
 
@@ -269,7 +269,7 @@ calls to a specific resource within a secure and controlled environment.
 
 Below is a graphical demonstration of how this works.
 
-![img.png](src/data/midias/codexstester-external.png)
+![img.png](../midias/release_1.0.4/codexstester-external.png)
 
 > About "internal" type tests
 
@@ -283,7 +283,7 @@ REST for the "endpoints" contained in the service, which makes it different from
 
 The image below illustrates the processing flow for tests of the internal type:
 
-![img.png](src/data/midias/codexstester-internal.png)
+![img.png](../midias/release_1.0.4/codexstester-internal.png)
 
 > About "unitary" type tests
 
@@ -295,7 +295,7 @@ or even if the sum of two numbers is being done correctly by any calculation.
 To exemplify this scenario, we have the following image, which shows in a simple and summarized way how the tests are carried out
 units with the CODEXS TESTER workspace.
 
-![img.png](src/data/midias/codexstester-unitary.png)
+![img.png](../midias/release_1.0.4/codexstester-unitary.png)
 
 This was the information about the codexstester/setup configuration path and the codexstester/test tests path, being
 that they will be detailed in the conventions and testing standards section of CODEXS TESTER.
@@ -349,7 +349,7 @@ headersDto.setAddtionalValue("XYZ-123");
 ***IMPORTANT: Use the properties file to define additional request headers, up to five are allowed
 Additional headers, as shown in the image below***
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-headers-adicionais.png)
+![img.png](../midias/release_1.0.4/codexstester-headers-adicionais.png)
 
 Example (internal/external):
 
@@ -420,7 +420,7 @@ targetTests, where this setting references a separate application or resource co
 
 A complete example of this configuration is shown below:
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-scope.png)
+![img.png](../midias/release_1.0.4/codexstester-scope.png)
 
 Notice that there are two test scopes, one called sample and another called postalcode, but there is a second value
 at each array index, true or false, which indicates which scope CODEXS TESTER should take into account. Thus
@@ -443,7 +443,7 @@ certainly will cause many problems during testing, for example:
 As shown in the image below, the configuration (from the image) above says that the scope of work that CODEXS TESTER must consider
 It is located in src/test/resources/sample
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-configuration-properties.png)
+![img.png](../midias/release_1.0.4/codexstester-configuration-properties.png)
 
 With these settings we say for tests of type "external", "internal" or "unitary" that the details of "requests"
 as HEADERS-HTTP will be available in each file referring to the type of test.
@@ -452,7 +452,7 @@ as HEADERS-HTTP will be available in each file referring to the type of test.
 
 <h3>2. Configuring the communication (bridge) between the tests and the CODEXS TESTER CORE</h3>
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-bridge-reference.png)
+![img.png](../midias/release_1.0.4/codexstester-bridge-reference.png)
 
 This configuration is the most important and must be done carefully and with a correct understanding of how it works, since
 that it tells CODEXS TESTER which application will be tested. Imagine that there are two applications in the same project,
@@ -461,13 +461,13 @@ In this way, it will be necessary to inform CODEXS TESTER which application will
 
 > See that there are two different files, one for the SampleApplication application and another for the PostalCodeApplication application
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-bridge-sample.png)
+![img.png](../midias/release_1.0.4/codexstester-bridge-sample.png)
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-bridge-postalcode.png)
+![img.png](../midias/release_1.0.4/codexstester-bridge-postalcode.png)
 
 Now see how the test target project is
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-sample-project.png)
+![img.png](../midias/release_1.0.4/codexstester-sample-project.png)
 
 It is not necessary to change anything else in this file, however like every open source project free to be changed,
 it is possible to add other codes if necessary, but be careful in the changes so as not to compromise the correct
@@ -486,11 +486,11 @@ This file must contain data and information for the different types of tests tha
 CODEXS TESTER consumer. The DataSourceSampleTests class defined in the DataSourceSampleTests.java file must be
 extended in the related test file, as shown below:
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-extends-datasource-sample.png)
+![img.png](../midias/release_1.0.4/codexstester-extends-datasource-sample.png)
 
 A code example in the datasource can be seen in the code below
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-datasource-sample.png)
+![img.png](../midias/release_1.0.4/codexstester-datasource-sample.png)
 
 Note that there are two methods that return a JSON object that will be used in the tests as data to send in the request, 
 as will be shown later. It is also possible to observe attributes defined for use in the test files if it is useful. 
@@ -510,7 +510,7 @@ access sensitive. It is highly recommended that you do not use access data to pr
 homologation, still do not expose the data, even if from development or test environments to people not
 authorized. Below is an image to illustrate this configuration:
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-config-security.png)
+![img.png](../midias/release_1.0.4/codexstester-config-security.png)
 
 
 
@@ -565,11 +565,11 @@ Below is an example of how to implement an advanced CODEXS TESTER test using the
 
 - Configuration for a JSON response with various types of data in its content
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-json-config.png)
+![img.png](../midias/release_1.0.4/codexstester-json-config.png)
 
 - Test setup responsible for using the above settings
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-json-typed.png)
+![img.png](../midias/release_1.0.4/codexstester-json-typed.png)
 
 Notice that there is a definition for testing the responses inside the AdvancedSetupTests.java file, and a simulation of
 response within the whenJsonFormatTypedTests() test, and the expected format for this test is JSON, as per the
@@ -611,13 +611,13 @@ here a brief demonstration of what can be done in advanced and optimized tests.
 In the figure below we have the use, see how much simpler and more direct the writing of an advanced test, which will test
 the entire "mapped tree" in your target named jsonResponse.
 
-![codexstester-advanced-unitary-tests-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-unitary-tests-datatree.png)
+![img.png](../midias/release_1.0.4/codexstester-advanced-unitary-tests-datatree.png)
 
 The expectedJsonDataTree() method code was created in the AdvancedSetupTests.java file, which in turn is located
 in the path src/test/java/codexstester/setup/advanced, according to the image below the understanding of this data format for
 tests need more details.
 
-![codexstester-advanced-json-datatree.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-json-datatree.png)
+![img.png](../midias/release_1.0.4/codexstester-advanced-json-datatree.png)
 
 See that a data matrix called Data Tree was created with all the necessary data for a complete test and
 satisfactory.
@@ -625,7 +625,7 @@ satisfactory.
 Still talking about advanced tests using a DataTree, it is possible to assemble an extremely complex test using
 of all the features available in CODEXS TESTER, for example:
 
-![codexstester-complex-full-sample.png](src%2Fdata%2Fmidias%2Fcodexstester-complex-full-sample.png)
+![img.png](../midias/release_1.0.4/codexstester-complex-full-sample.png)
 
 1) In frame (1) of the image above we have the origin of the data (DataSource)
 2) In frame (2) of the image above we have the settings for the current test related to the Header, notice that we have a
@@ -648,7 +648,7 @@ of all the features available in CODEXS TESTER, for example:
 
 - Summary flow for a test programmed with CODEXS TESTER
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-diagram-flow-resumed.png)
+![img.png](../midias/release_1.0.4/codexstester-diagram-flow-resumed.png)
 
 Just for the sake of exemplifying in greater detail the engine of the CODEXS TESTER workspace, we see in the figure below
 the relationship between the resources of the system and the consumer project. Notice the long way a simple test can go
@@ -657,7 +657,7 @@ of the programmer in developing a complex test from scratch.
 
 - Complete workflow for a programmed test with CODEXS TESTER
 
-![img.png](src%2Fdata%2Fmidias%2Fcodexstester-diagram-workflow-full.png)
+![img.png](../midias/release_1.0.4/codexstester-diagram-workflow-full.png)
 
 # Programming tests with the CODEXS TESTER workspace
 
@@ -873,7 +873,7 @@ As already mentioned earlier in this document, to start a test configuration and
 CODEXS TESTER rules. First, make sure that the test scope/target is correctly configured.
 in the FilePropertiesSourceTests.java file, as instructed below
 
-![codexstester-file-properties-escope-postalcode.png](src%2Fdata%2Fmidias%2Fcodexstester-file-properties-escope-postalcode.png)
+![img.png](../midias/release_1.0.4/codexstester-file-properties-escope-postalcode.png)
 
 See that a scope of work has been defined for the CODEXS TESTER with the name of postalcode, that is, in the path src/test/resources of the
 application there should be a folder or "package" with the name postalcode src/test/resources/postalcode.
@@ -982,7 +982,7 @@ below.
 
 - Test type "external"
 
-![codexstester-advanced-external-postalcode-test.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-external-postalcode-test.png)
+![img.png](../midias/release_1.0.4/codexstester-advanced-external-postalcode-test.png)
 
 The image above shows an advanced test CODES TESTER, where it is possible to notice the important points of this test and that
 deserve attention, see below:
@@ -999,7 +999,7 @@ deserve attention, see below:
 
 - "Internal" type test
 
-![codexstester-advanced-internal-postalcode-test.png](src%2Fdata%2Fmidias%2Fcodexstester-advanced-internal-postalcode-test.png)
+![img.png](../midias/release_1.0.4/codexstester-advanced-internal-postalcode-test.png)
 
 The image above shows an advanced test of the "internal" type of CODEXS TESTER, with very similar characteristics to the test
 to the "external" type shown above, thus dispensing with further details. However, note that in item (6) of
