@@ -14,6 +14,8 @@ https://github.com/huntercodexs
 ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
 </pre>
 
+
+
 # License
 
 This project is free and can be used as a basis for other projects by anyone under the MIT license.
@@ -22,8 +24,8 @@ This project is free and can be used as a basis for other projects by anyone und
 
 # Languages
 
+- <a href="../pt-br/RELEASE_1.0.5.md">Portuguese Brazil (pt-br)</a>
 - English
-- <a href="README.md">Portuguese Brazil (pt-br)</a>
 
 
 
