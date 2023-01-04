@@ -22,28 +22,28 @@ This project is free and can be used as a basis for other projects by anyone und
 
 
 
-# Languages
+# Language
 
-- <a href="../pt-br/RELEASE_1.0.5.md">Portuguese Brazil (pt-br)</a>
-- English
+- <a href="../pt-br/RELEASE_1.0.5.md">Portugues Brazil (pt-br)</a>
+- English (en)
 
 
 
-# Pre Requisitos
+# Pre Requisites
 
 - MVC Concept
 - Maven Project 4.0.0
 - Spring Boot 2.0.1.RELEASE
 - Java Version 1.8 (jdk1.8.0_212)
 
-> see more details in the pom.xml file of this project
+> see more details in this project's pom.xml file
 
 
 
 # HTTP status code
 
 This project offers all http codes for REST request handling, for more details of the Status Code at
-requests. See more details about HTTP STATUS CODE at
+requests. See more details about HTTP STATUS CODE at https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
 
 
@@ -143,19 +143,19 @@ NOTE
 
 The image below shows how the scenario should look (the README and LICENSE files are missing)
 
-![img.png](../midias/release_1.0.4/codexstester-folder.png)
+![img.png](../midias/release_1.0.5/codexstester-folder-started.png)
 
-Now copy the ".properties" files that are inside the path src/test/java/codexstester/setup/properties/files
+Now copy the ".properties" files that are inside the path src/test/java/codexstester/setup/properties
 into the path src/test/resources/@{RESOURCE_NAME} as shown in the image below
 
-![img.png](../midias/release_1.0.4/codexstester-properties-path.png)
+![img.png](../midias/release_1.0.5/codexstester-file-properties.png)
 
-> IMPORTANT: See that two folders were created inside the path src/test/resources separating tests for resources
+> IMPORTANT: See that two folders were created inside the path src/test/resources separating the tests by resources
 > contained within the service/application that is consuming the CODEXS TESTER, in this case a resource called postalcode and a
 > another feature called sample. This setting is not mandatory, but it helps to organize the workspace of
 > tests and the project in general, keeping the codes and files separated by their purposes. another important point
-> is that it doesn't matter where these files should be, but it will be necessary to inform where they are in the configuration of
-> test properties
+> is that it doesn't matter where these files should be, as long as it can be found with the classpath, and it should
+> be informed in the constructor of all tests as will be shown below
 
 These files will be used to carry out part of the test settings, for example the url for requests
 and the uri or endpoint of an API, as well as request HTTP HEADERS and additional parameters.
@@ -164,27 +164,23 @@ At this moment we have the workspace ready to be configured and it should be as 
 You can observe the following setup features:
 
 - path: src/test/java/codexstester/setup/advanced
-  - file: [AdvancedSetupTests.java](src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java)
+    - file: [AdvancedSetupTests.java](../../src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java)
 - path: src/test/java/codexstester/setup/bridge
-  - [ExternalSampleBridgeTests.java](src/test/java/codexstester/setup/bridge/ExternalSampleBridgeTests.java)
-  - [InternalSampleBridgeTests.java](src/test/java/codexstester/setup/bridge/InternalSampleBridgeTests.java)
-  - [UnitarySampleBridgeTests.java](src/test/java/codexstester/setup/bridge/UnitarySampleBridgeTests.java)
+    - [SampleBridgeTests.java](../../src/test/java/codexstester/setup/bridge/SampleBridgeTests.java)
 - path: src/test/java/codexstester/setup/datasource
-  - file: [DataSourceSampleTests.java](src/test/java/codexstester/setup/datasource/DataSourceSampleTests.java)
+    - file: [SampleDataSourceTests.java](../../src/test/java/codexstester/setup/datasource/SampleDataSourceTests.java)
 - path: src/test/java/codexstester/setup/properties
-  - file: [FilePropertiesSourceTests.java](src/test/java/codexstester/setup/properties/FilePropertiesSourceTests.java)
-- path: src/test/java/codexstester/setup/properties/file
-  - [external.tests.properties](src/test/java/codexstester/setup/properties/files/external.tests.properties)
-  - [internal.tests.properties](src/test/java/codexstester/setup/properties/files/internal.tests.properties)
-  - [unitary.tests.properties](src/test/java/codexstester/setup/properties/files/unitary.tests.properties)
+    - [external.tests.properties](../../src/test/java/codexstester/setup/properties/external.tests.properties)
+    - [internal.tests.properties](../../src/test/java/codexstester/setup/properties/internal.tests.properties)
+    - [unitary.tests.properties](../../src/test/java/codexstester/setup/properties/unitary.tests.properties)
 - path: src/test/java/codexstester/setup/security
-  - [SecuritySourceTests.java](src/test/java/codexstester/setup/security/SecuritySourceTests.java)
+    - [SecuritySourceTests.java](../../src/test/java/codexstester/setup/security/SecuritySourceTests.java)
 - path: src/test/resources/sample
-  - [external.tests.properties](src/test/resources/sample/external.tests.properties)
-  - [internal.tests.properties](src/test/resources/sample/internal.tests.properties)
-  - [unitary.tests.properties](src/test/resources/sample/unitary.tests.properties)
+    - [external.tests.properties](../../src/test/resources/sample/external.tests.properties)
+    - [internal.tests.properties](../../src/test/resources/sample/internal.tests.properties)
+    - [unitary.tests.properties](../../src/test/resources/sample/unitary.tests.properties)
 
-![img.png](../midias/release_1.0.4/codexstester-setup.png)
+![img.png](../midias/release_1.0.5/codexstester-setup.png)
 
 - AdvancedSetupTests.java
 
@@ -194,14 +190,12 @@ If a deeper and more assertive verification is needed in the tests, this file mu
 information. It already comes with a series of data ready to exemplify its use, but its use will be explained in more detail.
 details in the test conventions and standardization section of that same document.
 
-- ExternalSampleBridgeTests.java
-- InternalSampleBridgeTests.java
-- UnitarySampleBridgeTests.java
+- SampleBridgeTests.java
 
 Continuing with the files from the list above, we have the BRIDGE file, which has the purpose of creating a link
 between the test files of the consumer project and the CORE of CODEXS TESTER.
 
-![img.png](../midias/release_1.0.4/codexstester-bridge-sample.png)
+![img.png](../midias/release_1.0.5/codexstester-bridge-to-core.png)
 
 Put the name of the main class of your java spring boot project, which in this case is SampleApplication.java, this is the
 class that contains the main method of the consumer project, that is, the "main" class. However, it is possible that the project
@@ -209,35 +203,25 @@ have more than one main class (main), that is, several projects in the same repo
 monolithic structures, in these cases CODEXS TESTER also supports, as will be shown later in the
 test convention session.
 
-- DataSourceSampleTests.java
+- SampleDataSourceTests.java
 
 This is the file that should be used as a database for the tests, it will define the entire "database" of
 tests, that is, data for comparisons. The format and data to be written in this file are free choice of the
 developer, and can be written as simply and conveniently as possible.
-
-- FilePropertiesSourceTests.java
-
-This is the simplest file within the CODEXS TESTER workspace, requiring only one configuration
-as following image:
-
-![img.png](../midias/release_1.0.4/codexstester-file-properties-escope.png)
-
-See that there is only one attribute called targetTests which must be configured according to the needs of the project,
-however, this configuration will be explained in more detail in the Testing Conventions and Patterns section.
 
 - external.tests.properties
 - internal.tests.properties
 - unitary.tests.properties
 
 These are the ".properties" files that should be used during the tests, however they need to be copied inside
-from path resources/sample or sample/ as mentioned earlier. These properties files have a series of useful fields for 
-the tests, such as URL, URI, HTTP HEADERS, API-KEY, QUERY-PARAMETERS among others, and they will be looked for in the 
-mentioned path during the execution of any test.
+from path resources/sample or sample/ as mentioned earlier. These properties files have a series of
+useful fields for the tests, such as URL, URI, HTTP HEADERS, API-KEY, QUERY-PARAMETERS among others, and they will be searched in the
+path quoted during the execution of any test.
 
 - SecuritySourceTests.java
 
-It is in this file that access data is available, for example, credentials for authentication via OAuth2, so be very 
-careful when editing this file.
+It is in this file that access data is available, for example, credentials for authentication via OAuth2,
+so be very careful when editing this file.
 
 NOTE
 
@@ -256,7 +240,7 @@ For each of the tests we have a sample file called ExternalSampleTests, Internal
 UnitaySampleTests, but they are just examples to speed up the learning process about how the tests work
 with the use of CODEXS TESTER.
 
-![img.png](../midias/release_1.0.4/codexstester-tests.png)
+![img.png](../midias/release_1.0.5/codexstester-tests.png)
 
 > About "external" type tests
 
@@ -308,7 +292,7 @@ As already mentioned, the structure of the tests is composed of HEADER, BODY and
 
 > HEADER
 
-The HEADER of the request are defined by using the HeadersDto.java class which contains all the necessary fields to
+The HEADER of requests are defined by using the HeadersDto.java class which contains all the fields needed to
 perform a standard REST request, these fields being described below:
 
 - contentType
@@ -415,33 +399,22 @@ automatically. At the end of the documentation there is a huge list with the fea
 
 <h3>1. Configuring a scope for tests</h3>
 
-To define a test scope it is necessary to edit the FilePropertiesSourceTests.java file, but precisely the attribute
-targetTests, where this setting references a separate application or resource contained within the project.
+To define a test scope, it is necessary to configure a constructor in each test script, as shown in the image below, where
+you can see that the current test has a target called targetTests. This constructor serves to parameterize the
+test environment, reaching the IGNITION-CORE, where it together with the LOADER-PROPERTIES turns the system on and off
+of tests as needed, getting the request data, including the properties file. If informed
+an incorrect path to the properties file location, CODEXS TESTER will display an error message and an Exception
+will be released.
 
-A complete example of this configuration is shown below:
+An example of this configuration is shown below:
 
-![img.png](../midias/release_1.0.4/codexstester-scope.png)
+![img.png](../midias/release_1.0.5/codexstester-target-tests-by-constructor.png)
 
-Notice that there are two test scopes, one called sample and another called postalcode, but there is a second value
-at each array index, true or false, which indicates which scope CODEXS TESTER should take into account. Thus
-when a test is run, CODEXS TESTER will look for the necessary settings (test properties files) in the classpath it 
-indicates in the targetTests attribute and that it has the second value equal to true. Still at this point it is 
-important to say that only one scope is accepted at a time, and that CODEXS TESTER will consider the first test scope 
-to be true. Therefore, be careful not to make mistakes in this configuration, because if it is done incorrectly, it will 
-certainly will cause many problems during testing, for example:
+Notice that there is a constructor calling its parent constructor, informing as a parameter the location where the test files
+properties are, from that point it will be possible to proceed with the test programming.
 
-<pre>
-    protected static Object[][] targetTests = {
-            {"sample/", false},
-            {"postalcode/", false},
-            {"salesservice/", true}, <<< Esse será considerado
-            {"stockservice/", false},
-            {"dispatcherservice/", true} <<< Esse não sera considerado
-    };
-</pre>
-
-As shown in the image below, the configuration (from the image) above says that the scope of work that CODEXS TESTER must consider
-It is located in src/test/resources/sample
+As explained above and shown in the image, the image below shows how the scenario should be until that moment, notice
+that the path src/test/resources/sample/ is exactly where CODEXS TESTER will look for additional settings.
 
 ![img.png](../midias/release_1.0.4/codexstester-configuration-properties.png)
 
@@ -452,7 +425,7 @@ as HEADERS-HTTP will be available in each file referring to the type of test.
 
 <h3>2. Configuring the communication (bridge) between the tests and the CODEXS TESTER CORE</h3>
 
-![img.png](../midias/release_1.0.4/codexstester-bridge-reference.png)
+![img.png](../midias/release_1.0.5/codexstester-bridge-reference.png)
 
 This configuration is the most important and must be done carefully and with a correct understanding of how it works, since
 that it tells CODEXS TESTER which application will be tested. Imagine that there are two applications in the same project,
@@ -461,11 +434,11 @@ In this way, it will be necessary to inform CODEXS TESTER which application will
 
 > See that there are two different files, one for the SampleApplication application and another for the PostalCodeApplication application
 
-![img.png](../midias/release_1.0.4/codexstester-bridge-sample.png)
+![img.png](../midias/release_1.0.5/codexstester-bridge-to-core.png)
 
-![img.png](../midias/release_1.0.4/codexstester-bridge-postalcode.png)
+![img.png](../midias/release_1.0.5/codexstester-bridge-to-core-postalcode.png)
 
-Now see how the test target project is
+Now see how the test target project is (also called CONSUMER CODEXS TESTER)
 
 ![img.png](../midias/release_1.0.4/codexstester-sample-project.png)
 
@@ -475,7 +448,7 @@ operation of CODEXS TESTER.
 
 
 
-<h3>3. Setting up a datasource</h3>
+<h3>3. Configuring a DataSource</h3>
 
 This step is not mandatory, but as already mentioned, it helps to keep the test environment and the coding of the project more
 organized and easy to organize. To define a datasource create a file in the path codexstester/setup/datasource
@@ -486,15 +459,16 @@ This file must contain data and information for the different types of tests tha
 CODEXS TESTER consumer. The DataSourceSampleTests class defined in the DataSourceSampleTests.java file must be
 extended in the related test file, as shown below:
 
-![img.png](../midias/release_1.0.4/codexstester-extends-datasource-sample.png)
+![img.png](../midias/release_1.0.5/codexstester-datasource-sample.png)
 
 A code example in the datasource can be seen in the code below
 
 ![img.png](../midias/release_1.0.4/codexstester-datasource-sample.png)
 
-Note that there are two methods that return a JSON object that will be used in the tests as data to send in the request, 
-as will be shown later. It is also possible to observe attributes defined for use in the test files if it is useful. 
-This file is free in its preparation and programming, just be careful with its understanding and usability.
+Note that there are two methods that return a JSON object that will be used in the tests as data to send in the
+request, as will be shown later. It is also possible to observe attributes defined for use in the
+tests if it's useful. This file is free in its preparation and programming, just be careful with understanding and
+usability of it.
 
 
 
@@ -533,6 +507,15 @@ To name or identify a key or field in a test, data in String format must be used
 The expected value field should be used to also test the content of a response, in a fixed and defined format
 in CODEXS TESTER as a String, making it possible to serialize any object such as JSONObject, LinkedHashMap or
 HasMap for comparison, for example:
+
+<pre>
+    public static Object[] expectedJsonValues() {
+        String string = "value1";
+        JSONObject jsonObject = new JSONObject();
+        HeadersDto headersDto = new HeadersDto();
+        return new Object[]{string, jsonObject, headersDto};
+    }
+</pre>
 
 - Data type
 
@@ -638,17 +621,19 @@ of all the features available in CODEXS TESTER, for example:
    from the codexsHelperStringToJsonSimple functionality, we have one of the many CodexsHelpers, which in this case performs the conversion
    needs and complex any string (as long as it's compatible) into a JSON object. This makes life a lot easier for the Tester,
    which in turn doesn't have to worry about additional imports or data conversions.
-5) Finally in frame (5) we have the advanced test itself codexsTesterCompareJsonFormat. This test waits seven
+5) Finally, in frame (5) we have the advanced test itself codexsTesterCompareJsonFormat. This test waits seven
    parameters, self-explanatory, but it is worth mentioning the importance of strictMode = true, so that the data comparison
    be done assertively and in all fields.
 
 > NOTE: The refactorMode parameter will be explained in the feature description section of this documentation.
 
+
+
 <h3>6. Details about CODEXS TESTER</h3>
 
 - Summary flow for a test programmed with CODEXS TESTER
 
-![img.png](../midias/release_1.0.4/codexstester-diagram-flow-resumed.png)
+![img.png](../midias/release_1.0.5/codexstester-diagram-flow-resumed-release_1.0.5.png)
 
 Just for the sake of exemplifying in greater detail the engine of the CODEXS TESTER workspace, we see in the figure below
 the relationship between the resources of the system and the consumer project. Notice the long way a simple test can go
@@ -657,7 +642,9 @@ of the programmer in developing a complex test from scratch.
 
 - Complete workflow for a programmed test with CODEXS TESTER
 
-![img.png](../midias/release_1.0.4/codexstester-diagram-workflow-full.png)
+![img.png](../midias/release_1.0.5/codexstester-diagram-workflow-full-release_1.0.5.png)
+
+
 
 # Programming tests with the CODEXS TESTER workspace
 
@@ -673,8 +660,29 @@ of the programmer in developing a complex test from scratch.
 We will now see situations where the CODEXS TESTER can be used, being in a summation unit test, an external test for
 query a home address and an internal test to also query a home address.
 
-The tests will be merely illustrative, but they are tests that have already been carried out and their correct functioning has been verified,
-and with these tests it is already possible to understand the work methodology of CODEXS TESTER.
+The tests will be merely illustrative, but they are tests that have already been carried out and their correct functioning 
+has been verified, and with these tests it is already possible to understand the work methodology of CODEXS TESTER.
+
+Before starting, remember to create the constructor in the class that will be used to run the tests as shown in the 
+example below:
+
+<pre>
+public class SampleUnitaryTests extends SampleBridgeTests {
+
+    /**
+     * DO NOT REMOVE THIS CONSTRUCTOR
+     * */
+    public SampleUnitaryTests() {
+        super("sample/"); /*Inform here the current targetTests*/
+    }
+
+    @Test
+    public void anyTest() {
+        /*Code Here*/
+    }
+
+}
+</pre>
 
 - Test: Sum (Unitary Tests)
 
@@ -725,9 +733,9 @@ Looking at the test above, it is visible what the purpose of this test is, consi
 accurately delivers what is being tested. The body of this contains the standard structure used by CODEXS TESTER to
 run the tests, and this structure is defined by:
 
-- Dados da requisição (BODY REQUEST)
-- Header da requisição (HEADER REQUEST)
-- Metodo CODEXS TESTER para realizar a requisição (CODEXS TESTER)
+- Request data (BODY REQUEST)
+- Header of the request (HEADER REQUEST)
+- CODEXS TESTER method to perform the request (CODEXS TESTER)
 
 It is also possible to observe that there is a line of code that makes use of the DataSourcePostalCodeTests.java file which
 contains all the data for the tests, whether to test requests, responses or unitary values. This data for
@@ -869,15 +877,6 @@ RESPONSE-BODY JSON {"cep":"12090002","logradouro":"Rua São Caetano","complement
 See that the only difference between the "internal" and "external" tests is how the REQUEST is done, that is, through MockMvc
 or through RestTemplate, where you can see the difference between URL and URI.
 
-As already mentioned earlier in this document, to start a test configuration and programming, you must follow some
-CODEXS TESTER rules. First, make sure that the test scope/target is correctly configured.
-in the FilePropertiesSourceTests.java file, as instructed below
-
-![img.png](../midias/release_1.0.4/codexstester-file-properties-escope-postalcode.png)
-
-See that a scope of work has been defined for the CODEXS TESTER with the name of postalcode, that is, in the path src/test/resources of the
-application there should be a folder or "package" with the name postalcode src/test/resources/postalcode.
-
 The next step consists of defining the data types, field names, field values and data types of the
 fields, and this configuration must be done in the AdvancedSetupTests.java file contained in the setup/advanced path of
 CODEXS TESTER src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java. See below for the expected configuration
@@ -977,8 +976,7 @@ file has a self-explanation about its purpose***.
     }
 </pre>
 
-With that, or rather, with the settings shown above, it is possible to start programming the tests as shown
-below.
+With that, or rather, with the settings shown above, it is possible to start programming the tests as shown below.
 
 - Test type "external"
 
@@ -1053,7 +1051,6 @@ and the type of test is "internal", as noted in item (4).
 </pre>
 
 
-
 # Details of features available in CODE TESTER
 
 - Helpers
@@ -1077,15 +1074,19 @@ public static JSONObject codexsHelperStringToJson(String string);
 public static String codexsTesterParseJsonString(String jsonString, boolean debug) throws Exception
 public static org.json.JSONObject codexsTesterParseOrgJsonObject(Object jsonCandidate, boolean debug) throws Exception
 public static net.minidev.json.JSONObject codexsTesterParseNetJsonObject(Object jsonCandidate, boolean debug) throws Exception
+
 public static String codexsTesterJsonRefactorUrl(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorEscapeChars(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorSpaces(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorArrayFix(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorComplexArray(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorArrayFromString(Object jsonString, boolean debug) throws Exception
+public static String codexsTesterJsonRefactorArrayNumber(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorObjects(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactorDatetime(Object jsonString, boolean debug) throws Exception
+public static String codexsTesterJsonRefactorSanitize(Object jsonString, boolean debug) throws Exception
 public static String codexsTesterJsonRefactor(String refactorMode, Object jsonString, boolean debug) throws Exception
+
 public static org.json.JSONObject codexsTesterObjectToOrgJson(Object object, boolean debug) throws Exception
 public static net.minidev.json.JSONObject codexsTesterObjectToNetJson(Object object, boolean debug) throws Exception
 public static boolean codexsTesterCheckJsonCompatibility(Object jsonString, boolean debug) throws Exception
@@ -1117,6 +1118,7 @@ protected void codexsTesterAssertSum(int a, int b, int c);
 <pre>
 protected ResponseEntity&lt;?&lt; codexsTesterExternalDispatcher(RequestDto requestDto, HeadersDto headersDto);
 protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) throws Exception
+
 protected static ResponseEntity&lt;Oauth2ResponseTokenDto&gt; codexsTesterExternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto);
 protected static ResponseEntity&lt;Object&gt; codexsTesterExternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto);
 protected static ResponseEntity&lt;Oauth2ResponseTokenDto&lt; codexsTesterInternalOAuth2GetToken(Oauth2RequestTokenDto oauth2RequestTokenDto);
@@ -1259,6 +1261,32 @@ public void codexsTesterCompareLinkedHashMapFormat(
 - Requesters
 
 <pre>
+protected void codexsTesterExternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
+protected void codexsTesterExternal_StatusCode200_RetrieveOK(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode201_RetrieveCreated(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode202_RetrieveAccepted(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode203_RetrieveNonAuthoritativeInformation(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode204_RetrieveNoContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode205_RetrieveResetContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode206_RetrievePartialContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode207_RetrieveMultStatusWebdav(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode208_RetrieveMultiStatus(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode226_RetrieveImUsedHttpDeltaEncoding(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
+protected void codexsTesterExternal_StatusCode300_RetrieveMultipleChoice(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode301_RetrieveMovedPermanently(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode302_RetrieveFound(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode303_RetrieveSeeOther(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode304_RetrieveNotModified(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode305_RetrieveUseProxyDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode306_RetrieveUnusedDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode307_RetrieveTemporaryRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterExternal_StatusCode308_RetrievePermanentRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
 protected void codexsTesterExternal_StatusCode400_RetrieveBadRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode401_RetrieveUnauthorized(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode402_RetrievePaymentRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
@@ -1288,10 +1316,7 @@ protected void codexsTesterExternal_StatusCode428_RetrievePreConditionRequired(H
 protected void codexsTesterExternal_StatusCode429_RetrieveTooManyRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode431_RetrieveRequestHeaderFieldsTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode451_RetrieveUnavailableForLegalReasons(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
 protected void codexsTesterExternal_StatusCode500_RetrieveInternalServerError(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode501_RetrieveNotImplemented(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode502_RetrieveBadGateway(HeadersDto headersDto, RequestDto requestDto) throws Exception
@@ -1303,40 +1328,13 @@ protected void codexsTesterExternal_StatusCode507_RetrieveInsuficientStorage(Hea
 protected void codexsTesterExternal_StatusCode508_RetrieveLoopDetected(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterExternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode300_RetrieveMultipleChoice(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode301_RetrieveMovedPermanently(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode302_RetrieveFound(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode303_RetrieveSeeOther(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode304_RetrieveNotModified(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode305_RetrieveUseProxyDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode306_RetrieveUnusedDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode307_RetrieveTemporaryRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode308_RetrievePermanentRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode200_RetrieveOK(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode201_RetrieveCreated(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode202_RetrieveAccepted(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode203_RetrieveNonAuthoritativeInformation(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode204_RetrieveNoContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode205_RetrieveResetContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode206_RetrievePartialContent(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode207_RetrieveMultStatusWebdav(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode208_RetrieveMultiStatus(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterExternal_StatusCode226_RetrieveImUsedHttpDeltaEncoding(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
+
+
 protected void codexsTesterInternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode500_RetrieveInternalServerError(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode501_RetrieveNotImplemented(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode502_RetrieveBadGateway(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode503_RetrieveServiceUnavailable(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode504_RetrieveGatewayTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode505_RetrieveHttpVersionNotSupported(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode506_RetrieveVariantAlsoNegotiates(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode507_RetrieveInsuficientStorage(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode508_RetrieveLoopDetected(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception
-protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
 
 protected void codexsTesterInternal_StatusCode200_RetrieveOK(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode201_RetrieveCreated(HeadersDto headersDto, RequestDto requestDto) throws Exception
@@ -1348,6 +1346,7 @@ protected void codexsTesterInternal_StatusCode206_RetrievePartialContent(Headers
 protected void codexsTesterInternal_StatusCode207_RetrieveMultStatusWebdav(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode208_RetrieveMultiStatus(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode226_RetrieveImUsedHttpDeltaEncoding(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
 protected void codexsTesterInternal_StatusCode300_RetrieveMultipleChoice(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode301_RetrieveMovedPermanently(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode302_RetrieveFound(HeadersDto headersDto, RequestDto requestDto) throws Exception
@@ -1357,6 +1356,7 @@ protected void codexsTesterInternal_StatusCode305_RetrieveUseProxyDeprecated(Hea
 protected void codexsTesterInternal_StatusCode306_RetrieveUnusedDeprecated(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode307_RetrieveTemporaryRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode308_RetrievePermanentRedirect(HeadersDto headersDto, RequestDto requestDto) throws Exception
+
 protected void codexsTesterInternal_StatusCode400_RetrieveBadRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode401_RetrieveUnauthorized(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode402_RetrievePaymentRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
@@ -1386,8 +1386,19 @@ protected void codexsTesterInternal_StatusCode428_RetrievePreConditionRequired(H
 protected void codexsTesterInternal_StatusCode429_RetrieveTooManyRequest(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode431_RetrieveRequestHeaderFieldsTooLarge(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode451_RetrieveUnavailableForLegalReasons(HeadersDto headersDto, RequestDto requestDto) throws Exception
-</pre>
 
+protected void codexsTesterInternal_StatusCode500_RetrieveInternalServerError(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode501_RetrieveNotImplemented(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode502_RetrieveBadGateway(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode503_RetrieveServiceUnavailable(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode504_RetrieveGatewayTimeout(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode505_RetrieveHttpVersionNotSupported(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode506_RetrieveVariantAlsoNegotiates(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode507_RetrieveInsuficientStorage(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode508_RetrieveLoopDetected(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception
+protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
+</pre>
 
 
 Make the most of this little job!
@@ -1395,4 +1406,3 @@ Make the most of this little job!
 ----
 All rights reserved to Huntercodexs &copy; 2022 - Software Development
 Maintained by Jereelton Teixeira (jereelton-devel)
-
