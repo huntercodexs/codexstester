@@ -625,7 +625,7 @@ que por sua vez não precisa se preocupar com importações adicionais ou conver
 parametros, auto explicativos, porém vale ressaltar a importanção do strictMode = true, para que a comparação de dados 
 seja feita de forma assertiva e em todos os campos.
 
-> NOTA: O parametro refatorMode sera explicado na sessão descritiva de funcionalidades dessa documentação.
+> NOTA: O parametro refactorMode sera explicado na sessão descritiva de funcionalidades dessa documentação.
 
 
 
@@ -643,6 +643,11 @@ do programador em desenvolver um teste complexo do zero.
 - Fluxo de trabalho completo para um teste programado com o CODEXS TESTER
 
 ![img.png](../midias/release_1.0.5/codexstester-diagram-workflow-full-release_1.0.5.png)
+
+- Fluxo completo para um teste escrito com o CODEXS TESTER
+
+![img.png](../midias/release_1.0.5/codexstester-tests-complete-flow.png)
+
 
 
 
