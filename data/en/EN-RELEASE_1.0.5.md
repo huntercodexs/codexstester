@@ -644,6 +644,11 @@ of the programmer in developing a complex test from scratch.
 
 ![img.png](../midias/release_1.0.5/codexstester-diagram-workflow-full-release_1.0.5.png)
 
+- Complete flow for a test written with CODEXS TESTER
+
+![img.png](../midias/release_1.0.5/codexstester-tests-complete-flow.png)
+
+
 
 
 # Programming tests with the CODEXS TESTER workspace
