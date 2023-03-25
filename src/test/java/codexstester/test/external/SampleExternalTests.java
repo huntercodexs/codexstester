@@ -10,13 +10,6 @@ import org.springframework.http.MediaType;
 public class SampleExternalTests extends SampleBridgeTests {
 
     /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public SampleExternalTests() {
-        super("sample/");
-    }
-
-    /**
      * ExternalSampleTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */

@@ -10,13 +10,6 @@ import org.springframework.http.MediaType;
 public class SampleInternalTests extends SampleBridgeTests {
 
     /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public SampleInternalTests() {
-        super("sample/");
-    }
-
-    /**
      * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */

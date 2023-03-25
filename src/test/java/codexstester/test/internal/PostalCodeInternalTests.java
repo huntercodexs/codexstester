@@ -17,13 +17,6 @@ import static codexstester.engine.util.CodexsHelperTests.codexsHelperStringToJso
 public class PostalCodeInternalTests extends PostalCodeBridgeTests {
 
     /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public PostalCodeInternalTests() {
-        super("postalcode/");
-    }
-
-    /**
      * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
