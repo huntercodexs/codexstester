@@ -47,6 +47,25 @@ requisições. Veja mais detalhes sobre HTTP STATUS CODE em https://developer.mo
 
 
 
+# Casos de uso
+
+Abaixo temos algumas situações onde podemos utilizar o CODEXS TESTER
+
+- Testes integrados
+  - Requisiçẽs externas usando um client
+- Testes unitarios
+  - Soma de dois numeros
+  - Processamendo de dados
+  - Persistencia de dados
+  - Metodos privados
+- Fluxo completo de uma requisição REST
+  - Teste de consistência
+- Authenticação
+  - MFA/2FA
+  - OAuth2
+
+
+
 # Instalação e Configuração
 
 - Depedendencias
@@ -229,6 +248,19 @@ NOTA
 
 > Tenha cuidado com as credenciais que serão utilizadas no arquivo SecuritySourceTests para que elas não fiquem
 > expostas em locais vulneráveis.
+
+- Exemplo OAuht2
+
+<code>
+
+    public String oauth2Token() {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        if (response.getBody() != null) return response.getBody().getAccess_token();
+        return null;
+    }
+
+</code>
 
 - Entendendo os recurso do espaco de trabalho CODEXS TESTER
 
@@ -1078,6 +1110,41 @@ e o tipo de teste é "internal", conforme marcado no item (4).
 </code>
 
 
+
+# Metodos privados
+
+Para testar metodos privados use o codexsHelperToPrivateMethods, que trata facilmente a execução do metodo retornando uma
+resposta previamente definida pelo programador, por exemplo:
+
+<code>
+
+    @Test
+    public void validResultFromPrivateMethod_AssertBoolTest() throws IOException {
+        boolean result = (boolean) codexsHelperToPrivateMethods(new PostalCodeService(), "valid", Collections.singletonList(1));
+        codexsTesterAssertBool(result, true);
+    }
+
+    @Test
+    public void validResultFromPrivateMethod_AssertExactTest() throws IOException {
+        List<String> args = new ArrayList<>();
+        args.add("Jereelton");
+        args.add("Teixeira");
+        Object fullname = codexsHelperToPrivateMethods(new PostalCodeService(), "fullname", args);
+        codexsTesterAssertExact(fullname.toString(), "Jereelton Teixeira");
+    }
+
+</code>
+
+Basicamente é necessário informar ao codexsHelperToPrivateMethods três parametros, sendo eles:
+
+- instancia da classe alvo
+- metodo a ser testado da classe instanciada
+- argumentos que o metodo espera
+  - Ainda nesse ponto, tenha em mente que o codexsHelperToPrivateMethods suporta até 5 argumentos como parametros, e esses 
+  argumentos devem ser informados na sequencia correta dentro um List<>, como mostrado no exemplo acima.
+
+
+
 # Detalhes de Funcionalidades disponiveis no CODEXS TESTER
 
 - Helpers
@@ -1093,6 +1160,8 @@ public static void codexsHelperLogTermTests(String title, Object data, boolean l
 public static JSONObject codexsHelperQueryStringToJson(String queryString);
 public static String codexsHelperJsonToString(JSONObject json);
 public static JSONObject codexsHelperStringToJson(String string);
+public static Object codexsHelperToPrivateMethods(Object instance, String method, List<?> args);
+public static String codexsHelperReadFile(String filepath);
 </pre>
 
 - Refactors e Parser
@@ -1120,9 +1189,10 @@ public static boolean codexsTesterCheckJsonCompatibility(Object jsonString, bool
 public static net.minidev.json.JSONObject codexsTesterOrgJsonToNetJson(org.json.JSONObject jsonOrg, boolean debug) throws Exception
 public static org.json.JSONObject codexsTesterNetJsonToOrgJson(net.minidev.json.JSONObject jsonNet, boolean debug) throws Exception
 public static org.json.JSONObject codexsTesterOrgJsonFromLinkedHashMap(LinkedHashMap<?, ?> linkedHashMap, Object[] expectedFields, boolean debug) throws Exception
+public static net.minidev.json.JSONObject codexsTesterNetJsonFromLinkedHashMap(LinkedHashMap<?, ?> linkedHashMap, Object[] expectedFields, boolean debug) throws Exception
 </pre>
 
-- Asserts
+- Assert
 
 <pre>
 protected void codexsTesterAssertExact(String ref, String text);
@@ -1140,7 +1210,7 @@ protected void codexsTesterAssertPhone(String phoneNumber);
 protected void codexsTesterAssertSum(int a, int b, int c);
 </pre>
 
-- Dispatchers
+- Dispatcher
 
 <pre>
 protected ResponseEntity&lt;?&lt; codexsTesterExternalDispatcher(RequestDto requestDto, HeadersDto headersDto);
@@ -1152,7 +1222,7 @@ protected static ResponseEntity&lt;Oauth2ResponseTokenDto&lt; codexsTesterIntern
 protected static ResponseEntity&lt;Object&lt; codexsTesterInternalOAuth2CheckToken(Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto);
 </pre>
 
-- Advanceds
+- Advanced
 
 <code>
 

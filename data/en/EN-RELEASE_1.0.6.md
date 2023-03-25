@@ -47,6 +47,25 @@ requests. See more details about HTTP STATUS CODE at https://developer.mozilla.o
 
 
 
+# Use cases
+
+Below are some situations where we can use CODEXS TESTER
+
+- Integrated tests
+    - External requests using a client
+- Unitary tests
+    - Sum of two numbers
+    - Data processing
+    - Data persistence
+    - Private methods
+- Complete flow of a REST request
+    - Consistency test
+- Authentication
+    - MFA/2FA
+    - OAuth2
+
+
+
 # Installation and Configuration
 
 - Dependencies
@@ -229,6 +248,19 @@ NOTE
 
 > Be careful with the credentials that will be used in the SecuritySourceTests file so that they are not
 > exposed in vulnerable places.
+
+- OAuht2 Example
+
+<code>
+
+    public String oauth2Token() {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        if (response.getBody() != null) return response.getBody().getAccess_token();
+        return null;
+    }
+
+</code>
 
 - Understanding the features of the CODEXS TESTER workspace
 
@@ -1078,6 +1110,41 @@ and the type of test is "internal", as noted in item (4).
 </code>
 
 
+
+# private methods
+
+To test private methods use codexsHelperToPrivateMethods, which easily handles method execution by returning a
+response previously defined by the programmer, for example:
+
+<code>
+
+     @Test
+     public void validResultFromPrivateMethod_AssertBoolTest() throws IOException {
+         boolean result = (boolean) codexsHelperToPrivateMethods(new PostalCodeService(), "valid", Collections.singletonList(1));
+         codexsTesterAssertBool(result, true);
+     }
+
+     @Test
+     public void validResultFromPrivateMethod_AssertExactTest() throws IOException {
+         List<String> args = new ArrayList<>();
+         args.add("Jereelton");
+         args.add("Teixeira");
+         Object fullname = codexsHelperToPrivateMethods(new PostalCodeService(), "fullname", args);
+         codexsTesterAssertExact(fullname.toString(), "Jereelton Teixeira");
+     }
+
+</code>
+
+Basically it is necessary to inform codexsHelperToPrivateMethods three parameters, namely:
+
+- instance of the target class
+- method to be tested of the instantiated class
+- arguments the method expects
+    - Still at this point, keep in mind that codexsHelperToPrivateMethods supports up to 5 arguments as parameters, and these
+      arguments must be informed in the correct sequence inside a List<>, as shown in the example above.
+    - 
+
+
 # Details of features available in CODE TESTER
 
 - Helpers
@@ -1093,6 +1160,8 @@ public static void codexsHelperLogTermTests(String title, Object data, boolean l
 public static JSONObject codexsHelperQueryStringToJson(String queryString);
 public static String codexsHelperJsonToString(JSONObject json);
 public static JSONObject codexsHelperStringToJson(String string);
+public static Object codexsHelperToPrivateMethods(Object instance, String method, List<?> args);
+public static String codexsHelperReadFile(String filepath);
 </pre>
 
 - Refactors e Parser
@@ -1120,6 +1189,7 @@ public static boolean codexsTesterCheckJsonCompatibility(Object jsonString, bool
 public static net.minidev.json.JSONObject codexsTesterOrgJsonToNetJson(org.json.JSONObject jsonOrg, boolean debug) throws Exception
 public static org.json.JSONObject codexsTesterNetJsonToOrgJson(net.minidev.json.JSONObject jsonNet, boolean debug) throws Exception
 public static org.json.JSONObject codexsTesterOrgJsonFromLinkedHashMap(LinkedHashMap<?, ?> linkedHashMap, Object[] expectedFields, boolean debug) throws Exception
+public static net.minidev.json.JSONObject codexsTesterNetJsonFromLinkedHashMap(LinkedHashMap<?, ?> linkedHashMap, Object[] expectedFields, boolean debug) throws Exception
 </pre>
 
 - Asserts
