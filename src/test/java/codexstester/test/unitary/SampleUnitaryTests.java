@@ -3,23 +3,20 @@ package codexstester.test.unitary;
 import codexstester.engine.dto.HeadersDto;
 import codexstester.setup.bridge.SampleBridgeTests;
 import codexstester.setup.datasource.SampleDataSourceTests;
+import com.huntercodexs.postalcode.service.PostalCodeService;
 import net.minidev.json.JSONObject;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
+import java.io.IOException;
 import java.util.*;
 
+import static codexstester.engine.util.CodexsHelperTests.codexsHelperReadFile;
+import static codexstester.engine.util.CodexsHelperTests.codexsHelperToPrivateMethods;
 import static codexstester.engine.util.CodexsParserJsonTests.codexsTesterJsonRefactor;
 import static codexstester.engine.util.CodexsParserJsonTests.codexsTesterParseOrgJsonObject;
 
 public class SampleUnitaryTests extends SampleBridgeTests {
-
-    /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public SampleUnitaryTests() {
-        super("sample/");
-    }
 
     @Test
     public void propsTest() {
@@ -425,4 +422,26 @@ public class SampleUnitaryTests extends SampleBridgeTests {
 
         codexsTesterJsonRefactor("complex", object2, true);
     }
+
+    @Test
+    public void validResultFromPrivateMethod_AssertBoolTest() throws IOException {
+        boolean result = (boolean) codexsHelperToPrivateMethods(new PostalCodeService(), "valid", Collections.singletonList(1));
+        codexsTesterAssertBool(result, true);
+    }
+
+    @Test
+    public void validResultFromPrivateMethod_AssertExactTest() throws IOException {
+        List<String> args = new ArrayList<>();
+        args.add("Jereelton");
+        args.add("Teixeira");
+        Object fullname = codexsHelperToPrivateMethods(new PostalCodeService(), "fullname", args);
+        codexsTesterAssertExact(fullname.toString(), "Jereelton Teixeira");
+    }
+    
+    @Test
+    public void readFileTest() {
+        String result = codexsHelperReadFile("./src/test/resources/postalcode/unitary.tests.properties");
+        System.out.println(result);
+    }
+
 }

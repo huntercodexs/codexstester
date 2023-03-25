@@ -24,4 +24,12 @@ public class PostalCodeService {
         return a+b;
     }
 
+    private boolean valid(int k) {
+        return k != 0;
+    }
+
+    private String fullname(String firstName, String lastName) {
+        return firstName.replaceAll(" ", "") +" "+ lastName;
+    }
+
 }

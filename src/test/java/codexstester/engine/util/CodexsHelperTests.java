@@ -1,10 +1,17 @@
 package codexstester.engine.util;
 
 import net.minidev.json.JSONObject;
+import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.util.DigestUtils;
+import org.springframework.util.ReflectionUtils;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
@@ -126,6 +133,57 @@ public class CodexsHelperTests {
         }
 
         return jsonData;
+    }
+
+    public static Object codexsHelperToPrivateMethods(Object instance, String method, List<?> args) {
+        switch (args.size()) {
+            case 1:
+                return ReflectionTestUtils.invokeMethod(instance, method, args.get(0));
+            case 2:
+                return ReflectionTestUtils.invokeMethod(instance, method, args.get(0), args.get(1));
+            case 3:
+                return ReflectionTestUtils.invokeMethod(instance, method, args.get(0), args.get(1), args.get(2));
+            case 4:
+                return ReflectionTestUtils.invokeMethod(instance, method, args.get(0), args.get(1), args.get(2), args.get(3));
+            case 5:
+                return ReflectionTestUtils.invokeMethod(instance, method, args.get(0), args.get(1), args.get(2), args.get(3), args.get(4));
+            default:
+                throw new RuntimeException("Args is too long (max 5 args)");
+        }
+    }
+
+    public static String codexsHelperReadFile(String filepath) {
+        StringBuilder dataFile = new StringBuilder();
+
+        try {
+            FileReader activateFile = null;
+            try {
+                activateFile = new FileReader(filepath);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+            BufferedReader readActivateFile = new BufferedReader(activateFile);
+
+            String lineFile = "";
+            try {
+                lineFile = readActivateFile.readLine();
+                dataFile = new StringBuilder(lineFile);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            while (lineFile != null) {
+                lineFile = readActivateFile.readLine();
+                if (lineFile != null) dataFile.append(lineFile).append("\n");
+            }
+
+            activateFile.close();
+
+        } catch (IOException e) {
+            throw new RuntimeException("FILE READER EXCEPTION: " + e.getMessage());
+        }
+
+        return dataFile.toString();
     }
 
 }
