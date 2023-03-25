@@ -9,6 +9,13 @@ import org.springframework.http.MediaType;
 
 public class SampleExternalTests extends SampleBridgeTests {
 
+    public String oauth2Token() {
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
+        if (response.getBody() != null) return response.getBody().getAccess_token();
+        return null;
+    }
+
     /**
      * ExternalSampleTests Helpers
      * THIS TESTS CAN BE REMOVED
