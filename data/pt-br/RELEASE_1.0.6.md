@@ -130,7 +130,7 @@ ilustrado na imagem abaixo
 > possui alguma atualização para ajustes no desenvolvimento de testes escritos em releases anteriores para verificar 
 > a compatibilidade.
 
-![img.png](../midias/release_1.0.4/codexstester-github-image-1.png)
+![img.png](../midias/release_1.0.6/codexstester-github-image-1.png)
 
 Nesse caso o procedimento é, em partes, o mesmo do explicado acima em "git clone", ou seja os arquivos devem estar na 
 pasta correta <pre>@{PROJECT_ROOT_PATH}/src/test/java</pre> do projeto consumidor.
@@ -146,7 +146,7 @@ exista crie esse package no seguinte path:
 
 Dentro do path "test" criado, certifique-se de que existam as pastas "java" e "resources" conforme imagem abaixo:
 
-![img.png](../midias/release_1.0.4/codexstester-java-resources-sample-project.png)
+![img.png](../midias/release_1.0.6/codexstester-java-resources-sample-project.png)
 
 Em seguida no projeto onde sera executado os testes copie a pasta (package) "codexstester" para dentro da pasta "java" 
 mostrada acima, sendo que a pasta "codexstester" é a mesma que esta dentro do projeto CODEXS TESTER
@@ -287,7 +287,7 @@ chamadas para um recurso especifico dentro de um ambiente seguro e controlado.
 
 Abaixo temos uma demonstração grafica de como isso funciona
 
-![img.png](../midias/release_1.0.4/codexstester-external.png)
+![img.png](../midias/release_1.0.6/codexstester-external.png)
 
 > Sobre testes do tipo "internal"
 
@@ -301,7 +301,7 @@ REST para os "endpoints" contidos no serviço, o que o torna diferente dos teste
 
 A imagem abaixo ilustra o fluxo de processamento para testes do tipo internal:
 
-![img.png](../midias/release_1.0.4/codexstester-internal.png)
+![img.png](../midias/release_1.0.6/codexstester-internal.png)
 
 > Sobre testes do tipo "unitary"
 
@@ -313,7 +313,7 @@ ou mesmo se a soma de dois numeros esta sendo feita corretamente por um calculo 
 Para exemplificar esse cenário temos a imagem a seguir, que mostra de forma simples e resumida como são feitos os testes 
 unitarios com o espaço de trabalho CODEXS TESTER.
 
-![img.png](../midias/release_1.0.4/codexstester-unitary.png)
+![img.png](../midias/release_1.0.6/codexstester-unitary.png)
 
 Essas foram as informações sobre o path de configuração codexstester/setup e o path de testes codexstester/test, sendo 
 que eles serão detalhados na sessão de convenções e padrões de testes do CODEXS TESTER.
@@ -367,7 +367,7 @@ headersDto.setAddtionalValue("XYZ-123");
 ***IMPORTANTE: Use o arquivo de propriedades para definir as headers adicionais de requisição, sendo permitido até cinco
 headers adicionais, conforme imagem abaixo***
 
-![img.png](../midias/release_1.0.4/codexstester-headers-adicionais.png)
+![img.png](../midias/release_1.0.6/codexstester-headers-adicionais.png)
 
 Exemplo (internal/external):
 
@@ -431,35 +431,7 @@ forma automatica. No final da documentação existe uma imensa lista com as func
 
 # Convenções e Padrões CODEXS TESTER
 
-<h3>1. Configurando um escopo para os testes</h3>
-
-Para definir um escopo de testes é preciso configurar um construtor em cada script de teste, conforme imagem abaixo, onde 
-é possível observar que o teste atual tem um alvo chamadode targetTests. Esse construtor serve para parametrizar o 
-ambiente de teste, chagando até o IGNITION-CORE, onde ele juntamente com o LOADER-PROPERTIES liga e desliga o sistema 
-de testes conforme a necessidade, obtendo os dados de requisição, incluindo o arquivo de propriedades. Caso seja informado 
-um path incorreto para localização do arquivo de propriedades, o CODEXS TESTER exibira uma mensagem de erro e uma Exception 
-será lançada.
-
-A seguir é mostrado um exemplo dessa configuração:
-
-![img.png](../midias/release_1.0.6/codexstester-target-tests-by-constructor.png)
-
-Repare que existe um construtor chamando seu construtor pai, informando como parametro o local onde os arquivos de testes 
-properties estão, a partir desse ponto será possível prosseguir com a programação dos testes.
-
-Conforme explicado acima e exposto na imagem, a imagem abaixo mostra como deve estar o cenario até esse momento, repare 
-que o path src/test/resources/sample/ é examente o onde o CODEXS TESTER ira procurar por configurações adicionais.
-
-![img.png](../midias/release_1.0.4/codexstester-configuration-properties.png)
-
-Com essas configurações dizemos para os testes do tipo "external", "internal" ou "unitary" que os detalhes de "requests" 
-como HEADERS-HTTP estarão disponiveis em cada arquivo referente ao tipo de teste.
-
-
-
-<h3>2. Configurando a comunicação (bridge) entre os testes e o CORE do CODEXS TESTER</h3>
-
-![img.png](../midias/release_1.0.6/codexstester-bridge-reference.png)
+<h3>1. Configurando a comunicação (bridge) entre os testes e o CORE do CODEXS TESTER</h3>
 
 Essa configuração é a mais importante e deve ser feita com atenção e entendimento correto do seu funcionamento, uma vez 
 que ela diz ao CODEXS TESTER qual será a aplicação a ser testada. Imagine que existam duas aplicações em um mesmo projeto, 
@@ -470,15 +442,21 @@ forma será necessário informar ao CODEXS TESTER qual será a aplicação a ser
 
 ![img.png](../midias/release_1.0.6/codexstester-bridge-to-core.png)
 
-![img.png](../midias/release_1.0.6/codexstester-bridge-to-core-postalcode.png)
-
 Agora veja como esta o projeto alvo de testes (também chamado de CONSUMIDOR CODEXS TESTER)
 
-![img.png](../midias/release_1.0.4/codexstester-sample-project.png)
+![img.png](../midias/release_1.0.6/codexstester-sample-project.png)
 
 Não é necessário alterar mais nada nesse arquivo, entretanto como todo projeto de código aberto livre para ser alterado, 
 é possível acrescentar outros códigos se necessário, porém tenha cautela nas alterações para não comprometer o correto 
 funcionamento do CODEXS TESTER.
+
+
+
+<h3>2. Configurando um escopo para os testes</h3>
+
+Para criar um escopo de teste basta extender/herdar a bridge correta para o seu arquivo de teste conforme imagem abaixo:
+
+![img.png](../midias/release_1.0.6/codexstester-bridge-reference.png)
 
 
 
@@ -497,7 +475,7 @@ extendida no arquivo de testes referente, conforme mostrado abaixo:
 
 Um exemplo de código no datasource pode ser visto no código abaixo
 
-![img.png](../midias/release_1.0.4/codexstester-datasource-sample.png)
+![img.png](../midias/release_1.0.6/codexstester-datasource-sample.png)
 
 Repare que existem dois metodos que retornam um objeto JSON que serão utilizados nos testes como dados para enviar na 
 requisição, conforme será mostrado mais adiante. Também é possível observar atributos definidos para uso nos arquivos de 
@@ -518,7 +496,7 @@ sensiveis de acesso. É altamente recomendado que não se utilize dados de acess
 homologação, ainda assim não exponha os dados, mesmo que de ambientes de desenvolvimento ou testes para pessoas não 
 autorizados. A seguir temos uma imagem para ilustrar essa configuração:
 
-![img.png](../midias/release_1.0.4/codexstester-config-security.png)
+![img.png](../midias/release_1.0.6/codexstester-config-security.png)
 
 
 
@@ -584,11 +562,11 @@ Abaixo segue um exemplo de como implementar um teste avançado CODEXS TESTER uti
 
 - Configuração para uma resposta JSON com varios tipos de dados no seu conteudo
 
-![img.png](../midias/release_1.0.4/codexstester-json-config.png)
+![img.png](../midias/release_1.0.6/codexstester-json-config.png)
 
 - Configuração do teste responsavel pelo uso das configurações acima
 
-![img.png](../midias/release_1.0.4/codexstester-json-typed.png)
+![img.png](../midias/release_1.0.6/codexstester-json-typed.png)
 
 Repare que existe uma definição para testar as respostas dentro do arquivo AdvancedSetupTests.java, e uma simulação de 
 resposta dentro do teste whenJsonFormatTypedTests(), sendo que o formato esperado para esse teste é o JSON, conforme o 
@@ -630,13 +608,13 @@ aqui uma breve demonstração do que pode ser feito nos testes avançados e otim
 Na figura abaixo temos o uso, veja como ficou muito mais simple e direto a escrita de um teste avançado, o qual ira testar
 toda a "arvore mapeada" no seu alvo chamado jsonResponse.
 
-![img.png](../midias/release_1.0.4/codexstester-advanced-unitary-tests-datatree.png)
+![img.png](../midias/release_1.0.6/codexstester-advanced-unitary-tests-datatree.png)
 
 O código do metodo expectedJsonDataTree() foi criado no arquivo AdvancedSetupTests.java que por sua vez esta localidado
 no path src/test/java/codexstester/setup/advanced, conforme imagem abaixo o entendimento desse formato de dados para
 testes dispensa maiores detalhes.
 
-![img.png](../midias/release_1.0.4/codexstester-advanced-json-datatree.png)
+![img.png](../midias/release_1.0.6/codexstester-advanced-json-datatree.png)
 
 Veja que foi criado uma matriz de dados chamada Data Tree com todos os dados necessários para um testes completo e 
 satisfatório.
@@ -644,7 +622,7 @@ satisfatório.
 Ainda falando de testes avançados com o uso de uma DataTree, é possível montar um teste extremamente complexo com o uso 
 de todos os recursos disponiveis no CODEXS TESTER, por exemplo: 
 
-![img.png](../midias/release_1.0.4/codexstester-complex-full-sample.png)
+![img.png](../midias/release_1.0.6/codexstester-complex-full-sample.png)
 
 1) No quadro (1) da imagem acima temos a origem dos dados (DataSource)
 2) No quadro (2) da imagem acima temos as configurações para o teste atual relacionados a Header, repare que temos um 
@@ -1037,7 +1015,7 @@ abaixo.
 
 - Teste do tipo "external"
 
-![img.png](../midias/release_1.0.4/codexstester-advanced-external-postalcode-test.png)
+![img.png](../midias/release_1.0.6/codexstester-advanced-external-postalcode-test.png)
 
 A imagem acima, mostra um teste avançado CODEXS TESTER, onde é possível notar os pontos importantes desse teste e que 
 merecem atenção, veja abaixo:
@@ -1054,7 +1032,7 @@ acordo com o programador, eles não são relevantes para o teste.
 
 - Teste do tipo "internal"
 
-![img.png](../midias/release_1.0.4/codexstester-advanced-internal-postalcode-test.png)
+![img.png](../midias/release_1.0.6/codexstester-advanced-internal-postalcode-test.png)
 
 A imagem acima mostra um teste avançado do tipo "internal" do CODEXS TESTER, com caracteristicas bem semelhantes ao teste 
 to tipo "external" mostrado acima, sendo assim dispensa detalhes mais profundos. Entretanto, repare que no item (6) da 
