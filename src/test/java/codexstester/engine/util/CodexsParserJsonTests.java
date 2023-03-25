@@ -425,4 +425,17 @@ public class CodexsParserJsonTests {
         return jsonResponse;
     }
 
+    public static net.minidev.json.JSONObject codexsTesterNetJsonFromLinkedHashMap(LinkedHashMap<?, ?> linkedHashMap, Object[] expectedFields, boolean debug) throws Exception {
+
+        net.minidev.json.JSONObject jsonResponse = new net.minidev.json.JSONObject();
+
+        for (Object field : expectedFields) {
+            if (linkedHashMap.containsKey(field.toString())) {
+                jsonResponse.put(field.toString(), linkedHashMap.get(field.toString()));
+            }
+        }
+
+        return jsonResponse;
+    }
+
 }

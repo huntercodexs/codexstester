@@ -16,13 +16,6 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAut
 public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public PostalCodeExternalTests() {
-        super("postalcode/");
-    }
-
-    /**
      * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */

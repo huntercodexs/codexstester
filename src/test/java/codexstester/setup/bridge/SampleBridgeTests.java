@@ -13,8 +13,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringBootTest(classes = SampleApplication.class) /*INSERT HERE THEM MAIN CLASS FROM PROJECT (EXAMPLE: ApplicationName.class)*/
 public class SampleBridgeTests extends CodexsTesterCoreBridgeTests {
 
-    protected SampleBridgeTests(String targetTests) {
-        super(targetTests);
+    protected SampleBridgeTests() {
+        super("sample/");
     }
 
     @Override
