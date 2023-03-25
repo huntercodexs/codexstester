@@ -53,39 +53,41 @@ requests. See more details about HTTP STATUS CODE at https://developer.mozilla.o
 
 First import into the pom.xml file of any project the following dependencies:
 
-<pre>
-		&lt;dependency&gt;
-			&lt;groupId>org.springframework.boot&lt;/groupId&gt;
-			&lt;artifactId>spring-boot-starter-test&lt;/artifactId&gt;
-			&lt;scope>test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId>io.projectreactor&lt;/groupId&gt;
-			&lt;artifactId>reactor-test&lt;/artifactId&gt;
-			&lt;scope>test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId>org.springframework.restdocs&lt;/groupId&gt;
-			&lt;artifactId>spring-restdocs-mockmvc&lt;/artifactId&gt;
-			&lt;scope>test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId>io.rest-assured&lt;/groupId&gt;
-			&lt;artifactId>spring-mock-mvc&lt;/artifactId&gt;
-			&lt;scope>test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId>junit&lt;/groupId&gt;
-			&lt;artifactId>junit&lt;/artifactId&gt;
-			&lt;scope>test&lt;/scope&gt;
-		&lt;/dependency&gt;
-		&lt;dependency&gt;
-			&lt;groupId&gt;net.minidev&lt;/groupId&gt;
-			&lt;artifactId&gt;json-smart&lt;/artifactId&gt;
-			&lt;version&gt;2.3&lt;/version&gt;
-			&lt;scope&gt;compile&lt;/scope&gt;
-		&lt;/dependency&gt;
-</pre>
+<code>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.restdocs</groupId>
+			<artifactId>spring-restdocs-mockmvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>spring-mock-mvc</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.minidev</groupId>
+			<artifactId>json-smart</artifactId>
+			<version>2.3</version>
+			<scope>compile</scope>
+		</dependency>
+
+</code>
 
 - Settings
 
@@ -508,14 +510,16 @@ The expected value field should be used to also test the content of a response, 
 in CODEXS TESTER as a String, making it possible to serialize any object such as JSONObject, LinkedHashMap or
 HasMap for comparison, for example:
 
-<pre>
+<code>
+
     public static Object[] expectedJsonValues() {
         String string = "value1";
         JSONObject jsonObject = new JSONObject();
         HeadersDto headersDto = new HeadersDto();
         return new Object[]{string, jsonObject, headersDto};
     }
-</pre>
+
+</code>
 
 - Data type
 
@@ -671,36 +675,40 @@ has been verified, and with these tests it is already possible to understand the
 Before starting, remember to create the constructor in the class that will be used to run the tests as shown in the 
 example below:
 
-<pre>
-public class SampleUnitaryTests extends SampleBridgeTests {
+<code>
 
-    /**
-     * DO NOT REMOVE THIS CONSTRUCTOR
-     * */
-    public SampleUnitaryTests() {
-        super("sample/"); /*Inform here the current targetTests*/
+    public class SampleUnitaryTests extends SampleBridgeTests {
+    
+        /**
+         * DO NOT REMOVE THIS CONSTRUCTOR
+         * */
+        public SampleUnitaryTests() {
+            super("sample/"); /*Inform here the current targetTests*/
+        }
+    
+        @Test
+        public void anyTest() {
+            /*Code Here*/
+        }
+    
     }
 
-    @Test
-    public void anyTest() {
-        /*Code Here*/
-    }
-
-}
-</pre>
+</code>
 
 - Test: Sum (Unitary Tests)
 
 If you open the UnitarySampleTests.java file you can see that the first test is a simple sum of two numbers,
 as shown below:
 
-<pre>
+<code>
+
     @Test
     public void whenSumAnyNumbersTest() {
         int result = DataSourceSampleTests.dataSourceSampleSum(1000, 10);
         codexsTesterAssertInt(result, 1010);
     }
-</pre>
+
+</code>
 
 The unit tests are very simple and do not need much explanation, if necessary, calmly analyze the
 example file SampleTestsUnitaryTests.java and see for yourself that it is very easy to use.
@@ -715,7 +723,8 @@ use case, one with authentication via OAuth2 and another without any authenticat
 
 Below is the sample test mentioned above:
 
-<pre>
+<code>
+
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
@@ -732,7 +741,8 @@ Below is the sample test mentioned above:
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
-</pre>
+
+</code>
 
 Looking at the test above, it is visible what the purpose of this test is, considering its name, which, although it is very long
 accurately delivers what is being tested. The body of this contains the standard structure used by CODEXS TESTER to
@@ -764,7 +774,8 @@ as well as the http POST method (HTTP_METHOD_POST).
 
 Finally, the rest of the code needs no comments, as it has the same operation as previously stated in the test above.
 
-<pre>
+<code>
+
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
@@ -786,7 +797,8 @@ Finally, the rest of the code needs no comments, as it has the same operation as
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
-</pre>
+
+</code>
 
 - Test: Address Query (Intentional Tests)
 
@@ -794,7 +806,8 @@ The difference that an "internal" type test has in relation to the "external" ty
 occurs in the "backend" of CODEXS TESTER and not in writing the code. This allows the same concept of code and tests
 be used in both situations.
 
-<pre>
+<code>
+
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = DataSourcePostalCodeTests.dataSourceOkRequest();
@@ -811,11 +824,13 @@ be used in both situations.
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
-</pre>
+
+</code>
 
 - Test: Query Address using OAuth2 as authentication (Intentional Tests)
 
-<pre>
+<code>
+
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
@@ -835,7 +850,8 @@ be used in both situations.
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
-</pre>
+
+</code>
 
 - Test: Address Query with Advanced Test
 
@@ -887,7 +903,8 @@ fields, and this configuration must be done in the AdvancedSetupTests.java file 
 CODEXS TESTER src/test/java/codexstester/setup/advanced/AdvancedSetupTests.java. See below for the expected configuration
 for the test in question
 
-<pre>
+<code>
+
     /**
      * POSTAL CODE ADVANCED TESTS - JSON TYPED
      */
@@ -935,7 +952,8 @@ for the test in question
                 String.class
         };
     }
-</pre>
+
+</code>
 
 Notice the following aspects of the configuration, see that we have three methods that have Arrays inside, which
 must have the same size, for example Array(10), also see that the method names are self-explanatory about their
@@ -971,7 +989,8 @@ file has a self-explanation about its purpose***.
 > it is not mandatory that it be done like this, it is possible to enter this data directly in the tests, or else create the
 > method inside the test file itself
 
-<pre>
+<code>
+
     public static JSONObject dataSourceOkRequest() {
         JSONObject jsonObject = new JSONObject();
         jsonObject.appendField("rulesCode", "XYZ12345");
@@ -979,7 +998,8 @@ file has a self-explanation about its purpose***.
         jsonObject.appendField("webhook", "");
         return jsonObject;
     }
-</pre>
+
+</code>
 
 With that, or rather, with the settings shown above, it is possible to start programming the tests as shown below.
 
@@ -1012,7 +1032,8 @@ and the type of test is "internal", as noted in item (4).
 
 - Advanced test example
 
-<pre>
+<code>
+
     @Test
     public void whenRequestToSummarySync_WithDispatcher_Compare_WithAdvancedTest_RetrieveCreated_201_POST() throws Exception {
         String tcn = codexsHelperGuideGenerator(null);
@@ -1053,7 +1074,8 @@ and the type of test is "internal", as noted in item (4).
                 "complex",
                 true);
     }
-</pre>
+
+</code>
 
 
 # Details of features available in CODE TESTER
@@ -1131,137 +1153,140 @@ protected static ResponseEntity&lt;Object&lt; codexsTesterInternalOAuth2CheckTok
 </pre>
 
 - Advanceds
-<pre>
-public void codexsTesterCompareJsonFormat(
-            Object[][] expectedJsonDataTree,
-            org.json.JSONObject jsonCompare,
-            boolean strictMode,
-            String refactorMode, /*none,easy,middle,regular,complex*/
-            boolean debug
-    ) throws Exception
 
-public void codexsTesterCompareJsonFormat(
-            Object[][] expectedJsonDataTree,
-            net.minidev.json.JSONObject jsonCompare,
-            boolean strictMode,
-            String refactorMode, /*none,easy,middle,regular,complex*/
-            boolean debug
-    ) throws Exception
+<code>
+    
+    public void codexsTesterCompareJsonFormat(
+                Object[][] expectedJsonDataTree,
+                org.json.JSONObject jsonCompare,
+                boolean strictMode,
+                String refactorMode, /*none,easy,middle,regular,complex*/
+                boolean debug
+        ) throws Exception
+    
+    public void codexsTesterCompareJsonFormat(
+                Object[][] expectedJsonDataTree,
+                net.minidev.json.JSONObject jsonCompare,
+                boolean strictMode,
+                String refactorMode, /*none,easy,middle,regular,complex*/
+                boolean debug
+        ) throws Exception
+    
+    public void codexsTesterCompareJsonFormat(
+                String[] jsonKeys,
+                Object[] jsonValues,
+                Object[] jsonTyped,
+                net.minidev.json.JSONObject jsonCompare,
+                boolean strictMode,
+                String refactorMode, /*none,easy,middle,regular,complex*/
+                boolean debug
+        ) throws Exception
+    
+    public void codexsTesterCompareJsonFormat(
+                String[] jsonKeys,
+                Object[] jsonValues,
+                Object[] jsonTyped,
+                org.json.JSONObject jsonCompare,
+                boolean strictMode,
+                String refactorMode, /*none,easy,middle,regular,complex*/
+                boolean debug
+        ) throws Exception
+    
+    public void codexsTesterCompareJsonFormat(
+                Object[][] expectedJsonDataTree,
+                Object[] dataCompare,
+                boolean strictMode
+        ) throws Exception
+    
+    public void codexsTesterCompareDtoFormat(
+                Object[][] expectedDtoDataTree,
+                Object[] dtoCompare,
+                Class<?> dtoClass,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareDtoFormat(
+                Object[][] expectedDtoDataTree,
+                Object dtoCompare,
+                Class<?> dtoClass,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareDtoFormat(
+                String[] dtoValues,
+                Object dtoCompare,
+                Class<?> dtoClass,
+                boolean strictMode
+        )
+    
+     public void codexsTesterCompareHashMapFormat(
+                Object[][] expectedHashMapDataTree,
+                HashMap<Object, Object> hashMapCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareHashMapFormat(
+                String[] hashMapKeys,
+                Object[] hashMapValues,
+                Object[] hashMapTyped,
+                HashMap<Object, Object> hashMapCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareArrayListFormat(
+                Object[][] expectedArrayListDataTree,
+                ArrayList<Object> arrayListCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareArrayListFormat(
+                Object[] arrayListValues,
+                Object[] arrayListTyped,
+                ArrayList<Object> arrayListCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareLinkedListFormat(
+                Object[][] expectedLinkedListDataTree,
+                LinkedList<Object> linkedListCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareLinkedListFormat(
+                Object[] linkedListValues,
+                Object[] linkedListTyped,
+                LinkedList<Object> linkedListCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareListFormat(
+                Object[][] expectedListDataTree,
+                List<String> listCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareListFormat(
+                Object[] listValues,
+                Object[] listTyped,
+                List<String> listCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareLinkedHashMapFormat(
+                Object[][] expectedLinkedHashMapDataTree,
+                LinkedHashMap<Object, Object> linkedHashMapCompare,
+                boolean strictMode
+        )
+    
+    public void codexsTesterCompareLinkedHashMapFormat(
+                String[] linkedHashMapKeys,
+                Object[] linkedHashMapValues,
+                Object[] linkedHashMapTyped,
+                LinkedHashMap<Object, Object> linkedHashMapCompare,
+                boolean strictMode
+        )
 
-public void codexsTesterCompareJsonFormat(
-            String[] jsonKeys,
-            Object[] jsonValues,
-            Object[] jsonTyped,
-            net.minidev.json.JSONObject jsonCompare,
-            boolean strictMode,
-            String refactorMode, /*none,easy,middle,regular,complex*/
-            boolean debug
-    ) throws Exception
-
-public void codexsTesterCompareJsonFormat(
-            String[] jsonKeys,
-            Object[] jsonValues,
-            Object[] jsonTyped,
-            org.json.JSONObject jsonCompare,
-            boolean strictMode,
-            String refactorMode, /*none,easy,middle,regular,complex*/
-            boolean debug
-    ) throws Exception
-
-public void codexsTesterCompareJsonFormat(
-            Object[][] expectedJsonDataTree,
-            Object[] dataCompare,
-            boolean strictMode
-    ) throws Exception
-
-public void codexsTesterCompareDtoFormat(
-            Object[][] expectedDtoDataTree,
-            Object[] dtoCompare,
-            Class<?> dtoClass,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareDtoFormat(
-            Object[][] expectedDtoDataTree,
-            Object dtoCompare,
-            Class<?> dtoClass,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareDtoFormat(
-            String[] dtoValues,
-            Object dtoCompare,
-            Class<?> dtoClass,
-            boolean strictMode
-    )
-
- public void codexsTesterCompareHashMapFormat(
-            Object[][] expectedHashMapDataTree,
-            HashMap<Object, Object> hashMapCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareHashMapFormat(
-            String[] hashMapKeys,
-            Object[] hashMapValues,
-            Object[] hashMapTyped,
-            HashMap<Object, Object> hashMapCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareArrayListFormat(
-            Object[][] expectedArrayListDataTree,
-            ArrayList<Object> arrayListCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareArrayListFormat(
-            Object[] arrayListValues,
-            Object[] arrayListTyped,
-            ArrayList<Object> arrayListCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareLinkedListFormat(
-            Object[][] expectedLinkedListDataTree,
-            LinkedList<Object> linkedListCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareLinkedListFormat(
-            Object[] linkedListValues,
-            Object[] linkedListTyped,
-            LinkedList<Object> linkedListCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareListFormat(
-            Object[][] expectedListDataTree,
-            List<String> listCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareListFormat(
-            Object[] listValues,
-            Object[] listTyped,
-            List<String> listCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareLinkedHashMapFormat(
-            Object[][] expectedLinkedHashMapDataTree,
-            LinkedHashMap<Object, Object> linkedHashMapCompare,
-            boolean strictMode
-    )
-
-public void codexsTesterCompareLinkedHashMapFormat(
-            String[] linkedHashMapKeys,
-            Object[] linkedHashMapValues,
-            Object[] linkedHashMapTyped,
-            LinkedHashMap<Object, Object> linkedHashMapCompare,
-            boolean strictMode
-    )
-</pre>
+</code>
 
 - Requesters
 
