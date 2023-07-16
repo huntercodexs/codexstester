@@ -182,7 +182,8 @@ public class PostalCodeInternalTests extends PostalCodeBridgeTests {
 
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                externalProps.getProperty("external.tests.environment"));
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterInternalOAuth2GetToken(oauth2RequestTokenDto);
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 

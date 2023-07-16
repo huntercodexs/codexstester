@@ -16,7 +16,8 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAut
 public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                externalProps.getProperty("external.tests.environment"));
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
@@ -65,7 +66,8 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
     @Test
     public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
         if (!ignoreOAuth2Tests) {
-            Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+            Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                    externalProps.getProperty("external.tests.environment"));
             ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
             System.out.println("TOKEN: " + response.getBody().getAccess_token());
             codexsTesterAssertRegExp("[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}", response.getBody().getAccess_token());
@@ -76,7 +78,8 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
     public void whenAnyRequestToOAuth2CheckToken() throws Exception {
         if (!ignoreOAuth2Tests) {
             String token = "ca976420-c93f-4015-b653-939ddc7b8011";
-            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = codexsTesterSecurityOAuth2CheckToken(token);
+            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = codexsTesterSecurityOAuth2CheckToken(
+                    externalProps.getProperty("external.tests.environment"), token);
             ResponseEntity<Object> response = codexsTesterExternalOAuth2CheckToken(oauth2RequestCheckTokenDto);
             System.out.println("RESULT: " + response.getBody());
             codexsTesterAssertBool(true, true);
@@ -113,7 +116,8 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                externalProps.getProperty("external.tests.environment"));
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 

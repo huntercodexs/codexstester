@@ -15,7 +15,8 @@ import static codexstester.engine.security.SecurityTests.codexsTesterSecurityOAu
 public class SampleExternalTests extends SampleBridgeTests {
 
     public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                externalProps.getProperty("external.tests.environment"));
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
