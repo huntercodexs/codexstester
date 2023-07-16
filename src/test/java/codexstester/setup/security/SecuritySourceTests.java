@@ -30,6 +30,7 @@ public class SecuritySourceTests {
                 oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
                 oauth2RequestTokenDto.setPass("123123123");
                 return oauth2RequestTokenDto;
+            case "test":
             case "homolog":
                 oauth2RequestTokenDto.setUrl("http://homolog.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
                 oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
@@ -37,7 +38,6 @@ public class SecuritySourceTests {
                 oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
                 oauth2RequestTokenDto.setPass("123456");
                 return oauth2RequestTokenDto;
-            case "test":
             case "prod":
                 oauth2RequestTokenDto.setUrl("http://api.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
                 oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
@@ -64,12 +64,12 @@ public class SecuritySourceTests {
                 oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
                 oauth2RequestCheckTokenDto.setToken(token);
                 return oauth2RequestCheckTokenDto;
+            case "test":
             case "homolog":
                 oauth2RequestCheckTokenDto.setUrl("http://homolog.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
                 oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
                 oauth2RequestCheckTokenDto.setToken(token);
                 return oauth2RequestCheckTokenDto;
-            case "test":
             case "prod":
                 oauth2RequestCheckTokenDto.setUrl("http://api.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
                 oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");

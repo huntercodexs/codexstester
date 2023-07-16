@@ -23,7 +23,6 @@ public class SampleExternalTests extends SampleBridgeTests {
     }
 
     /**
-     * ExternalSampleTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
 
@@ -58,7 +57,6 @@ public class SampleExternalTests extends SampleBridgeTests {
     }
 
     /**
-     * ExternalSampleTests Samples
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
 
