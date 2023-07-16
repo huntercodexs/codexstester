@@ -264,6 +264,21 @@ public class AdvancedSetupTests {
         };
     }
 
+    public static Object[] expectedJsonValuesPostalCode2() {
+        return new Object[]{
+                "12090-002",
+                "Rua São Caetano",
+                "",
+                "Campos Elíseos",
+                "Taubaté",
+                "SP",
+                "3554102",
+                "6889",
+                "12",
+                "7183"
+        };
+    }
+
     public static Object[] expectedJsonTypedPostalCode() {
         return new Object[]{
                 String.class,
@@ -276,6 +291,38 @@ public class AdvancedSetupTests {
                 String.class,
                 String.class,
                 String.class
+        };
+    }
+
+    public static Object[][] expectedJsonPostalCodeDataTree() {
+
+        return new Object[][]{
+                {"cep",         "12090002",        String.class},
+                {"logradouro",  "Rua São Caetano", String.class},
+                {"complemento", "",                String.class},
+                {"bairro",      "Campos Elíseos",  String.class},
+                {"localidade",  "Taubaté",         String.class},
+                {"uf",          "SP",              String.class},
+                {"ibge",        "3554102",         String.class},
+                {"gia",         "6889",            String.class},
+                {"ddd",         "12",              String.class},
+                {"siafi",       "7183",            String.class}
+        };
+    }
+
+    public static Object[][] expectedJsonPostalCode2DataTree() {
+
+        return new Object[][]{
+                {"cep",         "12090-002",       String.class},
+                {"logradouro",  "Rua São Caetano", String.class},
+                {"complemento", "",                String.class},
+                {"bairro",      "Campos Elíseos",  String.class},
+                {"localidade",  "Taubaté",         String.class},
+                {"uf",          "SP",              String.class},
+                {"ibge",        "3554102",         String.class},
+                {"gia",         "6889",            String.class},
+                {"ddd",         "12",              String.class},
+                {"siafi",       "7183",            String.class}
         };
     }
 

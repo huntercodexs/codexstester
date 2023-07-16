@@ -84,6 +84,10 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         }
     }
 
+    /** IMPORTANT NOTE
+     * @implNote Before run this test have a sure that the target service is running
+     */
+
     @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -93,7 +97,7 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProps.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -109,6 +113,32 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
                 jsonResponse,
                 true,
                 "complex",
+                true);
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        net.minidev.json.JSONObject jsonResponse = codexsHelperStringToJsonSimple(response.getBody().toString());
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonPostalCodeDataTree(),
+                jsonResponse,
+                true,
+                "none",
                 true);
     }
 

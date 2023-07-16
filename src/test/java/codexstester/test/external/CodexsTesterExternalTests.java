@@ -92,6 +92,23 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
      */
 
     @Test
+    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 
@@ -100,7 +117,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProps.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -116,6 +133,32 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
                 jsonResponse,
                 true,
                 "complex",
+                false);
+    }
+
+    @Test
+    public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        net.minidev.json.JSONObject jsonResponse = codexsHelperStringToJsonSimple(response.getBody().toString());
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonPostalCodeDataTree(),
+                jsonResponse,
+                true,
+                "none",
                 true);
     }
 
@@ -204,23 +247,6 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
     }
 
     @Test
-    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 
@@ -283,7 +309,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/sample");
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");
@@ -298,12 +324,87 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/sample");
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode201_RetrieveCreated(headersDto, requestDto);
+    }
+
+    /**
+     * IMPORTANT NOTE
+     * @implNote Have a sure that the target resource is available
+     */
+
+    @Test
+    public void whenExternalRequest_UsingViaCep_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_GET);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUrl("https://viacep.com.br");
+        requestDto.setUri("/ws/12090002/json/");
+        requestDto.setId("");
+        requestDto.setDataRequest("");
+        requestDto.setExpectedMessage(null);
+
+        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
+    }
+
+    @Test
+    public void whenExternalRequest_UsingViaCep_WithAdvancedTest_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_GET);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUrl("https://viacep.com.br");
+        requestDto.setUri("/ws/12090002/json/");
+        requestDto.setId("");
+        requestDto.setDataRequest("");
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        JSONObject jsonResponse = codexsHelperStringToJsonSimple(response.getBody().toString());
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonKeysPostalCode(),
+                expectedJsonValuesPostalCode(),
+                expectedJsonTypedPostalCode(),
+                jsonResponse,
+                true,
+                "complex",
+                false);
+    }
+
+    @Test
+    public void whenExternalRequest_UsingViaCep_WithDataTree_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
+        net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_GET);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUrl("https://viacep.com.br");
+        requestDto.setUri("/ws/12090002/json/");
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        net.minidev.json.JSONObject jsonResponse = codexsHelperStringToJsonSimple(response.getBody().toString());
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonPostalCode2DataTree(),
+                jsonResponse,
+                true,
+                "none",
+                true);
     }
 
 }

@@ -54,6 +54,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
      * SAMPLES
      * PUT HERE THE CODE TESTS
      */
+
     @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -83,6 +84,32 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
     }
 
     @Test
+    public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
+        requestDto.setId("");
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
+
+        String response = codexsTesterInternalDispatcher(requestDto, headersDto);
+        net.minidev.json.JSONObject jsonResponse = codexsHelperStringToJsonSimple(response);
+
+        codexsTesterCompareJsonFormat(
+                expectedJsonPostalCodeDataTree(),
+                jsonResponse,
+                true,
+                "none",
+                true);
+    }
+
+    @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 
@@ -91,7 +118,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
+        requestDto.setUri("/address");
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -261,7 +288,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_GET);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
+        requestDto.setUri("/sample");
         requestDto.setId("");
         requestDto.setDataRequest("");
         requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");

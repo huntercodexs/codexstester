@@ -39,6 +39,14 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
             url = url + "?" + externalUrlQueryParameters;
         }
 
+        if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
+            url = requestDto.getUrl();
+        }
+
+        if (requestDto.getUri() != null && !requestDto.getUri().equals("")) {
+            url = url + requestDto.getUri();
+        }
+
         codexsHelperLogTerm("EXTERNAL DISPATCHER REQUEST URL IS", url, true);
         codexsHelperLogTerm("HTTP METHOD IS", method, true);
 

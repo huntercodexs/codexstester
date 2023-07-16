@@ -66,7 +66,7 @@ public class SampleExternalTests extends SampleBridgeTests {
         codexsTesterAssertExact("This is a expected sample response", result);
     }
 
-    /**
+    /** IMPORTANT NOTE
      * @implNote Before run this test have a sure that the target service is running
      */
 
