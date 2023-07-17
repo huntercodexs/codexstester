@@ -8,6 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class RequestDto {
+    String url;
     String uri;
     String id;
     String dataRequest;

@@ -10,7 +10,6 @@ import org.springframework.http.MediaType;
 public class SampleInternalTests extends SampleBridgeTests {
 
     /**
-     * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
 
@@ -45,7 +44,6 @@ public class SampleInternalTests extends SampleBridgeTests {
     }
 
     /**
-     * Sample ExternalSampleSetupTests
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
 
@@ -60,7 +58,7 @@ public class SampleInternalTests extends SampleBridgeTests {
      */
 
     @Test
-    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
+    public void whenAnyOkRequestSample_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
@@ -75,7 +73,7 @@ public class SampleInternalTests extends SampleBridgeTests {
     }
 
     @Test
-    public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
+    public void whenAnyOkRequestSample_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_POST);

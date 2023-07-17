@@ -12,10 +12,10 @@
     </appender>
 
     <appender name="FILE_APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>/var/logs/CODEXS-TESTER/CODEXS-TESTER.log</file>
+        <file>/home/jereelton/logs/CODEXS-TESTER/CODEXS-TESTER.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>/var/logs/CODEXS-TESTER/CODEXS-TESTER.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <fileNamePattern>/home/jereelton/logs/CODEXS-TESTER/CODEXS-TESTER.%d{yyyy-MM-dd}.log</fileNamePattern>
             <maxHistory>1</maxHistory>
             <totalSizeCap>10MB</totalSizeCap>
         </rollingPolicy>
@@ -45,7 +45,7 @@
     </appender>-->
 
     <root level="INFO">
-        <appender-ref ref="STDOUT" />
+        <!--<appender-ref ref="STDOUT" />-->
         <appender-ref ref="FILE_APPENDER" />
         <!--<appender-ref ref="REMOTE_FILE" />-->
         <!--<appender-ref ref="SERVER" />-->
