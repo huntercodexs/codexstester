@@ -16,14 +16,14 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAut
 public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
     public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                externalProps.getProperty("external.tests.environment"));
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
     }
 
     /**
-     * DataSourcePostalCodeTests Helpers
      * THIS TESTS CAN BE REMOVED
      * */
 
@@ -58,14 +58,14 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
     }
 
     /**
-     * Sample DataSourcePostalCodeTests
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
      * */
 
     @Test
     public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
         if (!ignoreOAuth2Tests) {
-            Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
+            Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
+                    externalProps.getProperty("external.tests.environment"));
             ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
             System.out.println("TOKEN: " + response.getBody().getAccess_token());
             codexsTesterAssertRegExp("[0-9a-z]{8}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{4}-[0-9a-z]{12}", response.getBody().getAccess_token());
@@ -76,12 +76,17 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
     public void whenAnyRequestToOAuth2CheckToken() throws Exception {
         if (!ignoreOAuth2Tests) {
             String token = "ca976420-c93f-4015-b653-939ddc7b8011";
-            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = codexsTesterSecurityOAuth2CheckToken(token);
+            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = codexsTesterSecurityOAuth2CheckToken(
+                    externalProps.getProperty("external.tests.environment"), token);
             ResponseEntity<Object> response = codexsTesterExternalOAuth2CheckToken(oauth2RequestCheckTokenDto);
             System.out.println("RESULT: " + response.getBody());
             codexsTesterAssertBool(true, true);
         }
     }
+
+    /** IMPORTANT NOTE
+     * @implNote Before run this test have a sure that the target service is running
+     */
 
     @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
@@ -92,7 +97,7 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         headersDto.setHttpMethod(HTTP_METHOD_POST);
 
         RequestDto requestDto = new RequestDto();
-        requestDto.setUri(internalProps.getProperty("external.tests.base-uri"));
+        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
@@ -112,91 +117,8 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
     }
 
     @Test
-    public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token();
-        ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBearer(response.getBody().getAccess_token());
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setAdditionalName("Access-Code");
-        headersDto.setAdditionalValue("XYZ-123");
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyBadRequest_WithBasicAuth_RetrieveBadRequest_StatusCode400_ByHttpMethodPOST() throws Exception {
-        String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceBadRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBasic(basicAuth);
-        headersDto.setAdditionalName("Access-Code");
-        headersDto.setAdditionalValue("XYZ-123");
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyOkRequest_WithBasicAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBasic(basicAuth);
-        headersDto.setAdditionalName("Access-Code");
-        headersDto.setAdditionalValue("XYZ-123");
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyOkRequest_WithBearerToken_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        String bearerToken = "Bearer d4cd86a0-aaaa-dddd-a590-ef68873d1234";
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBasic(bearerToken);
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_POST);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
+    public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
+        net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
 
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
@@ -207,59 +129,17 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         requestDto.setId("");
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
+        requestDto.setExpectedCode(OK_200);
 
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
+        ResponseEntity<?> response = codexsTesterExternalDispatcher(requestDto, headersDto);
+        net.minidev.json.JSONObject jsonResponse = codexsHelperStringToJsonSimple(response.getBody().toString());
 
-    @Test
-    public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_GET);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyOkRequest_Specific_RetrieveOk_StatusCode200_ByHttpMethodDELETE() throws Exception {
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_DELETE);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("123456");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
-    }
-
-    @Test
-    public void whenAnyNotFoundRequest_Specific_RetrieveNotFound_StatusCode404_ByHttpMethodDELETE() throws Exception {
-        JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
-
-        HeadersDto headersDto = new HeadersDto();
-        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
-        headersDto.setHttpMethod(HTTP_METHOD_DELETE);
-
-        RequestDto requestDto = new RequestDto();
-        requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
-        requestDto.setId("1234569999");
-        requestDto.setDataRequest(dataRequest.toString());
-        requestDto.setExpectedMessage(null);
-
-        codexsTesterExternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
+        codexsTesterCompareJsonFormat(
+                expectedJsonPostalCodeDataTree(),
+                jsonResponse,
+                true,
+                "none",
+                true);
     }
 
 }

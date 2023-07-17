@@ -15,16 +15,16 @@ public class SampleController {
     @GetMapping(path = "/sample")
     @ResponseBody
     public ResponseEntity<String> getSample() {
-        System.out.println("!!! WELCOME GET !!!");
+        System.out.println("!!! WELCOME TO SAMPLE APPLICATION [GET] !!!");
         return ResponseEntity
-                .ok()
+                .status(HttpStatus.OK)
                 .body("Welcome to sample from Codexs Tester");
     }
 
     @PostMapping(path = "/sample", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public ResponseEntity<?> postSample() {
-        System.out.println("!!! WELCOME POST !!!");
+        System.out.println("!!! WELCOME TO SAMPLE APPLICATION [POST] !!!");
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body("{\"message\": \"Welcome to sample from Codexs Tester\"}");

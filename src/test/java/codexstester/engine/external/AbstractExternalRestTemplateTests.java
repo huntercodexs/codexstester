@@ -39,6 +39,14 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
             url = url + "?" + externalUrlQueryParameters;
         }
 
+        if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
+            url = requestDto.getUrl();
+        }
+
+        if (requestDto.getUri() != null && !requestDto.getUri().equals("")) {
+            url = url + requestDto.getUri();
+        }
+
         codexsHelperLogTerm("EXTERNAL DISPATCHER REQUEST URL IS", url, true);
         codexsHelperLogTerm("HTTP METHOD IS", method, true);
 
@@ -112,13 +120,14 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
 
         } catch (HttpClientErrorException ex) {
 
-            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpClientErrorException: ", ex.getMessage(), true);
+            codexsHelperLogTerm("EXCEPTION[HEADER] HttpClientErrorException: ", ex.getResponseHeaders(), true);
             codexsHelperLogTerm("EXCEPTION[BODY] HttpClientErrorException: ", ex.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpClientErrorException: ", ex.getMessage(), true);
 
         } catch (HttpServerErrorException se) {
 
-            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpServerErrorException: ", se.getMessage(), true);
             codexsHelperLogTerm("EXCEPTION[BODY] HttpServerErrorException: ", se.getResponseBodyAsString(), true);
+            codexsHelperLogTerm("EXCEPTION[MESSAGE] HttpServerErrorException: ", se.getMessage(), true);
 
         } catch (RuntimeException re) {
             codexsHelperLogTerm("EXCEPTION[MESSAGE] RuntimeException: ", re.getMessage(), true);
