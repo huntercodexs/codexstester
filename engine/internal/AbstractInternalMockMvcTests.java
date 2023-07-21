@@ -37,14 +37,6 @@ public abstract class AbstractInternalMockMvcTests extends AbstractInternalReque
             url = url + "?" + internalUrlQueryParameters;
         }
 
-        if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
-            url = requestDto.getUrl();
-        }
-
-        if (requestDto.getUri() != null && !requestDto.getUri().equals("")) {
-            url = url + requestDto.getUri();
-        }
-
         codexsHelperLogTerm("INTERNAL DISPATCHER REQUEST URL IS", url, true);
 
         switch (method) {

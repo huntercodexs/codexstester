@@ -33,19 +33,16 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
         if (requestDto.getId() != null && !requestDto.getId().equals("")) uri = uri +"/"+ requestDto.getId();
 
         String url = externalUrlBaseTest + uri;
-        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), externalBuilderHeaders(requestDto, headersDto));
+
+        if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
+            url = requestDto.getUrl() + uri;
+        }
 
         if (externalUrlQueryParameters != null && !externalUrlQueryParameters.equals("")) {
             url = url + "?" + externalUrlQueryParameters;
         }
 
-        if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
-            url = requestDto.getUrl();
-        }
-
-        if (requestDto.getUri() != null && !requestDto.getUri().equals("")) {
-            url = url + requestDto.getUri();
-        }
+        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), externalBuilderHeaders(requestDto, headersDto));
 
         codexsHelperLogTerm("EXTERNAL DISPATCHER REQUEST URL IS", url, true);
         codexsHelperLogTerm("HTTP METHOD IS", method, true);
@@ -57,51 +54,65 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
             switch (method) {
                 case HTTP_METHOD_GET:
                     try {
+                        codexsHelperLogTerm("TRY GET", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY GET [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_POST:
                     try {
+                        codexsHelperLogTerm("TRY POST", url, true);
                         response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY POST [EXCEPTION]", url, true);
                         response = genericRestTemplate.postForEntity(url, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_DELETE:
                     try {
+                        codexsHelperLogTerm("TRY DELETE", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY DELETE [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_PUT:
                     try {
+                        codexsHelperLogTerm("TRY PUT", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY PUT [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_PATCH:
                     genericRestTemplate.setRequestFactory(externalHttpClientFactory());
                     try {
+                        codexsHelperLogTerm("TRY PATCH", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY PATCH [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_HEAD:
                     try {
+                        codexsHelperLogTerm("TRY HEAD", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY HEAD [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
                     }
                     break;
                 case HTTP_METHOD_OPTIONS:
                     try {
+                        codexsHelperLogTerm("TRY OPTIONS", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
                     } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY OPTIONS [EXCEPTION]", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
                     }
                     break;
