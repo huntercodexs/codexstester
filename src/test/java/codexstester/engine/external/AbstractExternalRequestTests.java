@@ -65,18 +65,14 @@ public abstract class AbstractExternalRequestTests extends InternalRequest1xxTes
         String url = externalUrlBaseTest + uri;
 
         if (requestDto.getUrl() != null && !requestDto.getUrl().equals("")) {
-            url = requestDto.getUrl();
+            url = requestDto.getUrl() + uri;
         }
-
-        if (requestDto.getUri() != null && !requestDto.getUri().equals("")) {
-            url = url + requestDto.getUri();
-        }
-
-        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), externalBuilderHeaders(requestDto, headersDto));
 
         if (externalUrlQueryParameters != null && !externalUrlQueryParameters.equals("")) {
             url = url + "?" + externalUrlQueryParameters;
         }
+
+        HttpEntity<?> httpEntity = new HttpEntity<>(requestDto.getDataRequest(), externalBuilderHeaders(requestDto, headersDto));
 
         codexsHelperLogTerm("EXTERNAL REQUEST URL IS", url, true);
         codexsHelperLogTerm("HTTP METHOD IS", method, true);
