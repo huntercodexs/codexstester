@@ -11,7 +11,7 @@ public class RequestDto {
     String url;
     String uri;
     String id;
-    String dataRequest;
+    Object dataRequest;
     String expectedMessage;
     int expectedCode;
 }

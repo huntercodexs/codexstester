@@ -66,7 +66,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -94,7 +94,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -120,7 +120,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri("/address");
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -138,7 +138,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage("Postal Code Not Found");
 
         codexsTesterInternal_StatusCode500_RetrieveInternalServerError(headersDto, requestDto);
@@ -159,7 +159,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
@@ -180,7 +180,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -199,7 +199,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -220,7 +220,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -237,7 +237,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -254,7 +254,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("123456");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -271,7 +271,7 @@ public class CodexsTesterInternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("1234569999");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);

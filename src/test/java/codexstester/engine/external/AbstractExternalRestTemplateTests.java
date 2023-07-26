@@ -49,6 +49,8 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
 
         ResponseEntity<?> response = null;
 
+        codexsHelperLogTerm("DATA REQUEST", httpEntity, true);
+
         try {
 
             switch (method) {

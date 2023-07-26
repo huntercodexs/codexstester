@@ -99,7 +99,7 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -127,7 +127,7 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
