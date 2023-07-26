@@ -61,7 +61,7 @@ public class PostalCodeInternalTests extends PostalCodeBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -89,7 +89,7 @@ public class PostalCodeInternalTests extends PostalCodeBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -107,7 +107,7 @@ public class PostalCodeInternalTests extends PostalCodeBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage("Postal Code Not Found");
 
         codexsTesterInternal_StatusCode500_RetrieveInternalServerError(headersDto, requestDto);

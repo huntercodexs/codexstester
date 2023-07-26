@@ -102,7 +102,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -119,7 +119,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -147,7 +147,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri")+"/address");
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
@@ -179,7 +179,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -200,7 +200,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
@@ -221,7 +221,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -240,7 +240,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -257,7 +257,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -274,7 +274,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("123456");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
@@ -291,7 +291,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         RequestDto requestDto = new RequestDto();
         requestDto.setUri(externalProps.getProperty("external.tests.base-uri"));
         requestDto.setId("1234569999");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
 
         codexsTesterExternal_StatusCode404_RetrieveNotFound(headersDto, requestDto);
@@ -392,7 +392,7 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         requestDto.setUrl("https://viacep.com.br");
         requestDto.setUri("/ws/12090002/json/");
         requestDto.setId("");
-        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setDataRequest(dataRequest);
         requestDto.setExpectedMessage(null);
         requestDto.setExpectedCode(OK_200);
 
