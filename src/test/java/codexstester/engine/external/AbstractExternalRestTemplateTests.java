@@ -58,36 +58,48 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
                     try {
                         codexsHelperLogTerm("TRY GET", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY GET [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.GET, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY GET [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_POST:
                     try {
                         codexsHelperLogTerm("TRY POST", url, true);
                         response = genericRestTemplate.postForEntity(url, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY POST [EXCEPTION]", url, true);
-                        response = genericRestTemplate.postForEntity(url, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY POST [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_DELETE:
                     try {
                         codexsHelperLogTerm("TRY DELETE", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY DELETE [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.DELETE, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY DELETE [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_PUT:
                     try {
                         codexsHelperLogTerm("TRY PUT", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY PUT [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.PUT, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY PUT [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_PATCH:
@@ -95,27 +107,36 @@ public abstract class AbstractExternalRestTemplateTests extends AbstractExternal
                     try {
                         codexsHelperLogTerm("TRY PATCH", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY PATCH [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.PATCH, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY PATCH [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_HEAD:
                     try {
                         codexsHelperLogTerm("TRY HEAD", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY HEAD [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.HEAD, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY HEAD [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 case HTTP_METHOD_OPTIONS:
                     try {
                         codexsHelperLogTerm("TRY OPTIONS", url, true);
                         response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, Object.class);
-                    } catch (Exception ex) {
+                    } catch (HttpClientErrorException | HttpServerErrorException he) {
                         codexsHelperLogTerm("TRY OPTIONS [EXCEPTION]", url, true);
-                        response = genericRestTemplate.exchange(url, HttpMethod.OPTIONS, httpEntity, String.class);
+                        return ResponseEntity.status(he.getRawStatusCode()).body(he.getResponseBodyAsString());
+                    } catch (Exception ex) {
+                        codexsHelperLogTerm("TRY OPTIONS [EXCEPTION] [KILL]", url, true);
+                        throw new RuntimeException(ex.getMessage());
                     }
                     break;
                 default:
