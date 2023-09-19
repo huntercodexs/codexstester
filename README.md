@@ -19,3 +19,7 @@
   - Bugs de requests corrigidos
   - Adicionado modelos e exemplos de uso
   - Adicionado de configurações de segurança OAuth2
+- <a href="data/pt-br/RELEASE_1.0.8.md">Release 1.0.8</a>
+  - Atualizado metodo para chamada OAuth2
+  - Correção de bugs no requests do tipo externos
+  - Compatibilidade com Java 17

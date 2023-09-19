@@ -15,17 +15,17 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAut
 
 public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
 
-    public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
-                externalProps.getProperty("external.tests.environment"));
+    public String oauth2Token(String env) {
+        if (env == null || env.isEmpty()) env = externalProps.getProperty("external.tests.environment");
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(env);
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
     }
 
-    /**
+    /*
      * THIS TESTS CAN BE REMOVED
-     * */
+     */
 
     @Test
     public void propsTest() {
@@ -57,11 +57,10 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         isOk5xxExternalTest();
     }
 
-    /**
+    /*
      * SAMPLES
      * PUT HERE THE CODE TESTS
      */
-
 
     @Test
     public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
@@ -87,10 +86,8 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
     }
 
     /**
-     * IMPORTANT NOTE
-     * @implNote Before run this test have a sure that the target service is running
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
      */
-
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -108,6 +105,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -136,6 +136,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
                 false);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -162,6 +165,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
                 true);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithOAuth2_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
@@ -185,6 +191,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyBadRequest_WithBasicAuth_RetrieveBadRequest_StatusCode400_ByHttpMethodPOST() throws Exception {
         String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
@@ -206,6 +215,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode400_RetrieveBadRequest(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithBasicAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         String basicAuth = "Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==";
@@ -227,6 +239,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithBearerToken_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         String bearerToken = "Bearer d4cd86a0-aaaa-dddd-a590-ef68873d1234";
@@ -246,6 +261,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -263,6 +281,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_Specific_RetrieveOk_StatusCode200_ByHttpMethodDELETE() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -280,6 +301,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyNotFoundRequest_Specific_RetrieveNotFound_StatusCode404_ByHttpMethodDELETE() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -298,10 +322,8 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
     }
 
     /**
-     * IMPORTANT NOTE
-     * @implNote Before run this test have a sure that the target service is running
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
      */
-
     @Test
     public void whenAnyOkRequestSample_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -317,6 +339,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -333,10 +358,8 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
     }
 
     /**
-     * IMPORTANT NOTE
-     * @implNote Have a sure that the target resource is available
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
      */
-
     @Test
     public void whenExternalRequest_UsingViaCep_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -353,6 +376,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenExternalRequest_UsingViaCep_WithAdvancedTest_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -380,6 +406,9 @@ public class CodexsTesterExternalTests extends CodexsTesterBridgeTests {
                 false);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenExternalRequest_UsingViaCep_WithDataTree_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
