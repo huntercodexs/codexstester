@@ -14,17 +14,17 @@ import static codexstester.engine.security.SecurityTests.codexsTesterSecurityOAu
 
 public class SampleExternalTests extends SampleBridgeTests {
 
-    public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
-                externalProps.getProperty("external.tests.environment"));
+    public String oauth2Token(String env) {
+        if (env == null || env.isEmpty()) env = externalProps.getProperty("external.tests.environment");
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(env);
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
     }
 
-    /**
+    /*
      * THIS TESTS CAN BE REMOVED
-     * */
+     */
 
     @Test
     public void propsTest() {
@@ -56,9 +56,9 @@ public class SampleExternalTests extends SampleBridgeTests {
         isOk5xxExternalTest();
     }
 
-    /**
+    /*
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
-     * */
+     */
 
     @Test
     public void whenSimpleTestUsingString_AssertExact() throws Exception {
@@ -66,10 +66,9 @@ public class SampleExternalTests extends SampleBridgeTests {
         codexsTesterAssertExact("This is a expected sample response", result);
     }
 
-    /** IMPORTANT NOTE
-     * @implNote Before run this test have a sure that the target service is running
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
      */
-
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -85,6 +84,9 @@ public class SampleExternalTests extends SampleBridgeTests {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();

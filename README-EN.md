@@ -19,3 +19,7 @@
   - Request bugs fixed 
   - Added templates and usage examples
   - Added OAuth2 security settings
+- <a href="data/en/RELEASE_1.0.8.md">Release 1.0.8</a>
+  - Updated method to call OAuth2
+  - Fix bugs on requests of external type
+  - Java 17 compatibility

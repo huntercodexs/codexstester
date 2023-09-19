@@ -15,17 +15,17 @@ import static codexstester.setup.datasource.PostalCodeDataSourceTests.ignoreOAut
 
 public class PostalCodeExternalTests extends PostalCodeBridgeTests {
 
-    public String oauth2Token() {
-        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(
-                externalProps.getProperty("external.tests.environment"));
+    public String oauth2Token(String env) {
+        if (env == null || env.isEmpty()) env = externalProps.getProperty("external.tests.environment");
+        Oauth2RequestTokenDto oauth2RequestTokenDto = codexsTesterSecurityOAuth2Token(env);
         ResponseEntity<Oauth2ResponseTokenDto> response = codexsTesterExternalOAuth2GetToken(oauth2RequestTokenDto);
         if (response.getBody() != null) return response.getBody().getAccess_token();
         return null;
     }
 
-    /**
+    /*
      * THIS TESTS CAN BE REMOVED
-     * */
+     */
 
     @Test
     public void propsTest() {
@@ -57,9 +57,9 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         isOk5xxExternalTest();
     }
 
-    /**
+    /*
      * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
-     * */
+     */
 
     @Test
     public void whenAnyRequestToOAuth2GetToken_AssertRegExp() throws Exception {
@@ -84,10 +84,9 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
         }
     }
 
-    /** IMPORTANT NOTE
-     * @implNote Before run this test have a sure that the target service is running
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
      */
-
     @Test
     public void whenAnyOkRequest_WithAdvancedTest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
@@ -116,6 +115,9 @@ public class PostalCodeExternalTests extends PostalCodeBridgeTests {
                 true);
     }
 
+    /**
+     * @implNote [IMPORTANT NOTE] Before run this test have a sure that the target service is running
+     */
     @Test
     public void whenAnyOkRequest_WithDataTree_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodPOST() throws Exception {
         net.minidev.json.JSONObject dataRequest = PostalCodeDataSourceTests.dataSourceOkRequest();
