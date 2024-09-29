@@ -4,7 +4,7 @@ import codexstester.engine.util.CodexsHelperTests;
 import codexstester.setup.bridge.PostalCodeBridgeTests;
 import codexstester.setup.datasource.PostalCodeDataSourceTests;
 import com.huntercodexs.postalcode.client.PostalCodeClient;
-import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
+import com.huntercodexs.postalcode.database.entity.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
 import com.huntercodexs.postalcode.dto.PostalCodeRequestDto;
 import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;

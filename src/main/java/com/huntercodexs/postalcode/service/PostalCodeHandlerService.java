@@ -1,7 +1,7 @@
 package com.huntercodexs.postalcode.service;
 
 import com.huntercodexs.postalcode.client.PostalCodeClient;
-import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
+import com.huntercodexs.postalcode.database.entity.PostalCodeEntity;
 import com.huntercodexs.postalcode.database.repository.PostalCodeRepository;
 import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;
 import com.huntercodexs.postalcode.mapper.PostalCodeResponseMapper;

@@ -2,6 +2,13 @@
 - This project is a complete workspace for writing unit and integration tests
 
 
+# Versions
+
+- Java8
+- Java11
+- Java17
+
+
 # Idiomas
 
 - <a href="README.md">Portugues Brazil (pt-br)</a>

@@ -1,6 +1,6 @@
 package com.huntercodexs.postalcode.mapper;
 
-import com.huntercodexs.postalcode.database.model.PostalCodeEntity;
+import com.huntercodexs.postalcode.database.entity.PostalCodeEntity;
 import com.huntercodexs.postalcode.dto.PostalCodeResponseDto;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

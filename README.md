@@ -2,6 +2,13 @@
 - Este projeto é um espaço de trabalho completo para escrever testes unitarios e de integração
 
 
+# Versões
+
+- Java8
+- Java11
+- Java17
+
+
 # Idiomas
 
 - Portugues Brazil (pt-br)

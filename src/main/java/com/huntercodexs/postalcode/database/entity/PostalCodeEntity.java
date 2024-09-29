@@ -1,4 +1,4 @@
-package com.huntercodexs.postalcode.database.model;
+package com.huntercodexs.postalcode.database.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
