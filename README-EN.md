@@ -7,6 +7,23 @@
 - Java8
 - Java11
 - Java17
+- Java21
+  - Pre-Requisites
+    - Spring Boot 3.3.2
+    - spring-boot-starter-validation 3.3.2
+    - javax.persistence-api 2.2
+    - validation-api 2.0.1.Final
+    - mysql-connector-java 8.0.33
+      - org.hibernate.dialect.MySQLDialect
+    - logback adjusts
+      - <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5p ${hostName} : %m%n%ex</pattern>
+    - change from javax.persistence to jakarta.persistence in the Entity
+      - import jakarta.persistence.*;
+    - codexstester adjusts
+      - protected HttpComponentsClientHttpRequestFactory externalHttpClientFactory() {
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        return new HttpComponentsClientHttpRequestFactory();
+        }
 
 
 # Idiomas
