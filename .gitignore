@@ -67,3 +67,4 @@ build/
 hs_err_pid*
 
 trash/
+/test-output/
