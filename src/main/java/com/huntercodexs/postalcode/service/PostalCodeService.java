@@ -29,7 +29,16 @@ public class PostalCodeService {
     }
 
     private String fullname(String firstName, String lastName) {
+        System.out.println("==================> " + firstName);
+        System.out.println("==================> " + lastName);
         return firstName.replaceAll(" ", "") +" "+ lastName;
+    }
+
+    private String fullname(String firstName, String lastName, Integer age) {
+        System.out.println("==================> " + firstName);
+        System.out.println("==================> " + lastName);
+        System.out.println("==================> " + age);
+        return firstName.replaceAll(" ", "") +" "+ lastName + ", Age: " + age;
     }
 
 }
