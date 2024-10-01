@@ -187,7 +187,7 @@
 			<groupId>net.minidev</groupId>
 			<artifactId>json-smart</artifactId>
 			<version>2.3</version>
-			<scope>compile</scope><!--this lib should be replaced-->
+			<scope>compile</scope><!--this scope should be replaced to test-->
 		</dependency>
 
 	</dependencies>
@@ -222,6 +222,7 @@
 	<build>
 		<plugins>
 
+			<!--Generate Final Jar with all dependency-->
 			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -239,22 +240,48 @@
 				</executions>
 			</plugin>-->
 
+			<!--Generate Jar file with the class main-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
+				<configuration>
+					<mainClass>com.huntercodexs.CodexsTesterApplication</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>
+
+			<!--Generate Reports: extentreports-cucumber7-adapter-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
+					<!-- Set the test source directory -->
+					<testSourceDirectory>src/test/java/com/example/myapp</testSourceDirectory>
+					<trimStackTrace>false</trimStackTrace>
 					<excludes>
 						<exclude>**/*IntegrationTest.java</exclude>
 					</excludes>
 					<systemPropertyVariables>
 						<extent.reporter.html.start>true</extent.reporter.html.start>
-						<extent.reporter.html.out>target/cucumber-reports/ApplicationTestReport.html
+						<!-- Specify the output path for the HTML report -->
+						<extent.reporter.html.out>
+							target/cucumber-reports/ApplicationTestReport.html
 						</extent.reporter.html.out>
-						<extent.reporter.html.config>src/test/resources/reporting/extent-config.xml
+						<!-- Specify the Extent configuration file -->
+						<extent.reporter.html.config>
+							src/test/resources/reporting/extent-config.xml
 						</extent.reporter.html.config>
+						<!-- Enable quiet mode to suppress console logs -->
 						<cucumber.publish.quiet>true</cucumber.publish.quiet>
 					</systemPropertyVariables>
-					<argLine>--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED</argLine>
+					<argLine>
+						--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
+					</argLine>
 				</configuration>
 				<executions>
 					<execution>
@@ -273,20 +300,6 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${project.parent.version}</version>
-				<configuration>
-					<mainClass>com.huntercodexs.CodexsTesterApplication</mainClass>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
 			</plugin>
 
 		</plugins>
