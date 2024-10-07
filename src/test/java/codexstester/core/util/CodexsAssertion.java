@@ -12,8 +12,8 @@ import static codexstester.core.util.CodexsHelper.codexsHelperLogTermTests;
 public abstract class CodexsAssertion extends CodexsAdvanced {
 
     protected static void resulted(boolean flag) {
-        if (flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED", "PASSED", true);
-        if (!flag) codexsHelperLogTermTests("CODEXS TESTER FINISHED", "FAILED", true);
+        if (flag) codexsHelperLogTermTests("CODEXS TESTER", "PASSED", true);
+        if (!flag) codexsHelperLogTermTests("CODEXS TESTER", "FAILED", true);
     }
 
     protected void codexsTesterAssertExact(String expected, String received) {
