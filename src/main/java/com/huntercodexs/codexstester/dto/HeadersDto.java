@@ -212,7 +212,7 @@ public class HeadersDto {
     public String toString() {
         return "HeadersDto(" +
                 "contentType=" + contentType +
-                ", accepted=" + acceptable +
+                ", acceptable=" + acceptable +
                 ", httpMethod=" + httpMethod +
                 ", statusCode=" + statusCode +
                 ", crossOrigin=" + crossOrigin +

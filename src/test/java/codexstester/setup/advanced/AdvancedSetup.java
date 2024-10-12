@@ -85,6 +85,7 @@ public abstract class AdvancedSetup {
                 "null",
                 "null",
                 "null",
+                "null",
                 "{name=value1}"
         };
     }
@@ -92,7 +93,7 @@ public abstract class AdvancedSetup {
     public static Object[][] expectedDtoDataTree() {
         return new Object[][]{
                 {"contentType", "application/json", String.class},
-                {"accepted", "null", String.class},
+                {"acceptable", "null", String.class},
                 {"httpMethod", "POST", String.class},
                 {"statusCode", "null", String.class},
                 {"crossOrigin", "null", String.class},
@@ -109,6 +110,7 @@ public abstract class AdvancedSetup {
                 {"apiKeyGeneric", "null", String.class},
                 {"additionalName", "null", String.class},
                 {"additionalValue", "null", String.class},
+                {"objectResponse", "null", Class.class},
                 {"bodyParameters", "{name=value1}", Map.class}
         };
     }
@@ -146,7 +148,7 @@ public abstract class AdvancedSetup {
         String string = "john smith";
         QuickJson quickJson = new QuickJson();
         quickJson.add("age", 30);
-        quickJson.add("gender", "mens");
+        quickJson.add("gender", "men");
         return new Object[]{string, quickJson.json()};
     }
 

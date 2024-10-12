@@ -14,6 +14,8 @@ import java.util.HashMap;
 
 public class SecuritySetup implements CodexsSecuritySetup {
 
+    private boolean rsa;
+
     /**
      * SECURITY SETTINGS (Change it as needed)
      * WARNING: DO NOT REMOVE THESE METHODS JUST CHANGE IT
@@ -240,10 +242,13 @@ public class SecuritySetup implements CodexsSecuritySetup {
                 header.put("Access-Code", "XYZ-123");
                 jwtAuthRequestDto.setAddHeader(header);
 
-                // HS512
-                //jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt");
-                // RS512
-                jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt-assign");
+                // RS512, RSA
+                if (this.rsa) {
+                    jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt-assign");
+                } else {
+                    // HS512 (NOT RSA)
+                    jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt");
+                }
 
                 jwtAuthRequestDto.setUsername("username");
                 jwtAuthRequestDto.setPassword("password");
@@ -331,7 +336,8 @@ public class SecuritySetup implements CodexsSecuritySetup {
         return new String(base64InputBytes);
     }
 
-    public String jwtAuthorization(String env) {
+    public String jwtAuthorization(String env, boolean rsa) {
+        this.rsa = rsa;
         JwtAuthRequestDto jwtAuthRequestDto = jwtAuth(env);
         CodexsSecurity codexsSecurity = new CodexsSecurity(jwtAuthRequestDto);
 

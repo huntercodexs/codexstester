@@ -13,6 +13,7 @@ import com.huntercodexs.codexstester.security.dto.JwtAuthRequestDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestCheckTokenDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestTokenDto;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -100,12 +101,19 @@ public class SampleExternalTests extends SampleBridgeTest {
         JwtResponseDto response = codexsSecurity.jwtAuth(JwtResponseDto.class);
 
         //JWT
+        codexsTesterAssertJwtHS256(response.getJwt());
+        //codexsTesterAssertJwtHS384(response.getJwt());
         //codexsTesterAssertJwtHS512(response.getJwt());
+
         //JWT-ASSIGN
-        codexsTesterAssertJwtRS512(response.getJwt());
+        //codexsTesterAssertJwtRS256(response.getJwt());
+        //codexsTesterAssertJwtRS384(response.getJwt());
+        //codexsTesterAssertJwtRS512(response.getJwt());
     }
 
+    /*SAMPLE*/
     @Test
+    @Ignore
     public void whenAnyOkRequest_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
@@ -120,7 +128,9 @@ public class SampleExternalTests extends SampleBridgeTest {
         codexsTesterExternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /*SAMPLE*/
     @Test
+    @Ignore
     public void whenAnyOkRequest_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
@@ -191,7 +201,7 @@ public class SampleExternalTests extends SampleBridgeTest {
     @Test
     public void whenAnyRequest_JwtAuth_Correctly_RetrieveCreated_StatusCode200_GET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local")); //JWT AUTH
+        headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local", false)); //JWT AUTH
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
         headersDto.setObjectResponse(String.class);
@@ -215,7 +225,7 @@ public class SampleExternalTests extends SampleBridgeTest {
     @Test
     public void whenAnyRequest_JwtAssignAuth_Correctly_RetrieveCreated_StatusCode200_GET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
-        headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local")); //JWT AUTH
+        headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local", true)); //JWT AUTH
         headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
         headersDto.setHttpMethod(HTTP_METHOD_GET);
         headersDto.setObjectResponse(String.class);

@@ -9,9 +9,10 @@ import org.springframework.http.MediaType;
 
 public class SampleInternalTests extends SampleBridgeTest {
 
-    /**
-     * THIS TESTS CAN BE REMOVED
-     * */
+    /*
+     * SAMPLES: THIS TESTS CAN BE REMOVED
+     * [IMPORTANT NOTE] Before run these test have a sure that the target service is running
+     */
 
     @Test
     public void propsTest() {
@@ -43,20 +44,13 @@ public class SampleInternalTests extends SampleBridgeTest {
         isOk5xxInternalTest();
     }
 
-    /**
-     * THESE TESTS BELOW CAN BE REMOVED OR CHANGED IF NEEDED
-     * */
-
     @Test
     public void whenSimpleTestUsingString_AssertExact() throws Exception {
         String result = SampleDataSource.dataSourceSampleResponse();
         codexsTesterAssertExact("This is a expected sample response", result);
     }
 
-    /**
-     * @implNote In this case the target service not needed is running
-     */
-
+    /*SAMPLE*/
     @Test
     public void whenAnyOkRequestSample_WithNoAuth_RetrieveOk_StatusCode200_ByHttpMethodGET() throws Exception {
         HeadersDto headersDto = new HeadersDto();
@@ -72,6 +66,7 @@ public class SampleInternalTests extends SampleBridgeTest {
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }
 
+    /*SAMPLE*/
     @Test
     public void whenAnyOkRequestSample_WithNoAuth_RetrieveCreated_StatusCode201_ByHttpMethodPOST() throws Exception {
         HeadersDto headersDto = new HeadersDto();

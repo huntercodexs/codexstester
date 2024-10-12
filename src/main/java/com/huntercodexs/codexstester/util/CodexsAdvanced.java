@@ -107,7 +107,7 @@ public abstract class CodexsAdvanced extends CodexsTesterIgnition {
 			}
 		}
 
-		throw new RuntimeException("[Critical Error] Field not found " + fieldToExtract);
+		throw new RuntimeException("[Critical Error] Field not found: " + fieldToExtract);
 	}
 
 }

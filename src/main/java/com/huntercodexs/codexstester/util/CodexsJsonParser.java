@@ -264,7 +264,8 @@ public class CodexsJsonParser {
             "java.util.LinkedHashMap",
             "java.util.LinkedHash",
             "java.util.LinkedMap",
-            "java.util.LinkedList"
+            "java.util.LinkedList",
+            "java.lang.String"
         };
 
         String foundType = jsonString.getClass().getName();

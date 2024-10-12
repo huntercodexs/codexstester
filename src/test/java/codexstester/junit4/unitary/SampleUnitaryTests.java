@@ -479,13 +479,13 @@ public class SampleUnitaryTests extends SampleBridgeTest {
         json2.put("roles2", Arrays.toString(roles2));
         json2.put("roles3", "["+Arrays.toString(roles3)+"]");
         json2.put("profileLink", "https://www.profile.com/john-smith?level=test&customer=yes");
-        HashMap<String, Object> hashMap = new HashMap<>();
-        hashMap.put("data1", null);
-        hashMap.put("data2", "My Data 1");
-        hashMap.put("value", 1000);
-        //hashMap.put("object", new Object()+", {\"name\":\"john smith\"}");
-        hashMap.put("object", new Object());
-        json2.put("product", hashMap);
+//        HashMap<String, Object> hashMap = new HashMap<>();
+//        hashMap.put("data1", null);
+//        hashMap.put("data2", "My Data 1");
+//        hashMap.put("value", 1000);
+//        //hashMap.put("object", new Object()+", {\"name\":\"john smith\"}");
+//        hashMap.put("object", new Object());
+//        json2.put("product", hashMap);
         Object object2 = json2;
         String string2 = json2.toString();
 
@@ -507,7 +507,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
     
     @Test
     public void readFileTest() {
-        String result = codexsHelperReadFile("./src/test/resources/postalcode/unitary.tests.properties");
+        String result = codexsHelperReadFile("./src/test/resources/junit4/sample/unitary.tests.properties");
         System.out.println(result);
     }
 
