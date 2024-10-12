@@ -6,6 +6,10 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.WebApplicationContext;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.repeat;
 import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTerm;
 
 public abstract class CodexsTesterIgnition {
@@ -20,6 +24,11 @@ public abstract class CodexsTesterIgnition {
 
     protected void setUp() {
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
+        LocalDateTime dateTimeNow = LocalDateTime.now();
+        String spaces = repeat(" ", 69);
+        String dateTimeFormat = "|  Date now is: "+ dateTimeNow.format(formatter)+spaces+"|\n";
+
         String welcome =
         """
          _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
@@ -32,7 +41,9 @@ public abstract class CodexsTesterIgnition {
         |  https://github.com/huntercodexs                                                                      |
         |  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |
         |                                                                                                       |
-        |  Date now is: 2024/10/08 11:00:00                                                                     |
+        """
+        +dateTimeFormat+
+        """
         |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
         """;
 

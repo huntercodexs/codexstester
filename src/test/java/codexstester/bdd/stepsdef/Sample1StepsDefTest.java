@@ -1,20 +1,31 @@
 package codexstester.bdd.stepsdef;
 
-import codexstester.setup.bridge.SampleBridgeTest;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.springframework.boot.web.server.LocalServerPort;
 
-public class SampleStepsDefTest extends SampleBridgeTest {
+import static com.huntercodexs.codexstester.util.CodexsAssertion.*;
+
+public class Sample1StepsDefTest {
 
 	@LocalServerPort
 	String port;
 
+	@Before
+	public void setUp() {
+	}
+
+	@After
+	public void tearDown() {
+	}
+
 	@Given("the sample scenario")
 	public void theSampleScenario() {
-		System.out.println("Scenario test is running");
+		System.out.println("Scenario 1 test is running");
 	}
 
 	@When("the test is made using username {string} and password {string}")

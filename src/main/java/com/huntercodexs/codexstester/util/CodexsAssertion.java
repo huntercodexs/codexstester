@@ -30,7 +30,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         if (!flag) codexsHelperLogTermTests("[FAILED]", methodName(caller, element), false);
     }
 
-    protected void codexsTesterAssertExact(String expected, String received) {
+    public static void codexsTesterAssertExact(String expected, String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -44,7 +44,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertObject(Object expected, Object received) {
+    public static void codexsTesterAssertObject(Object expected, Object received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -58,7 +58,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertText(String expected, String received) {
+    public static void codexsTesterAssertText(String expected, String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -72,7 +72,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertRegExp(String expected, String received) {
+    public static void codexsTesterAssertRegExp(String expected, String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -86,7 +86,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertInt(int expected, int received) {
+    public static void codexsTesterAssertInt(int expected, int received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -100,7 +100,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertBool(boolean expected, boolean received) {
+    public static void codexsTesterAssertBool(boolean expected, boolean received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -114,7 +114,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertNotNull(Object received) {
+    public static void codexsTesterAssertNotNull(Object received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -128,7 +128,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertNull(Object received) {
+    public static void codexsTesterAssertNull(Object received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -142,7 +142,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertNumber(String received) {
+    public static void codexsTesterAssertNumber(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -156,7 +156,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertGuid(String received) {
+    public static void codexsTesterAssertGuid(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -174,7 +174,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtHS256(String received) {
+    public static void codexsTesterAssertJwtHS256(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -192,7 +192,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtHS384(String received) {
+    public static void codexsTesterAssertJwtHS384(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -210,7 +210,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtHS512(String received) {
+    public static void codexsTesterAssertJwtHS512(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -228,7 +228,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtRS256(String received) {
+    public static void codexsTesterAssertJwtRS256(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -246,7 +246,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtRS384(String received) {
+    public static void codexsTesterAssertJwtRS384(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -264,7 +264,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtRS512(String received) {
+    public static void codexsTesterAssertJwtRS512(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -282,7 +282,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtES256(String received) {
+    public static void codexsTesterAssertJwtES256(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -300,7 +300,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtES384(String received) {
+    public static void codexsTesterAssertJwtES384(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -318,7 +318,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtES512(String received) {
+    public static void codexsTesterAssertJwtES512(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -336,7 +336,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtPS256(String received) {
+    public static void codexsTesterAssertJwtPS256(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -354,7 +354,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtPS384(String received) {
+    public static void codexsTesterAssertJwtPS384(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -372,7 +372,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertJwtPS512(String received) {
+    public static void codexsTesterAssertJwtPS512(String received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -390,7 +390,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         }
     }
 
-    protected void codexsTesterAssertCpf(String cpfNumber) {
+    public static void codexsTesterAssertCpf(String cpfNumber) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -448,7 +448,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         Assert.assertEquals(digitVerify, nDigResult);
     }
 
-    protected void codexsTesterAssertEmail(String emailAddress) {
+    public static void codexsTesterAssertEmail(String emailAddress) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -465,7 +465,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         Assert.assertTrue(isValidMail);
     }
 
-    protected void codexsTesterAssertPhone(String phoneNumber) {
+    public static void codexsTesterAssertPhone(String phoneNumber) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
@@ -482,7 +482,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         Assert.assertTrue(isValidPhone);
     }
 
-    protected void codexsTesterAssertSum(int val1, int val2, int received) {
+    public static void codexsTesterAssertSum(int val1, int val2, int received) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement element = stackTrace[2];
 
