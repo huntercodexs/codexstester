@@ -5,25 +5,28 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<!--Java8 ... Java17-->
+
+		<!--Java 8 ... Java 17-->
 		<version>2.6.4</version>
+
 		<!--Java 21-->
-<!--		<version>3.3.2</version>-->
+		<!--<version>3.3.2</version>-->
+
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<version>1.0.9-SNAPSHOT</version>
-	<groupId>com.huntercodexs</groupId>
+	<version>2.0.0-SNAPSHOT</version>
+	<groupId>com.huntercodexs.codexstester</groupId>
 
 	<name>codexstester</name>
 	<artifactId>codexstester</artifactId>
 	<description>codexstester</description>
 
 	<properties>
-<!--		<java.version>1.8</java.version>-->
-<!--		<java.version>11</java.version>-->
+		<!--<java.version>1.8</java.version>-->
+		<!--<java.version>11</java.version>-->
 		<java.version>17</java.version>
-<!--		<java.version>21</java.version>-->
+		<!--<java.version>21</java.version>-->
 
 		<cucumber.version>7.12.0</cucumber.version>
 		<extent-report.version>1.13.0</extent-report.version>
@@ -34,160 +37,113 @@
 
 	<dependencies>
 
-		<!--SPRING-BOOT-STARTER-->
+		<!--SPRING BOOT STARTER WEB-->
+		<!--
+			IMPORTANT: To avoid multiple slf4j and others warnings in another spring boot
+			project comment the lines below before build the codexstester jar file, this
+			dependency is used just for development !
+
+			TIP: One best practice is to remove completely that one to avoid misunderstands
+			by others developers !
+		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<!--LOMBOK-->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.34</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!--OPEN-API - VALIDATION-->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-webmvc-core</artifactId>
-			<version>1.4.6</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-			<version>3.3.2</version>
-			<scope>runtime</scope>
-		</dependency>
-
-		<!--JAVAX - Java21-->
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>javax.persistence-api</artifactId>
-			<version>2.2</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
-		</dependency>
-
-		<!--TOOLS: LOGBACK-->
-		<dependency>
-			<groupId>net.logstash.logback</groupId>
-			<artifactId>logstash-logback-encoder</artifactId>
-			<version>5.1</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-core</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.lmax</groupId>
-			<artifactId>disruptor</artifactId>
-			<version>3.3.7</version>
-		</dependency>
-
-		<!--DATABASE-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version><!--Java21 and Spring-Boot-3.3.2-->
-			<scope>runtime</scope>
-		</dependency>
-
-		<!--TESTS: CODEXSTESTER-->
+		<!--SPRING BOOT: TEST-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>log4j</groupId>
+					<artifactId>log4j</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
+
+		<!--PROJECT REACTOR-->
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
+
 		<!--MOCK MVC-->
 		<dependency>
 			<groupId>org.springframework.restdocs</groupId>
 			<artifactId>spring-restdocs-mockmvc</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>spring-mock-mvc</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
+
 		<!--JUnit-->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.platform</groupId>
 			<artifactId>junit-platform-suite</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-engine</artifactId>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
+
 		<!--CUCUMBER-->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-spring</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit-platform-engine</artifactId>
 			<version>${cucumber.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
+
 		<!--CUCUMBER REPORT-->
 		<dependency>
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>${extent-report.version}</version>
-			<scope>test</scope>
+			<scope>compile</scope>
 		</dependency>
+
 		<!--SELENIUM-->
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.13.0</version>
-			<scope>test</scope>
-		</dependency>
-		<!--JSON-->
-		<dependency>
-			<groupId>net.minidev</groupId>
-			<artifactId>json-smart</artifactId>
-			<version>2.3</version>
-			<scope>compile</scope><!--this scope should be replaced to test-->
+			<scope>compile</scope>
 		</dependency>
 
 	</dependencies>
@@ -223,7 +179,7 @@
 		<plugins>
 
 			<!--Generate Final Jar with all dependency-->
-			<!--<plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
 				<version>3.2.4</version>
@@ -238,22 +194,22 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>-->
+			</plugin>
 
 			<!--Generate Jar file with the class main-->
-			<plugin>
+			<!--<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${project.parent.version}</version>
 				<configuration>
-					<mainClass>com.huntercodexs.CodexsTesterApplication</mainClass>
+					<mainClass>com.huntercodexs.codexstester.SampleApplication</mainClass>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.1.0</version>
-			</plugin>
+			</plugin>-->
 
 			<!--Generate Reports: extentreports-cucumber7-adapter-->
 			<plugin>
@@ -261,10 +217,10 @@
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
 					<!-- Set the test source directory -->
-					<testSourceDirectory>src/test/java/com/example/myapp</testSourceDirectory>
+					<testSourceDirectory>src/test/java/codexstester</testSourceDirectory>
 					<trimStackTrace>false</trimStackTrace>
 					<excludes>
-						<exclude>**/*IntegrationTest.java</exclude>
+						<exclude>**/*Integration.java</exclude>
 					</excludes>
 					<systemPropertyVariables>
 						<extent.reporter.html.start>true</extent.reporter.html.start>
@@ -295,7 +251,7 @@
 								<exclude>none</exclude>
 							</excludes>
 							<includes>
-								<include>**/*IntegrationTest.java</include>
+								<include>**/*Integration.java</include>
 							</includes>
 						</configuration>
 					</execution>
