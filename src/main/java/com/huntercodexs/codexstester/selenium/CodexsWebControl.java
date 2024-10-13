@@ -58,6 +58,15 @@ public class CodexsWebControl {
     private void operaSetup() {
         OperaOptions options = new OperaOptions();
         options.addArguments(this.codexsBrowserDto.getOptions());
+
+        if (this.codexsBrowserDto.isQuietMode()) {
+            options.addArguments("-headless");
+        }
+
+        if (this.codexsBrowserDto.getBrowserBinaryPath() != null) {
+            options.setBinary(this.codexsBrowserDto.getBrowserBinaryPath());
+        }
+
         this.codexsWebDriver.setDriver(new OperaDriver(options));
     }
 

@@ -14,7 +14,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static com.huntercodexs.codexstester.selenium.CodexsWebElements.*;
@@ -43,6 +42,17 @@ public class Sample3StepsDefTest extends SampleBridgeTest {
         this.codexsBrowserDto.setQuietMode(true);
         this.codexsBrowserDto.setWebDriverName("webdriver.gecko.driver");
         this.codexsBrowserDto.setWebDriverPath("/home/jereelton/.mozilla/webdriver/geckodriver");
+
+        /* > OPERA
+        * NOTE: It is required to install the operadriver
+        * https://github.com/operasoftware/operachromiumdriver/releases
+        */
+        this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.OPERA);
+        this.codexsBrowserDto.setQuietMode(false);
+        this.codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+        this.codexsBrowserDto.setWebDriverName("webdriver.opera.driver");
+        this.codexsBrowserDto.setWebDriverPath("/home/jereelton/.local/bin/operalinux/operadriver");
+        this.codexsBrowserDto.setBrowserBinaryPath("/usr/bin/opera");
 
         this.codexsWebControl = new CodexsWebControl(this.codexsBrowserDto);
         this.codexsWebControl.browserSetup();
