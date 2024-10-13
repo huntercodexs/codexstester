@@ -1,75 +1,63 @@
 package codexstester.bdd.stepsdef;
 
 import codexstester.setup.bridge.SampleBridgeTest;
+import com.huntercodexs.codexstester.selenium.CodexsWebControl;
+import com.huntercodexs.codexstester.selenium.constant.CodexsBrowserForSelenium;
+import com.huntercodexs.codexstester.selenium.constant.CodexsBrowserForSeleniumDto;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
+
+import static com.huntercodexs.codexstester.selenium.CodexsWebElements.*;
 
 public class Sample3StepsDefTest extends SampleBridgeTest {
 
-    private static final Log log = LogFactory.getLog(Sample3StepsDefTest.class);
-    private final String urlWebsite = "https://practicetestautomation.com/practice-test-login/";
-
-    WebDriverWait wait;
-    private static WebDriver driver;
-
-    private static final String USERNAME_INPUT_XPATH = "//input[@id='username']";
-    private static final String PASSWORD_INPUT_XPATH = "//input[@id='password']";
-    private static final String SUBMIT_BUTTON_XPATH = "//button[@id='submit']";
-    private static final String LOGOUT_BUTTON_XPATH = "//a[text()='Log out']";
-    private static final String LOGIN_ERROR_XPATH = "//div[@id='error']";
+    CodexsWebControl codexsWebControl;
+    CodexsBrowserForSeleniumDto codexsBrowserDto;
 
     @Before
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        wait = new WebDriverWait(driver, 15L);
+        this.codexsBrowserDto = new CodexsBrowserForSeleniumDto();
+        this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.CHROME);
+        this.codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+        this.codexsBrowserDto.setWebDriverName("webdriver.chrome.driver");
+        this.codexsBrowserDto.setWebDriverPath("/usr/bin/chromedriver");
+
+        this.codexsWebControl = new CodexsWebControl(this.codexsBrowserDto);
+        this.codexsWebControl.browserSetup();
     }
 
     @After
     public void tearDown() {
-        try {
-            // Force login page alive for 5 seconds (just for visualize the login successfully)
-            Thread.sleep(2000);
-            driver.quit();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+        this.codexsWebControl.finish();
     }
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
-        driver.get(urlWebsite);
+        this.codexsWebControl.driver().get("https://practicetestautomation.com/practice-test-login/");
     }
 
     @When("user login with {string} and {string}")
     public void userLoginWithUsernameAndPassword(String username, String password) {
 
-        WebElement usernameField = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath(USERNAME_INPUT_XPATH)));
+        WebElement usernameField = this.codexsWebControl.await().until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(inputElement("username"))));
         usernameField.sendKeys(username);
 
-        WebElement passwordField = wait.until(
-                ExpectedConditions.visibilityOfElementLocated(By.xpath(PASSWORD_INPUT_XPATH)));
+        WebElement passwordField = this.codexsWebControl.await().until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(inputElement("password"))));
         passwordField.sendKeys(password);
 
-        WebElement submitButton = wait.until(
-                ExpectedConditions.elementToBeClickable(By.xpath(SUBMIT_BUTTON_XPATH)));
+        WebElement submitButton = this.codexsWebControl.await().until(
+                ExpectedConditions.elementToBeClickable(By.xpath(buttonElement("submit"))));
         submitButton.click();
 
     }
@@ -80,14 +68,15 @@ public class Sample3StepsDefTest extends SampleBridgeTest {
         if (status) {
 
             // When login is successfully the button logout is visible
-            WebElement logoutButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.xpath(LOGOUT_BUTTON_XPATH)));
+            WebElement logoutButton = this.codexsWebControl.await().until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(aElement("Log out"))));
             Assert.assertEquals(status, logoutButton.isDisplayed());
 
         } else {
 
-            WebElement loginError = wait.until(
-                    ExpectedConditions.elementToBeClickable(By.xpath(LOGIN_ERROR_XPATH)));
+            // When login is wrong the p=text with id=error is visible
+            WebElement loginError = this.codexsWebControl.await().until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(divElement("error"))));
             Assert.assertTrue(loginError.isDisplayed());
 
             if (loginError.getText().contains("username")) {

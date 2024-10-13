@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.selenium;
 
-public class WebElementsSetup {
+public abstract class CodexsWebElements {
 
     public static String inputElement(String id) {
         return "//input[@id='"+id+"']";
