@@ -1,4 +1,4 @@
-package codexstester.bdd.runner.sample2;
+package codexstester.bdd.sample2.runner;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.SelectClasspathResource;
@@ -10,7 +10,7 @@ import static io.cucumber.core.options.Constants.GLUE_PROPERTY_NAME;
 @SelectClasspathResource("features/sample2/Sample2.feature")
 @ConfigurationParameter(
         key = GLUE_PROPERTY_NAME,
-        value = "codexstester.bdd.stepsdef"
+        value = "codexstester.bdd.sample2.stepsdef"
 )
 public class Sample2ReportRunnerTest {
 }

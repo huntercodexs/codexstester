@@ -1,4 +1,4 @@
-package codexstester.bdd.stepsdef;
+package codexstester.bdd.sample2.stepsdef;
 
 import codexstester.setup.bridge.SampleBridgeTest;
 import io.cucumber.java.After;

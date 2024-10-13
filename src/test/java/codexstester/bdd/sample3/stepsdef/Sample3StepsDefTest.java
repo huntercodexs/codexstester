@@ -1,4 +1,4 @@
-package codexstester.bdd.stepsdef;
+package codexstester.bdd.sample3.stepsdef;
 
 import codexstester.setup.bridge.SampleBridgeTest;
 import com.huntercodexs.codexstester.selenium.CodexsWebControl;
