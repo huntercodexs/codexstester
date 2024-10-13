@@ -9,7 +9,6 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -93,19 +92,21 @@ public class Sample3StepsDefTest extends SampleBridgeTest {
             // When login is successfully the button logout is visible
             WebElement logoutButton = this.codexsWebControl.await().until(
                     ExpectedConditions.elementToBeClickable(By.xpath(aElement("Log out"))));
-            Assert.assertEquals(status, logoutButton.isDisplayed());
+
+            codexsTesterAssertBool(status, logoutButton.isDisplayed());
 
         } else {
 
             // When login is wrong the p=text with id=error is visible
             WebElement loginError = this.codexsWebControl.await().until(
                     ExpectedConditions.elementToBeClickable(By.xpath(divElement("error"))));
-            Assert.assertTrue(loginError.isDisplayed());
+
+            codexsTesterAssertBool(true, loginError.isDisplayed());
 
             if (loginError.getText().contains("username")) {
-                Assert.assertEquals("Your username is invalid!", loginError.getText());
+                codexsTesterAssertExact("Your username is invalid!", loginError.getText());
             } else {
-                Assert.assertEquals("Your password is invalid!", loginError.getText());
+                codexsTesterAssertExact("Your password is invalid!", loginError.getText());
             }
 
         }

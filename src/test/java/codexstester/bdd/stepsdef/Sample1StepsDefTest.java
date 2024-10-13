@@ -1,5 +1,6 @@
 package codexstester.bdd.stepsdef;
 
+import codexstester.setup.bridge.SampleBridgeTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -10,7 +11,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 
 import static com.huntercodexs.codexstester.util.CodexsAssertion.*;
 
-public class Sample1StepsDefTest {
+public class Sample1StepsDefTest extends SampleBridgeTest {
 
 	@LocalServerPort
 	String port;
