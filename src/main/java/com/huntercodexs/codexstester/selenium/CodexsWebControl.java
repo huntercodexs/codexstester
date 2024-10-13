@@ -29,13 +29,29 @@ public class CodexsWebControl {
 
     private void chromeSetup() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments(this.codexsBrowserDto.getOptions());
+
+        if (this.codexsBrowserDto.getOptions() != null) {
+            options.addArguments(this.codexsBrowserDto.getOptions());
+        }
+
+        if (this.codexsBrowserDto.isQuietMode()) {
+            options.addArguments("-headless");
+        }
+
         this.codexsWebDriver.setDriver(new ChromeDriver(options));
     }
 
     private void firefoxSetup() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments(this.codexsBrowserDto.getOptions());
+
+        if (this.codexsBrowserDto.getOptions() != null) {
+            options.addArguments(this.codexsBrowserDto.getOptions());
+        }
+
+        if (this.codexsBrowserDto.isQuietMode()) {
+            options.addArguments("-headless");
+        }
+
         this.codexsWebDriver.setDriver(new FirefoxDriver(options));
     }
 
@@ -95,6 +111,14 @@ public class CodexsWebControl {
 
     public WebDriverWait await() {
         return this.codexsWebDriver.getWait();
+    }
+
+    public void navigate(String url) {
+        if (this.codexsBrowserDto.getBrowser().name().equals(CodexsBrowserForSelenium.FIREFOX.name())) {
+            this.codexsWebDriver.getDriver().navigate().to(url);
+        } else {
+            this.codexsWebDriver.getDriver().get(url);
+        }
     }
 
     public void finish() {

@@ -14,6 +14,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static com.huntercodexs.codexstester.selenium.CodexsWebElements.*;
@@ -26,10 +27,22 @@ public class Sample3StepsDefTest extends SampleBridgeTest {
     @Before
     public void setUp() {
         this.codexsBrowserDto = new CodexsBrowserForSeleniumDto();
+
+        /* > CHROME */
         this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.CHROME);
+        this.codexsBrowserDto.setQuietMode(true);
         this.codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
         this.codexsBrowserDto.setWebDriverName("webdriver.chrome.driver");
         this.codexsBrowserDto.setWebDriverPath("/usr/bin/chromedriver");
+
+        /* > FIREFOX
+         * NOTE: It is required to install the gecko driver for firefox
+         * https://github.com/mozilla/geckodriver/releases
+         */
+        this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.FIREFOX);
+        this.codexsBrowserDto.setQuietMode(true);
+        this.codexsBrowserDto.setWebDriverName("webdriver.gecko.driver");
+        this.codexsBrowserDto.setWebDriverPath("/home/jereelton/.mozilla/webdriver/geckodriver");
 
         this.codexsWebControl = new CodexsWebControl(this.codexsBrowserDto);
         this.codexsWebControl.browserSetup();
@@ -42,7 +55,7 @@ public class Sample3StepsDefTest extends SampleBridgeTest {
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
-        this.codexsWebControl.driver().get("https://practicetestautomation.com/practice-test-login/");
+        this.codexsWebControl.navigate("https://practicetestautomation.com/practice-test-login/");
     }
 
     @When("user login with {string} and {string}")
