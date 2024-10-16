@@ -26,13 +26,13 @@ public class SampleUnitaryTests extends SampleBridgeTest {
     @Test
     public void whenSumAnyNumbersTest() {
         int result = SampleDataSource.dataSourceSampleSum(1000, 10);
-        codexsTesterAssertInt(result, 1010);
+        codexsTesterAssertInt(result, 1010, null);
     }
 
     @Test
     public void quickJsonTest() {
         String result = quickJsonDataSource();
-        codexsTesterAssertExact("{\"name\":\"Jereelton\",\"age\":39}", result);
+        codexsTesterAssertExact("{\"name\":\"Jereelton\",\"age\":39}", result, null);
     }
 
     @Test
@@ -518,7 +518,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
                 "./src/test/resources/junit4/file.txt",
                 "[0-9]{6}",
                 1500000000);
-        codexsTesterAssertRegExp("[0-9]{6}", code);
+        codexsTesterAssertRegExp("[0-9]{6}", code, null);
     }
 
 }

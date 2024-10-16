@@ -130,7 +130,10 @@ public abstract class AbstractInternalRequest extends AvailableHttpMethod {
                     codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
                     codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
                     codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
-                    assertInternalTests(requestDto.getExpectedMessage(), result.getResponse().getContentAsString());
+                    codexsTesterAssertExact(
+                            requestDto.getExpectedMessage(),
+                            result.getResponse().getContentAsString(),
+                            requestDto.getMethodCallerName());
                 }
             }
 
@@ -142,7 +145,10 @@ public abstract class AbstractInternalRequest extends AvailableHttpMethod {
                 codexsHelperLogTerm("TRY ASSERT INTEGRATION IN EXCEPTION", ex.getMessage(), true);
                 codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
                 codexsHelperLogTerm("<<< RECEIVED MESSAGE", ex.getMessage(), true);
-                assertInternalTests(requestDto.getExpectedMessage(), ex.getMessage());
+                codexsTesterAssertExact(
+                        requestDto.getExpectedMessage(),
+                        ex.getMessage(),
+                        requestDto.getMethodCallerName());
             }
         }
     }

@@ -64,7 +64,7 @@ public class SampleExternalTests extends SampleBridgeTest {
     @Test
     public void whenSimpleTestUsingString_AssertExact() throws Exception {
         String result = SampleDataSource.dataSourceSampleResponse();
-        codexsTesterAssertExact("This is a expected sample response", result);
+        codexsTesterAssertExact("This is a expected sample response", result, null);
     }
 
     @Test
@@ -74,12 +74,12 @@ public class SampleExternalTests extends SampleBridgeTest {
         CodexsSecurity codexsSecurity = new CodexsSecurity(requestTokenDto);
         String token = codexsSecurity.token();
 
-        codexsTesterAssertGuid(token);
+        codexsTesterAssertGuid(token, null);
 
         Oauth2RequestCheckTokenDto requestCheckTokenDto = securitySetup.oauth2CheckToken("local", token);
         boolean status = codexsSecurity.checkToken(requestCheckTokenDto);
 
-        codexsTesterAssertBool(true, status);
+        codexsTesterAssertBool(true, status, null);
     }
 
     @Test
@@ -89,7 +89,7 @@ public class SampleExternalTests extends SampleBridgeTest {
         CodexsSecurity codexsSecurity = new CodexsSecurity(authRequestDto);
         Object response = codexsSecurity.basicAuth();
 
-        codexsTesterAssertGuid(String.valueOf(response));
+        codexsTesterAssertGuid(String.valueOf(response), null);
     }
 
     @Test
@@ -101,7 +101,7 @@ public class SampleExternalTests extends SampleBridgeTest {
         JwtResponseDto response = codexsSecurity.jwtAuth(JwtResponseDto.class);
 
         //JWT
-        codexsTesterAssertJwtHS256(response.getJwt());
+        codexsTesterAssertJwtHS256(response.getJwt(), null);
         //codexsTesterAssertJwtHS384(response.getJwt());
         //codexsTesterAssertJwtHS512(response.getJwt());
 
@@ -168,7 +168,7 @@ public class SampleExternalTests extends SampleBridgeTest {
 
         Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
 
-        codexsTesterAssertExact("Admin is running on OAUTH2-CLIENT-DEMO", String.valueOf(response));
+        codexsTesterAssertExact("Admin is running on OAUTH2-CLIENT-DEMO", String.valueOf(response), null);
     }
 
     /**
@@ -192,7 +192,7 @@ public class SampleExternalTests extends SampleBridgeTest {
 
         Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
 
-        codexsTesterAssertGuid(String.valueOf(response));
+        codexsTesterAssertGuid(String.valueOf(response), null);
     }
 
     /**
@@ -216,7 +216,7 @@ public class SampleExternalTests extends SampleBridgeTest {
 
         Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
 
-        codexsTesterAssertExact("OK", String.valueOf(response));
+        codexsTesterAssertExact("OK", String.valueOf(response), null);
     }
 
     /**
@@ -240,7 +240,7 @@ public class SampleExternalTests extends SampleBridgeTest {
 
         Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
 
-        codexsTesterAssertExact("OK", String.valueOf(response));
+        codexsTesterAssertExact("OK", String.valueOf(response), null);
     }
 
 }

@@ -156,7 +156,10 @@ public abstract class AbstractExternalRestTemplate extends AbstractExternalReque
 
             if (response.getStatusCodeValue() != requestDto.getExpectedCode()) {
                 codexsHelperLogTerm("EXTERNAL DISPATCHER ERROR [INVALID STATUS CODE]", response.getStatusCodeValue(), true);
-                codexsTesterAssertInt(response.getStatusCodeValue(), requestDto.getExpectedCode());
+                codexsTesterAssertInt(
+                        response.getStatusCodeValue(),
+                        requestDto.getExpectedCode(),
+                        requestDto.getMethodCallerName());
             }
 
             return response;

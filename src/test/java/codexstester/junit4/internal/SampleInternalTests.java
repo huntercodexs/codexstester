@@ -1,9 +1,9 @@
 package codexstester.junit4.internal;
 
-import com.huntercodexs.codexstester.dto.HeadersDto;
-import com.huntercodexs.codexstester.dto.RequestDto;
 import codexstester.setup.bridge.SampleBridgeTest;
 import codexstester.setup.datasource.SampleDataSource;
+import com.huntercodexs.codexstester.dto.HeadersDto;
+import com.huntercodexs.codexstester.dto.RequestDto;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 
@@ -47,7 +47,7 @@ public class SampleInternalTests extends SampleBridgeTest {
     @Test
     public void whenSimpleTestUsingString_AssertExact() throws Exception {
         String result = SampleDataSource.dataSourceSampleResponse();
-        codexsTesterAssertExact("This is a expected sample response", result);
+        codexsTesterAssertExact("This is a expected sample response", result, null);
     }
 
     /*SAMPLE*/
@@ -61,7 +61,7 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setUri(internalProps.getProperty("internal.tests.base-uri"));
         requestDto.setId("");
         requestDto.setDataRequest("");
-        requestDto.setExpectedMessage("Welcome to sample from Codexs Tester");
+        requestDto.setExpectedMessage("Welcome to codexstester sample API");
 
         codexsTesterInternal_StatusCode200_RetrieveOK(headersDto, requestDto);
     }

@@ -125,11 +125,17 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
             codexsHelperLogTerm("EXTERNAL RESPONSE IS", response, true);
             codexsHelperLogTerm("EXTERNAL STATUS CODE IS", response.getStatusCode(), true);
 
-            codexsTesterAssertInt(requestDto.getExpectedCode(), response.getStatusCodeValue());
+            codexsTesterAssertInt(
+                    requestDto.getExpectedCode(),
+                    response.getStatusCodeValue(),
+                    requestDto.getMethodCallerName());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 codexsHelperLogTerm("RESPONSE[BODY] MATCH", response.getBody(), true);
-                codexsTesterAssertObject(requestDto.getExpectedMessage(), response.getBody());
+                codexsTesterAssertObject(
+                        requestDto.getExpectedMessage(),
+                        response.getBody(),
+                        requestDto.getMethodCallerName());
                 resulted(true, element);
             }
 
@@ -139,11 +145,17 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
             codexsHelperLogTerm("HttpClientErrorException[BODY]:", ex.getResponseBodyAsString(), true);
             codexsHelperLogTerm("HttpClientErrorException[MESSAGE]:", ex.getMessage(), true);
 
-            codexsTesterAssertInt(requestDto.getExpectedCode(), ex.getRawStatusCode());
+            codexsTesterAssertInt(
+                    requestDto.getExpectedCode(),
+                    ex.getRawStatusCode(),
+                    requestDto.getMethodCallerName());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 if (!ex.getResponseBodyAsString().equals("")) {
-                    codexsTesterAssertExact(requestDto.getExpectedMessage(), ex.getResponseBodyAsString());
+                    codexsTesterAssertExact(
+                            requestDto.getExpectedMessage(),
+                            ex.getResponseBodyAsString(),
+                            requestDto.getMethodCallerName());
                 } else {
 
                     String warn = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
@@ -153,8 +165,9 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
                     warn += "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
                     codexsHelperLogTerm("!!! W A R N I N G !!!", warn, false);
 
-                    codexsTesterAssertBool(true, true);
+                    codexsTesterAssertBool(true, true, requestDto.getMethodCallerName());
                     resulted(true, element);
+
                 }
             }
 
@@ -164,11 +177,19 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
             codexsHelperLogTerm("HttpServerErrorException[BODY]:", se.getResponseBodyAsString(), true);
             codexsHelperLogTerm("HttpServerErrorException[MESSAGE]:", se.getMessage(), true);
 
-            codexsTesterAssertInt(requestDto.getExpectedCode(), se.getRawStatusCode());
+            codexsTesterAssertInt(
+                    requestDto.getExpectedCode(),
+                    se.getRawStatusCode(),
+                    requestDto.getMethodCallerName());
 
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
                 if (!se.getResponseBodyAsString().equals("")) {
-                    codexsTesterAssertExact(requestDto.getExpectedMessage(), se.getResponseBodyAsString());
+
+                    codexsTesterAssertExact(
+                            requestDto.getExpectedMessage(),
+                            se.getResponseBodyAsString(),
+                            requestDto.getMethodCallerName());
+
                 } else {
 
                     String warn = "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
@@ -178,7 +199,7 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
                     warn += "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++";
                     codexsHelperLogTerm("!!! W A R N I N G !!!", warn, false);
 
-                    codexsTesterAssertBool(true, true);
+                    codexsTesterAssertBool(true, true, requestDto.getMethodCallerName());
                     resulted(true, element);
                 }
             }
@@ -186,7 +207,7 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
         } catch (RuntimeException re) {
             codexsHelperLogTerm("RuntimeException[MESSAGE]:", re.getMessage(), true);
             resulted(false, element);
-            codexsTesterAssertBool(true, false);
+            codexsTesterAssertBool(true, false, requestDto.getMethodCallerName());
         }
     }
 

@@ -32,20 +32,6 @@ public abstract class InternalHttpHeadersFactory extends ExternalProperty {
         ).andReturn();
     }
 
-    protected void assertInternalTests(String expected, String received) {
-
-        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement element = stackTrace[2];
-
-        if (received.contains(expected)) {
-            codexsTesterAssertObject(expected, received);
-            resulted(true, element);
-        } else {
-            resulted(false, element);
-            codexsTesterAssertObject(expected, received);
-        }
-    }
-
     protected HttpHeaders internalBuilderHeaders(RequestDto requestDto, HeadersDto headersDto) {
 
         HttpHeaders headers = new HttpHeaders();

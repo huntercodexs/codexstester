@@ -3,15 +3,19 @@ package com.huntercodexs.codexstester.dto;
 import java.util.HashMap;
 
 public class RequestDto {
+
+    int expectedCode;
     String url;
     String uri;
     String id;
     Object dataRequest;
     String expectedMessage;
-    int expectedCode;
+    StackTraceElement methodCallerName;
     HashMap<String, String> addHeader;
 
     public RequestDto() {
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        this.methodCallerName = stackTrace[2];
     }
 
     public RequestDto(
@@ -30,6 +34,9 @@ public class RequestDto {
         this.expectedMessage = expectedMessage;
         this.expectedCode = expectedCode;
         this.addHeader = addHeader;
+
+        StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
+        this.methodCallerName = stackTrace[2];
     }
 
     public String getUrl() {
@@ -80,6 +87,14 @@ public class RequestDto {
         this.expectedCode = expectedCode;
     }
 
+    public StackTraceElement getMethodCallerName() {
+        return methodCallerName;
+    }
+
+    public void setMethodCallerName(StackTraceElement methodCallerName) {
+        this.methodCallerName = methodCallerName;
+    }
+
     public HashMap<String, String> getAddHeader() {
         return addHeader;
     }
@@ -95,6 +110,7 @@ public class RequestDto {
                 ", id=" + id +
                 ", dataRequest=" + dataRequest +
                 ", expectedMessage=" + expectedMessage +
+                ", methodCallerName=" + methodCallerName +
                 ", expectedCode=" + expectedCode +
                 ", addHeader=" + addHeader +
                 ")";
