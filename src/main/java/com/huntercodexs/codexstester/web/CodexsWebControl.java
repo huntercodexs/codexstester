@@ -1,7 +1,7 @@
-package com.huntercodexs.codexstester.selenium;
+package com.huntercodexs.codexstester.web;
 
-import com.huntercodexs.codexstester.selenium.constant.CodexsBrowserForSelenium;
-import com.huntercodexs.codexstester.selenium.constant.CodexsBrowserForSeleniumDto;
+import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSelenium;
+import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSeleniumDto;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

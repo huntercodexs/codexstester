@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.selenium.constant;
+package com.huntercodexs.codexstester.web.constant;
 
 public enum CodexsBrowserForSelenium {
     CHROME,

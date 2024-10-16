@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.selenium;
+package com.huntercodexs.codexstester.web;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;

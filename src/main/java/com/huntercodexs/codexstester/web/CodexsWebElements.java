@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.selenium;
+package com.huntercodexs.codexstester.web;
 
 public abstract class CodexsWebElements {
 
