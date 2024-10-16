@@ -28,8 +28,13 @@
 		<java.version>17</java.version>
 		<!--<java.version>21</java.version>-->
 
+		<junit.version>4.13.2</junit.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
+		<junit-platform.version>1.10.3</junit-platform.version>
+		<cucumber.version.legacy>4.2.0</cucumber.version.legacy>
 		<cucumber.version>7.12.0</cucumber.version>
 		<extent-report.version>1.13.0</extent-report.version>
+		<selenium.version>3.13.0</selenium.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -68,6 +73,28 @@
 			</exclusions>
 		</dependency>
 
+		<!--JUNIT4-->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!--JUNIT5-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<!--JUNIT-PLATFORM: SUITE-->
+		<dependency>
+			<groupId>org.junit.platform</groupId>
+			<artifactId>junit-platform-suite</artifactId>
+			<version>${junit-platform.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
 		<!--PROJECT REACTOR-->
 		<dependency>
 			<groupId>io.projectreactor</groupId>
@@ -87,20 +114,19 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!--JUnit-->
+		<!--SELENIUM-->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
+		<!--CUCUMBER LEGACY: JAVA8 - FOR LAMBDAS-->
 		<dependency>
-			<groupId>org.junit.platform</groupId>
-			<artifactId>junit-platform-suite</artifactId>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-engine</artifactId>
+			<groupId>io.cucumber</groupId>
+			<artifactId>cucumber-java8</artifactId>
+			<version>${cucumber.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -135,14 +161,6 @@
 			<groupId>tech.grasshopper</groupId>
 			<artifactId>extentreports-cucumber7-adapter</artifactId>
 			<version>${extent-report.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<!--SELENIUM-->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.13.0</version>
 			<scope>compile</scope>
 		</dependency>
 
