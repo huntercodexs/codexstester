@@ -243,4 +243,22 @@ public class SampleExternalTests extends SampleBridgeTest {
         codexsTesterAssertExact("OK", String.valueOf(response), null);
     }
 
+    /**
+     * LOGIN Web Example - using Selenium
+     * */
+    @Test
+    public void whenLoginIsRequest_WithCorrectUsernamePassword_SELENIUM_WEB_Test() {
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongUsername_SELENIUM_WEB_Test() {
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongPassword_SELENIUM_WEB_Test() {
+
+    }
+
 }
