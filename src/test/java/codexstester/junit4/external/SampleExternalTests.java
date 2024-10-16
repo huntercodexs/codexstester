@@ -12,10 +12,20 @@ import com.huntercodexs.codexstester.security.dto.BasicAuthRequestDto;
 import com.huntercodexs.codexstester.security.dto.JwtAuthRequestDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestCheckTokenDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestTokenDto;
+import com.huntercodexs.codexstester.web.CodexsWebControl;
+import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSelenium;
+import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSeleniumDto;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.http.MediaType;
+
+import java.util.List;
+
+import static com.huntercodexs.codexstester.web.CodexsWebElements.*;
 
 public class SampleExternalTests extends SampleBridgeTest {
 
@@ -246,18 +256,181 @@ public class SampleExternalTests extends SampleBridgeTest {
     /**
      * LOGIN Web Example - using Selenium
      * */
-    @Test
-    public void whenLoginIsRequest_WithCorrectUsernamePassword_SELENIUM_WEB_Test() {
+    private static CodexsBrowserForSeleniumDto getCodexsBrowserForSeleniumDto(CodexsBrowserForSelenium browser) {
+        CodexsBrowserForSeleniumDto codexsBrowserDto = new CodexsBrowserForSeleniumDto();
+
+        /* > CHROME */
+        if (browser.equals(CodexsBrowserForSelenium.CHROME)) {
+            codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.CHROME);
+            codexsBrowserDto.setQuietMode(false);
+            codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            codexsBrowserDto.setWebDriverName("webdriver.chrome.driver");
+            codexsBrowserDto.setWebDriverPath("/usr/bin/chromedriver");
+            return codexsBrowserDto;
+        }
+
+        /* > FIREFOX
+         * NOTE: It is required to install the gecko driver for firefox
+         * https://github.com/mozilla/geckodriver/releases
+         */
+        if (browser.equals(CodexsBrowserForSelenium.FIREFOX)) {
+            codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.FIREFOX);
+            codexsBrowserDto.setQuietMode(false);
+            codexsBrowserDto.setWebDriverName("webdriver.gecko.driver");
+            codexsBrowserDto.setWebDriverPath("/home/jereelton/.mozilla/webdriver/geckodriver");
+            return codexsBrowserDto;
+        }
+
+        /* > OPERA
+         * NOTE: It is required to install the operadriver
+         * https://github.com/operasoftware/operachromiumdriver/releases
+         */
+        if (browser.equals(CodexsBrowserForSelenium.OPERA)) {
+            codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.OPERA);
+            codexsBrowserDto.setQuietMode(false);
+            codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            codexsBrowserDto.setWebDriverName("webdriver.opera.driver");
+            codexsBrowserDto.setWebDriverPath("/home/jereelton/.local/bin/operalinux/operadriver");
+            codexsBrowserDto.setBrowserBinaryPath("/usr/bin/opera");
+            return codexsBrowserDto;
+        }
+
+        throw new RuntimeException("[Critical Error] Invalid Browser: " + browser.name());
+    }
+
+    private void loginRequest(String username, String password, boolean status, CodexsBrowserForSelenium browser) {
+
+        //DATA-----------------
+        CodexsBrowserForSeleniumDto codexsBrowserDto = getCodexsBrowserForSeleniumDto(browser);
+
+        //SETUP-----------------
+        CodexsWebControl codexsWebControl = new CodexsWebControl(codexsBrowserDto);
+        codexsWebControl.browserSetup();
+
+        //NAVIGATE--------------------
+        codexsWebControl.navigate("https://practicetestautomation.com/practice-test-login/");
+
+        //OPERATION-----------------
+        WebElement usernameField = codexsWebControl.await().until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(inputElement("username"))));
+        usernameField.sendKeys(username);
+
+        WebElement passwordField = codexsWebControl.await().until(
+                ExpectedConditions.visibilityOfElementLocated(By.xpath(inputElement("password"))));
+        passwordField.sendKeys(password);
+
+        WebElement submitButton = codexsWebControl.await().until(
+                ExpectedConditions.elementToBeClickable(By.xpath(buttonElement("submit"))));
+        submitButton.click();
+
+        //ASSERT--------------------
+        if (status) {
+
+            // When login is successfully the button logout is visible
+            WebElement logoutButton = codexsWebControl.await().until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(aElement("Log out"))));
+
+            codexsTesterAssertBool(status, logoutButton.isDisplayed(), null);
+
+        } else {
+
+            // When login is wrong the p=text with id=error is visible
+            WebElement loginError = codexsWebControl.await().until(
+                    ExpectedConditions.elementToBeClickable(By.xpath(divElement("error"))));
+
+            codexsTesterAssertBool(true, loginError.isDisplayed(), null);
+
+            if (loginError.getText().contains("username")) {
+                codexsTesterAssertExact("Your username is invalid!", loginError.getText(), null);
+            } else {
+                codexsTesterAssertExact("Your password is invalid!", loginError.getText(), null);
+            }
+
+        }
+
+        //FINISH--------------------
+        codexsWebControl.finish();
 
     }
 
     @Test
-    public void whenLoginIsRequest_WithWrongUsername_SELENIUM_WEB_Test() {
+    public void whenLoginIsRequest_WithCorrectUsernamePassword_CHROMEBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password123";
+        loginRequest(username, password, true, CodexsBrowserForSelenium.CHROME);
 
     }
 
     @Test
-    public void whenLoginIsRequest_WithWrongPassword_SELENIUM_WEB_Test() {
+    public void whenLoginIsRequest_WithWrongUsername_CHROMEBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "stud3nt";
+        String password = "Password123";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.CHROME);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongPassword_CHROMEBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password444";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.CHROME);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithCorrectUsernamePassword_FIREFOXBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password123";
+        loginRequest(username, password, true, CodexsBrowserForSelenium.FIREFOX);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongUsername_FIREFOXBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "stud3nt";
+        String password = "Password123";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.FIREFOX);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongPassword_FIREFOXBROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password444";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.FIREFOX);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithCorrectUsernamePassword_OPERABROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password123";
+        loginRequest(username, password, true, CodexsBrowserForSelenium.OPERA);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongUsername_OPERABROWSER_SELENIUM_WEB_Test() {
+
+        String username = "stud3nt";
+        String password = "Password123";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.OPERA);
+
+    }
+
+    @Test
+    public void whenLoginIsRequest_WithWrongPassword_OPERABROWSER_SELENIUM_WEB_Test() {
+
+        String username = "student";
+        String password = "Password444";
+        loginRequest(username, password, false, CodexsBrowserForSelenium.OPERA);
 
     }
 

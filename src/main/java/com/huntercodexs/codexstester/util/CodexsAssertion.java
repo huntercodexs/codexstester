@@ -20,40 +20,40 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         return "<< RECEIVED: ["+text+"]";
     }
 
-    private static String methodName(StackTraceElement originalCaller, StackTraceElement lastCaller) {
+    private static String methodName(StackTraceElement firstCaller, StackTraceElement lastCaller) {
         String methodName = "! Unknown Method";
-        if (originalCaller != null && !originalCaller.getMethodName().isEmpty()) {
-            methodName = originalCaller.getMethodName();
+        if (firstCaller != null && !firstCaller.getMethodName().isEmpty()) {
+            methodName = firstCaller.getMethodName();
         }
         return methodName +" > "+lastCaller.getMethodName();
     }
 
-    protected static void resulted(boolean flag, StackTraceElement originalCaller) {
+    protected static void resulted(boolean flag, StackTraceElement methodName) {
 
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
         StackTraceElement currentCaller = stackTrace[2];
 
         codexsHelperLogTermTests("[RESULT]", "CODEXS TESTER", true);
-        if (flag)  codexsHelperLogTermTests("[PASSED]", methodName(originalCaller, currentCaller), false);
-        if (!flag) codexsHelperLogTermTests("[FAILED]", methodName(originalCaller, currentCaller), false);
+        if (flag)  codexsHelperLogTermTests("[PASSED]", methodName(methodName, currentCaller), false);
+        if (!flag) codexsHelperLogTermTests("[FAILED]", methodName(methodName, currentCaller), false);
     }
 
     public static void codexsTesterAssertExact(
             String expected,
             String received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (received.equals(expected)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
@@ -61,19 +61,19 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
     public static void codexsTesterAssertObject(
             Object expected,
             Object received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (expected == received) {
             Assert.assertEquals(expected, received);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
@@ -81,19 +81,19 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
     public static void codexsTesterAssertText(
             String expected,
             String received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (received.contains(expected)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
@@ -101,19 +101,19 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
     public static void codexsTesterAssertRegExp(
             String expected,
             String received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (received.matches(expected)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
@@ -121,19 +121,19 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
     public static void codexsTesterAssertInt(
             int expected,
             int received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (expected == received) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
@@ -141,313 +141,313 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
     public static void codexsTesterAssertBool(
             boolean expected,
             boolean received,
-            StackTraceElement originalCaller
+            StackTraceElement methodName
     ) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (expected == received) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(expected), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertNotNull(Object received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertNotNull(Object received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         try {
             Assert.assertNotNull(received);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } catch (RuntimeException re) {
             codexsHelperLogTerm(expected("NotNull"), received("Null"), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertNull(Object received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertNull(Object received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         try {
             Assert.assertNull(received);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } catch (RuntimeException re) {
             codexsHelperLogTerm(expected("Null"), received("NotNull"), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertNumber(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertNumber(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (StringUtils.isNumeric(received)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected("Numeric"), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertGuid(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertGuid(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_GUID);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtHS256(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtHS256(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_HS256);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtHS384(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtHS384(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_HS384);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtHS512(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtHS512(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_HS512);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtRS256(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtRS256(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_RS256);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtRS384(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtRS384(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_RS384);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtRS512(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtRS512(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_RS512);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtES256(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtES256(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_ES256);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtES384(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtES384(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_ES384);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtES512(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtES512(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_ES512);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtPS256(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtPS256(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_PS256);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtPS384(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtPS384(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_PS384);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertJwtPS512(String received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertJwtPS512(String received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         String pattern = getConstant(CODEXS_JWT_PS512);
 
         if (received.matches(pattern)) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(pattern), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
 
-    public static void codexsTesterAssertCpf(String cpfNumber, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertCpf(String cpfNumber, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (cpfNumber.length() > 11) {
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
 
@@ -457,7 +457,7 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
         try {
             Long.parseLong(cpfNumber);
         } catch(NumberFormatException e) {
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
 
@@ -495,15 +495,15 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
 
         nDigResult = String.valueOf(digit1) + String.valueOf(digit2);
 
-        resulted(true, caller);
+        resulted(true, methodCaller);
         Assert.assertEquals(digitVerify, nDigResult);
     }
 
-    public static void codexsTesterAssertEmail(String emailAddress, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertEmail(String emailAddress, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         boolean isValidMail = false;
         if (emailAddress != null && emailAddress.length() > 0) {
@@ -514,15 +514,15 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
                 isValidMail = true;
             }
         }
-        resulted(isValidMail, caller);
+        resulted(isValidMail, methodCaller);
         Assert.assertTrue(isValidMail);
     }
 
-    public static void codexsTesterAssertPhone(String phoneNumber, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertPhone(String phoneNumber, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         boolean isValidPhone = false;
         if (phoneNumber != null && phoneNumber.length() > 0) {
@@ -533,22 +533,22 @@ public abstract class CodexsAssertion extends CodexsJsonComparator {
                 isValidPhone = true;
             }
         }
-        resulted(isValidPhone, caller);
+        resulted(isValidPhone, methodCaller);
         Assert.assertTrue(isValidPhone);
     }
 
-    public static void codexsTesterAssertSum(int val1, int val2, int received, StackTraceElement originalCaller) {
+    public static void codexsTesterAssertSum(int val1, int val2, int received, StackTraceElement methodName) {
         StackTraceElement[] stackTrace = Thread.currentThread().getStackTrace();
-        StackTraceElement caller = stackTrace[2];
+        StackTraceElement methodCaller = stackTrace[2];
 
-        if (originalCaller != null) caller = originalCaller;
+        if (methodName != null) methodCaller = methodName;
 
         if (val1 + val2 == received) {
             Assert.assertTrue(true);
-            resulted(true, caller);
+            resulted(true, methodCaller);
         } else {
             codexsHelperLogTerm(expected(val1+val2), received(received), true);
-            resulted(false, caller);
+            resulted(false, methodCaller);
             Assert.fail();
         }
     }
