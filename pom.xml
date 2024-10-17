@@ -23,7 +23,7 @@
 		<junit.version>4.13.2</junit.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<junit-platform.version>1.10.3</junit-platform.version>
-		<cucumber.version>7.12.0</cucumber.version>
+		<cucumber.version>7.10.1</cucumber.version>
 		<extent-report.version>1.13.0</extent-report.version>
 		<selenium.version>4.19.1</selenium.version>
 
@@ -245,6 +245,10 @@
 						<cucumber.publish.quiet>true</cucumber.publish.quiet>
 					</systemPropertyVariables>
 					<argLine>
+						<!--JVM Parameters-->
+						-ea
+						-Xshare:off
+						-XX:+EnableDynamicAgentLoading
 						--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
 					</argLine>
 				</configuration>
