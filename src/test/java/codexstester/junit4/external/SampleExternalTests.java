@@ -7,14 +7,14 @@ import com.huntercodexs.codexstester.dto.HeadersDto;
 import com.huntercodexs.codexstester.dto.JwtResponseDto;
 import com.huntercodexs.codexstester.dto.RequestDto;
 import com.huntercodexs.codexstester.resource.quickjson.QuickJson;
+import com.huntercodexs.codexstester.resource.web.CodexsWebControl;
+import com.huntercodexs.codexstester.resource.web.constant.CodexsBrowserForSelenium;
+import com.huntercodexs.codexstester.resource.web.constant.CodexsBrowserForSeleniumDto;
 import com.huntercodexs.codexstester.security.CodexsSecurity;
 import com.huntercodexs.codexstester.security.dto.BasicAuthRequestDto;
 import com.huntercodexs.codexstester.security.dto.JwtAuthRequestDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestCheckTokenDto;
 import com.huntercodexs.codexstester.security.dto.Oauth2RequestTokenDto;
-import com.huntercodexs.codexstester.web.CodexsWebControl;
-import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSelenium;
-import com.huntercodexs.codexstester.web.constant.CodexsBrowserForSeleniumDto;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -25,7 +25,7 @@ import org.springframework.http.MediaType;
 
 import java.util.List;
 
-import static com.huntercodexs.codexstester.web.CodexsWebElements.*;
+import static com.huntercodexs.codexstester.resource.web.CodexsWebElements.*;
 
 public class SampleExternalTests extends SampleBridgeTest {
 

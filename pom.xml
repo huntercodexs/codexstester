@@ -6,6 +6,9 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 
+		<!--Java 8-->
+		<!--<version>2.0.1.RELEASE</version>-->
+
 		<!--Java 8 ... Java 17-->
 		<version>2.6.4</version>
 

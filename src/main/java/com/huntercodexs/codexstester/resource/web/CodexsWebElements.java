@@ -1,4 +1,4 @@
-package com.huntercodexs.codexstester.web;
+package com.huntercodexs.codexstester.resource.web;
 
 public abstract class CodexsWebElements {
 
