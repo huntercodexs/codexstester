@@ -1,10 +1,10 @@
 package codexstester.bdd.stepsdef.samples.integration;
 
 import com.huntercodexs.codexstester.SampleApplication;
-import io.cucumber.spring.CucumberContextConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 
-@CucumberContextConfiguration
+@ContextConfiguration
 @SpringBootTest(
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
         classes = {SampleApplication.class}

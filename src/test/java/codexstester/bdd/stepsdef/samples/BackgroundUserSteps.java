@@ -1,6 +1,6 @@
 package codexstester.bdd.stepsdef.samples;
 
-import io.cucumber.java.en.Then;
+import cucumber.api.java.en.Then;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

@@ -3,9 +3,9 @@ package codexstester.bdd.stepsdef.samples;
 import com.huntercodexs.codexstester.resource.web.CodexsWebControl;
 import com.huntercodexs.codexstester.resource.web.constant.CodexsBrowserForSelenium;
 import com.huntercodexs.codexstester.resource.web.constant.CodexsBrowserForSeleniumDto;
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -84,16 +84,16 @@ public class LoginSteps {
 
     }
 
-    @Then("login status should be {}")
-    public void loginSuccessfully(boolean status) {
+    @Then("login status should be {string}")
+    public void loginSuccessfully(String status) {
 
-        if (status) {
+        if (status.replaceAll("[^a-z]", "").equals("true")) {
 
             // When login is successfully the button logout is visible
             WebElement logoutButton = this.codexsWebControl.await().until(
                     ExpectedConditions.elementToBeClickable(By.xpath(aElement("Log out"))));
 
-            codexsTesterAssertBool(status, logoutButton.isDisplayed(), null);
+            codexsTesterAssertBool(true, logoutButton.isDisplayed(), null);
 
         } else {
 
