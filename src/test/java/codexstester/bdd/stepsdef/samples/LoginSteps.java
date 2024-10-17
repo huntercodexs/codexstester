@@ -36,6 +36,9 @@ public class LoginSteps {
         /* > FIREFOX
          * NOTE: It is required to install the gecko driver for firefox
          * https://github.com/mozilla/geckodriver/releases
+         *
+         * In case there is any problem with firefox location, try it:
+         * sudo ln -s /usr/lib/firefox/firefox /snap/firefox/current/firefox.launcher
          */
         else if (browser.equals("FIREFOX")) {
             this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.FIREFOX);

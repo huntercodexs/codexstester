@@ -11,11 +11,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
-import org.openqa.selenium.opera.OperaDriver;
-import org.openqa.selenium.opera.OperaOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.safari.SafariOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class CodexsWebControl {
 
@@ -56,7 +56,7 @@ public class CodexsWebControl {
     }
 
     private void operaSetup() {
-        OperaOptions options = new OperaOptions();
+        /*OperaOptions options = new OperaOptions();
         options.addArguments(this.codexsBrowserDto.getOptions());
 
         if (this.codexsBrowserDto.isQuietMode()) {
@@ -67,7 +67,7 @@ public class CodexsWebControl {
             options.setBinary(this.codexsBrowserDto.getBrowserBinaryPath());
         }
 
-        this.codexsWebDriver.setDriver(new OperaDriver(options));
+        this.codexsWebDriver.setDriver(new OperaDriver(options));*/
     }
 
     private void netscapeSetup() {
@@ -104,13 +104,14 @@ public class CodexsWebControl {
         } else if (this.codexsBrowserDto.getBrowser().name().equals(CodexsBrowserForSelenium.NETSCAPE.name())) {
             this.netscapeSetup();
         } else if (this.codexsBrowserDto.getBrowser().name().equals(CodexsBrowserForSelenium.OPERA.name())) {
-            this.operaSetup();
+            //this.operaSetup();
+            throw new RuntimeException("[Critical Error] OPERA Browser is not supported yet");
         } else if (this.codexsBrowserDto.getBrowser().name().equals(CodexsBrowserForSelenium.SAFARI.name())) {
             this.safariSetup();
         }
 
         this.codexsWebDriver.getDriver().manage().window().maximize();
-        this.codexsWebDriver.setWait(new WebDriverWait(this.codexsWebDriver.getDriver(), 15L));
+        this.codexsWebDriver.setWait(new WebDriverWait(this.codexsWebDriver.getDriver(), Duration.ofSeconds(15L)));
 
     }
 
