@@ -74,7 +74,7 @@ public class CodexsResponseEntitySimulator {
         }
 
         return ResponseEntity
-                .status(HttpStatus.TOO_EARLY)
+                .status(HttpStatus.SEE_OTHER)
                 .headers(new HttpHeaders())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyString);
@@ -867,7 +867,7 @@ public class CodexsResponseEntitySimulator {
         }
 
         return ResponseEntity
-                .status(HttpStatus.TOO_EARLY)
+                .status(HttpStatus.SEE_OTHER)
                 .headers(new HttpHeaders())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyString);
