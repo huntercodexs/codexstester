@@ -10,7 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
+import java.util.Collections;
 
 import static com.huntercodexs.codexstester.resource.web.CodexsWebElements.*;
 import static com.huntercodexs.codexstester.util.CodexsAssertion.codexsTesterAssertBool;
@@ -28,7 +28,7 @@ public class LoginSteps {
         if (browser.equals("CHROME")) {
             this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.CHROME);
             this.codexsBrowserDto.setQuietMode(false);
-            this.codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            this.codexsBrowserDto.setOptions(Collections.singletonList("--remote-allow-origins=*"));
             this.codexsBrowserDto.setWebDriverName("webdriver.chrome.driver");
             this.codexsBrowserDto.setWebDriverPath("/usr/bin/chromedriver");
         }
@@ -51,7 +51,7 @@ public class LoginSteps {
         else if (browser.equals("OPERA")) {
             this.codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.OPERA);
             this.codexsBrowserDto.setQuietMode(false);
-            this.codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            this.codexsBrowserDto.setOptions(Collections.singletonList("--remote-allow-origins=*"));
             this.codexsBrowserDto.setWebDriverName("webdriver.opera.driver");
             this.codexsBrowserDto.setWebDriverPath("/home/jereelton/.local/bin/operalinux/operadriver");
             this.codexsBrowserDto.setBrowserBinaryPath("/usr/bin/opera");

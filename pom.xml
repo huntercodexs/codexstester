@@ -18,7 +18,7 @@
 
 	<properties>
 
-		<java.version>17</java.version>
+		<java.version>1.8</java.version>
 
 		<junit.version>4.13.2</junit.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
@@ -245,9 +245,9 @@
 						<!-- Enable quiet mode to suppress console logs -->
 						<cucumber.publish.quiet>true</cucumber.publish.quiet>
 					</systemPropertyVariables>
-					<argLine>
-						--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
-					</argLine>
+					<!--<argLine>
+						&#45;&#45;add-opens java.base/java.util=ALL-UNNAMED &#45;&#45;add-opens java.base/java.lang=ALL-UNNAMED
+					</argLine>-->
 				</configuration>
 				<executions>
 					<execution>
