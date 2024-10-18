@@ -3,6 +3,7 @@ package com.huntercodexs.codexstester.internal;
 import com.huntercodexs.codexstester.dto.HeadersDto;
 import com.huntercodexs.codexstester.dto.RequestDto;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
@@ -16,7 +17,7 @@ public abstract class AbstractInternalMockMvc extends AbstractInternalRequest {
         super(target);
     }
 
-    protected String codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
+    protected MockHttpServletResponse codexsTesterInternalDispatcher(RequestDto requestDto, HeadersDto headersDto) {
 
         String uri = internalUriBaseTest;
         String method = headersDto.getHttpMethod();
@@ -94,9 +95,9 @@ public abstract class AbstractInternalMockMvc extends AbstractInternalRequest {
 
             //codexsHelperLogTerm("INTERNAL DISPATCHER RESULT IS", result, true);
             //codexsHelperLogTerm("INTERNAL DISPATCHER RESPONSE IS", result.getResponse(), true);
-            codexsHelperLogTerm("INTERNAL DISPATCHER CONTENT AS STRING IS", result.getResponse().getContentAsString(), true);
+            codexsHelperLogTerm("INTERNAL DISPATCHER CONTENT AS STRING IS", result.getResponse(), true);
 
-            return result.getResponse().getContentAsString();
+            return result.getResponse();
 
         } catch (Exception ex) {
             codexsHelperLogTerm("EXCEPTION[MOCK-MVC] DISPATCHER", ex.getMessage(), true);
