@@ -3,15 +3,25 @@ The simple library to write tests in java
 
 # Releases
 
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j21-sb-3.3.2-cc-7.12.0">Release 2.0.0 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j21-sb-3.3.2-cc-7.10.1">Release 2.0.0 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j17-sb-2.6.4-cc-7.12.0">Release 2.0.0 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j17-sb-2.6.4-cc-7.10.1">Release 2.0.0 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j17-sb-2.6.4-cc-4.2.0">Release 2.0.0 - Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j11-sb-2.6.4-cc-7.12.0">Release 2.0.0 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j11-sb-2.6.4-cc-7.10.1">Release 2.0.0 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j11-sb-2.6.4-cc-4.2.0">Release 2.0.0 - Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j8-sb-2.6.4-cc-7.12.0">Release 2.0.0 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j8-sb-2.6.4-cc-7.10.1">Release 2.0.0 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0-j8-sb-2.6.4-cc-4.2.0">Release 2.0.0 - Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+
 - <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j21">Release 1.0.9 - Java 21</a>
 - <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j17">Release 1.0.9 - Java 17</a>
 - <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j11">Release 1.0.9 - Java 11</a>
 - <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j8">Release 1.0.9 - Java 8</a>
-
-# Summary
-
-- Codexstester Basic
-- Codexstester Plus
 
 # Overview
 
