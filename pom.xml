@@ -17,6 +17,7 @@
 	<description>codexstester</description>
 
 	<properties>
+
 		<java.version>17</java.version>
 
 		<junit.version>4.13.2</junit.version>
