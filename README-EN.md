@@ -1,11 +1,6 @@
 # CODEXS TESTER
 - The fast and useful library to automate tests in java spring boot
 
-# Documentation
-
-If you want to see the documentation please follow in this <a href="data/CODEXSTESTER.md">link</a> to give all 
-information about the codexstester project with examples and explanations.
-
 # Releases
 
 <p>
@@ -19,15 +14,5 @@ The documentation is pretty simple and got direct at the point that's really int
 with a lot of details in each configuration.
 </p>
 
-#### Codexs Tester - Basic
-
-The codexstester 
-
-- <a href="data/en/EN-RELEASE_1.0.4.md">Release 1.0.4</a>
-- <a href="data/en/EN-RELEASE_1.0.5.md">Release 1.0.5</a>
-- <a href="data/en/EN-RELEASE_1.0.6.md">Release 1.0.6</a>
-- <a href="data/en/EN-RELEASE_1.0.7.md">Release 1.0.7</a>
-- <a href="data/en/EN-RELEASE_1.0.8.md">Release 1.0.8</a>
-- <a href="data/en/EN-RELEASE_1.0.8.md">Release 1.0.9</a>
-
-#### Codexs Tester - Plus
+- <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-BASIC.md">CODEXSTESTER BASIC</a>
+- <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-PLUS.md">CODEXSTESTER PLUS</a>

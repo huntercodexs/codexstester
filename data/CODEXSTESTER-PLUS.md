@@ -1,54 +1,72 @@
-# CODEXS TESTER
-This project is a complete workspace for writing unit and integration tests
+# CODEXSTESTER
+The simple library to write tests in java
+
+# Releases
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j21">Release 1.0.9 - Java 21</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j17">Release 1.0.9 - Java 17</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j11">Release 1.0.9 - Java 11</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9-j8">Release 1.0.9 - Java 8</a>
+
+# Summary
+
+- Codexstester Basic
+- Codexstester Plus
+
+# Overview
+
+## About
 
 <pre>
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
-
-//||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\
-||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //
-\\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\
-
-Release: 1.0.8
-Powered by Huntercodexs (c) 2022
-https://github.com/huntercodexs
-||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+|                                                                                                       |
+|  //||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\  |
+|  ||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //  |
+|  \\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\  |
+|                                                                                                       |
+|  Release: X.X.XXX                                                                                     |
+|  https://github.com/huntercodexs                                                                      |
+|  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |
+|                                                                                                       |
+|  Date now is: 2021/10/18 09:31:16                                                                     |
+|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
 </pre>
 
+The Codexstester is a simple library tool to make some kind of tests in java, with it, you can test your code, 
+infrastructure, containers, databases, brokers and more. Just give a careful read in this documentation to get 
+how easy is implement and use this great library.
 
-
-# License
+## License
 
 This project is free and can be used as a basis for other projects by anyone under the MIT license.
 
+## Pre Requisites
 
+- JDK/JRE 
+  - Version 8
+  - Version 11
+  - Version 17
+  - Version 21
+- Spring Boot
+  - 2.0.1.RELEASE
+  - 2.6.4
+  - 2.1.5
+  - 3.3.2
+- Concepts
+  - MVC
+  - Mock
+  - Cucumber
+  - Container
+  - Junit
+  - Broker
+  - Integration
 
-# Language
-
-- <a href="../pt-br/RELEASE_1.0.8.md">Portugues Brazil (pt-br)</a>
-- English (en)
-
-
-
-# Pre Requisites
-
-- MVC Concept
-- Maven Project 4.0.0
-- Spring Boot 2.0.1.RELEASE
-- Java Version 1.8 (jdk1.8.0_212)
-- Java Version 17
-
-> see more details in this project's pom.xml file
-
-
-
-# HTTP status code
+## HTTP status code
 
 This project offers all http codes for REST request handling, for more details of the Status Code at
 requests. See more details about HTTP STATUS CODE at https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
-
-
-# Use cases
+## Use cases
 
 Below are some situations where we can use CODEXS TESTER
 
@@ -64,14 +82,20 @@ Below are some situations where we can use CODEXS TESTER
 - Authentication
     - MFA/2FA
     - OAuth2
+- Container
+- Message Broker
+- Database
 
+# Configuration
 
+- Release 1.0.0 until 1.0.8
+- Release since 1.0.9 or Codexstester Plus releases
 
-# Installation and Configuration
+### Release 1.0.0 until 1.0.8
 
-- Dependencies
+- Dependency
 
-First import into the pom.xml file of any project the following dependencies:
+First import into the pom.xml file of any project the following dependency:
 
 <code>
 
@@ -119,11 +143,11 @@ First import into the pom.xml file of any project the following dependencies:
 cd @{PROJECT_ROOT_PATH}/src/test/java
 git clone https://github.com/huntercodexs/codexstester.git
 cd codexstester
-git checkout release-@{RELEASE_VERSION} (exemplo: release-1.0.0) 
+git checkout release-@{RELEASE_VERSION} (example: release-1.0.X) 
 rm -rf .git .gitignore
 </pre>
 
-You can also use the releases available in the github repository of this project by accessing the Releases link as
+You can also use the releases available in the GitHub repository of this project by accessing the Releases link as
 illustrated in the image below
 
 > NOTE: Always choose the latest release available in the repository, as it contains all project updates
@@ -1479,6 +1503,30 @@ protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto
 protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
 </pre>
 
+
+
+## Release since 1.0.9 or Codexstester Plus releases
+
+<code>
+
+		<dependency>
+			<groupId>com.huntercodexs</groupId>
+			<artifactId>codexstester</artifactId>
+			<version>{VERSION}</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+</code>
+
+Now it is required to get the codexstester-project clicking on this link and following the below instructions:
+
+{{CODEXSTESTER PROJECT}}
 
 Make the most of this little job!
 
