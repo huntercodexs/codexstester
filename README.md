@@ -14,8 +14,8 @@ The documentation is pretty simple and got direct at the point that's really int
 with a lot of details in each configuration.
 </p>
 
-- <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-BASIC.md">CODEXSTESTER BASIC</a>
-- <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-PLUS.md">CODEXSTESTER PLUS</a>
+- <a href="https://github.com/huntercodexs/codexstester/blob/main/data/CODEXSTESTER-BASIC.md">CODEXSTESTER BASIC</a>
+- <a href="https://github.com/huntercodexs/codexstester/blob/main/data/CODEXSTESTER-PLUS.md">CODEXSTESTER PLUS</a>
 
 ************************************************************************************************************************
 Enjoy this job as you prefer.
