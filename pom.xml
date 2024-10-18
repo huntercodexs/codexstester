@@ -39,6 +39,8 @@
 
 			TIP: One best practice is to remove completely that one to avoid misunderstands
 			by others developers !
+
+			!!! TO REMOVE BEFORE COMPILE !!!
 		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
