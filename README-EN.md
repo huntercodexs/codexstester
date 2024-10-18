@@ -1,25 +1,33 @@
 # CODEXS TESTER
-- This project is a complete workspace for writing unit and integration tests
+- The fast and useful library to automate tests in java spring boot
 
+# Documentation
 
-# Idiomas
-
-- <a href="README.md">Portugues Brazil (pt-br)</a>
-- English
-
+If you want to see the documentation please follow in this <a href="data/CODEXSTESTER.md">link</a> to give all 
+information about the codexstester project with examples and explanations.
 
 # Releases
 
-> Inglês (EN)
+<p>
+The codexstester is affordable in two modes: Basic and Plus. In the Basic it is possible to use the most 
+commonly tests, for example: unit tests and integration tests. However, the Plus mode is most powerful and 
+offer the possibility to write tests using Cucumber, Selenium, Container, Broker, Database and others.
+</p>
+
+<p>
+The documentation is pretty simple and got direct at the point that's really interest for devs, showing each step 
+with a lot of details in each configuration.
+</p>
+
+#### Codexs Tester - Basic
+
+The codexstester 
 
 - <a href="data/en/EN-RELEASE_1.0.4.md">Release 1.0.4</a>
 - <a href="data/en/EN-RELEASE_1.0.5.md">Release 1.0.5</a>
 - <a href="data/en/EN-RELEASE_1.0.6.md">Release 1.0.6</a>
 - <a href="data/en/EN-RELEASE_1.0.7.md">Release 1.0.7</a>
-  - Request bugs fixed 
-  - Added templates and usage examples
-  - Added OAuth2 security settings
 - <a href="data/en/EN-RELEASE_1.0.8.md">Release 1.0.8</a>
-  - Updated method to call OAuth2
-  - Fix bugs on requests of external type
-  - Java 17 compatibility
+- <a href="data/en/EN-RELEASE_1.0.8.md">Release 1.0.9</a>
+
+#### Codexs Tester - Plus
