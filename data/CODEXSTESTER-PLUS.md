@@ -1,4 +1,4 @@
-# CODEXSTESTER
+# CODEXSTESTER - PLUS
 The simple library to write tests in java
 
 # Releases
@@ -143,6 +143,13 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 ### From GitHUB Releases
 
 ### From Maven Central
+
+### Codexstester Generator
+
+Finally, use the codexstester-generator to create the specifics tests. 
+CLick on the link 
+<a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-GENERATOR.md">Codexstester Generator</a> 
+to get more details about it.
 
 # Usage
 

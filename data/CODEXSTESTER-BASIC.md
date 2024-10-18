@@ -1,4 +1,4 @@
-# CODEXSTESTER
+# CODEXSTESTER - BASIC
 The simple library to write tests in java
 
 > DEPRECATED: see the CODEXSTESTER-PLUS documentation instead.
@@ -1492,8 +1492,10 @@ protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto
 protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
 </pre>
 
-Make the most of this little job!
+************************************************************************************************************************
+Enjoy this job as you prefer.
 
-----
-All rights reserved to Huntercodexs &copy; 2022 - Software Development
-Maintained by Jereelton Teixeira (jereelton-devel)
+------------------------------------------------------------------------------------------------------------------------
+* All rights reserved to Huntercodexs &copy; 2021 - Software Development
+* Maintained by Jereelton Teixeira (jereelton-devel)
+************************************************************************************************************************

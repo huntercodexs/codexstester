@@ -1,4 +1,4 @@
-# CODEXS TESTER
+# CODEXSTESTER
 - The fast and useful library to automate tests in java spring boot
 
 # Releases
@@ -16,3 +16,11 @@ with a lot of details in each configuration.
 
 - <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-BASIC.md">CODEXSTESTER BASIC</a>
 - <a href="https://github.com/huntercodexs/codexstester/blob/main/CODEXSTESTER-PLUS.md">CODEXSTESTER PLUS</a>
+
+************************************************************************************************************************
+Enjoy this job as you prefer.
+
+------------------------------------------------------------------------------------------------------------------------
+* All rights reserved to Huntercodexs &copy; 2021 - Software Development
+* Maintained by Jereelton Teixeira (jereelton-devel)
+************************************************************************************************************************
