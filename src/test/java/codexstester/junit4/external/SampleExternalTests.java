@@ -23,6 +23,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.springframework.http.MediaType;
 
+import java.util.Collections;
 import java.util.List;
 
 import static com.huntercodexs.codexstester.resource.web.CodexsWebElements.*;
@@ -263,7 +264,7 @@ public class SampleExternalTests extends SampleBridgeTest {
         if (browser.equals(CodexsBrowserForSelenium.CHROME)) {
             codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.CHROME);
             codexsBrowserDto.setQuietMode(false);
-            codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            codexsBrowserDto.setOptions(Collections.singletonList("--remote-allow-origins=*"));
             codexsBrowserDto.setWebDriverName("webdriver.chrome.driver");
             codexsBrowserDto.setWebDriverPath("/usr/bin/chromedriver");
             return codexsBrowserDto;
@@ -288,7 +289,7 @@ public class SampleExternalTests extends SampleBridgeTest {
         if (browser.equals(CodexsBrowserForSelenium.OPERA)) {
             codexsBrowserDto.setBrowser(CodexsBrowserForSelenium.OPERA);
             codexsBrowserDto.setQuietMode(false);
-            codexsBrowserDto.setOptions(List.of("--remote-allow-origins=*"));
+            codexsBrowserDto.setOptions(Collections.singletonList("--remote-allow-origins=*"));
             codexsBrowserDto.setWebDriverName("webdriver.opera.driver");
             codexsBrowserDto.setWebDriverPath("/home/jereelton/.local/bin/operalinux/operadriver");
             codexsBrowserDto.setBrowserBinaryPath("/usr/bin/opera");
