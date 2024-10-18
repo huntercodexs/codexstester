@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.resource.file;
 
-import org.apache.commons.io.IOUtils;
+import io.restassured.internal.util.IOUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.*;
@@ -28,7 +28,7 @@ public class CodexsFileHandler {
     /** Legacy */
     public static String fileInputStream(String path) throws IOException {
         FileInputStream fis = new FileInputStream(path);
-        return IOUtils.toString(fis, StandardCharsets.UTF_8);
+        return new String(IOUtils.toByteArray(fis), StandardCharsets.UTF_8);
     }
 
     /** Legacy */
@@ -181,7 +181,7 @@ public class CodexsFileHandler {
      * */
     public static String ioFile(String filenamePath) throws IOException {
         FileInputStream fis = new FileInputStream(filenamePath);
-        return IOUtils.toString(fis);
+        return new String(IOUtils.toByteArray(fis), StandardCharsets.UTF_8);
     }
 
     /**

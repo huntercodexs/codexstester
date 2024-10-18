@@ -1,7 +1,5 @@
 package com.huntercodexs.codexstester.resource.image;
 
-import org.apache.commons.io.IOUtils;
-
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
@@ -159,12 +157,12 @@ public class CodexsImage {
 
     private static byte[] byteFile(String filenamePath) throws IOException {
         FileInputStream fis = new FileInputStream(filenamePath);
-        return IOUtils.toByteArray(fis);
+        return fis.readAllBytes();
     }
 
     private static String ioFile(String filenamePath) throws IOException {
         FileInputStream fis = new FileInputStream(filenamePath);
-        return IOUtils.toString(fis);
+        return new String(fis.readAllBytes());
     }
 
     private static boolean fileWriter(byte[] data, String path) {

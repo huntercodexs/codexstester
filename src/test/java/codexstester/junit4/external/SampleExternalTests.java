@@ -111,8 +111,8 @@ public class SampleExternalTests extends SampleBridgeTest {
         JwtResponseDto response = codexsSecurity.jwtAuth(JwtResponseDto.class);
 
         //JWT
-        codexsTesterAssertJwtHS256(response.getJwt(), null);
-        //codexsTesterAssertJwtHS384(response.getJwt());
+        //codexsTesterAssertJwtHS256(response.getJwt(), null);
+        codexsTesterAssertJwtHS384(response.getJwt(), null);
         //codexsTesterAssertJwtHS512(response.getJwt());
 
         //JWT-ASSIGN

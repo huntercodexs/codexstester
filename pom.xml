@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<version>2.0.0-SNAPSHOT</version>
+	<version>1.0.9-SNAPSHOT</version>
 	<groupId>com.huntercodexs.codexstester</groupId>
 
 	<name>codexstester</name>
@@ -22,9 +22,6 @@
 		<junit.version>4.13.2</junit.version>
 		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 		<junit-platform.version>1.10.3</junit-platform.version>
-		<cucumber.version.legacy>4.2.0</cucumber.version.legacy>
-		<cucumber.version>7.10.1</cucumber.version>
-		<extent-report.version>1.13.0</extent-report.version>
 		<selenium.version>3.13.0</selenium.version>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -113,48 +110,6 @@
 			<scope>compile</scope>
 		</dependency>
 
-		<!--CUCUMBER LEGACY: JAVA8 - FOR LAMBDAS-->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java8</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<!--CUCUMBER-->
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-java</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-spring</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.cucumber</groupId>
-			<artifactId>cucumber-junit-platform-engine</artifactId>
-			<version>${cucumber.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<!--CUCUMBER REPORT-->
-		<dependency>
-			<groupId>tech.grasshopper</groupId>
-			<artifactId>extentreports-cucumber7-adapter</artifactId>
-			<version>${extent-report.version}</version>
-			<scope>compile</scope>
-		</dependency>
-
 	</dependencies>
 
 	<repositories>
@@ -201,68 +156,6 @@
 						<goals>
 							<goal>shade</goal>
 						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!--Generate Jar file with the class main-->
-			<!--<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${project.parent.version}</version>
-				<configuration>
-					<mainClass>com.huntercodexs.codexstester.SampleApplication</mainClass>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>-->
-
-			<!--Generate Reports: extentreports-cucumber7-adapter-->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<!-- Set the test source directory -->
-					<testSourceDirectory>src/test/java/codexstester/bdd</testSourceDirectory>
-					<trimStackTrace>false</trimStackTrace>
-					<excludes>
-						<exclude>**/*Integration.java</exclude>
-					</excludes>
-					<systemPropertyVariables>
-						<extent.reporter.html.start>true</extent.reporter.html.start>
-						<!-- Specify the output path for the HTML report -->
-						<extent.reporter.html.out>
-							target/cucumber-reports/ApplicationTestReport.html
-						</extent.reporter.html.out>
-						<!-- Specify the Extent configuration file -->
-						<extent.reporter.html.config>
-							src/test/resources/reporting/extent-config.xml
-						</extent.reporter.html.config>
-						<!-- Enable quiet mode to suppress console logs -->
-						<cucumber.publish.quiet>true</cucumber.publish.quiet>
-					</systemPropertyVariables>
-					<argLine>
-						--add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.lang=ALL-UNNAMED
-					</argLine>
-				</configuration>
-				<executions>
-					<execution>
-						<id>integration-test</id>
-						<goals>
-							<goal>test</goal>
-						</goals>
-						<phase>integration-test</phase>
-						<configuration>
-							<excludes>
-								<exclude>none</exclude>
-							</excludes>
-							<includes>
-								<include>**/*Integration.java</include>
-							</includes>
-						</configuration>
 					</execution>
 				</executions>
 			</plugin>
