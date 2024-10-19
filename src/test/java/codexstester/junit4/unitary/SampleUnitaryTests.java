@@ -207,7 +207,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "mens");
 
         List<String> listResponse = new ArrayList<>();
@@ -225,7 +225,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
     public void whenListTypedWithDataTreeTests() {
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "mens");
 
         List<String> listResponse = new ArrayList<>();
@@ -243,7 +243,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "men");
 
         ArrayList<Object> arrayListResponse = new ArrayList<>();
@@ -262,7 +262,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "mens");
 
         ArrayList<Object> arrayListResponse = new ArrayList<>();
@@ -280,7 +280,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("customer", "yes");
 
         HashMap<Object, Object> hashMapResponse = new HashMap<>();
@@ -300,7 +300,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("customer", "yes");
 
         HashMap<Object, Object> hashMapResponse = new HashMap<>();
@@ -318,7 +318,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "mens");
 
         LinkedList<Object> linkedListResponse = new LinkedList<>();
@@ -337,7 +337,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
 
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("gender", "mens");
 
         LinkedList<Object> linkedListResponse = new LinkedList<>();
@@ -354,7 +354,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
     public void whenLinkedHashMapTests() {
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("customer", "yes");
 
         LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
@@ -373,7 +373,7 @@ public class SampleUnitaryTests extends SampleBridgeTest {
     public void whenLinkedHashMapWithDataTreeTests() {
         /*SIMULATE RESPONSE SAMPLE*/
         QuickJson quickJson = new QuickJson();
-        quickJson.add("age", 30);
+        quickJson.add("age", "30");
         quickJson.add("customer", "yes");
 
         LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
@@ -406,10 +406,10 @@ public class SampleUnitaryTests extends SampleBridgeTest {
         strings.add("4");
         json1.put("strings", strings);
         List<Integer> numbers = new ArrayList<>();
-        numbers.add(1893);
-        numbers.add(293);
-        numbers.add(39);
-        numbers.add(3);
+        numbers.add(Integer.valueOf("1893"));
+        numbers.add(Integer.valueOf("293"));
+        numbers.add(Integer.valueOf("39"));
+        numbers.add(Integer.valueOf("3"));
         json1.put("numbers", numbers);
         List<String> strings2 = new ArrayList<>();
         strings2.add("1, 2,3, 4, 5 ,6, 123 345 987 345");
@@ -454,10 +454,10 @@ public class SampleUnitaryTests extends SampleBridgeTest {
         strings.add("4");
         json1.put("strings", strings);
         List<Integer> numbers = new ArrayList<>();
-        numbers.add(1893);
-        numbers.add(293);
-        numbers.add(39);
-        numbers.add(3);
+        numbers.add(Integer.valueOf("1893"));
+        numbers.add(Integer.valueOf("293"));
+        numbers.add(Integer.valueOf("39"));
+        numbers.add(Integer.valueOf("3"));
         json1.put("numbers", numbers);
         List<String> strings2 = new ArrayList<>();
         strings2.add("1, 2,3, 4, 5 ,6");

@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<version>1.0.9-SNAPSHOT</version>
+	<version>1.0.12-SNAPSHOT</version>
 	<groupId>com.huntercodexs.codexstester</groupId>
 
 	<name>codexstester</name>
@@ -30,20 +30,6 @@
 	</properties>
 
 	<dependencies>
-
-		<!--SPRING BOOT STARTER WEB-->
-		<!--
-			IMPORTANT: To avoid multiple slf4j and others warnings in another spring boot
-			project comment the lines below before build the codexstester jar file, this
-			dependency is used just for development !
-
-			TIP: One best practice is to remove completely that one to avoid misunderstands
-			by others developers !
-		-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
 		<!--SPRING BOOT: TEST-->
 		<dependency>
