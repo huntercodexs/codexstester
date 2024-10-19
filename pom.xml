@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<version>1.0.9-SNAPSHOT</version>
+	<version>1.0.10-SNAPSHOT</version>
 	<groupId>com.huntercodexs.codexstester</groupId>
 
 	<name>codexstester</name>
@@ -39,6 +39,8 @@
 
 			TIP: One best practice is to remove completely that one to avoid misunderstands
 			by others developers !
+
+			!!! TO REMOVE BEFORE COMPILE !!!
 		-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
