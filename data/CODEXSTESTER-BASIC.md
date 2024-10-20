@@ -63,6 +63,86 @@ This project is free and can be used as a basis for other projects by anyone und
 This project offers all http codes for REST request handling, for more details of the Status Code at
 requests. See more details about HTTP STATUS CODE at https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
+## Project Structure
+
+<pre>
+src
+└── test
+    ├── java
+    │   └── codexstester
+    │       ├── engine
+    │       │   ├── bridge
+    │       │   │   └── CodexsTesterCoreBridgeTests.java
+    │       │   ├── core
+    │       │   │   ├── CodexsTesterIgnitionTests.java
+    │       │   │   └── CodexTesterPropertiesLoaderTests.java
+    │       │   ├── dto
+    │       │   │   ├── HeadersDto.java
+    │       │   │   ├── Oauth2RequestCheckTokenDto.java
+    │       │   │   ├── Oauth2RequestTokenDto.java
+    │       │   │   ├── Oauth2ResponseTokenDto.java
+    │       │   │   └── RequestDto.java
+    │       │   ├── external
+    │       │   │   ├── AbstractExternalRequestTests.java
+    │       │   │   ├── AbstractExternalRestTemplateTests.java
+    │       │   │   ├── ExternalHttpHeadersFactoryTests.java
+    │       │   │   ├── ExternalRequest1xxTests.java
+    │       │   │   ├── ExternalRequest2xxTests.java
+    │       │   │   ├── ExternalRequest3xxTests.java
+    │       │   │   ├── ExternalRequest4xxTests.java
+    │       │   │   └── ExternalRequest5xxTests.java
+    │       │   ├── http
+    │       │   │   ├── AvailableHttpMethodTests.java
+    │       │   │   └── AvailableHttpStatusTests.java
+    │       │   ├── internal
+    │       │   │   ├── AbstractInternalMockMvcTests.java
+    │       │   │   ├── AbstractInternalRequestTests.java
+    │       │   │   ├── InternalHttpHeadersFactoryTests.java
+    │       │   │   ├── InternalRequest1xxTests.java
+    │       │   │   ├── InternalRequest2xxTests.java
+    │       │   │   ├── InternalRequest3xxTests.java
+    │       │   │   ├── InternalRequest4xxTests.java
+    │       │   │   └── InternalRequest5xxTests.java
+    │       │   ├── properties
+    │       │   │   ├── ExternalPropertyTests.java
+    │       │   │   ├── InternalPropertyTests.java
+    │       │   │   └── UnitaryPropertyTests.java
+    │       │   ├── security
+    │       │   │   └── SecurityTests.java
+    │       │   ├── unitary
+    │       │   │   └── AbstractUnitaryTests.java
+    │       │   └── util
+    │       │       ├── AdvancedTests.java
+    │       │       ├── AssertionTests.java
+    │       │       ├── CodexsHelperTests.java
+    │       │       └── CodexsParserJsonTests.java
+    │       ├── setup
+    │       │   ├── advanced
+    │       │   │   └── AdvancedSetupTests.java
+    │       │   ├── bridge
+    │       │   │   └── SamplesBridgeTests.java
+    │       │   ├── datasource
+    │       │   │   └── SamplesDataSourceTests.java
+    │       │   ├── properties
+    │       │   │   ├── external.tests.properties
+    │       │   │   ├── internal.tests.properties
+    │       │   │   └── unitary.tests.properties
+    │       │   └── security
+    │       │       └── SecuritySourceTests.java
+    │       └── test
+    │           ├── external
+    │           │   └── SamplesExternalTests.java
+    │           ├── internal
+    │           │   └── SamplesInternalTests.java
+    │           └── unitary
+    │           │   └── SamplesInternalTests.java
+    └── resources
+        ├── samples
+        │   ├── external.tests.properties
+        │   ├── internal.tests.properties
+        │   └── unitary.tests.properties
+</pre>
+
 ## Use cases
 
 Below are some situations where we can use CODEXS TESTER
