@@ -1,25 +1,27 @@
 # CODEXSTESTER - BASIC
 The simple library to write tests in java
 
-> DEPRECATED: see the CODEXSTESTER-PLUS documentation instead.
+> ![check-red.png](media/check-red.png) DEPRECATED: see the 
+> <a href="https://github.com/huntercodexs/codexstester/blob/main/data/CODEXSTESTER-PLUS.md">CODEXSTESTER PLUS</a> 
+> documentation instead.
 
 # Overview
 
 ## About
 
 <pre>
- _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-|                                                                                                       |
-|  //||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\  |
-|  ||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  //  |
-|  \\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\  |
-|                                                                                                       |
-|  Release: 1.0.8                                                                                       |
-|  https://github.com/huntercodexs                                                                      |
-|  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |
-|                                                                                                       |
-|  Date now is: 2021/10/18 09:31:16                                                                     |
-|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
+WELCOME TO
+
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 
+ 
+//||||  //|||\\  ||||\\   ||||||  \\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\ 
+||      ||   ||  ||   ||  ||||      ||    \\||\\  -    ||    ||||    \\||\\    ||    ||||    ||  // 
+\\||||  \\|||//  ||||//   ||||||  //  \\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\ 
+
+Release: 1.0.8 
+Powered by Huntercodexs (c) 2022 
+https://github.com/huntercodexs 
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| 
 </pre>
 
 The Codexstester is a simple library tool to make some kind of tests in java, with it, you can test your code, 
