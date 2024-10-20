@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<version>2.0.0-SNAPSHOT</version>
+	<version>2.0.1-SNAPSHOT</version>
 	<groupId>com.huntercodexs.codexstester</groupId>
 
 	<name>codexstester</name>
@@ -32,20 +32,6 @@
 	</properties>
 
 	<dependencies>
-
-		<!--SPRING BOOT STARTER WEB-->
-		<!--
-			IMPORTANT: To avoid multiple slf4j and others warnings in another spring boot
-			project comment the lines below before build the codexstester jar file, this
-			dependency is used just for development !
-
-			TIP: One best practice is to remove completely that one to avoid misunderstands
-			by others developers !
-		-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
 		<!--SPRING BOOT: TEST-->
 		<dependency>
@@ -187,6 +173,21 @@
 	<build>
 		<plugins>
 
+			<!--Generate Jar file with the class main-->
+			<!--<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>${project.parent.version}</version>
+				<configuration>
+					<mainClass>com.huntercodexs.codexstester.SampleApplication</mainClass>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.1.0</version>
+			</plugin>-->
+
 			<!--Generate Final Jar with all dependency-->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -204,21 +205,6 @@
 					</execution>
 				</executions>
 			</plugin>
-
-			<!--Generate Jar file with the class main-->
-			<!--<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<version>${project.parent.version}</version>
-				<configuration>
-					<mainClass>com.huntercodexs.codexstester.SampleApplication</mainClass>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>3.1.0</version>
-			</plugin>-->
 
 			<!--Generate Reports: extentreports-cucumber7-adapter-->
 			<plugin>
@@ -244,9 +230,6 @@
 						<!-- Enable quiet mode to suppress console logs -->
 						<cucumber.publish.quiet>true</cucumber.publish.quiet>
 					</systemPropertyVariables>
-					<!--<argLine>
-						&#45;&#45;add-opens java.base/java.util=ALL-UNNAMED &#45;&#45;add-opens java.base/java.lang=ALL-UNNAMED
-					</argLine>-->
 				</configuration>
 				<executions>
 					<execution>
