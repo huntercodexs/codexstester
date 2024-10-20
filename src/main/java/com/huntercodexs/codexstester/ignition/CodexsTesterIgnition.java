@@ -22,33 +22,31 @@ public abstract class CodexsTesterIgnition {
     @Autowired
     WebApplicationContext webApplicationContext;
 
-    protected void setUp() {
-
+    public static void codexstesterSplash() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
         LocalDateTime dateTimeNow = LocalDateTime.now();
         String spaces = repeat(" ", 69);
         String dateTimeFormat = "|  Date now is: "+ dateTimeNow.format(formatter)+spaces+"|\n";
 
         String welcome =
-        """
-         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-        |                                                                                                       |
-        |  //||||  //|||\\\\  ||||\\\\   ||||||  \\\\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\\\  |
-        |  ||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  //  |
-        |  \\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\  |
-        |                                                                                                       |
-        |  Release: 2.0.0                                                                                       |
-        |  https://github.com/huntercodexs                                                                      |
-        |  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |
-        |                                                                                                       |
-        """
-        +dateTimeFormat+
-        """
-        |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-        """;
+        " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n" +
+        "|                                                                                                       |\n" +
+        "|  //||||  //|||\\\\  ||||\\\\   ||||||  \\\\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\\\  |\n" +
+        "|  ||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  //  |\n" +
+        "|  \\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\  |\n" +
+        "|                                                                                                       |\n" +
+        "|  Release: 2.0.9                                                                                       |\n" +
+        "|  https://github.com/huntercodexs                                                                      |\n" +
+        "|  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |\n" +
+        "|                                                                                                       |\n" +
+        dateTimeFormat +
+        "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
 
         codexsHelperLogTerm(welcome, "Codexs Tester is starting ...", false);
+    }
 
+    protected void setUp() {
+        codexstesterSplash();
         genericMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         genericRestTemplate = new RestTemplate();
     }
