@@ -1237,6 +1237,513 @@ basefolder.datetimepattern=yyyyMMddHHmmss
 
 # Security
 
+Whe it is required to make tests throughout the internet using for example REST over the HTTP Protocol, worries about 
+safety connection and data protection is very common and important. So in this way the Codexstester was designed to 
+offer some kind of security for connections as Basic Authentication and JWT Web Token. In this section we will to see 
+how to implement that resource to protect our request even using in the test scope or environment.
+
+The Codexstester offer the following security data protection:
+
+- Basic Auth
+- JWT Token
+- OAuth2
+- AWS Secret (IAM) - This is not available yet, it will be affordable in the Codexstester thirds releases, but can be already considered.
+
+Below is a sample data protection using the Codexstester Security, the path for this file is
+
+<pre>
+└── test
+    ├── java
+    │   └── codexstester
+    │       └── setup
+    │           └── security
+    │               └── SecuritySetup.java
+</pre>
+
+and the sample content is something like below
+
+<code>
+
+    package codexstester.setup.security;
+
+    import com.huntercodexs.codexstester.dto.JwtResponseDto;
+    import com.huntercodexs.codexstester.security.AuthType;
+    import com.huntercodexs.codexstester.security.CodexsSecurity;
+    import com.huntercodexs.codexstester.security.CodexsSecuritySetup;
+    import com.huntercodexs.codexstester.security.dto.BasicAuthRequestDto;
+    import com.huntercodexs.codexstester.security.dto.JwtAuthRequestDto;
+    import com.huntercodexs.codexstester.security.dto.Oauth2RequestCheckTokenDto;
+    import com.huntercodexs.codexstester.security.dto.Oauth2RequestTokenDto;
+    
+    import java.util.Base64;
+    import java.util.HashMap;
+    
+    public class SecuritySetup implements CodexsSecuritySetup {
+    
+        private boolean rsa;
+    
+        /**
+         * SECURITY SETTINGS (Change it as needed)
+         * WARNING: DO NOT REMOVE THESE METHODS JUST CHANGE IT
+         **/
+    
+        @Override
+        public Oauth2RequestTokenDto oauth2Token(String env) {
+    
+            HashMap<String, String> header = new HashMap<>();
+            Oauth2RequestTokenDto oauth2RequestTokenDto = new Oauth2RequestTokenDto();
+    
+            switch (env) {
+                case "local":
+                    /*Sample 1*/
+                    /*oauth2RequestTokenDto.setUrl("http://localhost:33100/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
+                    oauth2RequestTokenDto.setGrant("password");
+                    oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+                    oauth2RequestTokenDto.setPass("1234567890");
+                    oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestTokenDto.setAddHeader(header);*/
+    
+                    /*Sample 2 - Without additional header*/
+                    oauth2RequestTokenDto.setUrl("http://localhost:33100/huntercodexs/server/api/rest/oauth/v1/oauth/token");
+                    oauth2RequestTokenDto.setAuth("Basic Y2xpZW50X2lkOmNiZmNjNzRiLTA3Y2QtNGFiYi05MDZiLWFiZGRkOGZhMWJlYw==");
+                    oauth2RequestTokenDto.setGrant("password");
+                    oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+                    oauth2RequestTokenDto.setPass("1234567890");
+                    oauth2RequestTokenDto.setClientId("client_id");
+                    oauth2RequestTokenDto.setSecret("cbfcc74b-07cd-4abb-906b-abddd8fa1bec");
+    
+                    return oauth2RequestTokenDto;
+                case "dev":
+                    oauth2RequestTokenDto.setUrl("http://192.168.0.174:33001/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
+                    oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestTokenDto.setGrant("password");
+                    oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+                    oauth2RequestTokenDto.setPass("1234567890");
+                    oauth2RequestTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestTokenDto;
+                case "test":
+                case "homolog":
+                    oauth2RequestTokenDto.setUrl("http://homolog.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
+                    oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestTokenDto.setGrant("password");
+                    oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+                    oauth2RequestTokenDto.setPass("1234567890");
+                    oauth2RequestTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestTokenDto;
+                case "prod":
+                    oauth2RequestTokenDto.setUrl("http://api.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/token");
+                    oauth2RequestTokenDto.setAuth("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestTokenDto.setGrant("password");
+                    oauth2RequestTokenDto.setUser("OAUTH2DEMO_USER");
+                    oauth2RequestTokenDto.setPass("1234567890");
+                    oauth2RequestTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestTokenDto;
+            }
+            return null;
+        }
+    
+        @Override
+        public Oauth2RequestCheckTokenDto oauth2CheckToken(String env, String token) {
+    
+            HashMap<String, String> header = new HashMap<>();
+            Oauth2RequestCheckTokenDto oauth2RequestCheckTokenDto = new Oauth2RequestCheckTokenDto();
+    
+            switch (env) {
+                case "local":
+                    /*Sample 1*/
+                    /*oauth2RequestCheckTokenDto.setUrl("http://localhost:33001/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
+                    oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestCheckTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestCheckTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+                    oauth2RequestCheckTokenDto.setToken(token);
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestCheckTokenDto.setAddHeader(header);*/
+    
+                    /*Sample 2 - Without additional header*/
+                    oauth2RequestCheckTokenDto.setUrl("http://localhost:33100/huntercodexs/server/api/rest/oauth/v1/oauth/check_token");
+                    oauth2RequestCheckTokenDto.setAuthorization("Basic Y2xpZW50X2lkOmNiZmNjNzRiLTA3Y2QtNGFiYi05MDZiLWFiZGRkOGZhMWJlYw==");
+                    oauth2RequestCheckTokenDto.setClientId("client_id");
+                    oauth2RequestCheckTokenDto.setSecret("cbfcc74b-07cd-4abb-906b-abddd8fa1bec");
+                    oauth2RequestCheckTokenDto.setToken(token);
+    
+                    return oauth2RequestCheckTokenDto;
+                case "dev":
+                    oauth2RequestCheckTokenDto.setUrl("http://192.168.0.174:33001/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
+                    oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestCheckTokenDto.setToken(token);
+                    oauth2RequestCheckTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestCheckTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestCheckTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestCheckTokenDto;
+                case "test":
+                case "homolog":
+                    oauth2RequestCheckTokenDto.setUrl("http://homolog.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
+                    oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestCheckTokenDto.setToken(token);
+                    oauth2RequestCheckTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestCheckTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestCheckTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestCheckTokenDto;
+                case "prod":
+                    oauth2RequestCheckTokenDto.setUrl("http://api.huntercodexs.com/huntercodexs/arch-demo/service-authorizator/api/rest/oauth/v1/oauth/check_token");
+                    oauth2RequestCheckTokenDto.setAuthorization("Basic YXJjaF9kZW1vX2NsaWVudF8xOjExMTExMTExLTIyMjItMzMzMy00NDQ0LTU1NTU1NTU1NTU1NQ==");
+                    oauth2RequestCheckTokenDto.setToken(token);
+                    oauth2RequestCheckTokenDto.setClientId("arch_demo_client_1");
+                    oauth2RequestCheckTokenDto.setSecret("11111111-2222-3333-4444-555555555555");
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    oauth2RequestCheckTokenDto.setAddHeader(header);
+    
+                    return oauth2RequestCheckTokenDto;
+            }
+    
+            return null;
+        }
+    
+        @Override
+        public BasicAuthRequestDto basicAuth(String env) {
+    
+            HashMap<String, String> header;
+            BasicAuthRequestDto basicAuthRequestDto = new BasicAuthRequestDto();
+    
+            switch (env) {
+                case "local":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    basicAuthRequestDto.setAddHeader(header);
+    
+                    basicAuthRequestDto.setUrl("http://localhost:35000/api/auth/basic");
+                    basicAuthRequestDto.setUsername("username");
+                    basicAuthRequestDto.setPassword("password");
+                    basicAuthRequestDto.setAddHeader(header);
+                    return basicAuthRequestDto;
+    
+                case "dev":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    basicAuthRequestDto.setAddHeader(header);
+    
+                    basicAuthRequestDto.setUrl("http://192.168.0.174:35000/api/auth/basic");
+                    basicAuthRequestDto.setUsername("username");
+                    basicAuthRequestDto.setPassword("password");
+                    basicAuthRequestDto.setAddHeader(header);
+                    return basicAuthRequestDto;
+    
+                case "test":
+                case "homolog":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    basicAuthRequestDto.setAddHeader(header);
+    
+                    basicAuthRequestDto.setUrl("http://homolog.huntercodexs.com/api/auth/basic");
+                    basicAuthRequestDto.setUsername("username");
+                    basicAuthRequestDto.setPassword("password");
+                    basicAuthRequestDto.setAddHeader(header);
+                    return basicAuthRequestDto;
+    
+                case "prod":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    basicAuthRequestDto.setAddHeader(header);
+    
+                    basicAuthRequestDto.setUrl("http://api.huntercodexs.com/api/auth/basic");
+                    basicAuthRequestDto.setUsername("username");
+                    basicAuthRequestDto.setPassword("password");
+                    basicAuthRequestDto.setAddHeader(header);
+                    return basicAuthRequestDto;
+    
+            }
+    
+            return basicAuthRequestDto;
+        }
+    
+        @Override
+        public JwtAuthRequestDto jwtAuth(String env) {
+    
+            HashMap<String, String> header;
+            JwtAuthRequestDto jwtAuthRequestDto = new JwtAuthRequestDto();
+    
+            switch (env) {
+                case "local":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    jwtAuthRequestDto.setAddHeader(header);
+    
+                    // RS512, RSA
+                    if (this.rsa) {
+                        jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt-assign");
+                    } else {
+                        // HS512 (NOT RSA)
+                        jwtAuthRequestDto.setUrl("http://localhost:35000/api/auth/jwt");
+                    }
+    
+                    jwtAuthRequestDto.setUsername("username");
+                    jwtAuthRequestDto.setPassword("password");
+                    jwtAuthRequestDto.setAuthType(AuthType.NONE);
+                    jwtAuthRequestDto.setAuthType(AuthType.BASIC);
+                    jwtAuthRequestDto.setAuthType(AuthType.BEARER);
+                    jwtAuthRequestDto.setAuthType(AuthType.USERNAME_PASSWORD);
+                    jwtAuthRequestDto.setBearerToken("");
+                    jwtAuthRequestDto.setBasicAuth("");
+                    jwtAuthRequestDto.setAddHeader(header);
+                    return jwtAuthRequestDto;
+    
+                case "dev":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    jwtAuthRequestDto.setAddHeader(header);
+    
+                    jwtAuthRequestDto.setUrl("http://192.168.0.174:35000/api/auth/jwt");
+                    jwtAuthRequestDto.setUsername("username");
+                    jwtAuthRequestDto.setPassword("password");
+                    jwtAuthRequestDto.setAuthType(AuthType.NONE);
+                    jwtAuthRequestDto.setAuthType(AuthType.BASIC);
+                    jwtAuthRequestDto.setAuthType(AuthType.BEARER);
+                    jwtAuthRequestDto.setAuthType(AuthType.USERNAME_PASSWORD);
+                    jwtAuthRequestDto.setBearerToken("");
+                    jwtAuthRequestDto.setBasicAuth("");
+                    jwtAuthRequestDto.setAddHeader(header);
+                    return jwtAuthRequestDto;
+    
+                case "test":
+                case "homolog":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    jwtAuthRequestDto.setAddHeader(header);
+    
+                    jwtAuthRequestDto.setUrl("http://homolog.huntercodexs.com/api/auth/jwt");
+                    jwtAuthRequestDto.setUsername("username");
+                    jwtAuthRequestDto.setPassword("password");
+                    jwtAuthRequestDto.setAuthType(AuthType.NONE);
+                    jwtAuthRequestDto.setAuthType(AuthType.BASIC);
+                    jwtAuthRequestDto.setAuthType(AuthType.BEARER);
+                    jwtAuthRequestDto.setAuthType(AuthType.USERNAME_PASSWORD);
+                    jwtAuthRequestDto.setBearerToken("");
+                    jwtAuthRequestDto.setBasicAuth("");
+                    jwtAuthRequestDto.setAddHeader(header);
+                    return jwtAuthRequestDto;
+    
+                case "prod":
+    
+                    header = new HashMap<>();
+                    header.put("Access-Code", "XYZ-123");
+                    jwtAuthRequestDto.setAddHeader(header);
+    
+                    jwtAuthRequestDto.setUrl("http://api.huntercodexs.com/api/auth/jwt");
+                    jwtAuthRequestDto.setUsername("username");
+                    jwtAuthRequestDto.setPassword("password");
+                    jwtAuthRequestDto.setAuthType(AuthType.NONE);
+                    jwtAuthRequestDto.setAuthType(AuthType.BASIC);
+                    jwtAuthRequestDto.setAuthType(AuthType.BEARER);
+                    jwtAuthRequestDto.setAuthType(AuthType.USERNAME_PASSWORD);
+                    jwtAuthRequestDto.setBearerToken("");
+                    jwtAuthRequestDto.setBasicAuth("");
+                    jwtAuthRequestDto.setAddHeader(header);
+                    return jwtAuthRequestDto;
+    
+            }
+    
+            return jwtAuthRequestDto;
+        }
+    
+        public String oauth2Authorization(String env) {
+            CodexsSecurity codexsSecurity = new CodexsSecurity(oauth2Token(env));
+            return codexsSecurity.token();
+        }
+    
+        public String basicAuthorization(String env) {
+            BasicAuthRequestDto basicAuthRequestDto = basicAuth(env);
+    
+            String login = basicAuthRequestDto.getUsername()+":"+basicAuthRequestDto.getPassword();
+            byte[] inputBytes = login.getBytes();
+            byte[] base64InputBytes = Base64.getEncoder().encode(inputBytes);
+    
+            return new String(base64InputBytes);
+        }
+    
+        public String jwtAuthorization(String env, boolean rsa) {
+            this.rsa = rsa;
+            JwtAuthRequestDto jwtAuthRequestDto = jwtAuth(env);
+            CodexsSecurity codexsSecurity = new CodexsSecurity(jwtAuthRequestDto);
+    
+            JwtResponseDto response = codexsSecurity.jwtAuth(JwtResponseDto.class);
+            return response.getJwt();
+        }
+    
+    }
+
+</code>
+
+As we can see there is one interface named CodexsSecuritySetup witch implement the methods
+
+<code>
+
+    Oauth2RequestTokenDto oauth2Token(String env);
+    Oauth2RequestCheckTokenDto oauth2CheckToken(String env, String token);
+    BasicAuthRequestDto basicAuth(String env);
+    JwtAuthRequestDto jwtAuth(String env);
+
+</code>
+
+The parameter is free to set, you can use according you need but some values are very common to use in that:
+
+- local
+- dev
+- stage
+- prod
+
+fell free to use anyone that you want to but for now, add this request in your files tests, for example
+
+<code>
+
+    SecuritySetup securitySetup;
+
+    @Before
+    public void setup() {
+        this.securitySetup = new SecuritySetup();
+    }
+
+    /**
+     * OAuth2 Example
+     * */
+    @Test
+    public void whenAnyRequest_Oauth2_Correctly_RetrieveCreated_StatusCode200_GET() throws Exception {
+        QuickJson dataRequest = new QuickJson("{\"test\":\"123 testing...\"}");
+
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setAuthorizationBearer(securitySetup.oauth2Authorization("local"));//OAUTH2
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_GET);
+        headersDto.setObjectResponse(String.class);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setExpectedCode(OK_200);
+        requestDto.setUrl("http://localhost:33009");
+        requestDto.setUri("/huntercodexs/client/api/admin");
+        requestDto.setId(""); // /huntercodexs/client/api/admin/{id}
+        requestDto.setDataRequest(dataRequest.toString());
+        requestDto.setExpectedMessage("Admin is running on OAUTH2-CLIENT-DEMO");
+
+        Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
+
+        codexsTesterAssertExact("Admin is running on OAUTH2-CLIENT-DEMO", String.valueOf(response), null);
+    }
+
+    /**
+     * Basic Auth Example
+     * */
+    @Test
+    public void whenAnyRequest_BasicAuth_Correctly_RetrieveCreated_StatusCode200_GET() throws Exception {
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setAuthorizationBasic(securitySetup.basicAuthorization("local")); //BASIC AUTH
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_POST);
+        headersDto.setObjectResponse(String.class);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setExpectedCode(OK_200);
+        requestDto.setUrl("http://localhost:35000");
+        requestDto.setUri("/api/auth/basic");
+        requestDto.setId(""); // /api/auth/basic/{id}
+        requestDto.setDataRequest(null);
+        requestDto.setExpectedMessage(null);
+
+        Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
+
+        codexsTesterAssertGuid(String.valueOf(response), null);
+    }
+
+    /**
+     * JWT Auth Example
+     * */
+    @Test
+    public void whenAnyRequest_JwtAuth_Correctly_RetrieveCreated_StatusCode200_GET() throws Exception {
+        HeadersDto headersDto = new HeadersDto();
+        headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local", false)); //JWT AUTH
+        headersDto.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        headersDto.setHttpMethod(HTTP_METHOD_GET);
+        headersDto.setObjectResponse(String.class);
+
+        RequestDto requestDto = new RequestDto();
+        requestDto.setExpectedCode(OK_200);
+        requestDto.setUrl("http://localhost:35000");
+        requestDto.setUri("/api/auth/jwt/check");
+        requestDto.setId(""); // /api/auth/basic/{id}
+        requestDto.setDataRequest(null);
+        requestDto.setExpectedMessage(null);
+
+        Object response = codexsTesterExternalDispatcher(requestDto, headersDto).getBody();
+
+        codexsTesterAssertExact("OK", String.valueOf(response), null);
+    }
+
+</code>
+
+Give a close in the code block above and see slightly careful the line when say
+
+<pre>
+headersDto.setAuthorizationBearer(securitySetup.oauth2Authorization("local")); //OAUTH2
+</pre>
+
+or
+
+<pre>
+headersDto.setAuthorizationBearer(securitySetup.jwtAuthorization("local", false)); //JWT AUTH
+</pre>
+
+or 
+
+<pre>
+headersDto.setAuthorizationBasic(securitySetup.basicAuthorization("local")); //BASIC AUTH
+</pre>
+
+all these lines means thar you want to use the certain kind of authentication, and you are passing the value received 
+in the process of authentication previously made by Codexstester according the security configurations present in the
+SecuritySetup java class file.
+
+With this scenario it is very possible to use many types of authentication in the same test or in the same flow, just 
+keep in your mind that this process is required in case the service integration expects some kind of authentication.
 
 ************************************************************************************************************************
 
