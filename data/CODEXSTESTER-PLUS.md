@@ -24,6 +24,12 @@ The Codexstester is a simple library tool to make some kind of tests in java, wi
 infrastructure, containers, databases, brokers and more. Just give a careful read in this documentation to get 
 how easy is implement and use this great library.
 
+## Infra Structure Code
+
+> Deprecated ![check-red.png](media/check-red.png)
+
+![codexstester-diagram-flow-Full.png](media/codexstester-diagram-flow-Full.png)
+
 ## License
 
 This project is free and can be used as a basis for other projects by anyone under the MIT license.
