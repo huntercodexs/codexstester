@@ -122,17 +122,17 @@ public abstract class AbstractInternalRequest extends AvailableHttpMethod {
                             .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
-            codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);
+            codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse(), true);
 
             /*Assert Content as String*/
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-                if (!result.getResponse().getContentAsString().equals("")) {
-                    codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
+                if (!String.valueOf(result.getResponse()).equals("")) {
+                    codexsHelperLogTerm("TRY ASSERT INTEGRATION", String.valueOf(result.getResponse()), true);
                     codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
-                    codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
+                    codexsHelperLogTerm("<<< RECEIVED MESSAGE", String.valueOf(result.getResponse()), true);
                     codexsTesterAssertExact(
                             requestDto.getExpectedMessage(),
-                            result.getResponse().getContentAsString(),
+                            String.valueOf(result.getResponse()),
                             requestDto.getMethodCallerName());
                 }
             }
