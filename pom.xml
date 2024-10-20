@@ -33,6 +33,22 @@
 
 	<dependencies>
 
+		<!--SPRING BOOT STARTER WEB-->
+		<!--
+			IMPORTANT: To avoid multiple slf4j and others warnings in another spring boot
+			project comment the lines below before build the codexstester jar file, this
+			dependency is used just for development !
+
+			TIP: One best practice is to remove completely that one to avoid misunderstands
+			by others developers !
+
+			!!! TO REMOVE BEFORE INSTALL !!!
+		-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
 		<!--SPRING BOOT: TEST-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
