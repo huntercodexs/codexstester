@@ -318,12 +318,15 @@ jereelton@jereelton-acer-nitro:~$ cd codexstester
 jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 </pre>
 
+
 - Build the project using your preferred IDE, for example:
   - int the IntelliJ IDEA, use: Ctrl+F9
+
 
 - Compile the project to generate the jar file
   - This step will be generated the jar file package in the .m2 repository package locally in your machine, for example:
     - /home/{USER}/.m2/repository/com/huntercodexs/codexstester/codexstester/2.0.0-SNAPSHOT
+
 
 - Now, import the codexstester library into the pom.xml file of any project the following dependency, for example:
 
@@ -345,6 +348,34 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 </code>
 
 ### From GitHUB Releases
+
+- First, get the codexstester jar file from huntercodexs GitHUB account in the releases section 
+  - https://github.com/huntercodexs/codexstester/releases
+  - or goto the section # Releases in this documentation and choose the specific release according the project requirements
+
+
+- After downloaded the jar file for example codexstester-2.0.0-SNAPSHOT.jar, save it in the .m2 path, for example:
+  - /home/{USER}/.m2/repository/com/huntercodexs/codexstester/codexstester/2.0.0-SNAPSHOT
+
+
+- Now, import the codexstester library into the pom.xml file of any project the following dependency, for example:
+
+<code>
+
+		<dependency>
+			<groupId>com.huntercodexs.codexstester</groupId>
+			<artifactId>codexstester</artifactId>
+			<version>2.0.0-SNAPSHOT</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+</code>
 
 ### From Maven Central
 
