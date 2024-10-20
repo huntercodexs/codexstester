@@ -65,222 +65,218 @@ requests. See more details about HTTP STATUS CODE at https://developer.mozilla.o
 The complete structure for Codexstester is shown below
 
 <pre>
-.
-├── LICENSE
-├── pom.xml
-├── README.md
-└── src
-    ├── main
-    │   └── java
-    │       └── com
-    │           └── huntercodexs
-    │               └── codexstester
-    │                   ├── bridge
-    │                   │   └── CodexsTesterCoreBridge.java
-    │                   ├── constant
-    │                   │   └── CodexsConstant.java
-    │                   ├── dto
-    │                   │   ├── HeadersDto.java
-    │                   │   ├── JwtResponseDto.java
-    │                   │   └── RequestDto.java
-    │                   ├── external
-    │                   │   ├── AbstractExternalRequest.java
-    │                   │   ├── AbstractExternalRestTemplate.java
-    │                   │   ├── ExternalHttpHeadersFactory.java
-    │                   │   ├── ExternalRequest1xx.java
-    │                   │   ├── ExternalRequest2xx.java
-    │                   │   ├── ExternalRequest3xx.java
-    │                   │   ├── ExternalRequest4xx.java
-    │                   │   └── ExternalRequest5xx.java
-    │                   ├── http
-    │                   │   ├── AvailableHttpMethod.java
-    │                   │   └── AvailableHttpStatus.java
-    │                   ├── ignition
-    │                   │   ├── CodexsTesterIgnition.java
-    │                   │   └── CodexTesterPropertiesLoader.java
-    │                   ├── internal
-    │                   │   ├── AbstractInternalMockMvc.java
-    │                   │   ├── AbstractInternalRequest.java
-    │                   │   ├── InternalHttpHeadersFactory.java
-    │                   │   ├── InternalRequest1Xx.java
-    │                   │   ├── InternalRequest2Xx.java
-    │                   │   ├── InternalRequest3Xx.java
-    │                   │   ├── InternalRequest4Xx.java
-    │                   │   └── InternalRequest5Xx.java
-    │                   ├── properties
-    │                   │   ├── ExternalProperty.java
-    │                   │   ├── InternalProperty.java
-    │                   │   └── UnitaryProperty.java
-    │                   ├── resource
-    │                   │   ├── basic
-    │                   │   │   ├── CodexsBase.java
-    │                   │   │   ├── CodexsDate.java
-    │                   │   │   ├── CodexsPath.java
-    │                   │   │   ├── CodexsStringHandler.java
-    │                   │   │   ├── CodexsTools.java
-    │                   │   │   └── CodexsValidator.java
-    │                   │   ├── crypto
-    │                   │   │   └── CodexsCrypto.java
-    │                   │   ├── currency
-    │                   │   │   └── CodexsCurrency.java
-    │                   │   ├── enumerator
-    │                   │   │   ├── CodexsDataMask.java
-    │                   │   │   ├── CodexsTokenType.java
-    │                   │   │   ├── CodexsTraceType.java
-    │                   │   │   └── CodexsUfTable.java
-    │                   │   ├── file
-    │                   │   │   ├── CodexsFileHandler.java
-    │                   │   │   ├── CodexsFileReader.java
-    │                   │   │   └── CodexsFileWriter.java
-    │                   │   ├── format
-    │                   │   │   ├── CodexsFormatter.java
-    │                   │   │   └── CodexsMask.java
-    │                   │   ├── http
-    │                   │   │   ├── CodexsHttpClient.java
-    │                   │   │   ├── CodexsHttpSimulator.java
-    │                   │   │   └── CodexsResponseEntitySimulator.java
-    │                   │   ├── image
-    │                   │   │   └── CodexsImage.java
-    │                   │   ├── parser
-    │                   │   │   ├── CodexsJsonParser.java
-    │                   │   │   └── CodexsObjectParser.java
-    │                   │   ├── quickjson
-    │                   │   │   ├── core
-    │                   │   │   │   ├── QuickJsonAbstract.java
-    │                   │   │   │   ├── QuickJsonBuilder.java
-    │                   │   │   │   ├── QuickJsonData.java
-    │                   │   │   │   └── QuickJsonExtractor.java
-    │                   │   │   └── QuickJson.java
-    │                   │   ├── randomize
-    │                   │   │   └── CodexsRandom.java
-    │                   │   ├── stdout
-    │                   │   │   └── CodexsStdout.java
-    │                   │   └── web
-    │                   │       ├── CodexsWebControl.java
-    │                   │       ├── CodexsWebDriver.java
-    │                   │       ├── CodexsWebElements.java
-    │                   │       └── constant
-    │                   │           ├── CodexsBrowserForSeleniumDto.java
-    │                   │           └── CodexsBrowserForSelenium.java
-    │                   ├── sample
-    │                   │   ├── controller
-    │                   │   │   └── SampleController.java
-    │                   │   └── dto
-    │                   │       ├── SampleEmployeeAddressDto.java
-    │                   │       └── SampleEmployeeDto.java
-    │                   ├── SampleApplication.java
-    │                   ├── security
-    │                   │   ├── AuthType.java
-    │                   │   ├── BasicAuthSecurity.java
-    │                   │   ├── CodexsSecurity.java
-    │                   │   ├── CodexsSecuritySetup.java
-    │                   │   ├── dto
-    │                   │   │   ├── BasicAuthRequestDto.java
-    │                   │   │   ├── JwtAuthRequestDto.java
-    │                   │   │   ├── Oauth2RequestCheckTokenDto.java
-    │                   │   │   ├── Oauth2RequestTokenDto.java
-    │                   │   │   ├── Oauth2ResponseTokenCheckDto.java
-    │                   │   │   └── Oauth2ResponseTokenDto.java
-    │                   │   ├── JwtAuthSecurity.java
-    │                   │   └── Oauth2Security.java
-    │                   ├── unitary
-    │                   │   └── AbstractUnitary.java
-    │                   └── util
-    │                       ├── CodexsAdvanced.java
-    │                       ├── CodexsArrayListComparator.java
-    │                       ├── CodexsAssertion.java
-    │                       ├── CodexsDtoComparator.java
-    │                       ├── CodexsHashMapComparator.java
-    │                       ├── CodexsHelper.java
-    │                       ├── CodexsJsonComparator.java
-    │                       ├── CodexsJsonParser.java
-    │                       ├── CodexsLinkedHashMapComparator.java
-    │                       ├── CodexsLinkedListComparator.java
-    │                       └── CodexsListComparator.java
-    └── test
-        ├── java
-        │   └── codexstester
-        │       ├── bdd
-        │       │   ├── runner
-        │       │   │   ├── AppReportRunnerTest.java
-        │       │   │   ├── AppRunnerTest.java
-        │       │   │   └── samples
-        │       │   │       ├── BackgroundReportRunnerTest.java
-        │       │   │       ├── BackgroundRunnerTest.java
-        │       │   │       ├── CounterReportRunnerTest.java
-        │       │   │       ├── CounterRunnerTest.java
-        │       │   │       ├── DataTableReportRunnerTest.java
-        │       │   │       ├── DataTableRunnerTest.java
-        │       │   │       ├── LambdaReportRunnerTest.java
-        │       │   │       ├── LambdaRunnerTest.java
-        │       │   │       ├── ListReportRunnerTest.java
-        │       │   │       ├── ListRunnerTest.java
-        │       │   │       ├── LoginReportRunnerTest.java
-        │       │   │       └── LoginRunnerTest.java
-        │       │   └── stepsdef
-        │       │       ├── AppSteps.java
-        │       │       └── samples
-        │       │           ├── BackgroundAPISteps.java
-        │       │           ├── BackgroundDBSteps.java
-        │       │           ├── BackgroundUserSteps.java
-        │       │           ├── CounterSteps.java
-        │       │           ├── DataTableSteps.java
-        │       │           ├── integration
-        │       │           │   └── CucumberSpringIntegration.java
-        │       │           ├── LambdaSteps.java
-        │       │           ├── ListSteps.java
-        │       │           └── LoginSteps.java
-        │       ├── junit4
-        │       │   ├── external
-        │       │   │   └── SampleExternalTests.java
-        │       │   ├── internal
-        │       │   │   └── SampleInternalTests.java
-        │       │   └── unitary
-        │       │       └── SampleUnitaryTests.java
-        │       ├── LICENSE
-        │       ├── README.md
-        │       └── setup
-        │           ├── advanced
-        │           │   └── AdvancedSetup.java
-        │           ├── bridge
-        │           │   └── SampleBridgeTest.java
-        │           ├── datasource
-        │           │   └── SampleDataSource.java
-        │           ├── properties
-        │           │   ├── external.tests.properties
-        │           │   ├── internal.tests.properties
-        │           │   └── unitary.tests.properties
-        │           └── security
-        │               └── SecuritySetup.java
-        └── resources
-            ├── extent.properties
-            ├── features
-            │   ├── app
-            │   │   └── App.feature
-            │   └── samples
-            │       ├── background
-            │       │   └── Background.feature
-            │       ├── counter
-            │       │   ├── Counter.feature
-            │       │   └── CounterPlus.feature
-            │       ├── datatable
-            │       │   └── DataTable.feature
-            │       ├── lambda
-            │       │   └── Lambda.feature
-            │       ├── list
-            │       │   └── List.feature
-            │       └── login
-            │           └── Login.feature
-            ├── junit4
-            │   ├── file.txt
-            │   └── sample
-            │       ├── external.tests.properties
-            │       ├── internal.tests.properties
-            │       └── unitary.tests.properties
-            ├── junit-platform.properties
-            └── reporting
-                ├── extent-config.xml
-                └── html-config.xml
+src
+├── main
+│   └── java
+│       └── com
+│           └── huntercodexs
+│               └── codexstester
+│                   ├── bridge
+│                   │   └── CodexsTesterCoreBridge.java
+│                   ├── constant
+│                   │   └── CodexsConstant.java
+│                   ├── dto
+│                   │   ├── HeadersDto.java
+│                   │   ├── JwtResponseDto.java
+│                   │   └── RequestDto.java
+│                   ├── external
+│                   │   ├── AbstractExternalRequest.java
+│                   │   ├── AbstractExternalRestTemplate.java
+│                   │   ├── ExternalHttpHeadersFactory.java
+│                   │   ├── ExternalRequest1xx.java
+│                   │   ├── ExternalRequest2xx.java
+│                   │   ├── ExternalRequest3xx.java
+│                   │   ├── ExternalRequest4xx.java
+│                   │   └── ExternalRequest5xx.java
+│                   ├── http
+│                   │   ├── AvailableHttpMethod.java
+│                   │   └── AvailableHttpStatus.java
+│                   ├── ignition
+│                   │   ├── CodexsTesterIgnition.java
+│                   │   └── CodexTesterPropertiesLoader.java
+│                   ├── internal
+│                   │   ├── AbstractInternalMockMvc.java
+│                   │   ├── AbstractInternalRequest.java
+│                   │   ├── InternalHttpHeadersFactory.java
+│                   │   ├── InternalRequest1Xx.java
+│                   │   ├── InternalRequest2Xx.java
+│                   │   ├── InternalRequest3Xx.java
+│                   │   ├── InternalRequest4Xx.java
+│                   │   └── InternalRequest5Xx.java
+│                   ├── properties
+│                   │   ├── ExternalProperty.java
+│                   │   ├── InternalProperty.java
+│                   │   └── UnitaryProperty.java
+│                   ├── resource
+│                   │   ├── basic
+│                   │   │   ├── CodexsBase.java
+│                   │   │   ├── CodexsDate.java
+│                   │   │   ├── CodexsPath.java
+│                   │   │   ├── CodexsStringHandler.java
+│                   │   │   ├── CodexsTools.java
+│                   │   │   └── CodexsValidator.java
+│                   │   ├── crypto
+│                   │   │   └── CodexsCrypto.java
+│                   │   ├── currency
+│                   │   │   └── CodexsCurrency.java
+│                   │   ├── enumerator
+│                   │   │   ├── CodexsDataMask.java
+│                   │   │   ├── CodexsTokenType.java
+│                   │   │   ├── CodexsTraceType.java
+│                   │   │   └── CodexsUfTable.java
+│                   │   ├── file
+│                   │   │   ├── CodexsFileHandler.java
+│                   │   │   ├── CodexsFileReader.java
+│                   │   │   └── CodexsFileWriter.java
+│                   │   ├── format
+│                   │   │   ├── CodexsFormatter.java
+│                   │   │   └── CodexsMask.java
+│                   │   ├── http
+│                   │   │   ├── CodexsHttpClient.java
+│                   │   │   ├── CodexsHttpSimulator.java
+│                   │   │   └── CodexsResponseEntitySimulator.java
+│                   │   ├── image
+│                   │   │   └── CodexsImage.java
+│                   │   ├── parser
+│                   │   │   ├── CodexsJsonParser.java
+│                   │   │   └── CodexsObjectParser.java
+│                   │   ├── quickjson
+│                   │   │   ├── core
+│                   │   │   │   ├── QuickJsonAbstract.java
+│                   │   │   │   ├── QuickJsonBuilder.java
+│                   │   │   │   ├── QuickJsonData.java
+│                   │   │   │   └── QuickJsonExtractor.java
+│                   │   │   └── QuickJson.java
+│                   │   ├── randomize
+│                   │   │   └── CodexsRandom.java
+│                   │   ├── stdout
+│                   │   │   └── CodexsStdout.java
+│                   │   └── web
+│                   │       ├── CodexsWebControl.java
+│                   │       ├── CodexsWebDriver.java
+│                   │       ├── CodexsWebElements.java
+│                   │       └── constant
+│                   │           ├── CodexsBrowserForSeleniumDto.java
+│                   │           └── CodexsBrowserForSelenium.java
+│                   ├── sample
+│                   │   ├── controller
+│                   │   │   └── SampleController.java
+│                   │   └── dto
+│                   │       ├── SampleEmployeeAddressDto.java
+│                   │       └── SampleEmployeeDto.java
+│                   ├── SampleApplication.java
+│                   ├── security
+│                   │   ├── AuthType.java
+│                   │   ├── BasicAuthSecurity.java
+│                   │   ├── CodexsSecurity.java
+│                   │   ├── CodexsSecuritySetup.java
+│                   │   ├── dto
+│                   │   │   ├── BasicAuthRequestDto.java
+│                   │   │   ├── JwtAuthRequestDto.java
+│                   │   │   ├── Oauth2RequestCheckTokenDto.java
+│                   │   │   ├── Oauth2RequestTokenDto.java
+│                   │   │   ├── Oauth2ResponseTokenCheckDto.java
+│                   │   │   └── Oauth2ResponseTokenDto.java
+│                   │   ├── JwtAuthSecurity.java
+│                   │   └── Oauth2Security.java
+│                   ├── unitary
+│                   │   └── AbstractUnitary.java
+│                   └── util
+│                       ├── CodexsAdvanced.java
+│                       ├── CodexsArrayListComparator.java
+│                       ├── CodexsAssertion.java
+│                       ├── CodexsDtoComparator.java
+│                       ├── CodexsHashMapComparator.java
+│                       ├── CodexsHelper.java
+│                       ├── CodexsJsonComparator.java
+│                       ├── CodexsJsonParser.java
+│                       ├── CodexsLinkedHashMapComparator.java
+│                       ├── CodexsLinkedListComparator.java
+│                       └── CodexsListComparator.java
+└── test
+    ├── java
+    │   └── codexstester
+    │       ├── bdd
+    │       │   ├── runner
+    │       │   │   ├── AppReportRunnerTest.java
+    │       │   │   ├── AppRunnerTest.java
+    │       │   │   └── samples
+    │       │   │       ├── BackgroundReportRunnerTest.java
+    │       │   │       ├── BackgroundRunnerTest.java
+    │       │   │       ├── CounterReportRunnerTest.java
+    │       │   │       ├── CounterRunnerTest.java
+    │       │   │       ├── DataTableReportRunnerTest.java
+    │       │   │       ├── DataTableRunnerTest.java
+    │       │   │       ├── LambdaReportRunnerTest.java
+    │       │   │       ├── LambdaRunnerTest.java
+    │       │   │       ├── ListReportRunnerTest.java
+    │       │   │       ├── ListRunnerTest.java
+    │       │   │       ├── LoginReportRunnerTest.java
+    │       │   │       └── LoginRunnerTest.java
+    │       │   └── stepsdef
+    │       │       ├── AppSteps.java
+    │       │       └── samples
+    │       │           ├── BackgroundAPISteps.java
+    │       │           ├── BackgroundDBSteps.java
+    │       │           ├── BackgroundUserSteps.java
+    │       │           ├── CounterSteps.java
+    │       │           ├── DataTableSteps.java
+    │       │           ├── integration
+    │       │           │   └── CucumberSpringIntegration.java
+    │       │           ├── LambdaSteps.java
+    │       │           ├── ListSteps.java
+    │       │           └── LoginSteps.java
+    │       ├── junit4
+    │       │   ├── external
+    │       │   │   └── SampleExternalTests.java
+    │       │   ├── internal
+    │       │   │   └── SampleInternalTests.java
+    │       │   └── unitary
+    │       │       └── SampleUnitaryTests.java
+    │       ├── LICENSE
+    │       ├── README.md
+    │       └── setup
+    │           ├── advanced
+    │           │   └── AdvancedSetup.java
+    │           ├── bridge
+    │           │   └── SampleBridgeTest.java
+    │           ├── datasource
+    │           │   └── SampleDataSource.java
+    │           ├── properties
+    │           │   ├── external.tests.properties
+    │           │   ├── internal.tests.properties
+    │           │   └── unitary.tests.properties
+    │           └── security
+    │               └── SecuritySetup.java
+    └── resources
+        ├── extent.properties
+        ├── features
+        │   ├── app
+        │   │   └── App.feature
+        │   └── samples
+        │       ├── background
+        │       │   └── Background.feature
+        │       ├── counter
+        │       │   ├── Counter.feature
+        │       │   └── CounterPlus.feature
+        │       ├── datatable
+        │       │   └── DataTable.feature
+        │       ├── lambda
+        │       │   └── Lambda.feature
+        │       ├── list
+        │       │   └── List.feature
+        │       └── login
+        │           └── Login.feature
+        ├── junit4
+        │   ├── file.txt
+        │   └── sample
+        │       ├── external.tests.properties
+        │       ├── internal.tests.properties
+        │       └── unitary.tests.properties
+        ├── junit-platform.properties
+        └── reporting
+            ├── extent-config.xml
+            └── html-config.xml
 </pre>
 
 
