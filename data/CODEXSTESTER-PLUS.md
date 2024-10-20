@@ -1268,7 +1268,7 @@ basefolder.datetimepattern=yyyyMMddHHmmss
 
 # Security
 
-Whe it is required to make tests throughout the internet using for example REST over the HTTP Protocol, worries about 
+When it is required to make tests throughout the internet using for example REST over the HTTP Protocol, worries about 
 safety connection and data protection is very common and important. So in this way the Codexstester was designed to 
 offer some kind of security for connections as Basic Authentication and JWT Web Token. In this section we will to see 
 how to implement that resource to protect our request even using in the test scope or environment.
