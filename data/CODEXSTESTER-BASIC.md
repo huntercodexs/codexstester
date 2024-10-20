@@ -3,18 +3,6 @@ The simple library to write tests in java
 
 > DEPRECATED: see the CODEXSTESTER-PLUS documentation instead.
 
-# Releases
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.8">Release 1.0.8</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.7">Release 1.0.7</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.6">Release 1.0.6</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.5">Release 1.0.5</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.4">Release 1.0.4</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.3">Release 1.0.3</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.2">Release 1.0.2</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.1">Release 1.0.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.0">Release 1.0.0</a>
-
 # Overview
 
 ## About
@@ -1571,6 +1559,22 @@ protected void codexsTesterInternal_StatusCode508_RetrieveLoopDetected(HeadersDt
 protected void codexsTesterInternal_StatusCode510_RetrieveNotExtended(HeadersDto headersDto, RequestDto requestDto) throws Exception
 protected void codexsTesterInternal_StatusCode511_RetrieveNetworkAuthenticationRequired(HeadersDto headersDto, RequestDto requestDto) throws Exception
 </pre>
+
+************************************************************************************************************************
+
+
+# Releases
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.8">Release 1.0.8</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.7">Release 1.0.7</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.6">Release 1.0.6</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.5">Release 1.0.5</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.4">Release 1.0.4</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.3">Release 1.0.3</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.2">Release 1.0.2</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.1">Release 1.0.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.0">Release 1.0.0</a>
+
 
 ************************************************************************************************************************
 Enjoy this job as you prefer.

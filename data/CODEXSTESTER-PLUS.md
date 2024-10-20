@@ -1,31 +1,6 @@
 # CODEXSTESTER - PLUS
 The simple library to write tests in java
 
-# Releases
-
-Here you can find the latest release of codexstester according your application requirements. 
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">Release 2.0.11 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.10">Release 2.0.10 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1</a>
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.9">Release 2.0.9 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.8">Release 2.0.8 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.7">Release 2.0.7 - Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.6">Release 2.0.6 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.5">Release 2.0.5 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.4">Release 2.0.4 - Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.3">Release 2.0.3 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.2">Release 2.0.2 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.1">Release 2.0.1 - Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0">Release 2.0.0 - Java 8 - Spring Boot 2.0.1.RELEASE - Cucumber 4.2.0</a>
-
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.12">Release 1.0.12 - Java 21</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.11">Release 1.0.11 - Java 17</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.10">Release 1.0.10 - Java 11</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9">Release 1.0.9 - Java 8</a>
-
 # Overview
 
 ## About
@@ -1260,6 +1235,33 @@ basefolder.datetimepattern=yyyyMMddHHmmss
 
 # Security
 
+
+************************************************************************************************************************
+
+# Releases
+
+Here you can find the latest release of codexstester according your application requirements.
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">Release 2.0.11 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.10">Release 2.0.10 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.9">Release 2.0.9 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.8">Release 2.0.8 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.7">Release 2.0.7 - Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.6">Release 2.0.6 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.5">Release 2.0.5 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.4">Release 2.0.4 - Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.3">Release 2.0.3 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.2">Release 2.0.2 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.1">Release 2.0.1 - Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0">Release 2.0.0 - Java 8 - Spring Boot 2.0.1.RELEASE - Cucumber 4.2.0</a>
+
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.12">Release 1.0.12 - Java 21</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.11">Release 1.0.11 - Java 17</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.10">Release 1.0.10 - Java 11</a>
+- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9">Release 1.0.9 - Java 8</a>
 
 
 ************************************************************************************************************************
