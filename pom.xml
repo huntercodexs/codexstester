@@ -10,7 +10,7 @@
 	</parent>
 
 	<version>1.0.9-SNAPSHOT</version>
-	<groupId>com.huntercodexs.codexstester</groupId>
+	<groupId>com.huntercodexs</groupId>
 
 	<name>codexstester</name>
 	<artifactId>codexstester</artifactId>
@@ -165,5 +165,12 @@
 
 		</plugins>
 	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<url>https://maven.pkg.github.com/huntercodexs/codexstester</url>
+		</repository>
+	</distributionManagement>
 
 </project>
