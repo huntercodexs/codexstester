@@ -377,7 +377,36 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 
 </code>
 
+### From GitHUB Packages
+
+It is possible to get the codexstester project from GitHub packages as a maven dependency for java projects, so for 
+that give a look at https://github.com/huntercodexs/codexstester/releases or section # Releases in this documentation 
+to get the correctly version.
+
+After getting the correct Codexstester version, put it in the pom.xml file as showed below:
+
+<code>
+
+		<dependency>
+			<groupId>com.huntercodexs</groupId>
+			<artifactId>codexstester</artifactId>
+			<version>1.0.9-SNAPSHOT</version>
+			<scope>provided</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>com.vaadin.external.google</groupId>
+					<artifactId>android-json</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+</code>
+
+You can check all packages available following the link https://github.com/huntercodexs?tab=packages&repo_name=codexstester.
+
 ### From Maven Central
+
+![check-red.png](media/check-red.png) Unavailable yet
 
 ### Codexstester Generator
 
@@ -1782,26 +1811,102 @@ keep in your mind that this process is required in case the service integration 
 
 Here you can find the latest release of codexstester according your application requirements.
 
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">Release 2.0.11 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.10">Release 2.0.10 - Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1</a>
 
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.9">Release 2.0.9 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.8">Release 2.0.8 - Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.7">Release 2.0.7 - Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+- Release 2.0.11
 
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.6">Release 2.0.6 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.5">Release 2.0.5 - Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.4">Release 2.0.4 - Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">
+  Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0 - 2.0.11-SNAPSHOT
+</a>
 
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.3">Release 2.0.3 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.2">Release 2.0.2 - Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.1">Release 2.0.1 - Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0">Release 2.0.0 - Java 8 - Spring Boot 2.0.1.RELEASE - Cucumber 4.2.0</a>
+- Release 2.0.10
 
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.12">Release 1.0.12 - Java 21</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.11">Release 1.0.11 - Java 17</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.10">Release 1.0.10 - Java 11</a>
-- <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9">Release 1.0.9 - Java 8</a>
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.10">
+  Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1 - 2.0.10-SNAPSHOT
+</a>
+
+- Release 2.0.9
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.9">
+  Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.9-SNAPSHOT
+</a>
+
+- Release 2.0.8
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.8">
+  Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.8-SNAPSHOT
+</a>
+
+- Release 2.0.7
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.7">
+  Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.7-SNAPSHOT
+</a>
+
+- Release 2.0.6
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.6">
+  Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.6-SNAPSHOT
+</a>
+
+- Release 2.0.5
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.5">
+  Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.5-SNAPSHOT
+</a>
+
+- Release 2.0.4
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.4">
+  Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.4-SNAPSHOT
+</a>
+  
+- Release 2.0.3
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.3">
+  Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.3-SNAPSHOT
+</a>
+
+- Release 2.0.2
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.2">
+  Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.2-SNAPSHOT
+</a>
+
+- Release 2.0.1
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.1">
+  Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.1-SNAPSHOT
+</a>
+
+- Release 2.0.0
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0">
+  Java 8 - Spring Boot 2.0.1.RELEASE - Cucumber 4.2.0 - 2.0.0-SNAPSHOT
+</a>
+  
+- Release 1.0.12
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.12">
+  Java 21 - 1.0.12-SNAPSHOT
+</a>
+
+- Release 1.0.11
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.11">
+  Java 17 - 1.0.11-SNAPSHOT
+</a>
+
+- Release 1.0.10
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.10">
+  Java 11 - 1.0.10-SNAPSHOT
+</a>
+
+- Release 1.0.9
+
+<a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9">
+  Java 8 - 1.0.9-SNAPSHOT
+</a>
 
 
 ************************************************************************************************************************
