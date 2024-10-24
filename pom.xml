@@ -184,6 +184,10 @@
 						</goals>
 					</execution>
 				</executions>
+				<!--To prevent the warning: "javadoc: warning - The code being documented uses modules but the packages..."-->
+				<configuration>
+					<source>8</source>
+				</configuration>
 			</plugin>
 
 			<!--Deploy: GPG Assign-->
