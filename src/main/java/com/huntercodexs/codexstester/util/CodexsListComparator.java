@@ -10,48 +10,6 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 
 public abstract class CodexsListComparator extends CodexsArrayListComparator {
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static Object[] expectedListValues() {
-	 * 		String string = "john smith";
-	 * 		QuickJson quickJson = new QuickJson();
-	 * 		quickJson.add("age", 30);
-	 * 		quickJson.add("gender", "mens");
-	 * 		return new Object[]{string, quickJson};
-	 * }
-	 *
-	 * public static Object[] expectedListTyped() {
-	 * 		return new Object[]{String.class, String.class};
-	 * }
-	 *
-	 * QuickJson quickJson = new QuickJson();
-	 * quickJson.add("age", 30);
-	 * quickJson.add("gender", "mens");
-	 *
-	 * List<String> listResponse = new ArrayList<>();
-	 * listResponse.add("john smith");
-	 * listResponse.add(quickJson.toString());
-	 *
-	 * codexsTesterCompareListFormat(
-	 * 			expectedListValues(),
-	 * 			expectedListTyped(),
-	 * 			listResponse,
-	 * 			true);
-	 * </pre></blockquote>
-	 *
-	 * @param listValues (Object[]: )
-	 * @param listTyped (Object[]: )
-	 * @param listCompare (List&lt;String&gt;: )
-	 * @param strictMode (boolean: )
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareListFormat(
 			Object[] listValues,
 			Object[] listTyped,
@@ -171,41 +129,6 @@ public abstract class CodexsListComparator extends CodexsArrayListComparator {
 
 	}
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object - Using Data Tree</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static Object[][] expectedListDataTree() {
-	 * 		return new Object[][]{
-	 * 		        {0, "john smith", String.class},
-	 * 		        {1, "{\"gender\":\"mens\",\"age\":30}", String.class},
-	 * 		};
-	 * }
-	 *
-	 * QuickJson quickJson = new QuickJson();
-	 * quickJson.add("age", 30);
-	 * quickJson.add("gender", "mens");
-	 *
-	 * List<String> listResponse = new ArrayList<>();
-	 * listResponse.add("john smith");
-	 * listResponse.add(quickJson.toString());
-	 *
-	 * codexsTesterCompareListFormat(
-	 * 			expectedListDataTree(),
-	 * 			listResponse,
-	 * 			true);
-	 * </pre></blockquote>
-	 *
-	 * @param expectedListDataTree (Object[]: )
-	 * @param listCompare (List&lt;String&gt;: )
-	 * @param strictMode (boolean: )
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareListFormat(
 			Object[][] expectedListDataTree,
 			List<String> listCompare,

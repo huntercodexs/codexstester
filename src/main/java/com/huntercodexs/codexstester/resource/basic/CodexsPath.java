@@ -2,16 +2,6 @@ package com.huntercodexs.codexstester.resource.basic;
 
 public class CodexsPath {
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">sanitizePath</h6>
-     *
-     * <p style="color: #CDCDCD">Sanitize any path as you need</p>
-     *
-     * @param path (String)
-     * @return String (Path sanitized)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String sanitizePath(String path) {
         if (path.matches(".*\\..*$")) {
             return path;
@@ -19,16 +9,6 @@ public class CodexsPath {
         return path.replaceAll("/$", "") + "/";
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileExtension</h6>
-     *
-     * <p style="color: #CDCDCD">Get the file extension from one string</p>
-     *
-     * @param filepath (String)
-     * @return String (Extension File)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String fileExtension(String filepath) {
         if (!filepath.contains(".")) {
             return filepath;

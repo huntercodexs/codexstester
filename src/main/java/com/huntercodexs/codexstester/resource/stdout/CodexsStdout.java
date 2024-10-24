@@ -83,14 +83,6 @@ public class CodexsStdout {
                         " |");
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">addWidth</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void addWidth(int width) {
 
         if (width < 4) {
@@ -116,14 +108,6 @@ public class CodexsStdout {
 
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawHeader</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void drawHeader(String title) {
         drawLine();
         drawEmptyLine();
@@ -131,14 +115,6 @@ public class CodexsStdout {
         drawEmptyLine();
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItemHeader</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void drawItemHeader(String keyname, String value) {
         drawLine();
         drawItemTitle(keyname, value);
@@ -146,14 +122,6 @@ public class CodexsStdout {
         drawItemHeaderFields();
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItemId</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void drawItemId(String id, String keyname, String value, String description) {
         if (value == null || value.equals("null")) value = "";
         if (description == null || description.equals("null")) description = "";
@@ -161,14 +129,6 @@ public class CodexsStdout {
         drawItemLine(id, keyname, value, description);
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItem</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void drawItem(String keyname, String value, String description) {
         if (value == null || value.equals("null")) value = "";
         if (description == null || description.equals("null")) description = "";
@@ -177,40 +137,14 @@ public class CodexsStdout {
         }
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">nextItem</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void nextItem() {
         drawLine();
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">nextItemHeader</h6>
-     *
-     * <p style="color: #CDCDCD"></p>
-     *
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void nextItemHeader() {
         drawEmptyLine();
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">matrixPrinter</h6>
-     *
-     * <p style="color: #CDCDCD">Print a data matrix from any source</p>
-     *
-     * @param matrix (List[List[]String]]: Data Matrix)
-     * @param columnSize (int: Column Size)
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static void matrixPrinter(List<List<String>> matrix, int columnSize) {
         if (columnSize == 1) {
             System.out.println("MATRIX PRINTER SAY: [ERROR] MATRIX IS NOT A MATRIX (3X3)");
@@ -244,16 +178,6 @@ public class CodexsStdout {
         }
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">matrixPrinter</h6>
-     *
-     * <p style="color: #CDCDCD">Print a data matrix from any source</p>
-     *
-     * @param object (Object[][]: Data Matrix)
-     * @param columnSize (int: Column Size)
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static void objectMatrixPrinter(Object[][] object, int columnSize) {
         if (columnSize == 1) {
             System.out.println("MATRIX PRINTER SAY: [ERROR] MATRIX IS NOT A MATRIX (3X3)");

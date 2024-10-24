@@ -156,66 +156,6 @@ public class QuickJsonExtractor {
 
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">standardExtraction</h6>
-     *
-     * <p style="color: #CDCDCD">Retrieve the value from on specific json</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     QuickJsonExtractor qjExtractor = new QuickJsonExtractor();
-     *
-     *     HashMap<String, Object> map = new HashMap<>();
-     *     map.put("map1", "Map 1 Value Test");
-     *     map.put("map2", 345);
-     *     map.put("map3", Arrays.asList("Array 1", "Array 2", 222, "Array 3"));
-     *
-     *     qj.setStdoutOn(false);
-     *     qj.add("name", "John");
-     *     qj.add("lastname", "Smith");
-     *     qj.add("fullname", "John Smith Viz");
-     *     qj.add("age", 35);
-     *     qj.add("address", Arrays.asList("Street 1", "200", "New York City"));
-     *     qj.add("contacts", Arrays.asList("12345678", "98789789", "12424242"));
-     *     qj.add("reference", "{\"name\":\"Sarah Wiz\",\"parental\":\"friend\"}");
-     *     qj.add("family",
-     *                 Arrays.asList(
-     *                         "mother", "July Smith",
-     *                         "father", "Luis Smith",
-     *                         Arrays.asList(
-     *                                 "sister", "Elen Smith", "age", 22
-     *                         ),
-     *                         Arrays.asList(
-     *                                 "brother", "Igor Smith", "age", 24
-     *                         )
-     *                 )
-     *         );
-     *     qj.add("map", map);
-     *
-     *     String result = qj.json();
-     *
-     *     Object extract = qjExtractor.standardExtraction(result, "name");
-     *     extract = qjExtractor.standardExtraction(result, "lastname");
-     *     extract = qjExtractor.standardExtraction(result, "fullname");
-     *     extract = qjExtractor.standardExtraction(result, "age");
-     *     extract = qjExtractor.standardExtraction(result, "address");
-     *     extract = qjExtractor.standardExtraction(result, "contacts");
-     *     extract = qjExtractor.standardExtraction(result, "reference");
-     *     extract = qjExtractor.standardExtraction(result, "family");
-     *     extract = qjExtractor.standardExtraction(result, "map");
-     *
-     * }
-     * </pre></blockquote>
-     *
-     * @param jsonObj (String)
-     * @param field (String)
-     * @return Object (Extracted Value from JSON Data)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Object standardExtraction(Object jsonObj, String field) {
 
         String[] split;
@@ -273,70 +213,6 @@ public class QuickJsonExtractor {
 
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">smartExtraction</h6>
-     *
-     * <p style="color: #CDCDCD">Retrieve the value from on specific json using advanced method</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     QuickJsonExtractor qjExtractor = new QuickJsonExtractor();
-     *
-     *     HashMap<String, Object> map = new HashMap<>();
-     *         map.put("map1", "Map 1 Value Test");
-     *         map.put("map2", 345);
-     *         map.put("map3", Arrays.asList("Array 1", "Array 2", 222, "Array 3"));
-     *
-     *         qj.setStdoutOn(false);
-     *         qj.add("name", "John");
-     *         qj.add("lastname", "Smith");
-     *         qj.add("fullname", "John Smith Viz \\\"Don\\\"");
-     *         qj.add("age", 35);
-     *         qj.add("address", Arrays.asList("Street 1", "200", "New York City"));
-     *         qj.add("contacts", Arrays.asList("12345678", "98789789", "12424242"));
-     *         qj.add("reference", "{\"parental\":\"mother\",\"name\":\"Sarah Wiz\",\"alias\":\"mom\"}");
-     *         qj.add("family",
-     *                 Arrays.asList(
-     *                         "mother", "July Smith",
-     *                         "father", "Luis Smith",
-     *                         Arrays.asList(
-     *                                 "sister", "Elen Smith", "age", 22
-     *                         ),
-     *                         Arrays.asList(
-     *                                 "brother", "Igor Smith", "age", 24
-     *                         )
-     *                 )
-     *         );
-     *         qj.add("map", map);
-     *
-     *         String result = qj.json();
-     *         System.out.println(result);
-     *
-     *         Object extract;
-     *
-     *         extract = qjExtractor.smartExtraction(result, "notExist");
-     *         extract = qjExtractor.smartExtraction(result, "age");
-     *         extract = qjExtractor.smartExtraction(result, "name");
-     *         extract = qjExtractor.smartExtraction(result, "lastname");
-     *         extract = qjExtractor.smartExtraction(result, "fullname");
-     *         extract = qjExtractor.smartExtraction(result, "address");
-     *         extract = qjExtractor.smartExtraction(result, "contacts");
-     *         extract = qjExtractor.smartExtraction(result, "reference");
-     *         extract = qjExtractor.smartExtraction(result, "family");
-     *         extract = qjExtractor.smartExtraction(result, "map");
-     *
-     * }
-     * </pre></blockquote>
-     *
-     * @param jsonObj (String)
-     * @param field (String)
-     * @return Object (Extracted Value from JSON Data)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Object smartExtraction(Object jsonObj, String field) {
 
         this.reset();

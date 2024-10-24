@@ -125,54 +125,10 @@ public class QuickJson {
         this.qjData.setStrictMode(strictMode);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">add</h6>
-     *
-     * <p style="color: #CDCDCD">Add field for JSON creator</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @param field (String)
-     * @param value (Object)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void add(String field, Object value) {
         this.qjData.add(field, value);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">addAll</h6>
-     *
-     * <p style="color: #CDCDCD">
-     *     Add all values in one single time, but pay attention in the fields and values, keep in mind that
-     *     each field and value should be informed in equal quantity: "field", "value1", "field2", "value2"
-     *     and so on. However, if you omitted the last value, it will automatically considered as a null or
-     *     empty value as a result.
-     * </p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.addAll("name", "John", "lastname", "Smith");
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @param values (Object...)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void addAll(Object... values) {
         for ( int i = 0; i < values.length; i++ ) {
             if (i*2 > values.length-1) break;
@@ -187,172 +143,26 @@ public class QuickJson {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">remove</h6>
-     *
-     * <p style="color: #CDCDCD">Remove one element from the data structure to create a JSON String</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.remove("name");
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @param field (String)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void remove(String field) {
         this.qjData.remove(field);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">clear</h6>
-     *
-     * <p style="color: #CDCDCD">Reset the data structure that would be used to create on JSON String data</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.clear();
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void clear() {
         this.qjData.clear();
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">update</h6>
-     *
-     * <p style="color: #CDCDCD">Change an value of the specific field</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.update("name", "Mary");
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @param field (String)
-     * @param value (Object)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void update(String field, Object value) {
         this.qjData.update(field, value);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">get</h6>
-     *
-     * <p style="color: #CDCDCD">Retrieve one specific field value informing the field name</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     Object result = qj.get("name");
-     *     System.out.println(result);
-     * }
-     * </pre></blockquote>
-     *
-     * @param field (String)
-     * @return Object (Value from field)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Object get(String field) {
         return this.qjData.get(field);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">getObject</h6>
-     *
-     * <p style="color: #CDCDCD">Retrieve one specific field value informing the field name</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.add("lastname", "Smith");
-     *     qj.add("age", 35);
-     *
-     *     String result = qj.json();
-     *
-     *     QuickJson qj2 = new QuickJson(result);
-     *     Object result1 = qj2.getObject("name");
-     *     Object result2 = qj2.getObject("lastname");
-     *     Object result3 = qj2.getObject("age");
-     *
-     *     Assert.assertEquals("John", result1);
-     *     Assert.assertEquals("Smith", result2);
-     *     Assert.assertEquals("35", result3);
-     * }
-     * </pre></blockquote>
-     *
-     * @param field (String)
-     * @return Object (Value from field)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Object getObject(String field) {
         return this.qjExtractor.smartExtraction(this.jsonObject, field);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">create</h6>
-     *
-     * <p style="color: #CDCDCD">
-     *     Definitive create the JSON Data string using the values populated previously
-     * </p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.add("lastname", "Smith");
-     *     qj.add("age", 35);
-     *
-     *     qj.create(null);
-     *
-     *     String result = qj.json();
-     *     System.out.println(result);
-     * }
-     * </pre></blockquote>
-     *
-     * <p>Result</p>
-     *
-     * <blockquote><pre>
-     * {"name":"John","age":35,"lastname":"Smith"}
-     * </pre></blockquote>
-     *
-     * @param mainField (String)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void create(String mainField) {
 
         if (mainField == null || mainField.isEmpty()) {
@@ -375,50 +185,6 @@ public class QuickJson {
 
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">json</h6>
-     *
-     * <p style="color: #CDCDCD">Create a JSON Data string quickly</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.add("lastname", "Smith");
-     *     qj.add("age", 35);
-     *     qj.add("address", Arrays.asList("Street 1", "200", "New York City"));
-     *     qj.add("contacts", Arrays.asList("12345678", "98789789", "12424242"));
-     *     qj.add("reference", "{\"name\":\"Sarah Wiz\",\"parental\":\"friend\"}");
-     *     qj.add("family",
-     *          Arrays.asList(
-     *              "mother", "July Smith",
-     *              "father", "Luis Smith",
-     *              Arrays.asList(
-     *                  "sister", "Elen Smith", "age", 22
-     *              ),
-     *              Arrays.asList(
-     *                  "brother", "Igor Smith", "age", 24
-     *              )
-     *          )
-     *     );
-     *
-     *     String result = qj.json();
-     *     System.out.println(result);
-     * }
-     * </pre></blockquote>
-     *
-     * <p>Result</p>
-     *
-     * <blockquote><pre>
-     * {"reference":{"name":"Sarah Wiz","parental":"friend"},"address":["Street 1", 200, "New York City"],"name":"John","family":["mother", "July Smith", "father", "Luis Smith", ["brother", "Igor Smith", "age", 24], ["sister", "Elen Smith", "age", 22]],"age":35,"contacts":[12345678, 98789789, 12424242],"lastname":"Smith"}
-     * </pre></blockquote>
-     *
-     * @return String (JSON String value)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public String json() {
         if (this.qjData.getJsonFinal() == null) {
             this.create(null);
@@ -426,17 +192,6 @@ public class QuickJson {
         return this.qjData.getJsonFinal();
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">merge</h6>
-     *
-     * <p style="color: #CDCDCD">Merge more than one json string in one single json</p>
-     *
-     * @param jsonString (List&lt;String&gt;)
-     * @param mainField (String)
-     * @return String (JSON String value formatted)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String merge(List<String> jsonString, String mainField) {
         if (mainField == null || mainField.isEmpty()) {
             mainField = "Object";
@@ -451,26 +206,6 @@ public class QuickJson {
         return (jsonResponse+"]}").replaceFirst(",]}", "]}");
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">print</h6>
-     *
-     * <p style="color: #CDCDCD">
-     *     Print the value from a data structure to known which values it will be used to create a JSON Data string
-     * </p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.print();
-     * }
-     * </pre></blockquote>
-     *
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void print() {
         if (this.qjData.getDataToJson().isEmpty()) {
             System.out.println("Empty !");
@@ -481,97 +216,6 @@ public class QuickJson {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">prettify</h6>
-     *
-     * <p style="color: #CDCDCD">Retrieve the JSON Data string result formatted in a beaut style</p>
-     *
-     * <p>
-     *     If you want to prettify the JSON response output this method is very appropriate, see the
-     *     examples below to understand how to use and what kind of response you can receive
-     * </p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * public void test() {
-     *     QuickJson qj = new QuickJson();
-     *     qj.add("name", "John");
-     *     qj.add("lastname", "Smith");
-     *     qj.add("fullname", "John Smith Viz");
-     *     qj.add("age", 35);
-     *     qj.add("address", Arrays.asList("Street 1", "200", "New York City"));
-     *     qj.add("contacts", Arrays.asList("12345678", "98789789", "12424242"));
-     *     qj.add("reference", "{\"name\":\"Sarah Wiz\",\"parental\":\"friend\",\"contact\":{\"phone\":\"1234567890\",\"email\":\"john@email.com\"}}");
-     *     qj.add("family",
-     *             Arrays.asList(
-     *                     "mother", "July Smith",
-     *                     "father", "Luis Smith",
-     *                     Arrays.asList(
-     *                             "sister", "Elen Smith", "age", 22
-     *                     ),
-     *                     Arrays.asList(
-     *                             "brother", "Igor Smith", "age", 24
-     *                     )
-     *             )
-     *     );
-     *
-     *     String result = qj.prettify();
-     *     System.out.println(result);
-     * }
-     * </pre></blockquote>
-     *
-     * <p>Result</p>
-     *
-     * <blockquote><pre>
-     * {
-     *    "reference":{
-     *       "name":"Sarah Wiz",
-     *       "parental":"friend",
-     *       "contact":{
-     *          "phone":"1234567890",
-     *          "email":"john@email.com"
-     *       }
-     *    },
-     *    "address":[
-     *       "Street 1",
-     *       200,
-     *       "New York City"
-     *    ],
-     *    "name":"John",
-     *    "fullname":"John Smith Viz",
-     *    "family":[
-     *       "mother",
-     *       "July Smith",
-     *       "father",
-     *       "Luis Smith",
-     *       [
-     *          "brother",
-     *          "Igor Smith",
-     *          "age",
-     *          24
-     *       ],
-     *       [
-     *          "sister",
-     *          "Elen Smith",
-     *          "age",
-     *          22
-     *       ]
-     *    ],
-     *    "age":35,
-     *    "contacts":[
-     *       12345678,
-     *       98789789,
-     *       12424242
-     *    ],
-     *    "lastname":"Smith"
-     * }
-     * </pre></blockquote>
-     *
-     * @return String (JSON String value formatted)
-     * @see <a href="https://github.com/huntercodexs/quickjson">Quick JSON (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public String prettify() {
         StringBuilder pretty = new StringBuilder();
         String json = this.json()

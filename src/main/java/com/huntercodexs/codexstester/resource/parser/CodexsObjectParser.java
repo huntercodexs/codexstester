@@ -31,24 +31,6 @@ public class CodexsObjectParser {
         return cols;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">listMapToObject</h6>
-     *
-     * <p style="color: #CDCDCD">To convert a Object Data into List object data</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * CodexsObjectParser codexsObjectParser = new CodexsObjectParser();
-     * List&lt;Employee&gt; objects = codexsObjectParser.listMapToObject(table, Employee.class);
-     * </pre></blockquote>
-     *
-     * @param obj (Object: DataTable from Cucumber is compatible)
-     * @param classT (Class: The class name to convert the current object data
-     * @return List&lt;T&gt; (One Java List of Object T relate)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public <T> List<T> listMapToObject(Object obj, Class<T> classT) {
 
         Field[] fields = classT.getDeclaredFields();
@@ -90,23 +72,6 @@ public class CodexsObjectParser {
 
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">mapInMap</h6>
-     *
-     * <p style="color: #CDCDCD">To convert a Object Data into Map object data</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * CodexsObjectParser codexsObjectParser = new CodexsObjectParser();
-     * Map<String, Map<String, String>> mapMap = codexsObjectParser.mapInMap(table);
-     * </pre></blockquote>
-     *
-     * @param obj (Object: DataTable from Cucumber is compatible)
-     * @return Map&lt;String, Map&lt;String, String&gt;&gt;
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Map<String, Map<String, String>> mapInMap(Object obj) {
 
         Map<String, Map<String, String>> tableMapMap = new HashMap<>();
@@ -128,23 +93,6 @@ public class CodexsObjectParser {
         return tableMapMap;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">mapInList</h6>
-     *
-     * <p style="color: #CDCDCD">To convert a Object Data into Map List object data</p>
-     *
-     * <p>Example</p>
-     *
-     * <blockquote><pre>
-     * CodexsObjectParser codexsObjectParser = new CodexsObjectParser();
-     * Map<String, List<String>> mapList = codexsObjectParser.mapInList(table);
-     * </pre></blockquote>
-     *
-     * @param obj (Object: DataTable from Cucumber is compatible)
-     * @return Map&lt;String, List&lt;String&gt;&gt;
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public Map<String, List<String>> mapInList(Object obj) {
 
         Map<String, List<String>> tableMapList = new HashMap<>();

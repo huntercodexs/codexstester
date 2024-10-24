@@ -4,17 +4,6 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.r
 
 public class CodexsMask {
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cardNumberMasked</h6>
-     *
-     * <p style="color: #CDCDCD">Mask a card number with a specific mask</p>
-     *
-     * @param cardNumber (String)
-     * @param mask (String)
-     * @return String (Masked Card Number)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String cardNumberMasked(String cardNumber, String mask) {
         if (mask.isEmpty()) mask = "*";
         mask = repeat(mask, 4);

@@ -28,21 +28,6 @@ public class CodexsTools {
         return new String(base64InputBytes);
     }
 
-    /**
-     *
-     * <h6 style="color: #FFFF00; font-size: 11px">trace</h6>
-     *
-     * <p style="color: #CDCDCD">This method is used to make a total trace and tracking in the idp
-     * transaction flow where the result can be applied to information or error log level</p>
-     *
-     * @param track (String: Tracking log)
-     * @param id (String: User or resource identifier)
-     * @param message (String: Message to trace in log)
-     * @param label (TraceType: label to stick the log detail and give an emphasis in the target message)
-     * @param type (String: Type of log [info, error])
-     * @return trace (String - trace detail)
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String trace(String track, String id, String message, CodexsTraceType label, String type) {
 
         if (track == null || track.isEmpty()) track = "........-....-....-....-............";

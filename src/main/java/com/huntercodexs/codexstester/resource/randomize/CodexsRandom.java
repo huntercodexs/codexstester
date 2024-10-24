@@ -23,16 +23,6 @@ public class CodexsRandom {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomNumber</h6>
-     *
-     * <p style="color: #CDCDCD">Generate a random number with a specified number of digits given in the parameters</p>
-     *
-     * @param digits (int: Quantities of digits to generate random number)
-     * @return int (Random Number)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static int randomNumber(int digits) {
         Date date = new Date();
         String number = md5(String.valueOf(date.getTime())).replaceAll("[^0-9]", "");
@@ -43,18 +33,6 @@ public class CodexsRandom {
         return Integer.parseInt(randomNumber);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomMoney</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random money with a specified number of digits and the currency format,
-     * both given in the parameters</p>
-     *
-     * @param digits (int: Quantities of digits to generate random money)
-     * @param currency (String: Currency Format [real, euro, default:dollar])
-     * @return String (Random Money)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomMoney(int digits, String currency) {
         Date date = new Date();
         String number = md5(String.valueOf(date.getTime())).replaceAll("[^0-9]", "");
@@ -74,16 +52,6 @@ public class CodexsRandom {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomCents</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random cents money based on currency in the parameter</p>
-     *
-     * @param currency (String: Currency Format [real, euro, default:dollar])
-     * @return String (Random Money)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomCents(String currency) {
         Date date = new Date();
         String number = md5(String.valueOf(date.getTime())).replaceAll("[^0-9]", "");
@@ -103,16 +71,6 @@ public class CodexsRandom {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomCardNumber</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random card number with a specified separator</p>
-     *
-     * @param separator (String: Type of separator to card number [-,., ])
-     * @return String (Random Card Number)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomCardNumber(String separator) {
         if (separator == null) separator = " ";
         sleep();
@@ -126,45 +84,16 @@ public class CodexsRandom {
         return part1+separator+part2+separator+part3+separator+part4;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomId</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random ID with 6 digits and Prefix if given in the parameters</p>
-     *
-     * @param prefix (String: Specific Prefix to ID)
-     * @return String (Random ID)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomId(String prefix) {
         sleep();
         if (prefix == null) prefix = "";
         return prefix+(randomNumber(6));
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomGuid</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random GUID</p>
-     *
-     * @return String (GUID)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomGuid() {
         return UUID.randomUUID().toString();
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomToken</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random Token with a size specified in the parameter</p>
-     *
-     * @param length (int: Size of token)
-     * @return String (Random Token with a specified length)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomToken(int length) {
         SecureRandom secureRandom = new SecureRandom();
         StringBuilder stringBuilder = new StringBuilder(length);
@@ -177,15 +106,6 @@ public class CodexsRandom {
         return stringBuilder.toString();
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomJwt</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random JWT to simulate requests using JSON WEB TOKEN</p>
-     *
-     * @return String (Random JWT)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomJwt() {
         Date date = new Date();
         QuickJson quickJson1 = new QuickJson();
@@ -206,30 +126,12 @@ public class CodexsRandom {
                 randomToken(64);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomHash</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random Hash (md5)</p>
-     *
-     * @return String (Random Hash)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomHash() {
         sleep();
         Date date = new Date();
         return md5(String.valueOf(date.getTime()));
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomBinary</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random data binary to simulate binary operation</p>
-     *
-     * @return String (Random Data Binary)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomBinary(int size) {
         sleep();
         Date date = new Date();
@@ -246,15 +148,6 @@ public class CodexsRandom {
         return digits;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomCpf</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random CPF without valid and correct digits verifier</p>
-     *
-     * @return String (Random CPF)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomCpf() {
         sleep();
         int cpfNumber = randomNumber(9);
@@ -292,15 +185,6 @@ public class CodexsRandom {
         return cpfParts[0]+"."+cpfParts[1]+"."+cpfParts[2]+"-"+nDigResult;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomCnpj</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random CNPJ - Brazil</p>
-     *
-     * @return String (Random CNPJ)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomCnpj() {
         sleep();
         int cnpjInitialNumber = randomNumber(2);
@@ -311,30 +195,12 @@ public class CodexsRandom {
         return cnpjInitialNumber+"."+cnpjParts[0]+"."+cnpjParts[1]+"/"+cnpjThousandInverted+"-"+cnpjDigitNumber;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomDate</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random date with the format: uuuu-MM-dd</p>
-     *
-     * @return String (Random Date)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomDate() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
         LocalDateTime dateTimeNow = LocalDateTime.now().minusYears(randomNumber(1));
         return dateTimeNow.format(formatter);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">randomDateTime</h6>
-     *
-     * <p style="color: #CDCDCD">Generate random datetime with the format: uuuu-MM-dd HH:mm:ss</p>
-     *
-     * @return String (Random Datetime)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String randomDateTime() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd HH:mm:ss");
         LocalDateTime dateTimeNow = LocalDateTime.now().minusMinutes(randomNumber(3)).minusYears(randomNumber(1));

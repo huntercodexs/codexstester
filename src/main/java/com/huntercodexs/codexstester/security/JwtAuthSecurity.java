@@ -96,15 +96,6 @@ public class JwtAuthSecurity {
         this.addHeader = addHeader;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jwt</h6>
-     *
-     * <p style="color: #CDCDCD">Get the JWT Token</p>
-     *
-     * @return Object (Basic Auth Data)
-     * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public <T> T jwt(Class<T> objectResponse) {
         T response = dispatcher(objectResponse);
 

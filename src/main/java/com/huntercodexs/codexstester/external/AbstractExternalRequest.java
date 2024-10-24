@@ -212,49 +212,70 @@ public abstract class AbstractExternalRequest extends InternalRequest1Xx {
     }
 
     /**
-     * @apiNote Using Http GET with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http GET with Rest Template
      */
     private void assertResultFromRequestByHttpGet(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_GET);
     }
 
     /**
-     * @apiNote Using Http POST with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http POST with Rest Template
      */
     private void assertResultFromRequestByHttpPost(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_POST);
     }
 
     /**
-     * @apiNote Using Http DELETE with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http DELETE with Rest Template
      */
     private void assertResultFromRequestByHttpDelete(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_DELETE);
     }
 
     /**
-     * @apiNote Using Http PUT with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http PUT with Rest Template
      */
     private void assertResultFromRequestByHttpPut(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_PUT);
     }
 
     /**
-     * @apiNote Using Http PATCH with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http PATCH with Rest Template
      */
     private void assertResultFromRequestByHttpPatch(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_PATCH);
     }
 
     /**
-     * @apiNote Using Http HEAD with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http HEAD with Rest Template
      */
     private void assertResultFromRequestByHttpHead(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_HEAD);
     }
 
     /**
-     * @apiNote Using Http OPTIONS with Rest Template
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @author huntercodexs (powered by jereelton-devel)
+     *  Using Http OPTIONS with Rest Template
      */
     private void assertResultFromRequestByHttpOptions(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_OPTIONS);

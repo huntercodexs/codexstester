@@ -8,49 +8,14 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.r
 
 public class CodexsFormatter {
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">numberFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the number in the specified format</p>
-     *
-     * @param input (int: Number to format)
-     * @param format (String: Format to apply in the input)
-     * @return String (Number Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String numberFormatter(int input, String format) {
         return String.format(format, input);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the String in the specified format</p>
-     *
-     * @param input (String: String to format)
-     * @param format (String: Format to apply in the input)
-     * @return String (String Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String stringFormatter(String input, String format) {
         return String.format(format, input);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fillerFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format a data input with a specified parameters</p>
-     *
-     * @param input (String: Data to apply the format)
-     * @param fill (String: Char to fill and format the input)
-     * @param align (String: Direction to align the input [left, right])
-     * @param size (int: Size to apply the fill in the input)
-     * @return String (Formatted and Filled Input)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String fillerFormatter(String input, String fill, String align, int size) {
 
         if (!align.equals("left") && !align.equals("right")) {
@@ -78,18 +43,6 @@ public class CodexsFormatter {
         return formatted;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">rgFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the RG number in the specified format</p>
-     *
-     * @param value (String: The document value to format)
-     * @param rgUf (String: The document uf)
-     * @param rgPrefix (String: The document prefix)
-     * @return String (RG Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String rgFormatter(String value, String rgUf, boolean rgPrefix) {
         if (value == null || value.isEmpty()) return "";
         if (rgUf == null) rgUf = "";
@@ -113,32 +66,12 @@ public class CodexsFormatter {
         return value.replaceAll("[^0-9]+", "");
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cpfFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the CPF number in the correct format</p>
-     *
-     * @param cpf (String: the document value to format)
-     * @return String (CPF Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String cpfFormatter(String cpf) {
         return cpf
                 .replaceAll("[^0-9]", "")
                 .replaceAll("^(\\d{3})(\\d{3})(\\d{3})(\\d{2})$", "$1.$2.$3-$4");
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cnpjFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the CNPJ number in the correct format</p>
-     *
-     * @param cnpj (String: the document value to format)
-     * @return String (CNPJ Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String cnpjFormatter(String cnpj) {
         return cnpj
                 .replaceAll("[^0-9]", "")
@@ -146,17 +79,6 @@ public class CodexsFormatter {
 
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">moneyFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the currency value in the specific currency format</p>
-     *
-     * @param value (Object: the value or amount to format)
-     * @param format (String: the currency target to format [real, dollar, euro])
-     * @return String (Money Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String moneyFormatter(Object value, String format) {
 
         int valueFix = Integer.parseInt(value.toString().replaceAll("[^0-9]", ""));
@@ -199,78 +121,6 @@ public class CodexsFormatter {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateFormatter</h6>
-     *
-     * <p style="color: #CDCDCD">Format the date in the specific format</p>
-     *
-     * @param dateInput (String: the date to format)
-     * @param dateFormat (String: the format to apply in the date [
-     *                   <br />yyy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyyy-MM-dd HH:mm:ss.ms,
-     *                   <br />dd-MM-yyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yyyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yy HH:mm:ss.ms,
-     *                   <br />yy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyy-MM-dd HH:mm:ss,
-     *                   <br />yyyy-MM-dd HH:mm:ss,
-     *                   <br />dd-MM-yyy HH:mm:ss,
-     *                   <br />dd-MM-yyyy HH:mm:ss,
-     *                   <br />dd-MM-yy HH:mm:ss,
-     *                   <br />yy-MM-dd HH:mm:ss,
-     *                   <br />yyy-MM-dd HH:mm,
-     *                   <br />yyyy-MM-dd HH:mm,
-     *                   <br />dd-MM-yyy HH:mm,
-     *                   <br />dd-MM-yyyy HH:mm,
-     *                   <br />dd-MM-yy HH:mm,
-     *                   <br />yy-MM-dd HH:mm,
-     *                   <br />yyy-MM-dd HH,
-     *                   <br />yyyy-MM-dd HH,
-     *                   <br />dd-MM-yyy HH,
-     *                   <br />dd-MM-yyyy HH,
-     *                   <br />dd-MM-yy HH,
-     *                   <br />yy-MM-dd HH,
-     *                   <br />yyy-MM-dd,
-     *                   <br />yyyy-MM-dd,
-     *                   <br />dd-MM-yyy,
-     *                   <br />dd-MM-yyyy,
-     *                   <br />dd-MM-yy,
-     *                   <br />yy-MM-dd,
-     *                   <br />yyyMMddHHmmssms,
-     *                   <br />yyyyMMddHHmmssms,
-     *                   <br />ddMMyyyHHmmssms,
-     *                   <br />ddMMyyyyHHmmssms,
-     *                   <br />ddMMyyHHmmssms,
-     *                   <br />yyMMddHHmmssms,
-     *                   <br />yyyMMddHHmmss,
-     *                   <br />yyyyMMddHHmmss,
-     *                   <br />ddMMyyyHHmmss,
-     *                   <br />ddMMyyyyHHmmss,
-     *                   <br />ddMMyyHHmmss,
-     *                   <br />yyMMddHHmmss,
-     *                   <br />yyyMMddHHmm,
-     *                   <br />yyyyMMddHHmm,
-     *                   <br />ddMMyyyHHmm,
-     *                   <br />ddMMyyyyHHmm,
-     *                   <br />ddMMyyHHmm,
-     *                   <br />yyMMddHHmm,
-     *                   <br />yyyMMddHH,
-     *                   <br />yyyyMMddHH,
-     *                   <br />ddMMyyyHH,
-     *                   <br />ddMMyyyyHH,
-     *                   <br />ddMMyyHH,
-     *                   <br />yyMMddHH,
-     *                   <br />yyyMMdd,
-     *                   <br />yyyyMMdd,
-     *                   <br />ddMMyyy,
-     *                   <br />ddMMyyyy,
-     *                   <br />ddMMyy,
-     *                   <br />yyMMdd,
-     *                   <br/>])
-     * @return String (Date Formatted)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String dateFormatter(String dateInput, String dateFormat) {
 
         String separator = "-";

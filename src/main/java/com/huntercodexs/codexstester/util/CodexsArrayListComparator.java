@@ -10,50 +10,6 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 
 public abstract class CodexsArrayListComparator extends CodexsHashMapComparator {
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">>To compare a data structure from one Java ArrayList Object</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static Object[] expectedArrayListValues() {
-	 * 		String string = "john smith";
-	 * 		QuickJson quickJson = new QuickJson();
-	 * 		quickJson.add("age", 30);
-	 * 		quickJson.add("gender", "men");
-	 * 		return new Object[]{string, quickJson.json()};
-	 * }
-	 *
-	 * public static Object[] expectedArrayListTyped() {
-	 * 		return new Object[]{
-	 * 		        String.class, String.class
-	 * 		};
-	 * }
-	 *
-	 * QuickJson quickJson = new QuickJson();
-	 * quickJson.add("age", 30);
-	 * quickJson.add("gender", "mens");
-	 *
-	 * ArrayList<Object> arrayListResponse = new ArrayList<>();
-	 * arrayListResponse.add("john smith");
-	 * arrayListResponse.add(quickJson.json());
-	 *
-	 * codexsTesterCompareArrayListFormat(
-	 * 			expectedArrayListValues(),
-	 * 			expectedArrayListTyped(),
-	 * 			arrayListResponse,
-	 * 			true);
-	 * </pre></blockquote>
-	 *
-	 * @param arrayListValues (Object[]: )
-	 * @param arrayListTyped (Object[]: )
-	 * @param arrayListCompare (ArrayList&lt;Object&gt;: )
-	 * @param strictMode (boolean: )
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareArrayListFormat(
 			Object[] arrayListValues,
 			Object[] arrayListTyped,
@@ -173,41 +129,6 @@ public abstract class CodexsArrayListComparator extends CodexsHashMapComparator 
 
 	}
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">>To compare a data structure from one Java ArrayList Object - Using Data Tree</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static Object[][] expectedArrayListDataTree() {
-	 * 		return new Object[][]{
-	 * 			{0, "john smith", String.class},
-	 * 			{1, "{\"gender\":\"mens\",\"age\":30}", String.class},
-	 * 		};
-	 * }
-	 *
-	 * QuickJson quickJson = new QuickJson();
-	 * quickJson.add("age", 30);
-	 * quickJson.add("gender", "mens");
-	 *
-	 * ArrayList<&lt;Object&gt; arrayListResponse = new ArrayList&lt;Object&gt;();
-	 * arrayListResponse.add("john smith");
-	 * arrayListResponse.add(quickJson.json());
-	 *
-	 * codexsTesterCompareArrayListFormat(
-	 * 		expectedArrayListDataTree(),
-	 * 		arrayListResponse,
-	 * 		true);
-	 * </pre></blockquote>
-	 *
-	 * @param expectedArrayListDataTree (Object[][]: )
-	 * @param arrayListCompare (ArrayList&lt;Object&gt;: )
-	 * @param strictMode (boolean: )
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareArrayListFormat(
 			Object[][] expectedArrayListDataTree,
 			ArrayList<Object> arrayListCompare,

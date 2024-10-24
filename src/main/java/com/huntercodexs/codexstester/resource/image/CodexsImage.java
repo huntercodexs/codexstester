@@ -181,58 +181,18 @@ public class CodexsImage {
         return true;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateBytes</h6>
-     *
-     * <p style="color: #CDCDCD">Simulate one image length in bytes from an Integer value</p>
-     *
-     * @param bytesLength (int)
-     * @return String (Image Size)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String simulateCalculateBytes(int bytesLength) {
         return calculateBytes(bytesLength);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateKilobytes</h6>
-     *
-     * <p style="color: #CDCDCD">Simulate one image length in kilobytes from an Integer value</p>
-     *
-     * @param bytesLength (int)
-     * @return String (Image Size)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String simulateCalculateKilobytes(int bytesLength) {
         return calculateKilobytes(bytesLength);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateMegabytes</h6>
-     *
-     * <p style="color: #CDCDCD">Simulate one image length in megabytes from an Integer value</p>
-     *
-     * @param bytesLength (int)
-     * @return String (Image Size)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String simulateCalculateMegabytes(int bytesLength) {
         return calculateMegabytes(bytesLength);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">isAnAcceptedImage</h6>
-     *
-     * <p style="color: #CDCDCD">Check if the image is in the accepted formats</p>
-     *
-     * @param imageType (String: Image type [JPG, PNG, GIF etc...])
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static boolean isAnAcceptedImage(String imageType) {
         for (ImageType type : ImageType.values()) {
             if (imageType.toUpperCase().equals(type.name()) && type.isAccepted()) {
@@ -242,16 +202,6 @@ public class CodexsImage {
         return false;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">isAnImage</h6>
-     *
-     * <p style="color: #CDCDCD">Check if the current file is really a valid image</p>
-     *
-     * @param image (byte[]: Image Content in bytes)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static boolean isAnImage(byte[] image) {
         BufferedImage bufferedImage = null;
         try {
@@ -262,16 +212,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageType</h6>
-     *
-     * <p style="color: #CDCDCD">Get the type of image from a byte source</p>
-     *
-     * @param image (byte[]: Image Content in bytes)
-     * @return String (Image Type)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageType(byte[] image) {
         String imageInfo = new String(image).substring(0, 255);
         String imageInfo4 = new String(image).substring(0, 4);
@@ -279,16 +219,6 @@ public class CodexsImage {
         return imageTypeCheck(imageInfo, imageInfo4, imageInfo15);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageType</h6>
-     *
-     * <p style="color: #CDCDCD">Get the type of image from string source</p>
-     *
-     * @param binaryImage (String: Binary Image)
-     * @return String (Image Type)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageType(String binaryImage) {
         String imageInfo = binaryImage.substring(0, 255);
         String imageInfo4 = binaryImage.substring(0, 4);
@@ -296,16 +226,6 @@ public class CodexsImage {
         return imageTypeCheck(imageInfo, imageInfo4, imageInfo15);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFormat</h6>
-     *
-     * <p style="color: #CDCDCD">Get the image format from byte[] image (same that imageType)</p>
-     *
-     * @param image (byte[]: Image Content in bytes)
-     * @return String (Image Format)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageFormat(byte[] image) throws IOException {
         ImageInputStream iis = ImageIO.createImageInputStream(new ByteArrayInputStream(image));
         Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(iis);
@@ -319,16 +239,6 @@ public class CodexsImage {
         return "UNKNOWN";
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDimension</h6>
-     *
-     * <p style="color: #CDCDCD">Get the image size (height x width) from byte[] image</p>
-     *
-     * @param image (byte[]: Image Content in bytes)
-     * @return Dimension (Image Dimension)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static Dimension imageDimension(byte[] image) throws IOException {
         ImageInputStream iis = ImageIO.createImageInputStream(new ByteArrayInputStream(image));
         Iterator<ImageReader> imageReaders = ImageIO.getImageReaders(iis);
@@ -347,16 +257,6 @@ public class CodexsImage {
         return new Dimension(0, 0);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageSize</h6>
-     *
-     * <p style="color: #CDCDCD">Get the image length in {"bytes", "kilobytes", "megabytes"} from byte[] image</p>
-     *
-     * @param image (byte[]: Image Content in bytes)
-     * @return String (Image Size)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageSize(byte[] image) {
 
         if (!isAnImage(image)) {
@@ -378,46 +278,14 @@ public class CodexsImage {
         return "0.00KB";
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageEncode</h6>
-     *
-     * <p style="color: #CDCDCD">Encode an image in base64 format from a byte data source</p>
-     *
-     * @param image (byte[]: Image Content in bytes to encode)
-     * @return String (Image File encoded in Base64)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageEncode(byte[] image) {
         return new String(Base64.getEncoder().encode(image));
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDecode</h6>
-     *
-     * <p style="color: #CDCDCD">Decode data from a string bas64 data source</p>
-     *
-     * @param encodedImage (String: Encoded image to decode)
-     * @return String (Image File Binary)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageDecode(String encodedImage) {
         return new String(Base64.getDecoder().decode(encodedImage));
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageEncrypted</h6>
-     *
-     * <p style="color: #CDCDCD">Encrypt one image from byte[] data using AES-256-CBC method</p>
-     *
-     * @param image (byte[]: Image File in bytes to encrypt)
-     * @param secretKey (String: Key to use in to encrypt)
-     * @param salt (String: Salt to apply in to encrypt)
-     * @return String (Image Encrypted: Base64(AES-256-CBC))
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageEncrypted(byte[] image, String secretKey, String salt) {
         System.out.println("Working on Image Encryption");
         long start = Calendar.getInstance().getTimeInMillis();
@@ -432,18 +300,6 @@ public class CodexsImage {
         return String.valueOf(imageEncrypted);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDecrypted</h6>
-     *
-     * <p style="color: #CDCDCD">Decrypt on image from String data (previously encrypted with imageEncrypted method)</p>
-     *
-     * @param base64ImageToDecrypt (byte[]: Image File in bytes to decrypt)
-     * @param secretKey (String: Key to use in to decrypt)
-     * @param salt (String: Salt to apply in to decrypt)
-     * @return String (Image Decrypted: Base64())
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageDecrypted(String base64ImageToDecrypt, String secretKey, String salt) {
         System.out.println("Working on Image Decryption");
         long start = Calendar.getInstance().getTimeInMillis();
@@ -456,17 +312,6 @@ public class CodexsImage {
         return String.valueOf(imageDecrypted);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageToMatrix</h6>
-     *
-     * <p style="color: #CDCDCD">This method convert an image file (from bytes) in one matrix with base64 values</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @param matrixSize (int: Size to create a matrix, example [2=2x2, 3=3x3, 10=10x10])
-     * @return List&lt;List&lt;String&gt;&gt; (Image Matrix: Base64)
-     * @author huntercodexs (powered by jereelton-devel)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     */
     public static List<List<String>> imageToMatrix(byte[] image, int matrixSize) {
         if (matrixSize <= 1) {
             return null;
@@ -495,16 +340,6 @@ public class CodexsImage {
         return imageMatrix;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFromMatrix</h6>
-     *
-     * <p style="color: #CDCDCD">This method revert a conversion made by imageToMatrix method from this class</p>
-     *
-     * @param imageMatrix (List&lt;List&lt;String&gt;&gt;: Matrix)
-     * @return String (Image From Matrix: Base64)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageFromMatrix(List<List<String>> imageMatrix) {
 
         StringBuilder stringBuilder = new StringBuilder();
@@ -524,17 +359,6 @@ public class CodexsImage {
         return String.valueOf(stringBuilder);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageBse64Save</h6>
-     *
-     * <p style="color: #CDCDCD">Save data image in disk from memory (Bytes -> Base64)</p>
-     *
-     * @param filenamePath (String: Where the image should be saved)
-     * @param image (byte[]: Image file to save)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static boolean imageBse64Save(String filenamePath, byte[] image) {
         try {
             ImageFileWriter imageFileWriter = new ImageFileWriter();
@@ -547,17 +371,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageCopy</h6>
-     *
-     * <p style="color: #CDCDCD">Copy one image from one origin to any destiny</p>
-     *
-     * @param imageSource (String: Image File Origin)
-     * @param dataDestiny (String: Image File Target)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static boolean imageCopy(String imageSource, String dataDestiny) {
         try {
             byte[] origin = byteFile(imageSource);
@@ -569,17 +382,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFragment</h6>
-     *
-     * <p style="color: #CDCDCD">Split one image in the matrix 20x20 format from a data byte image</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @param pathToSave (String: Path to save fragmented image)
-     * @return String (Folder Name: 4f37594a8968dac79a652e6a792b07fe_bmp)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageFragment(byte[] image, String pathToSave) {
         Date date = new Date();
 
@@ -613,16 +415,6 @@ public class CodexsImage {
         return folderName;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFragmentRevert</h6>
-     *
-     * <p style="color: #CDCDCD">Revert the image fragmentation from imageFragment method in this class</p>
-     *
-     * @param filePath (String: Path where the image was previously fragmented)
-     * @return String (Image: Base64)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static String imageFragmentRevert(String filePath) {
         File file = new File(filePath);
 
@@ -648,16 +440,6 @@ public class CodexsImage {
         return String.valueOf(stringBuilder);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFlipX</h6>
-     *
-     * <p style="color: #CDCDCD">Flip one image in X axis with true color support</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @return byte[] (Image Flipped: X axis)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static byte[] imageFlipX(byte[] image) {
         try {
 
@@ -688,16 +470,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFlipY</h6>
-     *
-     * <p style="color: #CDCDCD">Flip one image in Y axis with true color support</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @return byte[] (Image Flipped: Y axis)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static byte[] imageFlipY(byte[] image) {
         try {
 
@@ -728,16 +500,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageRotate</h6>
-     *
-     * <p style="color: #CDCDCD">Rotate an image in 180 degrees</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @return byte[] (Image Rotate)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static byte[] imageRotate(byte[] image) {
         try {
 
@@ -769,18 +531,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageResize</h6>
-     *
-     * <p style="color: #CDCDCD">Resize an image in a specific size delimited by width x height</p>
-     *
-     * @param image (byte[]: Image File in bytes)
-     * @param width (int: Image width to resize)
-     * @param height (int: Image height to resize)
-     * @return byte[] (Image Resized)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static byte[] imageResize(byte[] image, int width, int height) {
         try {
             ByteArrayInputStream imageStream = new ByteArrayInputStream(image);
@@ -801,20 +551,6 @@ public class CodexsImage {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageCrop</h6>
-     *
-     * <p style="color: #CDCDCD">Crop an image in a specific point delimited by parameters</p>
-     *
-     * @param image File Image in bytes[]
-     * @param xAxis Position in the Image to begin the crop - axis X
-     * @param yAxis Position in the Image to begin the crop - axis Y
-     * @param cropWidth Width size to crop
-     * @param cropHeight Height size to crop
-     * @return byte[] (Image Cropped)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static byte[] imageCrop(byte[] image, int xAxis, int yAxis, int cropWidth, int cropHeight) {
         try {
             ByteArrayInputStream imageStream = new ByteArrayInputStream(image);

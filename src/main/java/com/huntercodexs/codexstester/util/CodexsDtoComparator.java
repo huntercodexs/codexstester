@@ -10,60 +10,6 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 
 public abstract class CodexsDtoComparator extends CodexsListComparator {
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">To compare a data structure from one Java Object</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static String[] expectedDtoValues() {
-	 * 		return new String[]{
-	 * 		        "application/json",
-	 * 		        "null",
-	 * 		        "POST",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "null",
-	 * 		        "{name=value1}"
-	 * 		};
-	 * }
-	 *
-	 * HeadersDto dtoToCompare = new HeadersDto();
-	 * dtoToCompare.setContentType(MediaType.APPLICATION_JSON_VALUE);
-	 * dtoToCompare.setHttpMethod(HTTP_METHOD_POST);
-	 *
-	 * Map<String, String> mapResponseSimulate = new HashMap<>();
-	 * mapResponseSimulate.put("name", "value1");
-	 * dtoToCompare.setBodyParameters(mapResponseSimulate);
-	 *
-	 * codexsTesterCompareDtoFormat(
-	 * 		expectedDtoValues(),
-	 * 		dtoToCompare,
-	 * 		HeadersDto.class,
-	 * 		true);
-	 * </pre></blockquote>
-	 *
-	 * @param dtoValues (String[]: Expected array values)
-	 * @param dtoToCompare (Object: Object DTO to compare)
-	 * @param dtoClass (Class: Class Name to consider)
-	 * @param strictMode (boolean: To consider null values or not)
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareDtoFormat(
 			String[] dtoValues,
 			Object dtoToCompare,
@@ -202,60 +148,6 @@ public abstract class CodexsDtoComparator extends CodexsListComparator {
 		Assert.assertTrue(true);
 	}
 
-	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h6>
-	 *
-	 * <p style="color: #CDCDCD">To compare a data structure from one Java Object - Using Data Tree</p>
-	 *
-	 * <p>Example</p>
-	 *
-	 * <blockquote><pre>
-	 * public static Object[][] expectedDtoDataTree() {
-	 * 		return new Object[][]{
-	 * 		        {"contentType", "application/json", String.class},
-	 * 		        {"accepted", "null", String.class},
-	 * 		        {"httpMethod", "POST", String.class},
-	 * 		        {"statusCode", "null", String.class},
-	 * 		        {"crossOrigin", "null", String.class},
-	 * 		        {"origin", "null", String.class},
-	 * 		        {"hostname", "null", String.class},
-	 * 		        {"ip", "null", String.class},
-	 * 		        {"osName", "null", String.class},
-	 * 		        {"authorizationBasic", "null", String.class},
-	 * 		        {"authorizationBearer", "null", String.class},
-	 * 		        {"apiKeyToken", "null", String.class},
-	 * 		        {"apiKeyAppName", "null", String.class},
-	 * 		        {"apiKeySecret", "null", String.class},
-	 * 		        {"apiKeyValue", "null", String.class},
-	 * 		        {"apiKeyGeneric", "null", String.class},
-	 * 		        {"additionalName", "null", String.class},
-	 * 		        {"additionalValue", "null", String.class},
-	 * 		        {"bodyParameters", "{name=value1}", Map.class}
-	 * 		};
-	 * }
-	 *
-	 * HeadersDto headersDtoResponse = new HeadersDto();
-	 * headersDtoResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
-	 * headersDtoResponse.setHttpMethod(HTTP_METHOD_POST);
-	 *
-	 * Map<String, String> responseMap = new HashMap<>();
-	 * responseMap.put("name", "value1");
-	 * headersDtoResponse.setBodyParameters(responseMap);
-	 *
-	 * codexsTesterCompareDtoFormat(
-	 * 			expectedDtoDataTree(),
-	 * 			headersDtoResponse,
-	 * 			HeadersDto.class,
-	 * 			true);
-	 * </pre></blockquote>
-	 *
-	 * @param expectedDtoDataTree (String[]: Expected array values)
-	 * @param dtoToCompare (Object: Object DTO to compare)
-	 * @param dtoClass (Class: Class Name to consider)
-	 * @param strictMode (boolean: To consider null values or not)
-	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
-	 * @author huntercodexs (powered by jereelton-devel)
-	 * */
 	protected void codexsTesterCompareDtoFormat(
 			Object[][] expectedDtoDataTree,
 			Object dtoToCompare,

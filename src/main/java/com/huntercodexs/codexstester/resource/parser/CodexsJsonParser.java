@@ -265,16 +265,6 @@ public class CodexsJsonParser {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">objectToNetJson</h6>
-     *
-     * <p style="color: #CDCDCD">Convert a Object Data to JSONObject</p>
-     *
-     * @param object (Object: Data to convert)
-     * @return JSONObject (JSON Data from Object)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static JSONObject objectToNetJson(Object object) throws Exception {
 
         String json = object.toString()
@@ -296,17 +286,6 @@ public class CodexsJsonParser {
         return parseNetJsonObject(json);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonFromLinkedHashMap</h6>
-     *
-     * <p style="color: #CDCDCD">Convert a Linked Hash Map Data to JSONObject</p>
-     *
-     * @param linkedHashMap (LinkedHashMap: Data to convert)
-     * @param expectedFields (Object[]: Fields to be considered in the conversion)
-     * @return JSONObject (JSON Data from Linked Hash Map)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public static JSONObject jsonFromLinkedHashMap(
             LinkedHashMap<?, ?> linkedHashMap,
             Object[] expectedFields
@@ -332,26 +311,6 @@ public class CodexsJsonParser {
         return jsonResponse;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonCreatorRFC8259</h6>
-     *
-     * <p style="color: #CDCDCD">Create one JSON String format according RFC8259 standards</p>
-     *
-     * <p>The string to convert to JSON String should be something like below:</p>
-     * <p>Field1: Value1 ExtraValue1 Field2: Value2 Field3: Value3</p>
-     *
-     * <h6>Example</h6>
-     * <p>Kernel: 5.15.0-117-generic x86_64 bits: 64 compiler: N/A
-     * <br />
-     * Kernel: 5.15.0-117-generic_x86_64 bits: 64 compiler-version: java_compiler_v1
-     * <br />
-     * min/max: 1000 bits: 64 compiler-version: java_compiler_v1</p>
-     *
-     * @param input (List[String])
-     * @param mainField (String)
-     * @author huntercodexs (powered by jereelton-devel)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     */
     public static String jsonCreatorRFC8259(List<String> input, String mainField) {
 
         //JSON: Valid (RFC 8259)
@@ -425,16 +384,6 @@ public class CodexsJsonParser {
         return jsonResponse;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonMergerRFC8259</h6>
-     *
-     * <p style="color: #CDCDCD">Merge one or mor JSON String format according RFC8259 standards</p>
-     *
-     * @param input (List[String])
-     * @param mainField (String)
-     * @author huntercodexs (powered by jereelton-devel)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     */
     public static String jsonMergerRFC8259(List<String> input, String mainField) {
 
         if (mainField == null || mainField.isEmpty()) {

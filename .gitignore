@@ -69,3 +69,4 @@ hs_err_pid*
 trash/
 /test-output/
 /ExtentReports/
+/env.sh

@@ -6,16 +6,6 @@ public class CodexsFileWriter {
 
     public BufferedWriter bufferedWriter;
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">folderCreate</h6>
-     *
-     * <p style="color: #CDCDCD">Create a folder in the specific path</p>
-     *
-     * @param path (String: The path to create a target folder)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public boolean folderCreate(String path) {
         try {
 
@@ -33,16 +23,6 @@ public class CodexsFileWriter {
         return false;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileDelete</h6>
-     *
-     * <p style="color: #CDCDCD">Delete one file in the specific path</p>
-     *
-     * @param path (String: The path to delete a target file)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public boolean fileDelete(String path) {
         try {
 
@@ -62,17 +42,6 @@ public class CodexsFileWriter {
         return false;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileMove</h6>
-     *
-     * <p style="color: #CDCDCD">Rename file to specific filename passed in the parameters</p>
-     *
-     * @param path (String: The path to rename a target file)
-     * @param newPath (String: The new path to rename a target file)
-     * @return boolean
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public boolean fileMove(String path, String newPath) {
         try {
 
@@ -93,15 +62,6 @@ public class CodexsFileWriter {
         return false;
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileCreate</h6>
-     *
-     * <p style="color: #CDCDCD">Create a target file</p>
-     *
-     * @param filepath (String: The path to create a target file)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void fileCreate(String filepath) throws FileNotFoundException {
         File file = new File(filepath);
 
@@ -116,15 +76,6 @@ public class CodexsFileWriter {
         this.bufferedWriter = new BufferedWriter(wr);
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileWrite</h6>
-     *
-     * <p style="color: #CDCDCD">Write in the target file</p>
-     *
-     * @param data (String: Data to write in the file)
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void fileWrite(String data) {
         try {
             this.bufferedWriter.write(data);
@@ -133,14 +84,6 @@ public class CodexsFileWriter {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileNewLine</h6>
-     *
-     * <p style="color: #CDCDCD">Append new line in the target file</p>
-     *
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void fileNewLine() {
         try {
             this.bufferedWriter.newLine();
@@ -149,14 +92,6 @@ public class CodexsFileWriter {
         }
     }
 
-    /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileClose</h6>
-     *
-     * <p style="color: #CDCDCD">Close the target file</p>
-     *
-     * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
-     * @author huntercodexs (powered by jereelton-devel)
-     * */
     public void fileClose() throws IOException {
         this.bufferedWriter.close();
     }
