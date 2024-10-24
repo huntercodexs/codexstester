@@ -32,7 +32,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">listMapToObject</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">listMapToObject</h1>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into List object data</p>
      *
@@ -45,6 +45,7 @@ public class CodexsObjectParser {
      *
      * @param obj (Object: DataTable from Cucumber is compatible)
      * @param classT (Class: The class name to convert the current object data
+     * @param <T> (Object)
      * @return List&lt;T&gt; (One Java List of Object T relate)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
@@ -91,7 +92,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">mapInMap</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">mapInMap</h1>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into Map object data</p>
      *
@@ -99,7 +100,7 @@ public class CodexsObjectParser {
      *
      * <blockquote><pre>
      * CodexsObjectParser codexsObjectParser = new CodexsObjectParser();
-     * Map<String, Map<String, String>> mapMap = codexsObjectParser.mapInMap(table);
+     * Map&lt;String, Map&lt;String, String&gt;&gt; mapMap = codexsObjectParser.mapInMap(table);
      * </pre></blockquote>
      *
      * @param obj (Object: DataTable from Cucumber is compatible)
@@ -129,7 +130,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">mapInList</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">mapInList</h1>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into Map List object data</p>
      *
@@ -137,7 +138,7 @@ public class CodexsObjectParser {
      *
      * <blockquote><pre>
      * CodexsObjectParser codexsObjectParser = new CodexsObjectParser();
-     * Map<String, List<String>> mapList = codexsObjectParser.mapInList(table);
+     * Map&lt;String, List&lt;String&gt;&gt; mapList = codexsObjectParser.mapInList(table);
      * </pre></blockquote>
      *
      * @param obj (Object: DataTable from Cucumber is compatible)

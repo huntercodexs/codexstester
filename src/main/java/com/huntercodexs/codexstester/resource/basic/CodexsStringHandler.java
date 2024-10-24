@@ -16,7 +16,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringCounter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringCounter</h1>
      *
      * <p style="color: #CDCDCD">Count one specific string occurrence in the specific string phrase</p>
      *
@@ -82,7 +82,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">repeat</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">repeat</h1>
      *
      * <p style="color: #CDCDCD">Repeat a string or char one or more times - Java 1.8 or minor</p>
      *
@@ -101,7 +101,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">reverse</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">reverse</h1>
      *
      * <p style="color: #CDCDCD">Reverse a string - Java 1.8 or minor</p>
      *
@@ -119,7 +119,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">ucFirst</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">ucFirst</h1>
      *
      * <p style="color: #CDCDCD">Turn Upper Case the first letter from one string</p>
      *
@@ -157,7 +157,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">queryStringBuilder</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">queryStringBuilder</h1>
      *
      * <p style="color: #CDCDCD">Create a query string from Data JSON or List structures</p>
      *
@@ -183,7 +183,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">getDataFromQueryString</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">getDataFromQueryString</h1>
      *
      * <p style="color: #CDCDCD">Extract field from a Query String Data Structure</p>
      *
@@ -205,7 +205,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">queryStringToJson</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">queryStringToJson</h1>
      *
      * <p style="color: #CDCDCD">Convert a Query String into JSON Object</p>
      *
@@ -229,7 +229,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringToJson</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringToJson</h1>
      *
      * <p style="color: #CDCDCD">Convert a String into JSON Object</p>
      *
@@ -263,7 +263,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">sanitizeAsciiCaseSensitive</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">sanitizeAsciiCaseSensitive</h1>
      *
      * <p style="color: #CDCDCD">Data to remove non ASCII characters and convert case sensitive</p>
      *
@@ -305,7 +305,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">sanitizeAscii</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">sanitizeAscii</h1>
      *
      * <p style="color: #CDCDCD">Data to remove non ASCII characters</p>
      *
@@ -331,7 +331,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">queryExtractor</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">queryExtractor</h1>
      *
      * <p style="color: #CDCDCD">Data extract from initial and final position from any string source</p>
      *
@@ -350,7 +350,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">replaceIndexing</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">replaceIndexing</h1>
      *
      * <p style="color: #CDCDCD">Replace all string occurrence using an index to identify each one</p>
      *
@@ -398,7 +398,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringExtractor</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringExtractor</h1>
      *
      * <p style="color: #CDCDCD">Extract one specific string from one input string</p>
      *
@@ -438,7 +438,7 @@ public class CodexsStringHandler {
      * @param clear (String: Data to clear final string resulted)
      * @param pattern (String: Expression to execute the replacement, for example: (Intel|AMD))
      * @param replacer (String: Expression to replacement, for example: "model: $1")
-     * @param index (int: can be >= 0)
+     * @param index (int: can be 0 or higher)
      * @return String (Data extracted)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
@@ -463,7 +463,7 @@ public class CodexsStringHandler {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">extractByPattern</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">extractByPattern</h1>
      *
      * <p style="color: #CDCDCD">Extract a specific alphanumeric data defined by specific field</p>
      *
@@ -473,8 +473,8 @@ public class CodexsStringHandler {
      * - Default pattern: "("+field+": ?)([-_.0-9a-zA-Z"+useChars+"]+)"+qty,
      * where qty can be {1,} in case useChars is equal " " or qty can be ""
      * in case useChar equals null or ""
-     * <br />
-     * <br />
+     * <br>
+     * <br>
      * - Its required that input contains a delimiter (:) to get correctly
      * result, see the below examples:
      * </p>
@@ -556,7 +556,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringList</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringList</h1>
      *
      * <p style="color: #CDCDCD">Create one list of String from an List items</p>
      *
@@ -604,7 +604,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">listExtractor</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">listExtractor</h1>
      *
      * <p style="color: #CDCDCD">Data extractor from a List source for a list of string</p>
      *
@@ -631,6 +631,7 @@ public class CodexsStringHandler {
      *
      * @param items (List&lt;String&gt;: Data input to extract)
      * @param detail (String: Any data to apply or control the replacement, for example: model)
+     * @param clear (String: o clear the data content)
      * @param pattern (String: Expression to execute the replacement, for example: (Intel|AMD))
      * @param replacer (String: Expression to replacement, for example: "model: $1")
      * @return String (Data Extracted)
@@ -663,7 +664,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">listClear</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">listClear</h1>
      *
      * <p style="color: #CDCDCD">Create one list of String from an List items cleanup the content</p>
      *
@@ -703,7 +704,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">alphaFieldPattern</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">alphaFieldPattern</h1>
      *
      * <p style="color: #CDCDCD">Extract one part of input based on field</p>
      *
@@ -712,17 +713,17 @@ public class CodexsStringHandler {
      * </p>
      *
      * <blockquote><pre>
-     * String item1 = "IF: enp7s0 state: up speed: 1000 Mbps duplex: full mac: <filter>";
+     * String item1 = "IF: enp7s0 state: up speed: 1000 Mbps duplex: full mac: [filter]";
      * String result1 = alphaFieldPattern(item1, "IF", "");
-     * System.out.println("=====[result1]> " + result1);
+     * System.out.println("=====[result1] " + result1);
      *
-     * String item2 = "IF-ID-1: br-1222323251ed state: down mac: <filter>";
+     * String item2 = "IF-ID-1: br-1222323251ed state: down mac: [filter]";
      * String result2 = alphaFieldPattern(item2, "IF-ID-1", "");
-     * System.out.println("=====[result2]> " + result2);
+     * System.out.println("=====[result2] " + result2);
      *
-     * String item3 = "IF-ID-1: br-1222323251ed state: down mac: <filter>";
+     * String item3 = "IF-ID-1: br-1222323251ed state: down mac: [filter]";
      * String result3 = alphaFieldPattern(item3, "IF|IF-ID-1", "");
-     * System.out.println("=====[result3]> " + result3);
+     * System.out.println("=====[result3] " + result3);
      * </pre></blockquote>
      *
      * @param input (String)

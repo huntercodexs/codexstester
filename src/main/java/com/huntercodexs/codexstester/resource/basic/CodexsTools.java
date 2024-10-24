@@ -30,7 +30,7 @@ public class CodexsTools {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">trace</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">trace</h1>
      *
      * <p style="color: #CDCDCD">This method is used to make a total trace and tracking in the idp
      * transaction flow where the result can be applied to information or error log level</p>

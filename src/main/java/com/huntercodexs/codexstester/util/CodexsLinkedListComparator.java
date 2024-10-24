@@ -11,8 +11,11 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsLinkedListComparator extends CodexsLinkedHashMapComparator {
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareLinkedListFormat</h6>
-	 *
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareLinkedListFormat</h1>@param linkedHashMapKeys (Object[])
+	 * @param linkedListValues (Object[])
+	 * @param linkedListTyped  (Object[])
+	 * @param linkedListCompare (Object: LinkedList)
+	 * @param strictMode (boolean)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
@@ -138,8 +141,11 @@ public abstract class CodexsLinkedListComparator extends CodexsLinkedHashMapComp
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareLinkedListFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareLinkedListFormat</h1>
 	 *
+	 * @param expectedLinkedListDataTree (Object[][])
+	 * @param linkedListCompare (Object: LinkedList)
+	 * @param strictMode (boolean)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
