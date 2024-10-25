@@ -8,6 +8,7 @@ import net.minidev.json.JSONObject;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
 
 import static codexstester.setup.datasource.SampleDataSource.*;
 
@@ -104,8 +105,8 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        String dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
-        codexsTesterAssertExact("GET OK - 123456", dispatcherResult, null);
+        MockHttpServletResponse dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
+        codexsTesterAssertExact("GET OK - 123456", dispatcherResult.getContentAsString(), null);
     }
 
     /*SAMPLE - POST*/
@@ -125,8 +126,8 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        String dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
-        codexsTesterAssertExact("POST OK - 123456", dispatcherResult, null);
+        MockHttpServletResponse dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
+        codexsTesterAssertExact("POST OK - 123456", dispatcherResult.getContentAsString(), null);
     }
 
     /*SAMPLE - PUT*/
@@ -146,8 +147,8 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        String dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
-        codexsTesterAssertExact("PUT OK - 123456", dispatcherResult, null);
+        MockHttpServletResponse dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
+        codexsTesterAssertExact("PUT OK - 123456", dispatcherResult.getContentAsString(), null);
     }
 
     /*SAMPLE - DELETE*/
@@ -167,8 +168,8 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        String dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
-        codexsTesterAssertExact("DELETE OK - 123456", dispatcherResult, null);
+        MockHttpServletResponse dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
+        codexsTesterAssertExact("DELETE OK - 123456", dispatcherResult.getContentAsString(), null);
     }
 
     /*SAMPLE - PATCH*/
@@ -188,8 +189,8 @@ public class SampleInternalTests extends SampleBridgeTest {
         requestDto.setDataRequest(dataRequest.toString());
         requestDto.setExpectedMessage(null);
 
-        String dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
-        codexsTesterAssertExact("PATCH OK - 123456", dispatcherResult, null);
+        MockHttpServletResponse dispatcherResult = codexsTesterInternalDispatcher(requestDto, headersDto);
+        codexsTesterAssertExact("PATCH OK - 123456", dispatcherResult.getContentAsString(), null);
     }
 
 }
