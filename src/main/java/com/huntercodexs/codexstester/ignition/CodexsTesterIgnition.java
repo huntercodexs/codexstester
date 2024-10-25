@@ -36,7 +36,7 @@ public abstract class CodexsTesterIgnition {
         "|  ||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  //  |\n" +
         "|  \\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\  |\n" +
         "|                                                                                                       |\n" +
-        "|  Release: 2.0.7                                                                                      |\n" +
+        "|  Release: 2.0.7                                                                                       |\n" +
         "|  https://github.com/huntercodexs                                                                      |\n" +
         "|  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |\n" +
         "|                                                                                                       |\n" +
