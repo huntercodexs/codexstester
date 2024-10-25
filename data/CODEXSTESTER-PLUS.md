@@ -308,7 +308,7 @@ Below are some situations where it is possible to use Codexstester
 
 # Configuration
 
-### From GitHUB repository
+### From GitHub Repository
 
 - First, get the codexstester from huntercodexs GitHUB account
 
@@ -347,23 +347,24 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 
 </code>
 
-### From GitHUB Releases
+### From GitHub Releases
 
-- First, get the codexstester jar file from huntercodexs GitHUB account in the releases section 
-  - https://github.com/huntercodexs/codexstester/releases
-  - or goto the section # Releases in this documentation and choose the specific release according the project requirements
+You can download the zip files from Assets in the release target and install in the required project.
 
+### From GitHub Packages
 
-- After downloaded the jar file for example codexstester-2.0.0-SNAPSHOT.jar, save it in the .m2 path, for example:
-  - /home/{USER}/.m2/repository/com/huntercodexs/codexstester/codexstester/2.0.0-SNAPSHOT
+It is possible to get the codexstester project from GitHub packages as a maven dependency for java projects, so for 
+that give a look at https://github.com/huntercodexs/codexstester/packages/2292894/versions or section # Releases in 
+this documentation to get the correctly version.
 
+After getting the correct Codexstester version, put it in the pom.xml file as showed below:
 
-- Now, import the codexstester library into the pom.xml file of any project the following dependency, for example:
+> IMPORTANT: Note that to use the GitHub package you need to use the -SNAPSHOT label, according example below
 
 <code>
 
 		<dependency>
-			<groupId>com.huntercodexs.codexstester</groupId>
+			<groupId>com.huntercodexs</groupId>
 			<artifactId>codexstester</artifactId>
 			<version>2.0.0-SNAPSHOT</version>
 			<scope>provided</scope>
@@ -377,20 +378,23 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 
 </code>
 
-### From GitHUB Packages
+### From Maven Central
 
-It is possible to get the codexstester project from GitHub packages as a maven dependency for java projects, so for 
-that give a look at https://github.com/huntercodexs/codexstester/releases or section # Releases in this documentation 
-to get the correctly version.
+The Codexstester are available in the Maven Central Packages through the link
+https://central.sonatype.com/artifact/com.huntercodexs/codexstester. You can get the latest version in that place 
+and import in the pom.xml file to use maven as a dependency manager.
 
-After getting the correct Codexstester version, put it in the pom.xml file as showed below:
+Below is a simple piece of configuration code that shows how to do it
+
+> IMPORTANT: Note that to use the package from Maven Central Repository you need the remove the -SNAPSHOT label 
+> from the dependency target as showed below
 
 <code>
 
 		<dependency>
 			<groupId>com.huntercodexs</groupId>
 			<artifactId>codexstester</artifactId>
-			<version>1.0.9-SNAPSHOT</version>
+			<version>2.0.0</version>
 			<scope>provided</scope>
 			<exclusions>
 				<exclusion>
@@ -402,11 +406,7 @@ After getting the correct Codexstester version, put it in the pom.xml file as sh
 
 </code>
 
-You can check all packages available following the link https://github.com/huntercodexs?tab=packages&repo_name=codexstester.
-
-### From Maven Central
-
-![check-red.png](media/check-red.png) Unavailable yet
+Note that the scope should be "provided" to avoid problems and conflicts with another resources in the target application.
 
 ### Codexstester Generator
 
