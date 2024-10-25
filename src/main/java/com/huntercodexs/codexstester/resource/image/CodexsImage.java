@@ -182,7 +182,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateBytes</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">simulateCalculateBytes</h1>
      *
      * <p style="color: #CDCDCD">Simulate one image length in bytes from an Integer value</p>
      *
@@ -196,7 +196,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateKilobytes</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">simulateCalculateKilobytes</h1>
      *
      * <p style="color: #CDCDCD">Simulate one image length in kilobytes from an Integer value</p>
      *
@@ -210,7 +210,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">simulateCalculateMegabytes</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">simulateCalculateMegabytes</h1>
      *
      * <p style="color: #CDCDCD">Simulate one image length in megabytes from an Integer value</p>
      *
@@ -224,7 +224,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">isAnAcceptedImage</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">isAnAcceptedImage</h1>
      *
      * <p style="color: #CDCDCD">Check if the image is in the accepted formats</p>
      *
@@ -243,7 +243,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">isAnImage</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">isAnImage</h1>
      *
      * <p style="color: #CDCDCD">Check if the current file is really a valid image</p>
      *
@@ -263,7 +263,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageType</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageType</h1>
      *
      * <p style="color: #CDCDCD">Get the type of image from a byte source</p>
      *
@@ -280,7 +280,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageType</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageType</h1>
      *
      * <p style="color: #CDCDCD">Get the type of image from string source</p>
      *
@@ -297,12 +297,13 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFormat</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFormat</h1>
      *
      * <p style="color: #CDCDCD">Get the image format from byte[] image (same that imageType)</p>
      *
      * @param image (byte[]: Image Content in bytes)
      * @return String (Image Format)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -320,12 +321,13 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDimension</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageDimension</h1>
      *
      * <p style="color: #CDCDCD">Get the image size (height x width) from byte[] image</p>
      *
      * @param image (byte[]: Image Content in bytes)
      * @return Dimension (Image Dimension)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -348,7 +350,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageSize</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageSize</h1>
      *
      * <p style="color: #CDCDCD">Get the image length in {"bytes", "kilobytes", "megabytes"} from byte[] image</p>
      *
@@ -379,7 +381,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageEncode</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageEncode</h1>
      *
      * <p style="color: #CDCDCD">Encode an image in base64 format from a byte data source</p>
      *
@@ -393,7 +395,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDecode</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageDecode</h1>
      *
      * <p style="color: #CDCDCD">Decode data from a string bas64 data source</p>
      *
@@ -407,7 +409,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageEncrypted</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageEncrypted</h1>
      *
      * <p style="color: #CDCDCD">Encrypt one image from byte[] data using AES-256-CBC method</p>
      *
@@ -433,7 +435,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageDecrypted</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageDecrypted</h1>
      *
      * <p style="color: #CDCDCD">Decrypt on image from String data (previously encrypted with imageEncrypted method)</p>
      *
@@ -457,7 +459,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageToMatrix</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageToMatrix</h1>
      *
      * <p style="color: #CDCDCD">This method convert an image file (from bytes) in one matrix with base64 values</p>
      *
@@ -496,7 +498,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFromMatrix</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFromMatrix</h1>
      *
      * <p style="color: #CDCDCD">This method revert a conversion made by imageToMatrix method from this class</p>
      *
@@ -525,9 +527,9 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageBse64Save</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageBse64Save</h1>
      *
-     * <p style="color: #CDCDCD">Save data image in disk from memory (Bytes -> Base64)</p>
+     * <p style="color: #CDCDCD">Save data image in disk from memory (Bytes Base64)</p>
      *
      * @param filenamePath (String: Where the image should be saved)
      * @param image (byte[]: Image file to save)
@@ -548,7 +550,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageCopy</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageCopy</h1>
      *
      * <p style="color: #CDCDCD">Copy one image from one origin to any destiny</p>
      *
@@ -570,7 +572,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFragment</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFragment</h1>
      *
      * <p style="color: #CDCDCD">Split one image in the matrix 20x20 format from a data byte image</p>
      *
@@ -614,7 +616,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFragmentRevert</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFragmentRevert</h1>
      *
      * <p style="color: #CDCDCD">Revert the image fragmentation from imageFragment method in this class</p>
      *
@@ -649,7 +651,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFlipX</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFlipX</h1>
      *
      * <p style="color: #CDCDCD">Flip one image in X axis with true color support</p>
      *
@@ -689,7 +691,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageFlipY</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageFlipY</h1>
      *
      * <p style="color: #CDCDCD">Flip one image in Y axis with true color support</p>
      *
@@ -729,7 +731,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageRotate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageRotate</h1>
      *
      * <p style="color: #CDCDCD">Rotate an image in 180 degrees</p>
      *
@@ -770,7 +772,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageResize</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageResize</h1>
      *
      * <p style="color: #CDCDCD">Resize an image in a specific size delimited by width x height</p>
      *
@@ -802,7 +804,7 @@ public class CodexsImage {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">imageCrop</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">imageCrop</h1>
      *
      * <p style="color: #CDCDCD">Crop an image in a specific point delimited by parameters</p>
      *

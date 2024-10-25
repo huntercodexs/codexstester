@@ -115,7 +115,7 @@ public enum CodexsDataMask {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dataMasked</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dataMasked</h1>
      *
      * <p style="color: #CDCDCD">This method make a mask in the data input according the parameter dataMasked</p>
      *
