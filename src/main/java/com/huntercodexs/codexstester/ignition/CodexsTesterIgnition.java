@@ -30,22 +30,18 @@ public abstract class CodexsTesterIgnition {
         String dateTimeFormat = "|  Date now is: "+ dateTimeNow.format(formatter)+spaces+"|\n";
 
         String welcome =
-        """
-         _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
-        |                                                                                                       |
-        |  //||||  //|||\\\\  ||||\\\\   ||||||  \\\\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\\\  |
-        |  ||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  //  |
-        |  \\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\  |
-        |                                                                                                       |
-        |  Release: 1.0.9                                                                                       |
-        |  https://github.com/huntercodexs                                                                      |
-        |  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |
-        |                                                                                                       |
-        """
-        +dateTimeFormat+
-        """
-        |_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|
-        """;
+        " _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n" +
+        "|                                                                                                       |\n" +
+        "|  //||||  //|||\\\\  ||||\\\\   ||||||  \\\\  //  //||||     ||||||  ||||||  //||||  ||||||  ||||||  ||||\\\\  |\n" +
+        "|  ||      ||   ||  ||   ||  ||||      ||    \\\\||\\\\  -    ||    ||||    \\\\||\\\\    ||    ||||    ||  //  |\n" +
+        "|  \\\\||||  \\\\|||//  ||||//   ||||||  //  \\\\  ||||//       ||    ||||||  ||||//    ||    ||||||  ||  \\\\  |\n" +
+        "|                                                                                                       |\n" +
+        "|  Release: 1.0.21                                                                                      |\n" +
+        "|  https://github.com/huntercodexs                                                                      |\n" +
+        "|  Powered by HunterCodexs (c) 2022 (owned by jereelton-devel)                                          |\n" +
+        "|                                                                                                       |\n" +
+        dateTimeFormat +
+        "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
 
         codexsHelperLogTerm(welcome, "Codexs Tester is starting ...", false);
 
