@@ -1230,13 +1230,14 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">restResponseSimulate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">restResponseSimulate</h1>
      *
      * <p style="color: #CDCDCD">Simulate a Rest Response using an HTTP Status Code and Body</p>
      *
      * @param httpCode (int: The HTTP Code to simulate)
      * @param throwable (boolean: Means if to simulate a throw exception)
      * @param responseSimulate (Object: The field value)
+     * @return HttpClientErrorException
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -1691,11 +1692,12 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">httpResponseErrorExtractor</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">httpResponseErrorExtractor</h1>
      *
      * <p style="color: #CDCDCD">Extract the data content from HTTP Response</p>
      *
      * @param hc (HttpStatusCodeException)
+     * @return String
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */

@@ -9,7 +9,7 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.r
 public class CodexsFormatter {
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">numberFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">numberFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the number in the specified format</p>
      *
@@ -24,7 +24,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the String in the specified format</p>
      *
@@ -39,7 +39,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fillerFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fillerFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format a data input with a specified parameters</p>
      *
@@ -79,7 +79,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">rgFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">rgFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the RG number in the specified format</p>
      *
@@ -114,7 +114,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cpfFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">cpfFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the CPF number in the correct format</p>
      *
@@ -130,7 +130,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cnpjFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">cnpjFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the CNPJ number in the correct format</p>
      *
@@ -147,7 +147,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">moneyFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">moneyFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the currency value in the specific currency format</p>
      *
@@ -200,73 +200,73 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dateFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the date in the specific format</p>
      *
      * @param dateInput (String: the date to format)
      * @param dateFormat (String: the format to apply in the date [
-     *                   <br />yyy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyyy-MM-dd HH:mm:ss.ms,
-     *                   <br />dd-MM-yyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yyyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yy HH:mm:ss.ms,
-     *                   <br />yy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyy-MM-dd HH:mm:ss,
-     *                   <br />yyyy-MM-dd HH:mm:ss,
-     *                   <br />dd-MM-yyy HH:mm:ss,
-     *                   <br />dd-MM-yyyy HH:mm:ss,
-     *                   <br />dd-MM-yy HH:mm:ss,
-     *                   <br />yy-MM-dd HH:mm:ss,
-     *                   <br />yyy-MM-dd HH:mm,
-     *                   <br />yyyy-MM-dd HH:mm,
-     *                   <br />dd-MM-yyy HH:mm,
-     *                   <br />dd-MM-yyyy HH:mm,
-     *                   <br />dd-MM-yy HH:mm,
-     *                   <br />yy-MM-dd HH:mm,
-     *                   <br />yyy-MM-dd HH,
-     *                   <br />yyyy-MM-dd HH,
-     *                   <br />dd-MM-yyy HH,
-     *                   <br />dd-MM-yyyy HH,
-     *                   <br />dd-MM-yy HH,
-     *                   <br />yy-MM-dd HH,
-     *                   <br />yyy-MM-dd,
-     *                   <br />yyyy-MM-dd,
-     *                   <br />dd-MM-yyy,
-     *                   <br />dd-MM-yyyy,
-     *                   <br />dd-MM-yy,
-     *                   <br />yy-MM-dd,
-     *                   <br />yyyMMddHHmmssms,
-     *                   <br />yyyyMMddHHmmssms,
-     *                   <br />ddMMyyyHHmmssms,
-     *                   <br />ddMMyyyyHHmmssms,
-     *                   <br />ddMMyyHHmmssms,
-     *                   <br />yyMMddHHmmssms,
-     *                   <br />yyyMMddHHmmss,
-     *                   <br />yyyyMMddHHmmss,
-     *                   <br />ddMMyyyHHmmss,
-     *                   <br />ddMMyyyyHHmmss,
-     *                   <br />ddMMyyHHmmss,
-     *                   <br />yyMMddHHmmss,
-     *                   <br />yyyMMddHHmm,
-     *                   <br />yyyyMMddHHmm,
-     *                   <br />ddMMyyyHHmm,
-     *                   <br />ddMMyyyyHHmm,
-     *                   <br />ddMMyyHHmm,
-     *                   <br />yyMMddHHmm,
-     *                   <br />yyyMMddHH,
-     *                   <br />yyyyMMddHH,
-     *                   <br />ddMMyyyHH,
-     *                   <br />ddMMyyyyHH,
-     *                   <br />ddMMyyHH,
-     *                   <br />yyMMddHH,
-     *                   <br />yyyMMdd,
-     *                   <br />yyyyMMdd,
-     *                   <br />ddMMyyy,
-     *                   <br />ddMMyyyy,
-     *                   <br />ddMMyy,
-     *                   <br />yyMMdd,
-     *                   <br/>])
+     *                   <br>yyy-MM-dd HH:mm:ss.ms,
+     *                   <br>yyyy-MM-dd HH:mm:ss.ms,
+     *                   <br>dd-MM-yyy HH:mm:ss.ms,
+     *                   <br>dd-MM-yyyy HH:mm:ss.ms,
+     *                   <br>dd-MM-yy HH:mm:ss.ms,
+     *                   <br>yy-MM-dd HH:mm:ss.ms,
+     *                   <br>yyy-MM-dd HH:mm:ss,
+     *                   <br>yyyy-MM-dd HH:mm:ss,
+     *                   <br>dd-MM-yyy HH:mm:ss,
+     *                   <br>dd-MM-yyyy HH:mm:ss,
+     *                   <br>dd-MM-yy HH:mm:ss,
+     *                   <br>yy-MM-dd HH:mm:ss,
+     *                   <br>yyy-MM-dd HH:mm,
+     *                   <br>yyyy-MM-dd HH:mm,
+     *                   <br>dd-MM-yyy HH:mm,
+     *                   <br>dd-MM-yyyy HH:mm,
+     *                   <br>dd-MM-yy HH:mm,
+     *                   <br>yy-MM-dd HH:mm,
+     *                   <br>yyy-MM-dd HH,
+     *                   <br>yyyy-MM-dd HH,
+     *                   <br>dd-MM-yyy HH,
+     *                   <br>dd-MM-yyyy HH,
+     *                   <br>dd-MM-yy HH,
+     *                   <br>yy-MM-dd HH,
+     *                   <br>yyy-MM-dd,
+     *                   <br>yyyy-MM-dd,
+     *                   <br>dd-MM-yyy,
+     *                   <br>dd-MM-yyyy,
+     *                   <br>dd-MM-yy,
+     *                   <br>yy-MM-dd,
+     *                   <br>yyyMMddHHmmssms,
+     *                   <br>yyyyMMddHHmmssms,
+     *                   <br>ddMMyyyHHmmssms,
+     *                   <br>ddMMyyyyHHmmssms,
+     *                   <br>ddMMyyHHmmssms,
+     *                   <br>yyMMddHHmmssms,
+     *                   <br>yyyMMddHHmmss,
+     *                   <br>yyyyMMddHHmmss,
+     *                   <br>ddMMyyyHHmmss,
+     *                   <br>ddMMyyyyHHmmss,
+     *                   <br>ddMMyyHHmmss,
+     *                   <br>yyMMddHHmmss,
+     *                   <br>yyyMMddHHmm,
+     *                   <br>yyyyMMddHHmm,
+     *                   <br>ddMMyyyHHmm,
+     *                   <br>ddMMyyyyHHmm,
+     *                   <br>ddMMyyHHmm,
+     *                   <br>yyMMddHHmm,
+     *                   <br>yyyMMddHH,
+     *                   <br>yyyyMMddHH,
+     *                   <br>ddMMyyyHH,
+     *                   <br>ddMMyyyyHH,
+     *                   <br>ddMMyyHH,
+     *                   <br>yyMMddHH,
+     *                   <br>yyyMMdd,
+     *                   <br>yyyyMMdd,
+     *                   <br>ddMMyyy,
+     *                   <br>ddMMyyyy,
+     *                   <br>ddMMyy,
+     *                   <br>yyMMdd,
+     *                   <br>])
      * @return String (Date Formatted)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
