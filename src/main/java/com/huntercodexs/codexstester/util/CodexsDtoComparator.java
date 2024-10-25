@@ -11,7 +11,7 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsDtoComparator extends CodexsListComparator {
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java Object</p>
 	 *
@@ -46,7 +46,7 @@ public abstract class CodexsDtoComparator extends CodexsListComparator {
 	 * dtoToCompare.setContentType(MediaType.APPLICATION_JSON_VALUE);
 	 * dtoToCompare.setHttpMethod(HTTP_METHOD_POST);
 	 *
-	 * Map<String, String> mapResponseSimulate = new HashMap<>();
+	 * Map&lt;String, String&gt; mapResponseSimulate = new HashMap&lt;&gt;();
 	 * mapResponseSimulate.put("name", "value1");
 	 * dtoToCompare.setBodyParameters(mapResponseSimulate);
 	 *
@@ -203,7 +203,7 @@ public abstract class CodexsDtoComparator extends CodexsListComparator {
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareDtoFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java Object - Using Data Tree</p>
 	 *
@@ -238,7 +238,7 @@ public abstract class CodexsDtoComparator extends CodexsListComparator {
 	 * headersDtoResponse.setContentType(MediaType.APPLICATION_JSON_VALUE);
 	 * headersDtoResponse.setHttpMethod(HTTP_METHOD_POST);
 	 *
-	 * Map<String, String> responseMap = new HashMap<>();
+	 * Map&lt;String, String&gt; responseMap = new HashMap&lt;&gt;();
 	 * responseMap.put("name", "value1");
 	 * headersDtoResponse.setBodyParameters(responseMap);
 	 *
