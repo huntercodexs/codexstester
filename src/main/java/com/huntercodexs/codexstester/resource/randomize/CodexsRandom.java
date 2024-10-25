@@ -24,7 +24,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomNumber</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomNumber</p>
      *
      * <p style="color: #CDCDCD">Generate a random number with a specified number of digits given in the parameters</p>
      *
@@ -44,7 +44,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomMoney</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomMoney</p>
      *
      * <p style="color: #CDCDCD">Generate random money with a specified number of digits and the currency format,
      * both given in the parameters</p>
@@ -75,7 +75,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomCents</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomCents</p>
      *
      * <p style="color: #CDCDCD">Generate random cents money based on currency in the parameter</p>
      *
@@ -104,7 +104,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomCardNumber</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomCardNumber</p>
      *
      * <p style="color: #CDCDCD">Generate random card number with a specified separator</p>
      *
@@ -127,7 +127,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomId</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomId</p>
      *
      * <p style="color: #CDCDCD">Generate random ID with 6 digits and Prefix if given in the parameters</p>
      *
@@ -143,7 +143,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomGuid</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomGuid</p>
      *
      * <p style="color: #CDCDCD">Generate random GUID</p>
      *
@@ -156,7 +156,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomToken</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomToken</p>
      *
      * <p style="color: #CDCDCD">Generate random Token with a size specified in the parameter</p>
      *
@@ -178,7 +178,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomJwt</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomJwt</p>
      *
      * <p style="color: #CDCDCD">Generate random JWT to simulate requests using JSON WEB TOKEN</p>
      *
@@ -207,7 +207,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomHash</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomHash</p>
      *
      * <p style="color: #CDCDCD">Generate random Hash (md5)</p>
      *
@@ -222,7 +222,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomBinary</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomBinary</p>
      *
      * <p style="color: #CDCDCD">Generate random data binary to simulate binary operation</p>
      *
@@ -248,7 +248,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomCpf</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomCpf</p>
      *
      * <p style="color: #CDCDCD">Generate random CPF without valid and correct digits verifier</p>
      *
@@ -294,7 +294,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomCnpj</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomCnpj</p>
      *
      * <p style="color: #CDCDCD">Generate random CNPJ - Brazil</p>
      *
@@ -313,7 +313,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomDate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomDate</p>
      *
      * <p style="color: #CDCDCD">Generate random date with the format: uuuu-MM-dd</p>
      *
@@ -328,7 +328,7 @@ public class CodexsRandom {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">randomDateTime</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">randomDateTime</p>
      *
      * <p style="color: #CDCDCD">Generate random datetime with the format: uuuu-MM-dd HH:mm:ss</p>
      *

@@ -32,7 +32,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">listMapToObject</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">listMapToObject</p>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into List object data</p>
      *
@@ -92,7 +92,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">mapInMap</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">mapInMap</p>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into Map object data</p>
      *
@@ -130,7 +130,7 @@ public class CodexsObjectParser {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">mapInList</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">mapInList</p>
      *
      * <p style="color: #CDCDCD">To convert a Object Data into Map List object data</p>
      *

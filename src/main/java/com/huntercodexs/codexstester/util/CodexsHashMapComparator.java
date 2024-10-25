@@ -11,7 +11,7 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsHashMapComparator extends CodexsLinkedListComparator {
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareHashMapFormat</p>
 	 *
 	 * @param hashMapKeys (Object[])
 	 * @param hashMapValues (Object[])
@@ -161,7 +161,7 @@ public abstract class CodexsHashMapComparator extends CodexsLinkedListComparator
 	}
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareHashMapFormat</p>
 	 *
 	 * @param expectedHashMapDataTree (Object[][])
 	 * @param hashMapCompare (HashMap&lt;Object, Object&gt;)
