@@ -1812,98 +1812,98 @@ keep in your mind that this process is required in case the service integration 
 Here you can find the latest release of codexstester according your application requirements.
 
 
-- Release 2.0.11
-
+Release 2.0.11
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">
   Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0 - 2.0.11-SNAPSHOT
 </a>
 
-- Release 2.0.10
-
+**Release 2.0.10**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.10">
   Java 21 - Spring Boot 3.3.2 - Cucumber 7.10.1 - 2.0.10-SNAPSHOT
 </a>
 
-- Release 2.0.9
-
+**Release 2.0.9**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.9">
   Java 17 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.9-SNAPSHOT
 </a>
 
-- Release 2.0.8
-
+**Release 2.0.8**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.8">
   Java 17 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.8-SNAPSHOT
 </a>
 
-- Release 2.0.7
-
+**Release 2.0.7**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.7">
   Java 17 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.7-SNAPSHOT
 </a>
 
-- Release 2.0.6
-
+**Release 2.0.6**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.6">
   Java 11 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.6-SNAPSHOT
 </a>
 
-- Release 2.0.5
-
+**Release 2.0.5**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.5">
   Java 11 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.5-SNAPSHOT
 </a>
 
-- Release 2.0.4
-
+**Release 2.0.4**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.4">
   Java 11 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.4-SNAPSHOT
 </a>
   
-- Release 2.0.3
-
+**Release 2.0.3**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.3">
   Java 8 - Spring Boot 2.6.4 - Cucumber 7.12.0 - 2.0.3-SNAPSHOT
 </a>
 
-- Release 2.0.2
-
+**Release 2.0.2**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.2">
   Java 8 - Spring Boot 2.6.4 - Cucumber 7.10.1 - 2.0.2-SNAPSHOT
 </a>
 
-- Release 2.0.1
-
+**Release 2.0.1**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.1">
   Java 8 - Spring Boot 2.6.4 - Cucumber 4.2.0 - 2.0.1-SNAPSHOT
 </a>
 
-- Release 2.0.0
-
+**Release 2.0.0**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.0">
   Java 8 - Spring Boot 2.0.1.RELEASE - Cucumber 4.2.0 - 2.0.0-SNAPSHOT
 </a>
   
-- Release 1.0.12
-
+**Release 1.0.12**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.12">
   Java 21 - 1.0.12-SNAPSHOT
 </a>
 
-- Release 1.0.11
-
+**Release 1.0.11**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.11">
   Java 17 - 1.0.11-SNAPSHOT
 </a>
 
-- Release 1.0.10
-
+**Release 1.0.10**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.10">
   Java 11 - 1.0.10-SNAPSHOT
 </a>
 
-- Release 1.0.9
-
+**Release 1.0.9**
+<br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.1.0.9">
   Java 8 - 1.0.9-SNAPSHOT
 </a>
