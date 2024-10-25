@@ -70,7 +70,7 @@ public class BasicAuthSecurity {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">basic</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">basic</h1>
      *
      * <p style="color: #CDCDCD">Make the Authentication using BASIC AUTH</p>
      *
