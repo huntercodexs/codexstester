@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CodexsFileReader {
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">awaitFileContent</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">awaitFileContent</h1>
      *
      * <p style="color: #CDCDCD">Get the file content based input parameters - like a sentinel</p>
      *
@@ -16,6 +16,7 @@ public class CodexsFileReader {
      * @param regex (String: The regular expression to interrupt the file reader process)
      * @param timeout (String: Time to automatically stop the file reader process)
      * @return String (File Content based on regular expression)
+     * @throws Exception (Exception: generic exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */

@@ -3,7 +3,7 @@ package com.huntercodexs.codexstester.resource.basic;
 public class CodexsPath {
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">sanitizePath</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">sanitizePath</h1>
      *
      * <p style="color: #CDCDCD">Sanitize any path as you need</p>
      *
@@ -20,7 +20,7 @@ public class CodexsPath {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileExtension</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileExtension</h1>
      *
      * <p style="color: #CDCDCD">Get the file extension from one string</p>
      *
