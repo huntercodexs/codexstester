@@ -71,7 +71,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">setHeaderList</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">setHeaderList</p>
      *
      * <p style="color: #CDCDCD">Set the header names and values to HTTP Requests</p>
      *
@@ -88,7 +88,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">setHttpMethod</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">setHttpMethod</p>
      *
      * <p style="color: #CDCDCD">Call the http method setter and get the current instance of
      *      this class where its possible to prepare a specific HTTP REQUEST METHOD and finally
@@ -104,7 +104,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpGet</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpGet</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD GET</p>
      *
@@ -116,7 +116,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpPost</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpPost</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD POST</p>
      *
@@ -128,7 +128,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpDelete</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpDelete</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD DELETE</p>
      *
@@ -140,7 +140,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpPut</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpPut</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD PUT</p>
      *
@@ -152,7 +152,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpPatch</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpPatch</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD PATCH</p>
      *
@@ -164,7 +164,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpOptions</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpOptions</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD OPTIONS</p>
      *
@@ -176,7 +176,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpHead</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpHead</p>
      *
      * <p style="color: #CDCDCD">HTTP METHOD HEAD</p>
      *
@@ -188,7 +188,7 @@ public class CodexsHttpClient {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">request</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">request</p>
      *
      * <p style="color: #CDCDCD">Execute the HTTP Request previously configured in the current instance</p>
      *

@@ -7,7 +7,7 @@ public class CodexsFileWriter {
     public BufferedWriter bufferedWriter;
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">folderCreate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">folderCreate</p>
      *
      * <p style="color: #CDCDCD">Create a folder in the specific path</p>
      *
@@ -34,7 +34,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileDelete</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileDelete</p>
      *
      * <p style="color: #CDCDCD">Delete one file in the specific path</p>
      *
@@ -63,7 +63,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileMove</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileMove</p>
      *
      * <p style="color: #CDCDCD">Rename file to specific filename passed in the parameters</p>
      *
@@ -94,7 +94,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileCreate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileCreate</p>
      *
      * <p style="color: #CDCDCD">Create a target file</p>
      *
@@ -118,7 +118,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileWrite</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileWrite</p>
      *
      * <p style="color: #CDCDCD">Write in the target file</p>
      *
@@ -135,7 +135,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileNewLine</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileNewLine</p>
      *
      * <p style="color: #CDCDCD">Append new line in the target file</p>
      *
@@ -151,7 +151,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileClose</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileClose</p>
      *
      * <p style="color: #CDCDCD">Close the target file</p>
      *

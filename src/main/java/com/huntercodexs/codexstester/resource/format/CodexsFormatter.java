@@ -9,7 +9,7 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.r
 public class CodexsFormatter {
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">numberFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">numberFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the number in the specified format</p>
      *
@@ -24,7 +24,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the String in the specified format</p>
      *
@@ -39,7 +39,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fillerFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fillerFormatter</p>
      *
      * <p style="color: #CDCDCD">Format a data input with a specified parameters</p>
      *
@@ -79,7 +79,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">rgFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">rgFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the RG number in the specified format</p>
      *
@@ -114,7 +114,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">cpfFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">cpfFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the CPF number in the correct format</p>
      *
@@ -130,7 +130,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">cnpjFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">cnpjFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the CNPJ number in the correct format</p>
      *
@@ -147,7 +147,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">moneyFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">moneyFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the currency value in the specific currency format</p>
      *
@@ -200,7 +200,7 @@ public class CodexsFormatter {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">dateFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">dateFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the date in the specific format</p>
      *

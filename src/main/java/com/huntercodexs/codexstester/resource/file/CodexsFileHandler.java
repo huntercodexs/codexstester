@@ -43,7 +43,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">loadProps</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">loadProps</p>
      *
      * <p style="color: #CDCDCD">Get all data from application properties file passed in the classpath parameter</p>
      *
@@ -67,7 +67,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">byteConvert</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">byteConvert</p>
      *
      * <p style="color: #CDCDCD">Convert the InputStream in the bytes</p>
      *
@@ -84,7 +84,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileToString</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileToString</p>
      *
      * <p style="color: #CDCDCD">Get the content file in the string format</p>
      *
@@ -120,7 +120,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileToArray</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileToArray</p>
      *
      * <p style="color: #CDCDCD">Convert a txt file into an array</p>
      *
@@ -156,7 +156,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">byteFile</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">byteFile</p>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in bytes format</p>
      *
@@ -172,7 +172,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">ioFile</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">ioFile</p>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in string format</p>
      *
@@ -188,7 +188,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">binFile</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">binFile</p>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in binary format</p>
      *
@@ -204,7 +204,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">folderCreate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">folderCreate</p>
      *
      * <p style="color: #CDCDCD">Create a folder according to path parameter</p>
      *
@@ -231,7 +231,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileList</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileList</p>
      *
      * <p style="color: #CDCDCD">List files in the specific directory according to filepath parameter</p>
      *
@@ -253,7 +253,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileDelete</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileDelete</p>
      *
      * <p style="color: #CDCDCD">Delete on file or directory simply passing the path in the parameters</p>
      *
@@ -282,7 +282,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileMove</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileMove</p>
      *
      * <p style="color: #CDCDCD">Rename on file or directory simply passing the old and new path in the parameters</p>
      *
@@ -313,7 +313,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">fileWriter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">fileWriter</p>
      *
      * <p style="color: #CDCDCD">Write in some file according data parameters, if the process not end up with success
      *      then one exception will be thrown
