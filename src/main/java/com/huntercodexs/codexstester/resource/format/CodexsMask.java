@@ -5,7 +5,7 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsStringHandler.r
 public class CodexsMask {
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">cardNumberMasked</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">cardNumberMasked</p>
      *
      * <p style="color: #CDCDCD">Mask a card number with a specific mask</p>
      *

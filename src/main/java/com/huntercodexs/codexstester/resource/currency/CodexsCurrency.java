@@ -39,7 +39,7 @@ public class CodexsCurrency {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">currencyFormatReal</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">currencyFormatReal</p>
      *
      * <p style="color: #CDCDCD">This method can be used to get currency real format - BRL</p>
      *
@@ -57,7 +57,7 @@ public class CodexsCurrency {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">currencyFormatDollar</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">currencyFormatDollar</p>
      *
      * <p style="color: #CDCDCD">This method can be used to get currency dollar format</p>
      *
@@ -75,7 +75,7 @@ public class CodexsCurrency {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">currencyFormatEuro</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">currencyFormatEuro</p>
      *
      * <p style="color: #CDCDCD">This method can be used to get currency euro format, when postfix is true the</p>
      *
@@ -105,7 +105,7 @@ public class CodexsCurrency {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">convertToCents</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">convertToCents</p>
      *
      * <p style="color: #CDCDCD">Convert a monetary value from dollar, real or euro into cents</p>
      *

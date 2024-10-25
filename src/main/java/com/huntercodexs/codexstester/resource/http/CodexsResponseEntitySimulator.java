@@ -1164,7 +1164,7 @@ public class CodexsResponseEntitySimulator {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">responseEntitySimulate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">responseEntitySimulate</p>
      *
      * <p style="color: #CDCDCD">Simulate a Rest Response using an HTTP Status Code and Body</p>
      *

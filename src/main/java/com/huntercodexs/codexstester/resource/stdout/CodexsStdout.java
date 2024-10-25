@@ -85,7 +85,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">addWidth</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">addWidth</p>
      *
      * <p style="color: #CDCDCD">addWidth</p>
      *
@@ -119,7 +119,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">drawHeader</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">drawHeader</p>
      *
      * <p style="color: #CDCDCD">drawHeader</p>
      *
@@ -135,7 +135,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">drawItemHeader</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">drawItemHeader</p>
      *
      * <p style="color: #CDCDCD">drawItemHeader</p>
      *
@@ -152,7 +152,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">drawItemId</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">drawItemId</p>
      *
      * <p style="color: #CDCDCD">drawItemId</p>
      *
@@ -171,7 +171,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">drawItem</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">drawItem</p>
      *
      * <p style="color: #CDCDCD">drawItem</p>
      *
@@ -190,7 +190,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">nextItem</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">nextItem</p>
      *
      * <p style="color: #CDCDCD">nextItem</p>
      *
@@ -202,7 +202,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">nextItemHeader</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">nextItemHeader</p>
      *
      * <p style="color: #CDCDCD">nextItemHeader</p>
      *
@@ -214,7 +214,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">matrixPrinter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">matrixPrinter</p>
      *
      * <p style="color: #CDCDCD">Print a data matrix from any source</p>
      *
@@ -257,7 +257,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">matrixPrinter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">matrixPrinter</p>
      *
      * <p style="color: #CDCDCD">Print a data matrix from any source</p>
      *

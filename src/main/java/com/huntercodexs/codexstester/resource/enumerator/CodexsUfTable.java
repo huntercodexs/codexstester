@@ -74,7 +74,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">ufCode</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">ufCode</p>
      *
      * <p style="color: #CDCDCD">This method return the code from the federate unity according uf parameter</p>
      *
@@ -88,7 +88,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stateName</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stateName</p>
      *
      * <p style="color: #CDCDCD">This method return the name of the federate unity according uf parameter</p>
      *
@@ -102,7 +102,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stateNameClear</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stateNameClear</p>
      *
      * <p style="color: #CDCDCD">This method return the name of the federate unity according uf parameter</p>
      *
@@ -116,7 +116,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">rgSspCode</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">rgSspCode</p>
      *
      * <p style="color: #CDCDCD">This method return the rg state of the federate unity according uf parameter</p>
      *
@@ -130,7 +130,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">checkUfExists</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">checkUfExists</p>
      *
      * <p style="color: #CDCDCD">This method check if on federate unity exists</p>
      *
@@ -149,7 +149,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">checkUfCodeExists</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">checkUfCodeExists</p>
      *
      * <p style="color: #CDCDCD">This method check if exists the uf code</p>
      *
@@ -168,7 +168,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">checkUfNameExists</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">checkUfNameExists</p>
      *
      * <p style="color: #CDCDCD">This method check if exists the uf name</p>
      *
@@ -187,7 +187,7 @@ public enum CodexsUfTable {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">checkRgSspExists</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">checkRgSspExists</p>
      *
      * <p style="color: #CDCDCD">This method check if exists the rg ssp in the list of states</p>
      *
