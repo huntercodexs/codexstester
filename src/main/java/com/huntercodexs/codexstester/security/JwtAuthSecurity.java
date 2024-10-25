@@ -97,7 +97,7 @@ public class JwtAuthSecurity {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">jwt</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">jwt</p>
      *
      * <p style="color: #CDCDCD">Get the JWT Token</p>
      *

@@ -1230,7 +1230,7 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">restResponseSimulate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">restResponseSimulate</p>
      *
      * <p style="color: #CDCDCD">Simulate a Rest Response using an HTTP Status Code and Body</p>
      *
@@ -1692,7 +1692,7 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">httpResponseErrorExtractor</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">httpResponseErrorExtractor</p>
      *
      * <p style="color: #CDCDCD">Extract the data content from HTTP Response</p>
      *

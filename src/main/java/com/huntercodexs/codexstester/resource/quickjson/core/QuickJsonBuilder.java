@@ -129,7 +129,7 @@ public class QuickJsonBuilder {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">build</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">build</p>
      *
      * <p style="color: #CDCDCD">Convert data from any JSON String to Object</p>
      *
@@ -276,7 +276,7 @@ public class QuickJsonBuilder {
 	}
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">build</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">build</p>
      *
      * <p style="color: #CDCDCD">Convert data from any Object to JSON String</p>
      *
