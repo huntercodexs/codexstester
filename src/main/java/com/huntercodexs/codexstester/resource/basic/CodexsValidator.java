@@ -17,7 +17,7 @@ public class CodexsValidator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cpfValidator</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">cpfValidator</h1>
      *
      * <p style="color: #CDCDCD">Validate a real CPF Number</p>
      *
@@ -72,7 +72,7 @@ public class CodexsValidator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">mailValidator</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">mailValidator</h1>
      *
      * <p style="color: #CDCDCD">Validate a real Email Address</p>
      *
@@ -95,7 +95,7 @@ public class CodexsValidator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">phoneValidator</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">phoneValidator</h1>
      *
      * <p style="color: #CDCDCD">Validate a real Phone Number Address</p>
      *
@@ -121,7 +121,7 @@ public class CodexsValidator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cvvValidator</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">cvvValidator</h1>
      *
      * <p style="color: #CDCDCD">Validate a real Cvv Card Number</p>
      *
@@ -135,7 +135,7 @@ public class CodexsValidator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">cardNumberValidator</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">cardNumberValidator</h1>
      *
      * <p style="color: #CDCDCD">Validate a real Card Number (not considering the card flag)</p>
      *

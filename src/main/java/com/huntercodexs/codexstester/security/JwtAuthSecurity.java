@@ -97,10 +97,12 @@ public class JwtAuthSecurity {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jwt</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">jwt</h1>
      *
      * <p style="color: #CDCDCD">Get the JWT Token</p>
      *
+     * @param <T> (Class Type)
+     * @param objectResponse (Class: Object)
      * @return Object (Basic Auth Data)
      * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
