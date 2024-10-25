@@ -42,6 +42,7 @@ public interface CodexsSecuritySetup {
      * </pre></blockquote>
      *
      * @param env (String)
+     * @param token (String)
      * @return Oauth2RequestTokenDto
      * */
     Oauth2RequestCheckTokenDto oauth2CheckToken(String env, String token);

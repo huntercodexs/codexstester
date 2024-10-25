@@ -48,9 +48,6 @@ public abstract class CodexTesterPropertiesLoader extends CodexsAssertion {
         Properties properties = new Properties();
         String propFile = propertiesPath("external", target);
 
-        //TODO: Check if is really necessary to show this message while tests running
-        //codexsHelperLogTerm("LOAD EXTERNAL PROPS", propFile, true);
-
         try {
             File file = ResourceUtils.getFile(propFile);
             InputStream in = Files.newInputStream(file.toPath());
@@ -68,9 +65,6 @@ public abstract class CodexTesterPropertiesLoader extends CodexsAssertion {
         Properties properties = new Properties();
         String propFile = propertiesPath("internal", target);
 
-        //TODO: Check if is really necessary to show this message while tests running
-        //codexsHelperLogTerm("LOAD INTERNAL PROPS", propFile, true);
-
         try {
             File file = ResourceUtils.getFile(propFile);
             InputStream in = Files.newInputStream(file.toPath());
@@ -87,9 +81,6 @@ public abstract class CodexTesterPropertiesLoader extends CodexsAssertion {
 
         Properties properties = new Properties();
         String propFile = propertiesPath("unitary", target);
-
-        //TODO: Check if is really necessary to show this message while tests running
-        //codexsHelperLogTerm("LOAD UNITARY PROPS", propFile, true);
 
         try {
             File file = ResourceUtils.getFile(propFile);

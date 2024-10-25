@@ -157,7 +157,7 @@ public class QuickJsonExtractor {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">standardExtraction</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">standardExtraction</h1>
      *
      * <p style="color: #CDCDCD">Retrieve the value from on specific json</p>
      *
@@ -168,7 +168,7 @@ public class QuickJsonExtractor {
      *     QuickJson qj = new QuickJson();
      *     QuickJsonExtractor qjExtractor = new QuickJsonExtractor();
      *
-     *     HashMap<String, Object> map = new HashMap<>();
+     *     HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();
      *     map.put("map1", "Map 1 Value Test");
      *     map.put("map2", 345);
      *     map.put("map3", Arrays.asList("Array 1", "Array 2", 222, "Array 3"));
@@ -274,7 +274,7 @@ public class QuickJsonExtractor {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">smartExtraction</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">smartExtraction</h1>
      *
      * <p style="color: #CDCDCD">Retrieve the value from on specific json using advanced method</p>
      *
@@ -285,7 +285,7 @@ public class QuickJsonExtractor {
      *     QuickJson qj = new QuickJson();
      *     QuickJsonExtractor qjExtractor = new QuickJsonExtractor();
      *
-     *     HashMap<String, Object> map = new HashMap<>();
+     *     HashMap&lt;String, Object&gt; map = new HashMap&lt;&gt;();
      *         map.put("map1", "Map 1 Value Test");
      *         map.put("map2", 345);
      *         map.put("map3", Arrays.asList("Array 1", "Array 2", 222, "Array 3"));

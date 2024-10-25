@@ -22,7 +22,8 @@ public abstract class CodexsTesterIgnition {
     @Autowired
     WebApplicationContext webApplicationContext;
 
-    public static void codexstesterSplash() {
+    protected void setUp() {
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu/MM/dd HH:mm:ss");
         LocalDateTime dateTimeNow = LocalDateTime.now();
         String spaces = repeat(" ", 69);
@@ -43,10 +44,7 @@ public abstract class CodexsTesterIgnition {
         "|_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _|\n";
 
         codexsHelperLogTerm(welcome, "Codexs Tester is starting ...", false);
-    }
 
-    protected void setUp() {
-        codexstesterSplash();
         genericMockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
         genericRestTemplate = new RestTemplate();
     }
