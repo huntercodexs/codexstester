@@ -1,6 +1,6 @@
 package com.huntercodexs.codexstester.resource.file;
 
-import org.apache.commons.io.IOUtils;
+import io.restassured.internal.util.IOUtils;
 import org.springframework.util.ResourceUtils;
 
 import java.io.*;
@@ -13,25 +13,25 @@ import static com.huntercodexs.codexstester.resource.basic.CodexsPath.sanitizePa
 
 public class CodexsFileHandler {
 
-    /** Legacy */
+    /* Legacy */
     public static InputStream bytesFileExtractor(String targetPath, String targetFile) {
         String content = fileToString(targetPath, targetFile);
         return new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
     }
 
-    /** Legacy */
+    /* Legacy */
     public static InputStream fileToByteArray(String targetPath, String targetFile) {
         String content = fileToString(targetPath, targetFile);
         return new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
     }
 
-    /** Legacy */
+    /* Legacy */
     public static String fileInputStream(String path) throws IOException {
         FileInputStream fis = new FileInputStream(path);
-        return IOUtils.toString(fis, StandardCharsets.UTF_8);
+        return new String(IOUtils.toByteArray(fis), StandardCharsets.UTF_8);
     }
 
-    /** Legacy */
+    /* Legacy */
     public static boolean exists(String filepath) {
         try {
             File file = new File(filepath);
@@ -43,7 +43,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">loadProps</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">loadProps</h1>
      *
      * <p style="color: #CDCDCD">Get all data from application properties file passed in the classpath parameter</p>
      *
@@ -67,12 +67,13 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">byteConvert</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">byteConvert</h1>
      *
      * <p style="color: #CDCDCD">Convert the InputStream in the bytes</p>
      *
      * @param fileArray (InputStream: File Content in Array Format)
      * @return byte (The file content un bytes)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -83,7 +84,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileToString</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileToString</h1>
      *
      * <p style="color: #CDCDCD">Get the content file in the string format</p>
      *
@@ -119,7 +120,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileToArray</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileToArray</h1>
      *
      * <p style="color: #CDCDCD">Convert a txt file into an array</p>
      *
@@ -155,12 +156,13 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">byteFile</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">byteFile</h1>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in bytes format</p>
      *
      * @param filenamePath (String: The absolute filename path to open and read the file)
      * @return byte[] (File Content in bytes)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -170,27 +172,29 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">ioFile</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">ioFile</h1>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in string format</p>
      *
      * @param filenamePath (String: The absolute filename path to open and read the file)
      * @return String (File Content)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public static String ioFile(String filenamePath) throws IOException {
         FileInputStream fis = new FileInputStream(filenamePath);
-        return IOUtils.toString(fis);
+        return new String(IOUtils.toByteArray(fis), StandardCharsets.UTF_8);
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">binFile</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">binFile</h1>
      *
      * <p style="color: #CDCDCD">Read a file and get the content in binary format</p>
      *
      * @param filenamePath (String: The absolute filename path to open and read the file)
      * @return String (File Binary Content)
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -200,7 +204,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">folderCreate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">folderCreate</h1>
      *
      * <p style="color: #CDCDCD">Create a folder according to path parameter</p>
      *
@@ -227,7 +231,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileList</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileList</h1>
      *
      * <p style="color: #CDCDCD">List files in the specific directory according to filepath parameter</p>
      *
@@ -249,7 +253,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileDelete</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileDelete</h1>
      *
      * <p style="color: #CDCDCD">Delete on file or directory simply passing the path in the parameters</p>
      *
@@ -278,7 +282,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileMove</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileMove</h1>
      *
      * <p style="color: #CDCDCD">Rename on file or directory simply passing the old and new path in the parameters</p>
      *
@@ -309,7 +313,7 @@ public class CodexsFileHandler {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileWriter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileWriter</h1>
      *
      * <p style="color: #CDCDCD">Write in some file according data parameters, if the process not end up with success
      *      then one exception will be thrown
