@@ -11,7 +11,7 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsListComparator extends CodexsArrayListComparator {
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object</p>
 	 *
@@ -34,7 +34,7 @@ public abstract class CodexsListComparator extends CodexsArrayListComparator {
 	 * quickJson.add("age", 30);
 	 * quickJson.add("gender", "mens");
 	 *
-	 * List<String> listResponse = new ArrayList<>();
+	 * List&lt;String&gt; listResponse = new ArrayList&lt;&gt;();
 	 * listResponse.add("john smith");
 	 * listResponse.add(quickJson.toString());
 	 *
@@ -172,7 +172,7 @@ public abstract class CodexsListComparator extends CodexsArrayListComparator {
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object - Using Data Tree</p>
 	 *
@@ -190,7 +190,7 @@ public abstract class CodexsListComparator extends CodexsArrayListComparator {
 	 * quickJson.add("age", 30);
 	 * quickJson.add("gender", "mens");
 	 *
-	 * List<String> listResponse = new ArrayList<>();
+	 * List&lt;String&gt; listResponse = new ArrayList&lt;&gt;();
 	 * listResponse.add("john smith");
 	 * listResponse.add(quickJson.toString());
 	 *

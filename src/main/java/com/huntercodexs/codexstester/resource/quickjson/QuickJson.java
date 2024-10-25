@@ -113,7 +113,7 @@ public class QuickJson {
 
     public void stdout(String id, Object value) {
         if (this.qjData.isStdoutOn()) {
-            System.out.println("[QUICK JSON] =============[" + id + "]> " + value);
+            System.out.println("[QUICK JSON] =============[" + id + "] " + value);
         }
     }
 
@@ -126,7 +126,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">add</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">add</h1>
      *
      * <p style="color: #CDCDCD">Add field for JSON creator</p>
      *
@@ -150,7 +150,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">addAll</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">addAll</h1>
      *
      * <p style="color: #CDCDCD">
      *     Add all values in one single time, but pay attention in the fields and values, keep in mind that
@@ -188,7 +188,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">remove</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">remove</h1>
      *
      * <p style="color: #CDCDCD">Remove one element from the data structure to create a JSON String</p>
      *
@@ -212,7 +212,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">clear</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">clear</h1>
      *
      * <p style="color: #CDCDCD">Reset the data structure that would be used to create on JSON String data</p>
      *
@@ -235,7 +235,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">update</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">update</h1>
      *
      * <p style="color: #CDCDCD">Change an value of the specific field</p>
      *
@@ -260,7 +260,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">get</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">get</h1>
      *
      * <p style="color: #CDCDCD">Retrieve one specific field value informing the field name</p>
      *
@@ -285,7 +285,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">getObject</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">getObject</h1>
      *
      * <p style="color: #CDCDCD">Retrieve one specific field value informing the field name</p>
      *
@@ -321,7 +321,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">create</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">create</h1>
      *
      * <p style="color: #CDCDCD">
      *     Definitive create the JSON Data string using the values populated previously
@@ -376,7 +376,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">json</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">json</h1>
      *
      * <p style="color: #CDCDCD">Create a JSON Data string quickly</p>
      *
@@ -427,7 +427,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">merge</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">merge</h1>
      *
      * <p style="color: #CDCDCD">Merge more than one json string in one single json</p>
      *
@@ -452,7 +452,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">print</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">print</h1>
      *
      * <p style="color: #CDCDCD">
      *     Print the value from a data structure to known which values it will be used to create a JSON Data string
@@ -482,7 +482,7 @@ public class QuickJson {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">prettify</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">prettify</h1>
      *
      * <p style="color: #CDCDCD">Retrieve the JSON Data string result formatted in a beaut style</p>
      *
