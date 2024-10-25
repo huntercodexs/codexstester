@@ -153,7 +153,7 @@ public class Oauth2Security {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">token</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">token</h1>
      *
      * <p style="color: #CDCDCD">Get a token from an OAUTH2 Server</p>
      *
@@ -173,7 +173,7 @@ public class Oauth2Security {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">check</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">check</h1>
      *
      * <p style="color: #CDCDCD">Check a token from an OAUTH2 Server</p>
      *

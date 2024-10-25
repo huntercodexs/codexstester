@@ -7,7 +7,7 @@ public class CodexsFileWriter {
     public BufferedWriter bufferedWriter;
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">folderCreate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">folderCreate</h1>
      *
      * <p style="color: #CDCDCD">Create a folder in the specific path</p>
      *
@@ -34,7 +34,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileDelete</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileDelete</h1>
      *
      * <p style="color: #CDCDCD">Delete one file in the specific path</p>
      *
@@ -63,7 +63,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileMove</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileMove</h1>
      *
      * <p style="color: #CDCDCD">Rename file to specific filename passed in the parameters</p>
      *
@@ -94,11 +94,12 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileCreate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileCreate</h1>
      *
      * <p style="color: #CDCDCD">Create a target file</p>
      *
      * @param filepath (String: The path to create a target file)
+     * @throws FileNotFoundException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -117,7 +118,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileWrite</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileWrite</h1>
      *
      * <p style="color: #CDCDCD">Write in the target file</p>
      *
@@ -134,7 +135,7 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileNewLine</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileNewLine</h1>
      *
      * <p style="color: #CDCDCD">Append new line in the target file</p>
      *
@@ -150,10 +151,11 @@ public class CodexsFileWriter {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">fileClose</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">fileClose</h1>
      *
      * <p style="color: #CDCDCD">Close the target file</p>
      *
+     * @throws IOException (Exception: File Exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
