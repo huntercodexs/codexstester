@@ -11,9 +11,9 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsArrayListComparator extends CodexsHashMapComparator {
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h1>
 	 *
-	 * <p style="color: #CDCDCD">>To compare a data structure from one Java ArrayList Object</p>
+	 * <p style="color: #CDCDCD">To compare a data structure from one Java ArrayList Object</p>
 	 *
 	 * <p>Example</p>
 	 *
@@ -36,7 +36,7 @@ public abstract class CodexsArrayListComparator extends CodexsHashMapComparator 
 	 * quickJson.add("age", 30);
 	 * quickJson.add("gender", "mens");
 	 *
-	 * ArrayList<Object> arrayListResponse = new ArrayList<>();
+	 * ArrayList&lt;Object&gt; arrayListResponse = new ArrayList&lt;&gt;();
 	 * arrayListResponse.add("john smith");
 	 * arrayListResponse.add(quickJson.json());
 	 *
@@ -47,9 +47,9 @@ public abstract class CodexsArrayListComparator extends CodexsHashMapComparator 
 	 * 			true);
 	 * </pre></blockquote>
 	 *
-	 * @param arrayListValues (Object[]: )
-	 * @param arrayListTyped (Object[]: )
-	 * @param arrayListCompare (ArrayList&lt;Object&gt;: )
+	 * @param arrayListValues (Object[]: Data Object)
+	 * @param arrayListTyped (Object[]: Data Object)
+	 * @param arrayListCompare (ArrayList&lt;Object&gt;: ArrayList)
 	 * @param strictMode (boolean: )
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
@@ -174,9 +174,9 @@ public abstract class CodexsArrayListComparator extends CodexsHashMapComparator 
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareArrayListFormat</h1>
 	 *
-	 * <p style="color: #CDCDCD">>To compare a data structure from one Java ArrayList Object - Using Data Tree</p>
+	 * <p style="color: #CDCDCD">To compare a data structure from one Java ArrayList Object - Using Data Tree</p>
 	 *
 	 * <p>Example</p>
 	 *
@@ -192,7 +192,7 @@ public abstract class CodexsArrayListComparator extends CodexsHashMapComparator 
 	 * quickJson.add("age", 30);
 	 * quickJson.add("gender", "mens");
 	 *
-	 * ArrayList<&lt;Object&gt; arrayListResponse = new ArrayList&lt;Object&gt;();
+	 * ArrayList&lt;Object&gt; arrayListResponse = new ArrayList&lt;Object&gt;();
 	 * arrayListResponse.add("john smith");
 	 * arrayListResponse.add(quickJson.json());
 	 *
