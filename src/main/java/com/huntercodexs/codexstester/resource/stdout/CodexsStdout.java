@@ -85,10 +85,11 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">addWidth</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">addWidth</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">addWidth</p>
      *
+     * @param width (int)
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public void addWidth(int width) {
@@ -118,10 +119,11 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawHeader</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">drawHeader</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">drawHeader</p>
      *
+     * @param title (String)
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public void drawHeader(String title) {
@@ -133,10 +135,12 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItemHeader</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">drawItemHeader</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">drawItemHeader</p>
      *
+     * @param keyname (String)
+     * @param value (String)
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public void drawItemHeader(String keyname, String value) {
@@ -148,10 +152,14 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItemId</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">drawItemId</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">drawItemId</p>
      *
+     * @param id (String)
+     * @param keyname (String)
+     * @param value (String)
+     * @param description (String)
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public void drawItemId(String id, String keyname, String value, String description) {
@@ -163,10 +171,13 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">drawItem</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">drawItem</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">drawItem</p>
      *
+     * @param keyname (String)
+     * @param value (String)
+     * @param description (String)
      * @author huntercodexs (powered by jereelton-devel)
      * */
     public void drawItem(String keyname, String value, String description) {
@@ -179,9 +190,9 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">nextItem</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">nextItem</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">nextItem</p>
      *
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -191,9 +202,9 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">nextItemHeader</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">nextItemHeader</h1>
      *
-     * <p style="color: #CDCDCD"></p>
+     * <p style="color: #CDCDCD">nextItemHeader</p>
      *
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -203,7 +214,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">matrixPrinter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">matrixPrinter</h1>
      *
      * <p style="color: #CDCDCD">Print a data matrix from any source</p>
      *
@@ -246,7 +257,7 @@ public class CodexsStdout {
 
     /**
      *
-     * <h6 style="color: #FFFF00; font-size: 11px">matrixPrinter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">matrixPrinter</h1>
      *
      * <p style="color: #CDCDCD">Print a data matrix from any source</p>
      *

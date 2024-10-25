@@ -11,13 +11,13 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsHashMapComparator extends CodexsLinkedListComparator {
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h1>
 	 *
-	 * @param hashMapKeys (Object[]: )
-	 * @param hashMapValues (Object[]: )
-	 * @param hashMapTyped (Object[]: )
-	 * @param hashMapCompare (HashMap&lt;Object, Object&gt;: )
-	 * @param strictMode (boolean: )
+	 * @param hashMapKeys (Object[])
+	 * @param hashMapValues (Object[])
+	 * @param hashMapTyped (Object[])
+	 * @param hashMapCompare (HashMap&lt;Object, Object&gt;)
+	 * @param strictMode (boolean)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
@@ -161,11 +161,11 @@ public abstract class CodexsHashMapComparator extends CodexsLinkedListComparator
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareHashMapFormat</h1>
 	 *
-	 * @param expectedHashMapDataTree (Object[][]: )
-	 * @param hashMapCompare (HashMap&lt;Object, Object&gt;: )
-	 * @param strictMode (boolean: )
+	 * @param expectedHashMapDataTree (Object[][])
+	 * @param hashMapCompare (HashMap&lt;Object, Object&gt;)
+	 * @param strictMode (boolean)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */

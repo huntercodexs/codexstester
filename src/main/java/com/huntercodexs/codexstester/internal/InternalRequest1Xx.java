@@ -16,7 +16,12 @@ public abstract class InternalRequest1Xx extends InternalRequest2Xx {
     }
 
     /**
-     * STATUS CODE 100 (CONTINUE_100) TESTS
+     * Use Status Code 100 (CONTINUE_100) for Tests
+     *
+     * @param headersDto (Object: HeadersDto)
+     * @param requestDto (Object: RequestDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      * */
     protected void codexsTesterInternal_StatusCode100_RetrieveContinue(HeadersDto headersDto, RequestDto requestDto) throws Exception {
         requestDto.setExpectedCode(AvailableHttpStatus.CONTINUE_100);
@@ -24,7 +29,12 @@ public abstract class InternalRequest1Xx extends InternalRequest2Xx {
     }
 
     /**
-     * STATUS CODE 101 (SWITCHING_PROTOCOL_101) TESTS
+     * Use Status Code 101 (SWITCHING_PROTOCOL_101) for Tests
+     *
+     * @param headersDto (Object: HeadersDto)
+     * @param requestDto (Object: RequestDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      * */
     protected void codexsTesterInternal_StatusCode101_RetrieveSwitchingProtocol(HeadersDto headersDto, RequestDto requestDto) throws Exception {
         requestDto.setExpectedCode(AvailableHttpStatus.SWITCHING_PROTOCOL_101);
@@ -32,7 +42,12 @@ public abstract class InternalRequest1Xx extends InternalRequest2Xx {
     }
 
     /**
-     * STATUS CODE 102 (PROCESSING_WEBDAV_EN_US_102) TESTS
+     * Use Status Code 102 (PROCESSING_WEBDAV_EN_US_102) for Tests
+     *
+     * @param headersDto (Object: HeadersDto)
+     * @param requestDto (Object: RequestDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      * */
     protected void codexsTesterInternal_StatusCode102_RetrieveProcessing(HeadersDto headersDto, RequestDto requestDto) throws Exception {
         requestDto.setExpectedCode(AvailableHttpStatus.PROCESSING_WEBDAV_EN_US_102);
@@ -40,7 +55,12 @@ public abstract class InternalRequest1Xx extends InternalRequest2Xx {
     }
 
     /**
-     * STATUS CODE 103 (EARLY_HINTS_103) TESTS
+     * Use Status Code 103 (EARLY_HINTS_103) for Tests
+     *
+     * @param headersDto (Object: HeadersDto)
+     * @param requestDto (Object: RequestDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      * */
     protected void codexsTesterInternal_StatusCode103_RetrieveEarlyHints(HeadersDto headersDto, RequestDto requestDto) throws Exception {
         requestDto.setExpectedCode(AvailableHttpStatus.EARLY_HINTS_103);
