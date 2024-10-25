@@ -8,7 +8,7 @@ import java.io.IOException;
 public class CodexsFileReader {
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">awaitFileContent</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">awaitFileContent</p>
      *
      * <p style="color: #CDCDCD">Get the file content based input parameters - like a sentinel</p>
      *

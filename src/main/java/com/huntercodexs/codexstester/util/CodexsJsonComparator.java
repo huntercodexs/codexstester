@@ -16,7 +16,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	private final String JSON_DEFAULT = "com.huntercodexs.codexstester.resource.quickjson.QuickJson";
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareJsonFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure</p>
 	 *
@@ -263,7 +263,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareJsonFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using QuickJson</p>
 	 *
@@ -503,7 +503,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareJsonFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using Org JSON</p>
 	 *
@@ -753,7 +753,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareJsonFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using QuickJson</p>
 	 *

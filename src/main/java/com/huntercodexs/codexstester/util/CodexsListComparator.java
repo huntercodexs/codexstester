@@ -11,7 +11,7 @@ import static com.huntercodexs.codexstester.util.CodexsHelper.codexsHelperLogTer
 public abstract class CodexsListComparator extends CodexsArrayListComparator {
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareListFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object</p>
 	 *
@@ -172,7 +172,7 @@ public abstract class CodexsListComparator extends CodexsArrayListComparator {
 	}
 
 	/**
-	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareListFormat</h1>
+	 * <p style="color: #FFFF00; font-size: 11px; weight: bold">codexsTesterCompareListFormat</p>
 	 *
 	 * <p style="color: #CDCDCD">To compare a data structure from one Java List Object - Using Data Tree</p>
 	 *
