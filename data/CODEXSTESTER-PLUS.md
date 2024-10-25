@@ -1812,7 +1812,7 @@ keep in your mind that this process is required in case the service integration 
 Here you can find the latest release of codexstester according your application requirements.
 
 
-Release 2.0.11
+**Release 2.0.11**
 <br>
 <a href="https://github.com/huntercodexs/codexstester/releases/tag/r.2.0.11">
   Java 21 - Spring Boot 3.3.2 - Cucumber 7.12.0 - 2.0.11-SNAPSHOT
