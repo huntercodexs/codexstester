@@ -266,12 +266,13 @@ public class CodexsJsonParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">objectToNetJson</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">objectToNetJson</h1>
      *
      * <p style="color: #CDCDCD">Convert a Object Data to JSONObject</p>
      *
      * @param object (Object: Data to convert)
      * @return JSONObject (JSON Data from Object)
+     * @throws Exception (Exception: generic exception)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -297,7 +298,7 @@ public class CodexsJsonParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonFromLinkedHashMap</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">jsonFromLinkedHashMap</h1>
      *
      * <p style="color: #CDCDCD">Convert a Linked Hash Map Data to JSONObject</p>
      *
@@ -333,22 +334,23 @@ public class CodexsJsonParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonCreatorRFC8259</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">jsonCreatorRFC8259</h1>
      *
      * <p style="color: #CDCDCD">Create one JSON String format according RFC8259 standards</p>
      *
      * <p>The string to convert to JSON String should be something like below:</p>
      * <p>Field1: Value1 ExtraValue1 Field2: Value2 Field3: Value3</p>
      *
-     * <h6>Example</h6>
+     * <h2>Example</h2>
      * <p>Kernel: 5.15.0-117-generic x86_64 bits: 64 compiler: N/A
-     * <br />
+     * <br>
      * Kernel: 5.15.0-117-generic_x86_64 bits: 64 compiler-version: java_compiler_v1
-     * <br />
+     * <br>
      * min/max: 1000 bits: 64 compiler-version: java_compiler_v1</p>
      *
      * @param input (List[String])
      * @param mainField (String)
+     * @return String
      * @author huntercodexs (powered by jereelton-devel)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      */
@@ -426,12 +428,13 @@ public class CodexsJsonParser {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">jsonMergerRFC8259</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">jsonMergerRFC8259</h1>
      *
      * <p style="color: #CDCDCD">Merge one or mor JSON String format according RFC8259 standards</p>
      *
      * @param input (List[String])
      * @param mainField (String)
+     * @return String
      * @author huntercodexs (powered by jereelton-devel)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      */

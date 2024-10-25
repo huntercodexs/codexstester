@@ -16,14 +16,14 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	private final String JSON_DEFAULT = "com.huntercodexs.codexstester.resource.quickjson.QuickJson";
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure</p>
 	 *
 	 * <p>
 	 *     This method can process a complex JSON Data structure to check and validate each field
 	 *     affordable in the jsonCompare argument.
-	 *     <br />
+	 *     <br>
 	 *     The values for refactorMode are: {none,easy,middle,regular,complex}
 	 * </p>
 	 *
@@ -35,11 +35,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * 		String string = "value1";
 	 * 		QuickJson quickJson = new QuickJson();
 	 * 		HeadersDto headersDto = new HeadersDto();
-	 * 		HashMap<Object, Object> hashMap = new HashMap<>();
-	 * 		ArrayList<Object> arrayList = new ArrayList<>();
-	 * 		LinkedList<Object> linkedList = new LinkedList<>();
-	 * 		List<String> list = new ArrayList<>();
-	 * 		LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * 		HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * 		ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * 		LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * 		List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * 		LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 *
 	 * 		return new Object[][]{
 	 * 		    {"field1", string,        String.class},
@@ -57,11 +57,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * String string = "value1";
 	 * QuickJson quickJson = new QuickJson();
 	 * HeadersDto headersDto = new HeadersDto();
-	 * HashMap<Object, Object> hashMap = new HashMap<>();
-	 * ArrayList<Object> arrayList = new ArrayList<>();
-	 * LinkedList<Object> linkedList = new LinkedList<>();
-	 * List<String> list = new ArrayList<>();
-	 * LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
      *
 	 * org.json.JSONObject orgJsonResponseSimulate = new org.json.JSONObject();
 	 * orgJsonResponseSimulate.put("field1", string);
@@ -86,6 +86,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * @param strictMode (boolean: Mean if the process should be restricted)
 	 * @param refactorMode (String: Set the mode of refactor - if required - to fix a JSON value)
 	 * @param debug (boolean: Enable or Disable debug in the stdout)
+	 * @throws Exception Exception (Exception: generic exception)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
@@ -262,14 +263,14 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using QuickJson</p>
 	 *
 	 * <p>
 	 *     This method can process a complex JSON Data structure to check and validate each field
 	 *     affordable in the jsonCompare argument.
-	 *     <br />
+	 *     <br>
 	 *     The values for refactorMode are: {none,easy,middle,regular,complex}
 	 * </p>
 	 *
@@ -281,11 +282,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * 		String string = "value1";
 	 * 		QuickJson quickJson = new QuickJson();
 	 * 		HeadersDto headersDto = new HeadersDto();
-	 * 		HashMap<Object, Object> hashMap = new HashMap<>();
-	 * 		ArrayList<Object> arrayList = new ArrayList<>();
-	 * 		LinkedList<Object> linkedList = new LinkedList<>();
-	 * 		List<String> list = new ArrayList<>();
-	 * 		LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * 		HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * 		ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * 		LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * 		List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * 		LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 *
 	 * 		return new Object[][]{
 	 * 		    {"field1", string,        String.class},
@@ -303,11 +304,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 *  String string = "value1";
 	 *  QuickJson quickJson = new QuickJson();
 	 *  HeadersDto headersDto = new HeadersDto();
-	 *  HashMap<Object, Object> hashMap = new HashMap<>();
-	 *  ArrayList<Object> arrayList = new ArrayList<>();
-	 *  LinkedList<Object> linkedList = new LinkedList<>();
-	 *  List<String> list = new ArrayList<>();
-	 *  LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 *  HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 *  ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 *  LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 *  List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 *  LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 *
 	 *  QuickJson quickJsonResponseSimulate = new QuickJson();
 	 *  quickJsonResponseSimulate.add("field1", string);
@@ -332,6 +333,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * @param strictMode (boolean: Mean if the process should be restricted)
 	 * @param refactorMode (String: Set the mode of refactor - if required - to fix a JSON value)
 	 * @param debug (boolean: Enable or Disable debug in the stdout)
+	 * @throws Exception Exception (Exception: generic exception)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
@@ -501,14 +503,14 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using Org JSON</p>
 	 *
 	 * <p>
 	 *     This method can process a complex JSON Data structure to check and validate each field
 	 *     affordable in the jsonCompare argument.
-	 *     <br />
+	 *     <br>
 	 *     The values for refactorMode are: {none,easy,middle,regular,complex}
 	 * </p>
 	 *
@@ -523,11 +525,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * 		String string = "value1";
 	 * 		QuickJson quickJson = new QuickJson();
 	 * 		HeadersDto headersDto = new HeadersDto();
-	 * 		HashMap<Object, Object> hashMap = new HashMap<>();
-	 * 		ArrayList<Object> arrayList = new ArrayList<>();
-	 * 		LinkedList<Object> linkedList = new LinkedList<>();
-	 * 		List<String> list = new ArrayList<>();
-	 * 		LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * 		HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * 		ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * 		LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * 		List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * 		LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 * 		return new Object[]{string, quickJson, headersDto, hashMap, arrayList, linkedList, list, linkedHashMap};
 	 * }
 	 *
@@ -548,11 +550,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * String string = "value1";
 	 * QuickJson quickJson = new QuickJson();
 	 * HeadersDto headersDto = new HeadersDto();
-	 * HashMap<Object, Object> hashMap = new HashMap<>();
-	 * ArrayList<Object> arrayList = new ArrayList<>();
-	 * LinkedList<Object> linkedList = new LinkedList<>();
-	 * List<String> list = new ArrayList<>();
-	 * LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 *
 	 * org.json.JSONObject orgJsonResponseSimulate = new org.json.JSONObject();
 	 * orgJsonResponseSimulate.put("field1", string);
@@ -581,6 +583,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * @param strictMode (boolean: Mean if the process should be restricted)
 	 * @param refactorMode (String: Set the mode of refactor - if required - to fix a JSON value)
 	 * @param debug (boolean: Enable or Disable debug in the stdout)
+	 * @throws Exception Exception (Exception: generic exception)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
@@ -750,14 +753,14 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	}
 
 	/**
-	 * <h6 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h6>
+	 * <h1 style="color: #FFFF00; font-size: 11px">codexsTesterCompareJsonFormat</h1>
 	 *
 	 * <p style="color: #CDCDCD">Data process to compare a JSON Data structure using QuickJson</p>
 	 *
 	 * <p>
 	 *     This method can process a complex JSON Data structure to check and validate each field
 	 *     affordable in the jsonCompare argument.
-	 *     <br />
+	 *     <br>
 	 *     The values for refactorMode are: {none,easy,middle,regular,complex}
 	 * </p>
 	 *
@@ -772,11 +775,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * 		String string = "value1";
 	 * 		QuickJson quickJson = new QuickJson();
 	 * 		HeadersDto headersDto = new HeadersDto();
-	 * 		HashMap<Object, Object> hashMap = new HashMap<>();
-	 * 		ArrayList<Object> arrayList = new ArrayList<>();
-	 * 		LinkedList<Object> linkedList = new LinkedList<>();
-	 * 		List<String> list = new ArrayList<>();
-	 * 		LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * 		HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * 		ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * 		LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * 		List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * 		LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 * 		return new Object[]{string, quickJson, headersDto, hashMap, arrayList, linkedList, list, linkedHashMap};
 	 * }
 	 *
@@ -797,11 +800,11 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * String string = "value1";
 	 * QuickJson quickJson = new QuickJson();
 	 * HeadersDto headersDto = new HeadersDto();
-	 * HashMap<Object, Object> hashMap = new HashMap<>();
-	 * ArrayList<Object> arrayList = new ArrayList<>();
-	 * LinkedList<Object> linkedList = new LinkedList<>();
-	 * List<String> list = new ArrayList<>();
-	 * LinkedHashMap<Object, Object> linkedHashMap = new LinkedHashMap<>();
+	 * HashMap&lt;Object, Object&gt; hashMap = new HashMap&lt;&gt;();
+	 * ArrayList&lt;Object&gt; arrayList = new ArrayList&lt;&gt;();
+	 * LinkedList&lt;Object&gt; linkedList = new LinkedList&lt;&gt;();
+	 * List&lt;String&gt; list = new ArrayList&lt;&gt;();
+	 * LinkedHashMap&lt;Object, Object&gt; linkedHashMap = new LinkedHashMap&lt;&gt;();
 	 *
 	 * QuickJson quickJsonResponseSimulate = new QuickJson();
 	 * quickJsonResponseSimulate.add("field1", string);
@@ -830,6 +833,7 @@ public abstract class CodexsJsonComparator extends CodexsDtoComparator {
 	 * @param strictMode (boolean: Mean if the process should be restricted)
 	 * @param refactorMode (String: Set the mode of refactor - if required - to fix a JSON value)
 	 * @param debug (boolean: Enable or Disable debug in the stdout)
+	 * @throws Exception Exception (Exception: generic exception)
 	 * @see <a href="https://github.com/huntercodexs/codexstester">Codexs Tester (GitHub)</a>
 	 * @author huntercodexs (powered by jereelton-devel)
 	 * */
