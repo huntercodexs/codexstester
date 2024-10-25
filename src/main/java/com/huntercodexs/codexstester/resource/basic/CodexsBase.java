@@ -12,7 +12,7 @@ public class CodexsBase {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">calculateBytes</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">calculateBytes</p>
      *
      * <p style="color: #CDCDCD">Calculate the unit of memory used from bytes to Bytes (b)</p>
      *
@@ -33,7 +33,7 @@ public class CodexsBase {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">calculateKilobytes</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">calculateKilobytes</p>
      *
      * <p style="color: #CDCDCD">Calculate the unit of memory used from bytes to Kilobytes (KB)</p>
      *
@@ -51,7 +51,7 @@ public class CodexsBase {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">calculateMegabytes</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">calculateMegabytes</p>
      *
      * <p style="color: #CDCDCD">Calculate the unit of memory used from bytes to Megabytes (MB)</p>
      *
@@ -71,7 +71,7 @@ public class CodexsBase {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">calculateGigabytes</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">calculateGigabytes</p>
      *
      * <p style="color: #CDCDCD">Calculate the unit of memory used from bytes to Gigabytes (GB)</p>
      *
@@ -92,7 +92,7 @@ public class CodexsBase {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">calculateMemory</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">calculateMemory</p>
      *
      * <p style="color: #CDCDCD">Get the formatted memory number from any value source:</p>
      *

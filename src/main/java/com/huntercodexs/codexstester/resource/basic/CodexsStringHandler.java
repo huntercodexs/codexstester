@@ -16,7 +16,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringCounter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringCounter</p>
      *
      * <p style="color: #CDCDCD">Count one specific string occurrence in the specific string phrase</p>
      *
@@ -82,7 +82,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">repeat</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">repeat</p>
      *
      * <p style="color: #CDCDCD">Repeat a string or char one or more times - Java 1.8 or minor</p>
      *
@@ -101,7 +101,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">reverse</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">reverse</p>
      *
      * <p style="color: #CDCDCD">Reverse a string - Java 1.8 or minor</p>
      *
@@ -119,7 +119,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">ucFirst</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">ucFirst</p>
      *
      * <p style="color: #CDCDCD">Turn Upper Case the first letter from one string</p>
      *
@@ -157,7 +157,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">queryStringBuilder</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">queryStringBuilder</p>
      *
      * <p style="color: #CDCDCD">Create a query string from Data JSON or List structures</p>
      *
@@ -183,7 +183,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">getDataFromQueryString</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">getDataFromQueryString</p>
      *
      * <p style="color: #CDCDCD">Extract field from a Query String Data Structure</p>
      *
@@ -205,7 +205,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">queryStringToJson</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">queryStringToJson</p>
      *
      * <p style="color: #CDCDCD">Convert a Query String into JSON Object</p>
      *
@@ -229,7 +229,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringToJson</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringToJson</p>
      *
      * <p style="color: #CDCDCD">Convert a String into JSON Object</p>
      *
@@ -263,7 +263,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">sanitizeAsciiCaseSensitive</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">sanitizeAsciiCaseSensitive</p>
      *
      * <p style="color: #CDCDCD">Data to remove non ASCII characters and convert case sensitive</p>
      *
@@ -305,7 +305,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">sanitizeAscii</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">sanitizeAscii</p>
      *
      * <p style="color: #CDCDCD">Data to remove non ASCII characters</p>
      *
@@ -331,7 +331,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">queryExtractor</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">queryExtractor</p>
      *
      * <p style="color: #CDCDCD">Data extract from initial and final position from any string source</p>
      *
@@ -350,7 +350,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">replaceIndexing</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">replaceIndexing</p>
      *
      * <p style="color: #CDCDCD">Replace all string occurrence using an index to identify each one</p>
      *
@@ -398,7 +398,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringExtractor</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringExtractor</p>
      *
      * <p style="color: #CDCDCD">Extract one specific string from one input string</p>
      *
@@ -463,7 +463,7 @@ public class CodexsStringHandler {
 
     /**
      *
-     * <h1 style="color: #FFFF00; font-size: 11px">extractByPattern</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">extractByPattern</p>
      *
      * <p style="color: #CDCDCD">Extract a specific alphanumeric data defined by specific field</p>
      *
@@ -556,7 +556,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringList</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringList</p>
      *
      * <p style="color: #CDCDCD">Create one list of String from an List items</p>
      *
@@ -604,7 +604,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">listExtractor</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">listExtractor</p>
      *
      * <p style="color: #CDCDCD">Data extractor from a List source for a list of string</p>
      *
@@ -664,7 +664,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">listClear</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">listClear</p>
      *
      * <p style="color: #CDCDCD">Create one list of String from an List items cleanup the content</p>
      *
@@ -704,7 +704,7 @@ public class CodexsStringHandler {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">alphaFieldPattern</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">alphaFieldPattern</p>
      *
      * <p style="color: #CDCDCD">Extract one part of input based on field</p>
      *

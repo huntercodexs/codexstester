@@ -157,7 +157,7 @@ public class QuickJsonExtractor {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">standardExtraction</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">standardExtraction</p>
      *
      * <p style="color: #CDCDCD">Retrieve the value from on specific json</p>
      *
@@ -274,7 +274,7 @@ public class QuickJsonExtractor {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">smartExtraction</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">smartExtraction</p>
      *
      * <p style="color: #CDCDCD">Retrieve the value from on specific json using advanced method</p>
      *

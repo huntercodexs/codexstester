@@ -15,7 +15,7 @@ import java.util.Locale;
 public class CodexsDate {
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">dateReverse</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">dateReverse</p>
      *
      * <p style="color: #CDCDCD">Reverse the date informed in the parameters</p>
      *
@@ -140,7 +140,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">dateExpired</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">dateExpired</p>
      *
      * <p style="color: #CDCDCD">Check if one specific date is expired based on parameters</p>
      *
@@ -200,7 +200,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">dateQuantify</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">dateQuantify</p>
      *
      * <p style="color: #CDCDCD">
      *     Get the date quantity difference between two dates (initial - final). The return values will be
@@ -264,7 +264,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">quantifyMillisDate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">quantifyMillisDate</p>
      *
      * <p style="color: #CDCDCD">Get the simple difference between two dates</p>
      *
@@ -279,7 +279,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">quantifyMillisParamsDate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">quantifyMillisParamsDate</p>
      *
      * <p style="color: #CDCDCD">Get the difference in milliseconds between two dates given in the parameters</p>
      *
@@ -368,7 +368,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">localDateFromGmtDate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">localDateFromGmtDate</p>
      *
      * <p style="color: #CDCDCD">Get locale date from a GMT date setting up by parameters</p>
      *
@@ -421,7 +421,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">militaryHour</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">militaryHour</p>
      *
      * <p style="color: #CDCDCD">Get the military hour according the inputHour informed in the parameter</p>
      *
@@ -455,7 +455,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">dateFormatter</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">dateFormatter</p>
      *
      * <p style="color: #CDCDCD">Format the date in the specific format</p>
      *
@@ -805,7 +805,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringToCalendar</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringToCalendar</p>
      *
      * <p style="color: #CDCDCD">Convert a date string into Calendar format</p>
      *
@@ -835,7 +835,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringToDate</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringToDate</p>
      *
      * <p style="color: #CDCDCD">Convert a string into Date format</p>
      *
@@ -875,7 +875,7 @@ public class CodexsDate {
 
     /*TODO*/
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">stringToLocalDatetime</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">stringToLocalDatetime</p>
      *
      * <p style="color: #CDCDCD">Convert a string into Local Datetime format</p>
      *

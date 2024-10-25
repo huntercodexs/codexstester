@@ -20,7 +20,7 @@ public class CodexsCrypto {
 
     /**
      /**
-     * <h1 style="color: #FFFF00; font-size: 11px">encryptAesCbc256</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">encryptAesCbc256</p>
      *
      * <p style="color: #CDCDCD">Data Encrypt using the algorithm AES-256-CBC</p>
      *
@@ -61,7 +61,7 @@ public class CodexsCrypto {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">decryptAesCbc256</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">decryptAesCbc256</p>
      *
      * <p style="color: #CDCDCD">Data Decrypt using the algorithm AES-256-CBC</p>
      *
@@ -101,7 +101,7 @@ public class CodexsCrypto {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">encrypt3desEde</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">encrypt3desEde</p>
      *
      * <p style="color: #CDCDCD">Data Encrypt using the algorithm 3DES-EDE</p>
      *
@@ -131,7 +131,7 @@ public class CodexsCrypto {
     }
 
     /**
-     * <h1 style="color: #FFFF00; font-size: 11px">decrypt3DesEde</h1>
+     * <p style="color: #FFFF00; font-size: 11px; weight: bold">decrypt3DesEde</p>
      *
      * <p style="color: #CDCDCD">Data Decrypt using the algorithm 3DES-EDE</p>
      *
