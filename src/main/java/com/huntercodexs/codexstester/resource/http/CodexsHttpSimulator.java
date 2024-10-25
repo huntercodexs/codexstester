@@ -21,7 +21,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.CONTINUE,
                 statusText,
                 new HttpHeaders(),
@@ -40,7 +40,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.SWITCHING_PROTOCOLS,
                 statusText,
                 new HttpHeaders(),
@@ -59,7 +59,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PROCESSING,
                 statusText,
                 new HttpHeaders(),
@@ -79,8 +79,8 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
-                HttpStatus.SEE_OTHER,
+        return HttpClientErrorException.create(
+                HttpStatus.TOO_EARLY,
                 statusText,
                 new HttpHeaders(),
                 bodyString,
@@ -101,7 +101,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.OK,
                 statusText,
                 new HttpHeaders(),
@@ -120,7 +120,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.CREATED,
                 statusText,
                 new HttpHeaders(),
@@ -141,7 +141,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.ACCEPTED,
                 statusText,
                 new HttpHeaders(),
@@ -162,7 +162,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NON_AUTHORITATIVE_INFORMATION,
                 statusText,
                 new HttpHeaders(),
@@ -181,7 +181,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NO_CONTENT,
                 statusText,
                 new HttpHeaders(),
@@ -199,7 +199,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.BAD_REQUEST,
                 statusText,
                 new HttpHeaders(),
@@ -218,7 +218,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PARTIAL_CONTENT,
                 statusText,
                 new HttpHeaders(),
@@ -237,7 +237,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.MULTI_STATUS,
                 statusText,
                 new HttpHeaders(),
@@ -256,7 +256,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.ALREADY_REPORTED,
                 statusText,
                 new HttpHeaders(),
@@ -275,7 +275,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.IM_USED,
                 statusText,
                 new HttpHeaders(),
@@ -295,7 +295,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.MULTIPLE_CHOICES,
                 statusText,
                 new HttpHeaders(),
@@ -314,7 +314,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.MOVED_PERMANENTLY,
                 statusText,
                 new HttpHeaders(),
@@ -334,7 +334,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.FOUND,
                 statusText,
                 new HttpHeaders(),
@@ -353,7 +353,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.SEE_OTHER,
                 statusText,
                 new HttpHeaders(),
@@ -372,7 +372,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NOT_MODIFIED,
                 statusText,
                 new HttpHeaders(),
@@ -392,7 +392,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.USE_PROXY,
                 statusText,
                 new HttpHeaders(),
@@ -411,7 +411,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.valueOf(306),
                 statusText,
                 new HttpHeaders(),
@@ -433,7 +433,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.TEMPORARY_REDIRECT,
                 statusText,
                 new HttpHeaders(),
@@ -454,7 +454,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PERMANENT_REDIRECT,
                 statusText,
                 new HttpHeaders(),
@@ -474,7 +474,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.BAD_REQUEST,
                 statusText,
                 new HttpHeaders(),
@@ -494,7 +494,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.UNAUTHORIZED,
                 statusText,
                 new HttpHeaders(),
@@ -514,7 +514,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PAYMENT_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -534,7 +534,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.FORBIDDEN,
                 statusText,
                 new HttpHeaders(),
@@ -556,7 +556,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NOT_FOUND,
                 statusText,
                 new HttpHeaders(),
@@ -575,7 +575,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.METHOD_NOT_ALLOWED,
                 statusText,
                 new HttpHeaders(),
@@ -594,7 +594,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NOT_ACCEPTABLE,
                 statusText,
                 new HttpHeaders(),
@@ -612,7 +612,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PROXY_AUTHENTICATION_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -634,7 +634,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.REQUEST_TIMEOUT,
                 statusText,
                 new HttpHeaders(),
@@ -652,7 +652,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.CONFLICT,
                 statusText,
                 new HttpHeaders(),
@@ -673,7 +673,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.GONE,
                 statusText,
                 new HttpHeaders(),
@@ -692,7 +692,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.LENGTH_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -710,7 +710,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PRECONDITION_FAILED,
                 statusText,
                 new HttpHeaders(),
@@ -729,7 +729,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PAYLOAD_TOO_LARGE,
                 statusText,
                 new HttpHeaders(),
@@ -747,7 +747,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.URI_TOO_LONG,
                 statusText,
                 new HttpHeaders(),
@@ -766,7 +766,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.UNSUPPORTED_MEDIA_TYPE,
                 statusText,
                 new HttpHeaders(),
@@ -785,7 +785,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.REQUESTED_RANGE_NOT_SATISFIABLE,
                 statusText,
                 new HttpHeaders(),
@@ -804,7 +804,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.EXPECTATION_FAILED,
                 statusText,
                 new HttpHeaders(),
@@ -822,7 +822,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.I_AM_A_TEAPOT,
                 statusText,
                 new HttpHeaders(),
@@ -842,7 +842,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.valueOf(421),
                 statusText,
                 new HttpHeaders(),
@@ -860,7 +860,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.UNPROCESSABLE_ENTITY,
                 statusText,
                 new HttpHeaders(),
@@ -878,7 +878,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.LOCKED,
                 statusText,
                 new HttpHeaders(),
@@ -896,7 +896,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.FAILED_DEPENDENCY,
                 statusText,
                 new HttpHeaders(),
@@ -915,8 +915,8 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
-                HttpStatus.SEE_OTHER,
+        return HttpClientErrorException.create(
+                HttpStatus.TOO_EARLY,
                 statusText,
                 new HttpHeaders(),
                 bodyString,
@@ -935,7 +935,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.UPGRADE_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -956,7 +956,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.PRECONDITION_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -974,7 +974,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.TOO_MANY_REQUESTS,
                 statusText,
                 new HttpHeaders(),
@@ -992,7 +992,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.REQUEST_HEADER_FIELDS_TOO_LARGE,
                 statusText,
                 new HttpHeaders(),
@@ -1011,7 +1011,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.UNAVAILABLE_FOR_LEGAL_REASONS,
                 statusText,
                 new HttpHeaders(),
@@ -1029,7 +1029,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 statusText,
                 new HttpHeaders(),
@@ -1048,7 +1048,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NOT_IMPLEMENTED,
                 statusText,
                 new HttpHeaders(),
@@ -1067,7 +1067,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.BAD_GATEWAY,
                 statusText,
                 new HttpHeaders(),
@@ -1091,7 +1091,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.SERVICE_UNAVAILABLE,
                 statusText,
                 new HttpHeaders(),
@@ -1110,7 +1110,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.GATEWAY_TIMEOUT,
                 statusText,
                 new HttpHeaders(),
@@ -1128,7 +1128,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.HTTP_VERSION_NOT_SUPPORTED,
                 statusText,
                 new HttpHeaders(),
@@ -1148,7 +1148,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.VARIANT_ALSO_NEGOTIATES,
                 statusText,
                 new HttpHeaders(),
@@ -1167,7 +1167,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.INSUFFICIENT_STORAGE,
                 statusText,
                 new HttpHeaders(),
@@ -1185,7 +1185,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.LOOP_DETECTED,
                 statusText,
                 new HttpHeaders(),
@@ -1203,7 +1203,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NOT_EXTENDED,
                 statusText,
                 new HttpHeaders(),
@@ -1221,7 +1221,7 @@ public class CodexsHttpSimulator {
             bodyString = responseSimulate.toString().getBytes(StandardCharsets.UTF_8);
         }
 
-        return new HttpClientErrorException(
+        return HttpClientErrorException.create(
                 HttpStatus.NETWORK_AUTHENTICATION_REQUIRED,
                 statusText,
                 new HttpHeaders(),
@@ -1230,13 +1230,14 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">restResponseSimulate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">restResponseSimulate</h1>
      *
      * <p style="color: #CDCDCD">Simulate a Rest Response using an HTTP Status Code and Body</p>
      *
      * @param httpCode (int: The HTTP Code to simulate)
      * @param throwable (boolean: Means if to simulate a throw exception)
      * @param responseSimulate (Object: The field value)
+     * @return HttpClientErrorException
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */
@@ -1691,11 +1692,12 @@ public class CodexsHttpSimulator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">httpResponseErrorExtractor</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">httpResponseErrorExtractor</h1>
      *
      * <p style="color: #CDCDCD">Extract the data content from HTTP Response</p>
      *
      * @param hc (HttpStatusCodeException)
+     * @return String
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
      * */

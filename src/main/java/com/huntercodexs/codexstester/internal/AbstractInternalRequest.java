@@ -122,17 +122,17 @@ public abstract class AbstractInternalRequest extends AvailableHttpMethod {
                             .headers(internalBuilderHeaders(requestDto, headersDto))
             ).andExpect(status).andReturn();
 
-            codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse().getContentAsString(), true);
+            codexsHelperLogTerm("INTERNAL RESPONSE IS", result.getResponse(), true);
 
             /*Assert Content as String*/
             if (requestDto.getExpectedMessage() != null && !requestDto.getExpectedMessage().equals("")) {
-                if (!result.getResponse().getContentAsString().equals("")) {
-                    codexsHelperLogTerm("TRY ASSERT INTEGRATION", result.getResponse().getContentAsString(), true);
+                if (!String.valueOf(result.getResponse()).equals("")) {
+                    codexsHelperLogTerm("TRY ASSERT INTEGRATION", String.valueOf(result.getResponse()), true);
                     codexsHelperLogTerm(">>> EXPECTED MESSAGE", requestDto.getExpectedMessage(), false);
-                    codexsHelperLogTerm("<<< RECEIVED MESSAGE", result.getResponse().getContentAsString(), true);
+                    codexsHelperLogTerm("<<< RECEIVED MESSAGE", String.valueOf(result.getResponse()), true);
                     codexsTesterAssertExact(
                             requestDto.getExpectedMessage(),
-                            result.getResponse().getContentAsString(),
+                            String.valueOf(result.getResponse()),
                             requestDto.getMethodCallerName());
                 }
             }
@@ -154,49 +154,84 @@ public abstract class AbstractInternalRequest extends AvailableHttpMethod {
     }
 
     /**
-     * @apiNote Using Http GET with Rest Template
+     * Using Http GET with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpGet(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_GET);
     }
 
     /**
-     * @apiNote Using Http POST with Rest Template
+     * Using Http POST with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpPost(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_POST);
     }
 
     /**
-     * @apiNote Using Http DELETE with Rest Template
+     * Using Http DELETE with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpDelete(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_DELETE);
     }
 
     /**
-     * @apiNote Using Http PUT with Rest Template
+     * Using Http PUT with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpPut(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_PUT);
     }
 
     /**
-     * @apiNote Using Http PATCH with Rest Template
+     * Using Http PATCH with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpPatch(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_PATCH);
     }
 
     /**
-     * @apiNote Using Http HEAD with Rest Template
+     * Using Http HEAD with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpHead(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_HEAD);
     }
 
     /**
-     * @apiNote Using Http OPTIONS with Rest Template
+     * Using Http OPTIONS with Rest Template
+     *
+     * @param requestDto (Object: RequestDto)
+     * @param headersDto (Object: HeadersDto)
+     * @throws Exception (Exception: generic exception)
+     * @author huntercodexs (powered by jereelton-devel)
      */
     private void assertResultFromRequestByHttpOptions(RequestDto requestDto, HeadersDto headersDto) throws Exception {
         dispatcher(requestDto, headersDto, HTTP_METHOD_OPTIONS);

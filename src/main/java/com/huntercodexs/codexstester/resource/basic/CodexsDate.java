@@ -15,7 +15,7 @@ import java.util.Locale;
 public class CodexsDate {
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateReverse</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dateReverse</h1>
      *
      * <p style="color: #CDCDCD">Reverse the date informed in the parameters</p>
      *
@@ -140,7 +140,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateExpired</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dateExpired</h1>
      *
      * <p style="color: #CDCDCD">Check if one specific date is expired based on parameters</p>
      *
@@ -200,20 +200,20 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateQuantify</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dateQuantify</h1>
      *
      * <p style="color: #CDCDCD">
      *     Get the date quantity difference between two dates (initial - final). The return values will be
      *      * something like this: [1, 2, 3, 4, 5, 6, 7], where:
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : is a List< Long > with seven (7) index: 0-6
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 1 is a quantity of years
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 2 is a quantity of months
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 3 is a quantity of days
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 4 is a quantity of hours
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 5 is a quantity of minutes
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 6 is a quantity of seconds
-     *      * <br />[1, 2, 3, 4, 5, 6, 7] : 7 is a quantity of milliseconds
-     *      * <br /> In resume the value can be interpreted like this:
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : is a List&lt;Long&gt; with seven (7) index: 0-6
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 1 is a quantity of years
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 2 is a quantity of months
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 3 is a quantity of days
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 4 is a quantity of hours
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 5 is a quantity of minutes
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 6 is a quantity of seconds
+     *      * <br>[1, 2, 3, 4, 5, 6, 7] : 7 is a quantity of milliseconds
+     *      * <br> In resume the value can be interpreted like this:
      *      * 1 years, 2 months, 3 days, 4 hours, 5 minutes, 6 seconds, 7 milliseconds
      * </p>
      *
@@ -264,7 +264,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">quantifyMillisDate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">quantifyMillisDate</h1>
      *
      * <p style="color: #CDCDCD">Get the simple difference between two dates</p>
      *
@@ -279,7 +279,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">quantifyMillisParamsDate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">quantifyMillisParamsDate</h1>
      *
      * <p style="color: #CDCDCD">Get the difference in milliseconds between two dates given in the parameters</p>
      *
@@ -368,7 +368,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">localDateFromGmtDate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">localDateFromGmtDate</h1>
      *
      * <p style="color: #CDCDCD">Get locale date from a GMT date setting up by parameters</p>
      *
@@ -421,7 +421,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">militaryHour</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">militaryHour</h1>
      *
      * <p style="color: #CDCDCD">Get the military hour according the inputHour informed in the parameter</p>
      *
@@ -455,73 +455,73 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">dateFormatter</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">dateFormatter</h1>
      *
      * <p style="color: #CDCDCD">Format the date in the specific format</p>
      *
      * @param dateInput (String: the date to format)
      * @param dateFormat (String: the format to apply in the date [
-     *                   <br />yyy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyyy-MM-dd HH:mm:ss.ms,
-     *                   <br />dd-MM-yyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yyyy HH:mm:ss.ms,
-     *                   <br />dd-MM-yy HH:mm:ss.ms,
-     *                   <br />yy-MM-dd HH:mm:ss.ms,
-     *                   <br />yyy-MM-dd HH:mm:ss,
-     *                   <br />yyyy-MM-dd HH:mm:ss,
-     *                   <br />dd-MM-yyy HH:mm:ss,
-     *                   <br />dd-MM-yyyy HH:mm:ss,
-     *                   <br />dd-MM-yy HH:mm:ss,
-     *                   <br />yy-MM-dd HH:mm:ss,
-     *                   <br />yyy-MM-dd HH:mm,
-     *                   <br />yyyy-MM-dd HH:mm,
-     *                   <br />dd-MM-yyy HH:mm,
-     *                   <br />dd-MM-yyyy HH:mm,
-     *                   <br />dd-MM-yy HH:mm,
-     *                   <br />yy-MM-dd HH:mm,
-     *                   <br />yyy-MM-dd HH,
-     *                   <br />yyyy-MM-dd HH,
-     *                   <br />dd-MM-yyy HH,
-     *                   <br />dd-MM-yyyy HH,
-     *                   <br />dd-MM-yy HH,
-     *                   <br />yy-MM-dd HH,
-     *                   <br />yyy-MM-dd,
-     *                   <br />yyyy-MM-dd,
-     *                   <br />dd-MM-yyy,
-     *                   <br />dd-MM-yyyy,
-     *                   <br />dd-MM-yy,
-     *                   <br />yy-MM-dd,
-     *                   <br />yyyMMddHHmmssms,
-     *                   <br />yyyyMMddHHmmssms,
-     *                   <br />ddMMyyyHHmmssms,
-     *                   <br />ddMMyyyyHHmmssms,
-     *                   <br />ddMMyyHHmmssms,
-     *                   <br />yyMMddHHmmssms,
-     *                   <br />yyyMMddHHmmss,
-     *                   <br />yyyyMMddHHmmss,
-     *                   <br />ddMMyyyHHmmss,
-     *                   <br />ddMMyyyyHHmmss,
-     *                   <br />ddMMyyHHmmss,
-     *                   <br />yyMMddHHmmss,
-     *                   <br />yyyMMddHHmm,
-     *                   <br />yyyyMMddHHmm,
-     *                   <br />ddMMyyyHHmm,
-     *                   <br />ddMMyyyyHHmm,
-     *                   <br />ddMMyyHHmm,
-     *                   <br />yyMMddHHmm,
-     *                   <br />yyyMMddHH,
-     *                   <br />yyyyMMddHH,
-     *                   <br />ddMMyyyHH,
-     *                   <br />ddMMyyyyHH,
-     *                   <br />ddMMyyHH,
-     *                   <br />yyMMddHH,
-     *                   <br />yyyMMdd,
-     *                   <br />yyyyMMdd,
-     *                   <br />ddMMyyy,
-     *                   <br />ddMMyyyy,
-     *                   <br />ddMMyy,
-     *                   <br />yyMMdd,
-     *                   <br/>])
+     *                   <br>yyy-MM-dd HH:mm:ss.ms,
+     *                   <br>yyyy-MM-dd HH:mm:ss.ms,
+     *                   <br>dd-MM-yyy HH:mm:ss.ms,
+     *                   <br>dd-MM-yyyy HH:mm:ss.ms,
+     *                   <br>dd-MM-yy HH:mm:ss.ms,
+     *                   <br>yy-MM-dd HH:mm:ss.ms,
+     *                   <br>yyy-MM-dd HH:mm:ss,
+     *                   <br>yyyy-MM-dd HH:mm:ss,
+     *                   <br>dd-MM-yyy HH:mm:ss,
+     *                   <br>dd-MM-yyyy HH:mm:ss,
+     *                   <br>dd-MM-yy HH:mm:ss,
+     *                   <br>yy-MM-dd HH:mm:ss,
+     *                   <br>yyy-MM-dd HH:mm,
+     *                   <br>yyyy-MM-dd HH:mm,
+     *                   <br>dd-MM-yyy HH:mm,
+     *                   <br>dd-MM-yyyy HH:mm,
+     *                   <br>dd-MM-yy HH:mm,
+     *                   <br>yy-MM-dd HH:mm,
+     *                   <br>yyy-MM-dd HH,
+     *                   <br>yyyy-MM-dd HH,
+     *                   <br>dd-MM-yyy HH,
+     *                   <br>dd-MM-yyyy HH,
+     *                   <br>dd-MM-yy HH,
+     *                   <br>yy-MM-dd HH,
+     *                   <br>yyy-MM-dd,
+     *                   <br>yyyy-MM-dd,
+     *                   <br>dd-MM-yyy,
+     *                   <br>dd-MM-yyyy,
+     *                   <br>dd-MM-yy,
+     *                   <br>yy-MM-dd,
+     *                   <br>yyyMMddHHmmssms,
+     *                   <br>yyyyMMddHHmmssms,
+     *                   <br>ddMMyyyHHmmssms,
+     *                   <br>ddMMyyyyHHmmssms,
+     *                   <br>ddMMyyHHmmssms,
+     *                   <br>yyMMddHHmmssms,
+     *                   <br>yyyMMddHHmmss,
+     *                   <br>yyyyMMddHHmmss,
+     *                   <br>ddMMyyyHHmmss,
+     *                   <br>ddMMyyyyHHmmss,
+     *                   <br>ddMMyyHHmmss,
+     *                   <br>yyMMddHHmmss,
+     *                   <br>yyyMMddHHmm,
+     *                   <br>yyyyMMddHHmm,
+     *                   <br>ddMMyyyHHmm,
+     *                   <br>ddMMyyyyHHmm,
+     *                   <br>ddMMyyHHmm,
+     *                   <br>yyMMddHHmm,
+     *                   <br>yyyMMddHH,
+     *                   <br>yyyyMMddHH,
+     *                   <br>ddMMyyyHH,
+     *                   <br>ddMMyyyyHH,
+     *                   <br>ddMMyyHH,
+     *                   <br>yyMMddHH,
+     *                   <br>yyyMMdd,
+     *                   <br>yyyyMMdd,
+     *                   <br>ddMMyyy,
+     *                   <br>ddMMyyyy,
+     *                   <br>ddMMyy,
+     *                   <br>yyMMdd,
+     *                   <br>])
      * @return String (Date Formatted)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>
      * @author huntercodexs (powered by jereelton-devel)
@@ -805,7 +805,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringToCalendar</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringToCalendar</h1>
      *
      * <p style="color: #CDCDCD">Convert a date string into Calendar format</p>
      *
@@ -835,7 +835,7 @@ public class CodexsDate {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringToDate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringToDate</h1>
      *
      * <p style="color: #CDCDCD">Convert a string into Date format</p>
      *
@@ -875,7 +875,7 @@ public class CodexsDate {
 
     /*TODO*/
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">stringToLocalDatetime</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">stringToLocalDatetime</h1>
      *
      * <p style="color: #CDCDCD">Convert a string into Local Datetime format</p>
      *
@@ -889,11 +889,11 @@ public class CodexsDate {
      *
      * @param dateString (String: The date to convert)
      * @param formatType (int: The date format={
-     *      <br />[1] yyyy-MM-ddThh:mm:ss a
-     *      <br />[2] yyyy/MM/ddThh:mm:ss a
-     *      <br />[3] yyyy.MM.ddThh:mm:ss a
-     *      <br />[4] yyyy-MMMM-dd HH:mm:ss a
-     * <br />})
+     *      <br>[1] yyyy-MM-ddThh:mm:ss a
+     *      <br>[2] yyyy/MM/ddThh:mm:ss a
+     *      <br>[3] yyyy.MM.ddThh:mm:ss a
+     *      <br>[4] yyyy-MMMM-dd HH:mm:ss a
+     * <br>})
      * @param locale (Locale: Country location)
      * @return String (Date Converted)
      * @see <a href="https://github.com/huntercodexs/help4devs-commons">Help4devs (GitHub)</a>

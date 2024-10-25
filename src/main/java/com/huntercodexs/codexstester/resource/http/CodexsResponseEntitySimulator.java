@@ -74,7 +74,7 @@ public class CodexsResponseEntitySimulator {
         }
 
         return ResponseEntity
-                .status(HttpStatus.SEE_OTHER)
+                .status(HttpStatus.TOO_EARLY)
                 .headers(new HttpHeaders())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyString);
@@ -867,7 +867,7 @@ public class CodexsResponseEntitySimulator {
         }
 
         return ResponseEntity
-                .status(HttpStatus.SEE_OTHER)
+                .status(HttpStatus.TOO_EARLY)
                 .headers(new HttpHeaders())
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(bodyString);
@@ -1164,7 +1164,7 @@ public class CodexsResponseEntitySimulator {
     }
 
     /**
-     * <h6 style="color: #FFFF00; font-size: 11px">responseEntitySimulate</h6>
+     * <h1 style="color: #FFFF00; font-size: 11px">responseEntitySimulate</h1>
      *
      * <p style="color: #CDCDCD">Simulate a Rest Response using an HTTP Status Code and Body</p>
      *
