@@ -351,6 +351,8 @@ jereelton@jereelton-acer-nitro:~$ git checkout {RELEASE-TARGET}
 
 You can download the zip files from Assets in the release target and install in the required project.
 
+![release-assets-sample.png](media/release-assets-sample.png)
+
 ### From GitHub Packages
 
 It is possible to get the codexstester project from GitHub packages as a maven dependency for java projects, so for 
@@ -436,11 +438,11 @@ We are going to elaborate a bit more each one of these items to be more clearly 
 
 ### Unitary
 
-![codexstester-unitary.png](media/codexstester-unitary.png)
-
-Unitary tests are simple tests that has the priority to check and guarantee the perfect functionality for one specific 
-method, function, command, class, script or any other kind of code unit. So in order to use Codexstester to automate 
+Unitary tests are simple tests that has the priority to check and guarantee the perfect functionality for one specific
+method, function, command, class, script or any other kind of code unit. So in order to use Codexstester to automate
 this process we will give a look into some examples affordable below.
+
+![codexstester-unitary.png](media/codexstester-unitary.png)
 
 <code>
 
