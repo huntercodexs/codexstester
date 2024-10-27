@@ -7,7 +7,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.4</version>
+		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
@@ -317,7 +317,11 @@
 				<version>0.6.0</version>
 				<extensions>true</extensions>
 				<configuration>
+					<skipPublishing>true</skipPublishing>
 					<publishingServerId>central</publishingServerId>
+					<deploymentName>Codexstester-${project.version}</deploymentName>
+					<outputFilename>codexstester-${project.version}</outputFilename>
+					<ignorePublishedComponents>false</ignorePublishedComponents>
 				</configuration>
 			</plugin>
 
