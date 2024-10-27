@@ -44,7 +44,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/huntercodexs/codexstester</connection>
 		<developerConnection>scm:git:ssh://github.com:huntercodexs/codexstester</developerConnection>
-		<url>http://github.com/huntercodexs/codexstester/tree/release-2.0.5--java-11-spring-boot-2.6.4-cucumber-7.10.1</url>
+		<url>http://github.com/huntercodexs/codexstester/tree/release-2.0.5--java11-spring-boot-2.6.4-cucumber-7.10.1</url>
 	</scm>
 
 	<!--Deploy: Project Properties-->
@@ -313,7 +313,11 @@
 				<version>0.6.0</version>
 				<extensions>true</extensions>
 				<configuration>
+					<skipPublishing>true</skipPublishing>
 					<publishingServerId>central</publishingServerId>
+					<deploymentName>Codexstester-${project.version}</deploymentName>
+					<outputFilename>codexstester-${project.version}</outputFilename>
+					<ignorePublishedComponents>false</ignorePublishedComponents>
 				</configuration>
 			</plugin>
 
