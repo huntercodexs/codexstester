@@ -310,7 +310,11 @@
 				<version>0.6.0</version>
 				<extensions>true</extensions>
 				<configuration>
+					<skipPublishing>true</skipPublishing>
 					<publishingServerId>central</publishingServerId>
+					<deploymentName>Codexstester-${project.version}</deploymentName>
+					<outputFilename>codexstester-${project.version}</outputFilename>
+					<ignorePublishedComponents>false</ignorePublishedComponents>
 				</configuration>
 			</plugin>
 
