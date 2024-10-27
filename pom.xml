@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<!--Deploy: Spring Information-->
 	<modelVersion>4.0.0</modelVersion>
@@ -44,7 +44,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/huntercodexs/codexstester</connection>
 		<developerConnection>scm:git:ssh://github.com:huntercodexs/codexstester</developerConnection>
-		<url>http://github.com/huntercodexs/codexstester/tree/release-2.0.11--java21-spring-boot-3.3.2-cucumber-7.12.0</url>
+		<url>http://github.com/huntercodexs/codexstester/tree/release-2.0.10--java21-spring-boot-3.3.2-cucumber-7.12.0</url>
 	</scm>
 
 	<!--Deploy: Project Properties-->
@@ -64,6 +64,7 @@
 		<!--Charset Encoding - Optional-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
 	</properties>
 
 	<dependencies>
@@ -317,7 +318,11 @@
 				<version>0.6.0</version>
 				<extensions>true</extensions>
 				<configuration>
+					<skipPublishing>true</skipPublishing>
 					<publishingServerId>central</publishingServerId>
+					<deploymentName>Codexstester-${project.version}</deploymentName>
+					<outputFilename>codexstester-${project.version}</outputFilename>
+					<ignorePublishedComponents>false</ignorePublishedComponents>
 				</configuration>
 			</plugin>
 
